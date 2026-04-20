@@ -18,22 +18,10 @@ interface Props {
 }
 
 const { title, description, hero, researchDate } = Astro.props;
-const formatDate = (date: Date) => new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <Layout title={title} description={description}>
-  <header class="bg-white shadow-sm border-b border-gray-200">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/" class="text-xl font-bold text-navy-900">Contractor Software Hub</a>
-      <nav class="hidden md:flex gap-6">
-        <a href="/" class="text-gray-600 hover:text-navy-900">Reviews</a>
-        <a href="/about" class="text-gray-600 hover:text-navy-900">About</a>
-        <a href="/contact" class="text-gray-600 hover:text-navy-900">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="max-w-4xl mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     {hero && (
       <ReviewHero
         category={hero.eyebrow}
@@ -48,48 +36,74 @@ const formatDate = (date: Date) => new Date(date).toLocaleDateString('en-US', { 
       />
     )}
 
-    <article class="prose prose-lg max-w-none">
+    <article class="article-content">
       <slot />
     </article>
-  </main>
-
-  <footer class="bg-gray-100 py-8 mt-12">
-    <div class="max-w-6xl mx-auto px-4 text-center text-gray-500">
-      <p>© {new Date().getFullYear()} Contractor Software Hub. All rights reserved.</p>
-    </div>
-  </footer>
+  </div>
 </Layout>
 
 <style>
-  /* Prose overrides for CSH styling */
-  :global(.prose h2) {
-    font-size: 1.5rem;
+  /* Article content styling */
+  :global(.article-content h2) {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
     color: #1C2B4B;
-  }
-  :global(.prose p) {
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
   }
-  :global(.prose ul) {
+  :global(.article-content h3) {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1C2B4B;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  :global(.article-content p) {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: #374151;
+  }
+  :global(.article-content ul) {
     list-style-type: disc;
     padding-left: 1.5rem;
     margin-bottom: 1rem;
   }
-  :global(.prose table) {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
+  :global(.article-content li) {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
   }
-  :global(.prose th) {
-    background-color: #1C2B4B;
-    color: white;
-    padding: 0.75rem;
-    text-align: left;
+  :global(.article-content strong) {
+    color: #1C2B4B;
   }
-  :global(.prose td) {
-    padding: 0.75rem;
-    border-bottom: 1px solid #e2e8f0;
+  :global(.article-content hr) {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+  }
+  :global(.article-content blockquote) {
+    border-left: 4px solid #1C2B4B;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #6b7280;
+  }
+  :global(.article-content figure) {
+    margin: 1.5rem 0;
+  }
+  :global(.article-content img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  /* FAQ section */
+  :global(.article-content h3) {
+    scroll-margin-top: 5rem;
+  }
+  :global(.article-content h2) {
+    scroll-margin-top: 5rem;
   }
 </style>

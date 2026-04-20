@@ -1,4 +1,8 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -15,28 +19,75 @@ const { title, description, image } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    {title && <title>{title} - Contractor Software Hub</title>}
+    {title && <title>{title} — Contractor Software Hub</title>}
     {description && <meta name="description" content={description} />}
-    <style>
-      /* Kadence-like font stack */
-      :root {
-        --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        --font-heading: 'Barlow Condensed', var(--font-primary);
-        --color-navy: #1C2B4B;
-        --color-orange: #E07A3A;
-      }
-      body {
-        font-family: var(--font-primary);
-        color: #374151;
-        line-height: 1.6;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: var(--font-heading);
-        color: var(--color-navy);
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="antialiased">
-    <slot />
+  <body class="antialiased bg-white text-gray-800 flex flex-col min-h-screen">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Barlow Condensed', var(--font-primary);
+    --color-navy: #1C2B4B;
+  }
+  body {
+    font-family: var(--font-primary);
+    color: #374151;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+  }
+  /* Better table styling globally */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  th {
+    background-color: #1C2B4B;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-family: var(--font-heading);
+  }
+  td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+  tr:hover {
+    background-color: #f3f4f6;
+  }
+  /* Code blocks */
+  code {
+    background: #f1f5f9;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+  }
+  /* Links in content */
+  article a {
+    color: #1C2B4B;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  article a:hover {
+    color: #E07A3A;
+  }
+</style>
