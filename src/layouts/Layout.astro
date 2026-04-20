@@ -23,7 +23,7 @@ const { title, description, image } = Astro.props;
     {description && <meta name="description" content={description} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased bg-white text-gray-800 flex flex-col min-h-screen">
     <Header />
@@ -35,59 +35,90 @@ const { title, description, image } = Astro.props;
 </html>
 
 <style is:global>
+  /* ── Design Tokens ─────────────────────────────────── */
   :root {
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-heading: 'Barlow Condensed', var(--font-primary);
-    --color-navy: #1C2B4B;
+    --navy:        #1C2B4B;
+    --navy-deep:   #0f172a;
+    --orange:      #E07A3A;
+    --orange-dark: #C05E20;
+    --gray-50:     #F8F9FB;
+    --gray-100:    #F0F2F5;
+    --gray-200:    #E2E6EC;
+    --gray-500:    #7A8494;
+    --gray-700:    #3A4558;
+    --gray-900:    #141C2E;
+    --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display:'Barlow Condensed', var(--font-sans);
+    --radius-sm:   6px;
+    --radius:      10px;
+    --radius-lg:   16px;
+    --radius-xl:   20px;
   }
+
+  /* ── Base ──────────────────────────────────────────── */
   body {
-    font-family: var(--font-primary);
-    color: #374151;
-    line-height: 1.6;
+    font-family: var(--font-sans);
+    color: var(--gray-700);
+    line-height: 1.65;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: var(--color-navy);
+    font-family: var(--font-display);
+    color: var(--navy);
+    line-height: 1.2;
   }
-  /* Better table styling globally */
+
+  /* ── Tables ────────────────────────────────────────── */
   table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--gray-200);
   }
   th {
-    background-color: #1C2B4B;
+    background-color: var(--navy);
     color: white;
     padding: 0.75rem 1rem;
     text-align: left;
-    font-weight: 600;
-    font-family: var(--font-heading);
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
   td {
-    padding: 0.65rem 1rem;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-700);
   }
-  tr:nth-child(even) {
-    background-color: #f9fafb;
-  }
-  tr:hover {
-    background-color: #f3f4f6;
-  }
-  /* Code blocks */
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background-color: var(--gray-50); }
+  tr:hover td { background-color: #FFF3EA; }
+
+  /* ── Code ──────────────────────────────────────────── */
   code {
-    background: #f1f5f9;
+    background: var(--gray-100);
     padding: 0.15em 0.4em;
     border-radius: 4px;
     font-size: 0.875em;
   }
-  /* Links in content */
+
+  /* ── Article links ─────────────────────────────────── */
   article a {
-    color: #1C2B4B;
+    color: var(--navy);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  article a:hover {
-    color: #E07A3A;
+  article a:hover { color: var(--orange); }
+
+  /* ── Smooth scroll ─────────────────────────────────── */
+  html { scroll-behavior: smooth; }
+
+  /* ── Focus ─────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
   }
 </style>

@@ -26,158 +26,208 @@ const {
 } = Astro.props;
 ---
 
-<div class="csh-review-hero-wrap">
-  <p class="csh-affiliate-disclosure"><em><strong>Disclosure:</strong> {disclosure}</em></p>
+<!-- Affiliate Disclosure -->
+<div class="disclosure-bar">
+  <svg class="disclosure-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+  <p><strong>Disclosure:</strong> {disclosure}</p>
+</div>
 
-  <div class="csh-review-hero">
-    <div class="csh-rh-inner">
-      <div class="csh-rh-logo csh-rh-logo-svg" role="img" aria-label="{category} icon">
-        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="80" rx="12" fill="#E07A3A"/>
-          <path d="M20 50L35 30L45 42L60 25" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="60" cy="25" r="4" fill="white"/>
-        </svg>
-      </div>
-      <div class="csh-rh-content">
-        <div class="csh-rh-eyebrow">{category}</div>
-        <h1 class="csh-rh-title">{title}</h1>
-        {subtitle && <p class="csh-rh-subtitle">{subtitle}</p>}
-        <div class="csh-rh-meta">
-          <span class="csh-rh-meta-item">Research updated: <strong>{researchDate}</strong></span>
-          {pricing && <span class="csh-rh-meta-item">Pricing: <strong>{pricing}</strong></span>}
-          {best_for && <span class="csh-rh-meta-item">Best for: <strong>{best_for}</strong></span>}
-          <span class="csh-rh-verdict-badge csh-vb-strong">✔ {verdictBadge}</span>
-        </div>
-      </div>
-      <a href={cta_url} class="csh-rh-cta" rel="nofollow sponsored">{cta_text}</a>
+<!-- Hero -->
+<div class="review-hero">
+  <div class="review-hero-inner">
+
+    <!-- Category + Verdict -->
+    <div class="review-hero-top">
+      <span class="review-eyebrow">{category}</span>
+      <span class="review-verdict-badge">✔ {verdictBadge}</span>
     </div>
+
+    <!-- Title -->
+    <h1 class="review-title">{title}</h1>
+    {subtitle && <p class="review-subtitle">{subtitle}</p>}
+
+    <!-- Meta strip -->
+    <div class="review-meta">
+      <span class="review-meta-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+        Updated <strong>{researchDate}</strong>
+      </span>
+      {pricing && (
+        <span class="review-meta-item">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+          Pricing: <strong>{pricing}</strong>
+        </span>
+      )}
+      {best_for && (
+        <span class="review-meta-item">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+          Best for: <strong>{best_for}</strong>
+        </span>
+      )}
+    </div>
+
+    <!-- CTA -->
+    {cta_url && cta_url !== '/' && (
+      <a href={cta_url} class="review-cta" rel="nofollow sponsored">{cta_text}</a>
+    )}
+
   </div>
 </div>
 
 <style>
-  /* Container */
-  .csh-review-hero-wrap {
-    background-color: #1C2B4B;
-    color: white;
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
+  /* ── Disclosure bar ──────────────────────────── */
+  .disclosure-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-left: 4px solid #E07A3A;
     border-radius: 8px;
-  }
-  
-  /* Disclosure */
-  .csh-affiliate-disclosure {
-    background: rgb(255, 251, 235);
-    border-left: 3px solid rgb(224, 122, 58);
     padding: 12px 16px;
-    font-size: 14px;
-    color: rgb(45, 55, 72);
-    border-radius: 4px;
-    margin-bottom: 24px;
+    font-size: 13px;
+    color: #4B3C28;
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+  .disclosure-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #E07A3A;
+  }
+  .disclosure-bar strong { font-weight: 700; }
+
+  /* ── Hero ───────────────────────────────────── */
+  .review-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1C2B4B 100%);
+    color: white;
+    padding: 2.5rem 2rem;
+    margin-top: 0;
+    border-radius: 0 0 16px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Dot grid texture */
+  .review-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+  }
+  .review-hero-inner {
+    position: relative;
+    max-width: 900px;
   }
 
-  /* Inner layout */
-  .csh-review-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .csh-rh-inner {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-  .csh-rh-logo-svg {
-    flex-shrink: 0;
-    padding: 0;
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 12px;
-    width: 80px;
-    height: 80px;
+  /* ── Top row (eyebrow + badge) ──────────────── */
+  .review-hero-top {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: transparent;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
   }
-  .csh-rh-logo-svg svg {
-    width: 100%;
-    height: 100%;
+  .review-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #E07A3A;
+    background: rgba(224, 122, 58, 0.15);
+    border: 1px solid rgba(224, 122, 58, 0.3);
+    border-radius: 100px;
+    padding: 3px 12px;
+  }
+  .review-verdict-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 3px 12px;
   }
 
-  /* Content */
-  .csh-rh-content {
-    flex: 1;
-  }
-  .csh-rh-eyebrow {
-    color: rgb(224, 122, 58);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-  }
-  .csh-rh-title {
+  /* ── Title ──────────────────────────────────── */
+  .review-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 800;
     color: white;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.6rem 0;
+    line-height: 1.15;
     text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
-  .csh-rh-subtitle {
-    color: rgba(255,255,255,0.85);
+  .review-subtitle {
+    color: rgba(255,255,255,0.75);
     margin: 0 0 1.5rem 0;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 650px;
   }
 
-  /* Meta info */
-  .csh-rh-meta {
+  /* ── Meta strip ─────────────────────────────── */
+  .review-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1rem 1.5rem;
     align-items: center;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.75rem;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    width: fit-content;
   }
-  .csh-rh-meta-item strong {
+  .review-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .review-meta-item svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: #E07A3A;
+  }
+  .review-meta-item strong {
     color: white;
     font-weight: 600;
   }
-  .csh-rh-verdict-badge {
-    background: rgba(255,255,255,0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
 
-  /* CTA Button */
-  .csh-rh-cta {
-    display: inline-block;
-    background: rgb(224, 122, 58);
+  /* ── CTA button ─────────────────────────────── */
+  .review-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #E07A3A;
     color: white;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.75rem;
     border-radius: 8px;
     font-weight: 700;
-    text-align: center;
-    transition: background 0.2s;
-    white-space: nowrap;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(224, 122, 58, 0.35);
   }
-  .csh-rh-cta:hover {
-    background: rgb(200, 100, 30);
+  .review-cta:hover {
+    background: #C05E20;
+    transform: translateY(-1px);
   }
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    .csh-rh-inner {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .csh-rh-title {
-      font-size: 1.5rem;
-    }
-    .csh-rh-cta {
-      width: 100%;
-    }
+  /* ── Mobile ─────────────────────────────────── */
+  @media (max-width: 640px) {
+    .review-hero { padding: 2rem 1.25rem; }
+    .review-title { font-size: 1.5rem; }
+    .review-meta { gap: 0.75rem 1rem; }
+    .review-cta { width: 100%; text-align: center; justify-content: center; }
   }
 </style>

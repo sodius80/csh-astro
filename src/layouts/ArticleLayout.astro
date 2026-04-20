@@ -21,7 +21,15 @@ const { title, description, hero, researchDate } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6">
+
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-1.5 text-xs text-gray-400 mb-4" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-[#E07A3A] transition-colors">Home</a>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      <span class="text-gray-600 truncate">{title}</span>
+    </nav>
+
     {hero && (
       <ReviewHero
         category={hero.eyebrow}
@@ -36,74 +44,90 @@ const { title, description, hero, researchDate } = Astro.props;
       />
     )}
 
-    <article class="article-content">
+    <article class="article-content mt-8">
       <slot />
     </article>
+
   </div>
 </Layout>
 
 <style>
-  /* Article content styling */
+  /* ── Article typography ──────────────────────── */
   :global(.article-content h2) {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 1.75rem;
-    font-weight: 700;
+    font-weight: 800;
     color: #1C2B4B;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-top: 2.75rem;
+    margin-bottom: 0.875rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e5e7eb;
+    border-bottom: 2px solid #E2E6EC;
+    scroll-margin-top: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
   :global(.article-content h3) {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #1C2B4B;
     margin-top: 2rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.625rem;
+    scroll-margin-top: 5rem;
   }
   :global(.article-content p) {
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
     line-height: 1.75;
-    color: #374151;
+    color: #3A4558;
   }
   :global(.article-content ul) {
     list-style-type: disc;
     padding-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
+  }
+  :global(.article-content ol) {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.1rem;
   }
   :global(.article-content li) {
-    margin-bottom: 0.35rem;
-    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    line-height: 1.65;
+    color: #3A4558;
   }
   :global(.article-content strong) {
     color: #1C2B4B;
+    font-weight: 700;
   }
   :global(.article-content hr) {
     border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 2rem 0;
+    border-top: 2px solid #E2E6EC;
+    margin: 2.5rem 0;
   }
   :global(.article-content blockquote) {
-    border-left: 4px solid #1C2B4B;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
+    border-left: 4px solid #E07A3A;
+    padding: 0.75rem 1.25rem;
+    margin: 1.75rem 0;
+    background: #FFF8F3;
+    border-radius: 0 8px 8px 0;
     font-style: italic;
-    color: #6b7280;
+    color: #5C6778;
   }
-  :global(.article-content figure) {
-    margin: 1.5rem 0;
-  }
+  :global(.article-content figure) { margin: 1.75rem 0; }
   :global(.article-content img) {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 1px solid #E2E6EC;
   }
-  /* FAQ section */
-  :global(.article-content h3) {
-    scroll-margin-top: 5rem;
-  }
-  :global(.article-content h2) {
-    scroll-margin-top: 5rem;
+
+  /* ── Quick-fact boxes (callout divs) ─────────── */
+  :global(.article-content .callout) {
+    background: #F0F5FF;
+    border: 1px solid #C7D7F7;
+    border-left: 4px solid #1C2B4B;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
   }
 </style>
