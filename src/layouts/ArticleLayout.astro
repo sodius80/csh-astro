@@ -1,0 +1,95 @@
+---
+import Layout from './Layout.astro';
+import ReviewHero from '../components/ReviewHero.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  hero?: {
+    eyebrow: string;
+    subtitle?: string;
+    cta_url: string;
+    cta_text: string;
+    pricing?: string;
+    best_for?: string;
+    disclosure_override?: string;
+  };
+  researchDate: string;
+}
+
+const { title, description, hero, researchDate } = Astro.props;
+const formatDate = (date: Date) => new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title={title} description={description}>
+  <header class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-navy-900">Contractor Software Hub</a>
+      <nav class="hidden md:flex gap-6">
+        <a href="/" class="text-gray-600 hover:text-navy-900">Reviews</a>
+        <a href="/about" class="text-gray-600 hover:text-navy-900">About</a>
+        <a href="/contact" class="text-gray-600 hover:text-navy-900">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    {hero && (
+      <ReviewHero
+        category={hero.eyebrow}
+        title={title}
+        subtitle={hero.subtitle}
+        cta_url={hero.cta_url}
+        cta_text={hero.cta_text}
+        pricing={hero.pricing}
+        best_for={hero.best_for}
+        disclosure={hero.disclosure_override}
+        researchDate={researchDate}
+      />
+    )}
+
+    <article class="prose prose-lg max-w-none">
+      <slot />
+    </article>
+  </main>
+
+  <footer class="bg-gray-100 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 text-center text-gray-500">
+      <p>© {new Date().getFullYear()} Contractor Software Hub. All rights reserved.</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* Prose overrides for CSH styling */
+  :global(.prose h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1C2B4B;
+  }
+  :global(.prose p) {
+    margin-bottom: 1rem;
+  }
+  :global(.prose ul) {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  :global(.prose table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  :global(.prose th) {
+    background-color: #1C2B4B;
+    color: white;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  :global(.prose td) {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+</style>

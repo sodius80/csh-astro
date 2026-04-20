@@ -1,0 +1,177 @@
+---
+interface Props {
+  category: string;
+  title: string;
+  subtitle?: string;
+  cta_url: string;
+  cta_text: string;
+  pricing?: string;
+  best_for?: string;
+  researchDate: string;
+  disclosure?: string;
+  verdictBadge?: string;
+}
+
+const {
+  category,
+  title,
+  subtitle,
+  cta_url,
+  cta_text,
+  pricing,
+  best_for,
+  researchDate,
+  disclosure = "There are currently no affiliate links in this article. If that changes later, it will not affect how I evaluate the tools.",
+  verdictBadge = "ROUNDUP"
+} = Astro.props;
+---
+
+<div class="csh-review-hero-wrap">
+  <p class="csh-affiliate-disclosure"><em><strong>Disclosure:</strong> {disclosure}</em></p>
+
+  <div class="csh-review-hero">
+    <div class="csh-rh-inner">
+      <div class="csh-rh-logo csh-rh-logo-svg" role="img" aria-label="{category} icon"></div>
+      <div class="csh-rh-content">
+        <div class="csh-rh-eyebrow">{category}</div>
+        <h1 class="csh-rh-title">{title}</h1>
+        {subtitle && <p class="csh-rh-subtitle">{subtitle}</p>}
+        <div class="csh-rh-meta">
+          <span class="csh-rh-meta-item">Research updated: <strong>{researchDate}</strong></span>
+          {pricing && <span class="csh-rh-meta-item">Pricing: <strong>{pricing}</strong></span>}
+          {best_for && <span class="csh-rh-meta-item">Best for: <strong>{best_for}</strong></span>}
+          <span class="csh-rh-verdict-badge csh-vb-strong">✔ {verdictBadge}</span>
+        </div>
+      </div>
+      <a href={cta_url} class="csh-rh-cta" rel="nofollow sponsored">{cta_text}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Container */
+  .csh-review-hero-wrap {
+    background-color: #1C2B4B;
+    color: white;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+  }
+  
+  /* Disclosure */
+  .csh-affiliate-disclosure {
+    background: rgb(255, 251, 235);
+    border-left: 3px solid rgb(224, 122, 58);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: rgb(45, 55, 72);
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  /* Inner layout */
+  .csh-review-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .csh-rh-inner {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .csh-rh-logo-svg {
+    flex-shrink: 0;
+    background: #1C2B4B;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .csh-rh-logo-svg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Content */
+  .csh-rh-content {
+    flex: 1;
+  }
+  .csh-rh-eyebrow {
+    color: rgb(224, 122, 58);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .csh-rh-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+  }
+  .csh-rh-subtitle {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  /* Meta info */
+  .csh-rh-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .csh-rh-meta-item strong {
+    color: white;
+    font-weight: 600;
+  }
+  .csh-rh-verdict-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  /* CTA Button */
+  .csh-rh-cta {
+    display: inline-block;
+    background: rgb(224, 122, 58);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .csh-rh-cta:hover {
+    background: rgb(200, 100, 30);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .csh-rh-inner {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .csh-rh-title {
+      font-size: 1.5rem;
+    }
+    .csh-rh-cta {
+      width: 100%;
+    }
+  }
+</style>
