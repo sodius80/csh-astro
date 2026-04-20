@@ -31,7 +31,13 @@ const {
 
   <div class="csh-review-hero">
     <div class="csh-rh-inner">
-      <div class="csh-rh-logo csh-rh-logo-svg" role="img" aria-label="{category} icon"></div>
+      <div class="csh-rh-logo csh-rh-logo-svg" role="img" aria-label="{category} icon">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="80" height="80" rx="12" fill="#E07A3A"/>
+          <path d="M20 50L35 30L45 42L60 25" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="60" cy="25" r="4" fill="white"/>
+        </svg>
+      </div>
       <div class="csh-rh-content">
         <div class="csh-rh-eyebrow">{category}</div>
         <h1 class="csh-rh-title">{title}</h1>
@@ -81,15 +87,15 @@ const {
   }
   .csh-rh-logo-svg {
     flex-shrink: 0;
-    background: #1C2B4B;
-    padding: 14px;
+    padding: 0;
     border: 1px solid rgba(255,255,255,.06);
-    border-radius: 8px;
+    border-radius: 12px;
     width: 80px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
   }
   .csh-rh-logo-svg svg {
     width: 100%;

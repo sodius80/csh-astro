@@ -4,7 +4,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  console.log('Posts found:', JSON.stringify(posts.map(p => ({ id: p.id, slug: p.slug, data: p.data })), null, 2));
   return posts.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
