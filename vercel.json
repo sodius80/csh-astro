@@ -89,6 +89,15 @@
     { "source": "/best-proposal-software-for-contractors", "destination": "/", "permanent": true },
     { "source": "/best-proposal-software-for-contractors/", "destination": "/", "permanent": true },
     { "source": "/privacy-policy", "destination": "/", "permanent": true },
-    { "source": "/privacy-policy/", "destination": "/", "permanent": true }
+    { "source": "/privacy-policy/", "destination": "/", "permanent": true },
+
+    { "source": "/go/jobber-official-site/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
+    { "source": "/go/jobber/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
+    { "source": "/go/housecall-pro-official-site/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
+    { "source": "/go/servicetitan-official-site/", "destination": "https://www.servicetitan.com/", "permanent": false },
+    { "source": "/go/gorilladesk/", "destination": "https://gorilladesk.com/", "permanent": false },
+    { "source": "/go/stack-official-site/", "destination": "https://www.stackct.com/", "permanent": false },
+    { "source": "/go/autocad-lt/", "destination": "https://www.autodesk.com/products/autocad-lt", "permanent": false },
+    { "source": "/go/jobnimbus/", "destination": "https://www.jobnimbus.com/", "permanent": false }
   ]
 }
