@@ -1,92 +1,63 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-title: "Contact - Contractor Software Hub"
-description: "Have a question about a review, want to suggest software we should cover, or need to reach our editorial team?"
 ---
 
-<header class="bg-[#0f172a] text-white">
+<Layout title="Contact" description="Have a question about a review, want to suggest software we should cover, or need to reach our editorial team?">
+
+<!-- Page Hero -->
+<section class="bg-[#0f172a] text-white">
   <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4">Contact Us</h1>
+    <p class="text-[#E07A3A] font-semibold text-sm uppercase tracking-wider mb-4">Get In Touch</p>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif; color: white;">Contact Us</h1>
     <p class="text-lg text-gray-300">Have a question about a review, want to suggest software we should cover, or need to reach our editorial team?</p>
   </div>
-</header>
+</section>
 
 <main class="max-w-3xl mx-auto px-6 py-12">
+
   <section class="mb-12">
     <p class="text-gray-700 leading-relaxed mb-6">Have a question about a review? Spotted an error? Know of a software tool we haven't covered? We want to hear from you.</p>
 
-    <div class="bg-[#f8fafc] border border-gray-200 rounded-lg p-6 mb-8">
-      <h3 class="font-semibold mb-2">Send a message</h3>
-      <p class="mb-4"><a href="mailto:chris@contractorsoftwarehub.com" class="text-[#0f172a] underline hover:text-[#22c55e] font-medium">chris@contractorsoftwarehub.com</a></p>
+    <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-6 mb-8">
+      <h3 class="font-semibold text-[#1C2B4B] mb-2">Send a message</h3>
+      <p class="mb-1"><a href="mailto:chris@contractorsoftwarehub.com" class="text-[#E07A3A] hover:underline font-semibold text-lg">chris@contractorsoftwarehub.com</a></p>
       <p class="text-sm text-gray-500">We read everything and try to respond within a few business days.</p>
     </div>
   </section>
 
   <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4">What we're happy to hear about</h2>
-    <ul class="space-y-3 ml-5 mb-6 text-gray-700">
+    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">What we're happy to hear about</h2>
+    <ul class="space-y-3 mb-6">
       <li class="flex items-start gap-3">
-        <span class="text-[#22c55e] font-bold mt-0.5">•</span>
-        <span>Questions about reviews or recommendations</span>
+        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+        <span class="text-gray-700">Questions about reviews or recommendations</span>
       </li>
       <li class="flex items-start gap-3">
-        <span class="text-[#22c55e] font-bold mt-0.5">•</span>
-        <span>Software tools we should cover</span>
+        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+        <span class="text-gray-700">Software tools we should cover</span>
       </li>
       <li class="flex items-start gap-3">
-        <span class="text-[#22c55e] font-bold mt-0.5">•</span>
-        <span>Corrections or feedback on existing content</span>
+        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+        <span class="text-gray-700">Corrections or feedback on existing content</span>
       </li>
       <li class="flex items-start gap-3">
-        <span class="text-[#22c55e] font-bold mt-0.5">•</span>
-        <span>Your experience with a tool we've reviewed</span>
+        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+        <span class="text-gray-700">Your experience with a tool we've reviewed</span>
       </li>
     </ul>
-    <p class="text-gray-700 leading-relaxed"><strong>Note:</strong> We don't accept guest posts or paid placements at this time.</p>
+    <p class="text-gray-600 text-sm bg-gray-100 rounded-lg px-4 py-3"><strong>Note:</strong> We don't accept guest posts or paid placements at this time.</p>
   </section>
 
   <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4">Business Address</h2>
-    <address class="not-italic text-gray-700 leading-relaxed">
-      Contractor Software Hub LLC<br />
+    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">Business Address</h2>
+    <address class="not-italic text-gray-700 leading-relaxed bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
+      <strong class="text-[#1C2B4B]">Contractor Software Hub LLC</strong><br />
       c/o Northwest Registered Agent<br />
       116 Agnes Rd Ste 200<br />
       Knoxville, TN 37919
     </address>
   </section>
+
 </main>
 
-<footer class="bg-[#0f172a] text-gray-400 text-sm">
-  <div class="max-w-3xl mx-auto px-6 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
-      <div>
-        <h3 class="text-white font-semibold mb-3">Reviews</h3>
-        <ul class="space-y-2">
-          <li><a href="/blog/jobber-review/" class="hover:text-white">Jobber Review</a></li>
-          <li><a href="/blog/housecall-pro-review/" class="hover:text-white">Housecall Pro Review</a></li>
-          <li><a href="/blog/servicetitan-review/" class="hover:text-white">ServiceTitan Review</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-white font-semibold mb-3">Compare</h3>
-        <ul class="space-y-2">
-          <li><a href="/blog/jobber-vs-housecall-pro/" class="hover:text-white">Jobber vs Housecall Pro</a></li>
-          <li><a href="/blog/servicetitan-vs-jobber/" class="hover:text-white">ServiceTitan vs Jobber</a></li>
-          <li><a href="/blog/housecall-pro-vs-fieldedge/" class="hover:text-white">Housecall Pro vs FieldEdge</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-white font-semibold mb-3">About</h3>
-        <ul class="space-y-2">
-          <li><a href="/about/" class="hover:text-white">About CSH</a></li>
-          <li><a href="/affiliate-disclosure/" class="hover:text-white">Affiliate Disclosure</a></li>
-          <li><a href="/contact/" class="hover:text-white">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-gray-700 pt-8">
-      <p class="mb-2">Independent reviews for contractors who'd rather be building.</p>
-      <p>&copy; 2026 ContractorSoftwareHub.com. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+</Layout>
