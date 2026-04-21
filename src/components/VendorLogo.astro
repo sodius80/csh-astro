@@ -1,0 +1,18 @@
+---
+interface Props {
+  name: string;
+  slug?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+const { name, slug, size = 'md' } = Astro.props;
+const s = slug ?? name.toLowerCase().replace(/[^a-z0-9]+/g, '').replace(/^-|-$/g, '');
+const initials = name
+  .split(/[\s.]+/)
+  .filter(Boolean)
+  .map(w => w[0])
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+const sizeClass = size === 'sm' ? 'vendor-chip sm' : size === 'lg' ? 'vendor-chip lg' : 'vendor-chip';
+---
+<div class={sizeClass} title={name}>{initials}</div>

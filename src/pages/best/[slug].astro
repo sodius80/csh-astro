@@ -1,0 +1,263 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DoYouNeedThis from '../../components/DoYouNeedThis.astro';
+import RankedEntry from '../../components/RankedEntry.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+
+export async function getStaticPaths() {
+  const roundups = await getCollection('roundups');
+  return roundups.map(r => ({ params: { slug: r.id }, props: { entry: r } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric', year: 'numeric'
+});
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  active="bestof"
+  ogImage={d.heroImage}
+>
+  <section class="masthead blueprint-bg">
+    <div class="wrap-content">
+      <div class="pill-row">
+        <span class="pill ink">Best of</span>
+        <span class="pill">{d.category}</span>
+        <span class="pill ghost">{d.year} edition</span>
+      </div>
+      <h1 class="display bo-title">
+        {d.heroHeadline ?? d.title}
+      </h1>
+      {d.heroSubhead && (
+        <p class="serif bo-lede">{d.heroSubhead}</p>
+      )}
+      <div class="byline-row">
+        <div class="byline-meta">By {d.author} · Updated {updatedShort}{d.readTime ? ` · ${d.readTime}` : ''}</div>
+      </div>
+    </div>
+  </section>
+
+  {d.heroImage && (
+    <section class="hero-img-section">
+      <div class="wrap-content">
+        <img src={d.heroImage} alt={d.title} class="hero-img" />
+      </div>
+    </section>
+  )}
+
+  {d.doYouNeed && (
+    <section class="section-pad" style="background:var(--paper-deep);">
+      <DoYouNeedThis
+        category={d.category}
+        rule={d.doYouNeed.rule}
+        ruleCaption={d.doYouNeed.ruleCaption}
+        framingLead={d.doYouNeed.framingLead}
+        framingBody={d.doYouNeed.framingBody}
+        doBullets={d.doYouNeed.doBullets}
+        dontBullets={d.doYouNeed.dontBullets}
+      />
+    </section>
+  )}
+
+  {d.ranked.length > 0 && (
+    <section class="section-pad">
+      <div class="wrap-content">
+        <div class="rule-label" style="margin-bottom:36px;">
+          <span>The ranking</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">Opinionated — not comprehensive</span>
+        </div>
+        {d.ranked.map((r, i) => (
+          <RankedEntry
+            rank={r.rank}
+            name={r.name}
+            slug={r.slug}
+            rating={r.rating}
+            tag={r.tag}
+            bestFor={r.bestFor}
+            startingPrice={r.startingPrice}
+            pullquote={r.pullquote}
+            body={r.body}
+            pros={r.pros}
+            cons={r.cons}
+            affiliateUrl={r.affiliateUrl}
+            isFirst={i === 0}
+          />
+        ))}
+
+        {d.cutList.length > 0 && (
+          <div class="cuts">
+            <div class="cuts-num">+{d.cutList.length}</div>
+            <div class="cuts-body">
+              <div class="display" style="font-size:22px; margin-bottom:8px;">
+                {d.cutList.length} more we tested and cut
+              </div>
+              <div class="serif" style="font-size:15px; line-height:1.55; opacity:0.85;">
+                {d.cutList.map(c => c.name).join(' · ')} — each had a case for inclusion but didn't clear the bar for {d.year}. If you want the why, here's the short version.
+              </div>
+              <details class="cuts-details">
+                <summary>See the cuts →</summary>
+                <ul>
+                  {d.cutList.map(c => (
+                    <li>
+                      <strong>{c.name}</strong> — {c.why}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- LONG-FORM BODY -->
+  <section class="section-pad" style="background:var(--paper-deep);">
+    <div class="wrap-reading">
+      <div class="rule-label" style="margin-bottom:36px;">
+        <span>The deep read</span>
+      </div>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  {d.bottomLine && (
+    <section class="bottom-line">
+      <div class="wrap-reading" style="text-align:center;">
+        <div class="rule-label" style="margin-bottom:28px; justify-content:center;">
+          <span>The bottom line</span>
+        </div>
+        <p class="serif" style="font-size:clamp(19px, 2.4vw, 24px); line-height:1.5; color:var(--ink-2);">
+          {d.bottomLine}
+        </p>
+      </div>
+    </section>
+  )}
+
+  {d.faqs.length > 0 && <FAQAccordion faqs={d.faqs} />}
+</BaseLayout>
+
+<style>
+  .masthead {
+    padding: 56px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+    background-color: var(--paper);
+  }
+  .pill-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .bo-title {
+    font-size: clamp(48px, 9vw, 104px);
+    line-height: 0.88;
+    letter-spacing: -0.015em;
+    margin: 0 0 26px;
+  }
+  .bo-lede {
+    font-size: clamp(18px, 2.2vw, 21px);
+    line-height: 1.4;
+    color: var(--ink-2);
+    max-width: 900px;
+    margin: 0 0 24px;
+  }
+  .byline-row {
+    padding-top: 20px;
+    border-top: 1.5px solid var(--ink);
+  }
+  .byline-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+
+  .hero-img-section {
+    padding: 36px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--ink);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .cuts {
+    margin-top: 24px;
+    padding: 32px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .cuts-num {
+    font-family: var(--display);
+    font-size: 56px;
+    color: var(--orange);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .cuts-body { flex: 1; }
+  .cuts-details {
+    margin-top: 16px;
+  }
+  .cuts-details summary {
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .cuts-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cuts-details li {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.5;
+    padding-left: 0;
+  }
+  .cuts-details strong {
+    font-family: var(--ui);
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 13px;
+  }
+
+  .bottom-line {
+    padding: 64px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  @media (max-width: 767px) {
+    .masthead, .section-pad, .hero-img-section, .bottom-line { padding-left: 20px; padding-right: 20px; }
+    .cuts { flex-direction: column; gap: 16px; padding: 24px 20px; }
+  }
+</style>

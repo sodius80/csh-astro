@@ -1,0 +1,19 @@
+---
+interface Props {
+  rating: 'top-pick' | 'recommended' | 'conditional' | 'skip';
+  variant?: 'seal' | 'flat';
+  rotate?: number;
+  label?: string;
+}
+const { rating, variant = 'seal', rotate = -3, label } = Astro.props;
+const defaults: Record<string, string> = {
+  'top-pick': 'Top Pick',
+  recommended: 'Recommended',
+  conditional: 'Conditional',
+  skip: 'Skip',
+};
+const text = label ?? defaults[rating];
+const klass = variant === 'seal' ? `stamp-seal ${rating}` : `stamp ${rating}`;
+const style = variant === 'seal' ? `transform: rotate(${rotate}deg);` : '';
+---
+<span class={klass} style={style} role="img" aria-label={`Rating: ${text}`}>{text}</span>

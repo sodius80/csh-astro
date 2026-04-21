@@ -1,63 +1,122 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-
-<Layout title="Contact" description="Have a question about a review, want to suggest software we should cover, or need to reach our editorial team?">
-
-<!-- Page Hero -->
-<section class="bg-[#0f172a] text-white">
-  <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-    <p class="text-[#E07A3A] font-semibold text-sm uppercase tracking-wider mb-4">Get In Touch</p>
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif; color: white;">Contact Us</h1>
-    <p class="text-lg text-gray-300">Have a question about a review, want to suggest software we should cover, or need to reach our editorial team?</p>
-  </div>
-</section>
-
-<main class="max-w-3xl mx-auto px-6 py-12">
-
-  <section class="mb-12">
-    <p class="text-gray-700 leading-relaxed mb-6">Have a question about a review? Spotted an error? Know of a software tool we haven't covered? We want to hear from you.</p>
-
-    <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-6 mb-8">
-      <h3 class="font-semibold text-[#1C2B4B] mb-2">Send a message</h3>
-      <p class="mb-1"><a href="mailto:chris@contractorsoftwarehub.com" class="text-[#E07A3A] hover:underline font-semibold text-lg">chris@contractorsoftwarehub.com</a></p>
-      <p class="text-sm text-gray-500">We read everything and try to respond within a few business days.</p>
+<BaseLayout
+  title="Contact · Contractor Software Hub"
+  description="Contact Contractor Software Hub. Tip line open for tool requests, corrections, and software horror stories."
+>
+  <section class="page-hero">
+    <div class="wrap-content">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Contact</span>
+        <span style="flex:1;"></span>
+        <span>Tip line open</span>
+      </div>
+      <h1 class="display hero-title">
+        Tell us what<br/>to cover next.
+      </h1>
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">What we're happy to hear about</h2>
-    <ul class="space-y-3 mb-6">
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">Questions about reviews or recommendations</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">Software tools we should cover</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">Corrections or feedback on existing content</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">Your experience with a tool we've reviewed</span>
-      </li>
-    </ul>
-    <p class="text-gray-600 text-sm bg-gray-100 rounded-lg px-4 py-3"><strong>Note:</strong> We don't accept guest posts or paid placements at this time.</p>
+  <section class="section-pad">
+    <div class="wrap-reading">
+      <div class="contact-grid">
+        <div>
+          <h2 class="display">Email</h2>
+          <a href="mailto:grant@contractorsoftwarehub.com" class="email">grant@contractorsoftwarehub.com</a>
+          <p class="serif" style="font-size:16px; line-height:1.6; color:var(--ink-2); margin-top:16px;">
+            The best way to reach us. We read everything, even if we can't reply to everything.
+          </p>
+        </div>
+        <div>
+          <h2 class="display">What to send</h2>
+          <ul class="list">
+            <li>A tool we should cover</li>
+            <li>A tool you think we're wrong about</li>
+            <li>A pricing change we should know about</li>
+            <li>A correction — we'll fix and credit</li>
+            <li>A software horror story you want dug into</li>
+            <li>Affiliate partnership proposals (we're selective)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-note">
+        <div class="eyebrow eyebrow-muted" style="margin-bottom:10px;">What we're not</div>
+        <p class="serif" style="font-size:16px; line-height:1.6; color:var(--ink-2); margin:0;">
+          We're not customer support for any of the tools we cover. If Jobber's down or Housecall Pro won't load your invoice, they've got support teams — email them, not us.
+        </p>
+      </div>
+    </div>
   </section>
+</BaseLayout>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">Business Address</h2>
-    <address class="not-italic text-gray-700 leading-relaxed bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
-      <strong class="text-[#1C2B4B]">Contractor Software Hub LLC</strong><br />
-      c/o Northwest Registered Agent<br />
-      116 Agnes Rd Ste 200<br />
-      Knoxville, TN 37919
-    </address>
-  </section>
-
-</main>
-
-</Layout>
+<style>
+  .page-hero {
+    padding: 64px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hero-title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .contact-grid h2 {
+    font-family: var(--display);
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .email {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    color: var(--ink);
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .email:hover { color: var(--orange-deep); }
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .list li {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding-left: 22px;
+    position: relative;
+  }
+  .list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-family: var(--mono);
+    font-weight: 700;
+  }
+  .cta-note {
+    padding: 28px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+  }
+  @media (max-width: 767px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>

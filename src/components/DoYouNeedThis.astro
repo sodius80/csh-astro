@@ -1,0 +1,211 @@
+---
+interface Props {
+  category: string;
+  rule: string;
+  ruleCaption?: string;
+  framingLead?: string;
+  framingBody?: string;
+  doBullets: string[];
+  dontBullets: string[];
+}
+const {
+  category,
+  rule,
+  ruleCaption = "Under that threshold, it's usually operator discipline, not tooling.",
+  framingLead,
+  framingBody,
+  doBullets,
+  dontBullets,
+} = Astro.props;
+const lead = framingLead ?? `The honest answer: **maybe not.** Many small ${category.toLowerCase()} operations need better discipline before they need a full operations platform.`;
+const body = framingBody ?? `Most roundup posts pretend every reader is the ideal buyer. They're not. Before you compare the tools below, work through this checklist. If you land mostly on the right side, save your money — a better spreadsheet will do more for you this quarter than any of these.`;
+// render simple **markdown** → <strong>
+const md = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+---
+<section class="dynt wrap-content">
+  <div class="rule-label" style="margin-bottom: 28px;"><span>Before you buy</span><span style="flex:1;"></span><span style="color:var(--graphite);">Read this first</span></div>
+  <div class="top-grid">
+    <div>
+      <h2 class="display hd">Do you need this<br/>software <em>yet?</em></h2>
+      <p class="serif lead" set:html={md(lead)}></p>
+      <p class="serif body" set:html={md(body)}></p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-eyebrow">Our rough rule</div>
+      <div class="rule-quote">"{rule}"</div>
+      <div class="rule-caption">{ruleCaption}</div>
+    </div>
+  </div>
+
+  <div class="lists">
+    <div class="card-item do">
+      <span class="tab do-tab">You probably do</span>
+      <ul>
+        {doBullets.map(b => (
+          <li><span class="check">✓</span><span>{b}</span></li>
+        ))}
+      </ul>
+    </div>
+    <div class="card-item dont">
+      <span class="tab dont-tab">You may not yet</span>
+      <ul>
+        {dontBullets.map(b => (
+          <li><span class="dash">—</span><span>{b}</span></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="tie-off">
+    <div class="tie-eyebrow">Still unsure?</div>
+    <div class="tie-body">
+      If three or more items on the left describe your week, keep reading. If three or more on the right describe your week, try <em>better spreadsheets before better software.</em>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dynt { padding: 0; }
+  .top-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 44px;
+  }
+  .hd {
+    font-size: clamp(36px, 5.4vw, 64px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+  }
+  .hd em { font-style: italic; }
+  .lead {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+  }
+  .lead strong { color: var(--ink); font-weight: 600; }
+  .body {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .rule-card {
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .rule-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .rule-quote {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.45;
+    font-style: italic;
+    margin-bottom: 16px;
+    color: var(--paper);
+  }
+  .rule-caption { opacity: 0.7; letter-spacing: 0.02em; }
+  .lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+  .card-item {
+    position: relative;
+    padding: 32px 32px 28px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+  }
+  .tab {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: var(--paper);
+    padding: 2px 12px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 1.5px solid var(--ink);
+  }
+  .do-tab { color: var(--orange-deep); }
+  .dont-tab { color: var(--graphite); }
+  .card-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .card-item li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .dont li { color: var(--ink-2); }
+  .check {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 13px;
+  }
+  .dash {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--graphite);
+    font-size: 13px;
+  }
+  .tie-off {
+    padding: 20px 28px;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .tie-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tie-body {
+    flex: 1;
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .tie-body em {
+    font-style: italic;
+    color: var(--ink);
+  }
+  @media (max-width: 1023px) {
+    .top-grid { grid-template-columns: 1fr; gap: 32px; }
+    .lists { grid-template-columns: 1fr; }
+    .tie-off { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>

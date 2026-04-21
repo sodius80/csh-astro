@@ -1,0 +1,42 @@
+---
+interface Props {
+  active?: 'home' | 'reviews' | 'comparisons' | 'bestof' | 'about' | 'how';
+}
+const { active = 'home' } = Astro.props;
+const link = (key: string) => active === key ? 'active' : '';
+---
+<div class="top-strip">
+  <span class="tag">Affiliate Disclosure</span>
+  <span class="msg">CSH may earn commission from links on this site at no cost to you. This never influences our coverage.</span>
+  <a href="/affiliate-disclosure/">Read our policy →</a>
+</div>
+<div class="dateline">
+  <div><span class="dot"></span>Independent software coverage for contractors · No vendor influence</div>
+  <div style="display:flex;gap:18px;">
+    <span>Updated quarterly</span>
+    <span class="divider">/</span>
+    <span>Reader-supported</span>
+  </div>
+</div>
+<header class="site-header">
+  <a class="brand" href="/">
+    <div class="mark">C<span style="opacity:0.6;font-size:14px;">/</span>S</div>
+    <div class="wordmark">
+      <div class="l1">Contractor<br/>Software Hub</div>
+      <div class="l2">Honest coverage for the trades</div>
+    </div>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a class={link('home')} href="/">Home</a>
+    <a class={link('reviews')} href="/reviews/">All Reviews</a>
+    <a class={link('comparisons')} href="/compare/">Comparisons</a>
+    <a class={link('bestof')} href="/best/">Best of</a>
+    <a class={link('how')} href="/how-we-review/">How We Cover</a>
+    <a class={link('about')} href="/about/">About</a>
+  </nav>
+  <button class="search-btn" type="button" disabled aria-disabled="true" title="Coming soon">
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="m11 11 4 4"/></svg>
+    Search
+    <span class="kbd">⌘K</span>
+  </button>
+</header>

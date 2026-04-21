@@ -1,454 +1,561 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RatingStamp from '../components/RatingStamp.astro';
+
+const reviews = await getCollection('reviews');
+const roundups = await getCollection('roundups');
+const comparisons = await getCollection('comparisons');
+
+const featured = reviews.find(r => r.id === 'jobber') ?? reviews[0];
+const recent = [...reviews, ...roundups, ...comparisons]
+  .sort((a, b) => {
+    const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+    const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+    return db - da;
+  })
+  .slice(0, 6);
+
+const categoryCards = [
+  { n: '01', h: 'Field Service', slug: 'best-scheduling-software-contractors', desc: 'Jobber · Housecall Pro · ServiceTitan · FieldEdge' },
+  { n: '02', h: 'CRM & Sales', slug: 'best-crm-contractors', desc: 'Lead tracking, follow-up, customer management' },
+  { n: '03', h: 'CAD & Design', slug: 'best-cad-software-contractors', desc: 'AutoCAD · SketchUp · Fusion 360 · Chief Architect' },
+  { n: '04', h: 'Accounting', slug: 'best-accounting-software-electrical-contractors', desc: 'QuickBooks · Xero · FreshBooks · Wave' },
+  { n: '05', h: 'Estimating (GC)', slug: 'best-estimating-software-general-contractors', desc: 'STACK · PlanSwift · Bluebeam · Clear Estimates' },
+  { n: '06', h: 'Estimating (Small)', slug: 'best-estimating-software-small-contractors', desc: 'For solo ops and sub-$1M shops' },
+  { n: '07', h: 'Scheduling', slug: 'best-scheduling-software-contractors', desc: 'Calendar, dispatch, mobile dispatch' },
+  { n: '08', h: 'Siding / Roofing CRM', slug: 'best-crm-siding-contractors', desc: 'JobNimbus · AccuLynx · insurance restoration' },
+  { n: '09', h: 'HVAC', slug: 'hvac-software', desc: 'Service-first platforms for residential and light commercial' },
+  { n: '10', h: 'Plumbing', slug: 'plumbing-software', desc: 'Scheduling, dispatch, flat-rate pricing' },
+  { n: '11', h: 'Roofing', slug: 'roofing-software', desc: 'Measurement, estimating, insurance workflow' },
+  { n: '12', h: 'Landscaping', slug: 'landscaping-software', desc: 'Route optimization, crew management, recurring jobs' },
+  { n: '13', h: 'Pest Control', slug: 'pest-control-software', desc: 'Routing, IPM logs, recurring services' },
+  { n: '14', h: 'Painting', slug: 'best-software-painting-contractors', desc: 'Estimating, color matching, crew scheduling' },
+];
+
+const itemKind = (id: string, coll: string) => {
+  if (coll === 'reviews') return 'REVIEW';
+  if (coll === 'comparisons') return 'COMPARISON';
+  return 'BEST OF';
+};
+const itemUrl = (id: string, coll: string) => {
+  if (coll === 'reviews') return `/reviews/${id}/`;
+  if (coll === 'comparisons') return `/compare/${id}/`;
+  return `/best/${id}/`;
+};
 ---
-
-<Layout title="Contractor Software Hub" description="Independent, honest reviews of contractor software. No vendor copy. No padding. Just honest calls on what each tool costs, what it gets right, and who it's wrong for.">
-
-<!-- ═══════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════ -->
-<section class="relative bg-[#0f172a] text-white overflow-hidden">
-  <!-- Dot-grid background -->
-  <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 26px 26px;"></div>
-  <!-- Subtle bottom vignette -->
-  <div class="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, transparent, rgba(15,23,42,0.6));"></div>
-
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-
-      <!-- Left: Headline -->
-      <div class="lg:col-span-7">
-        <!-- Eyebrow pill -->
-        <div class="inline-flex items-center gap-2 bg-[#E07A3A]/15 border border-[#E07A3A]/30 rounded-full px-4 py-1.5 mb-7">
-          <span class="w-1.5 h-1.5 bg-[#E07A3A] rounded-full animate-pulse"></span>
-          <span class="text-[#E07A3A] font-semibold text-xs uppercase tracking-widest">Independent Software Reviews for Contractors</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] mb-6" style="font-family: 'Barlow Condensed', sans-serif; color: white;">
-          Most contractor software<br>
-          reviews are useless.<br>
-          <span style="color: #E07A3A;">These aren't.</span>
-        </h1>
-
-        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-lg">
-          No vendor copy. No padding. Honest calls on what each tool costs, what it gets right, and who it's wrong for — for contractors running 1–50 people.
-        </p>
-
-        <div class="flex flex-wrap gap-3">
-          <a href="#by-trade" class="inline-flex items-center gap-2 px-6 py-3 bg-[#E07A3A] text-white font-semibold rounded-lg hover:bg-[#C05E20] transition-all duration-200 shadow-lg">
-            Browse by Trade →
-          </a>
-          <a href="#top-picks" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/20 transition-all duration-200">
-            See Top Reviews
-          </a>
-        </div>
-
-        <!-- Stat strip -->
-        <div class="flex flex-wrap gap-6 mt-10 pt-8 border-t border-white/10">
-          <div>
-            <p class="text-2xl font-black text-white" style="font-family: 'Barlow Condensed', sans-serif;">23+</p>
-            <p class="text-xs text-gray-400 uppercase tracking-wide">Reviews & Guides</p>
-          </div>
-          <div>
-            <p class="text-2xl font-black text-white" style="font-family: 'Barlow Condensed', sans-serif;">6</p>
-            <p class="text-xs text-gray-400 uppercase tracking-wide">Trades Covered</p>
-          </div>
-          <div>
-            <p class="text-2xl font-black text-white" style="font-family: 'Barlow Condensed', sans-serif;">100%</p>
-            <p class="text-xs text-gray-400 uppercase tracking-wide">Independent</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Featured Top Pick card -->
-      <div class="hidden lg:block lg:col-span-5">
-        <div class="bg-white/[0.05] backdrop-blur-sm border border-white/10 rounded-2xl p-6 shadow-2xl">
-          <div class="flex items-center gap-2 mb-5">
-            <span class="inline-flex items-center gap-1.5 bg-[#E07A3A]/20 border border-[#E07A3A]/40 text-[#E07A3A] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              Our Top Pick
-            </span>
-          </div>
-
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-14 h-14 bg-[#e0f2fe] rounded-xl flex items-center justify-center text-2xl font-black text-[#0369a1] shrink-0">J</div>
-            <div>
-              <p class="font-bold text-white text-xl" style="font-family: 'Barlow Condensed', sans-serif;">Jobber</p>
-              <p class="text-gray-400 text-sm">Field Service Software · From $49/mo</p>
+<BaseLayout
+  title="Contractor Software Hub — Honest software coverage for the trades"
+  description="Independent software reviews, comparisons, and best-of roundups for contractors. No vendor influence — just the honest read on what works for your trade and team size."
+  active="home"
+>
+  <!-- MASTHEAD HERO -->
+  <section class="hero blueprint-bg">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">A statement from the editor</div>
+          <h1 class="display hero-title">
+            Buy the<br/>
+            right tool.<br/>
+            <span class="accent">Once.</span>
+          </h1>
+          <p class="serif hero-lede">
+            Most contractor software reviews are rewritten vendor copy. We read dozens of real contractor reviews per product, pull pricing from live vendor pages, and tell you who a tool is <em>wrong</em> for. No SEO fluff. No affiliate-driven rankings. Just the honest call.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn orange" href="/reviews/">Find your tool <span class="arr">→</span></a>
+            <a class="btn outline" href="/reviews/jobber/">Read a review</a>
+            <div class="hero-meta">
+              {reviews.length} reviews · {comparisons.length} comparisons · {roundups.length} roundups
             </div>
           </div>
+        </div>
 
-          <p class="text-sm text-gray-300 leading-relaxed mb-5">Best all-around for contractors running 1–25 employees. Scheduling, invoicing, and client communication in one clean package.</p>
-
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            <span class="text-xs bg-white/10 text-gray-300 px-2.5 py-1 rounded-md">Scheduling</span>
-            <span class="text-xs bg-white/10 text-gray-300 px-2.5 py-1 rounded-md">Invoicing</span>
-            <span class="text-xs bg-white/10 text-gray-300 px-2.5 py-1 rounded-md">Client CRM</span>
-            <span class="text-xs bg-white/10 text-gray-300 px-2.5 py-1 rounded-md">Mobile App</span>
+        <div class="finder-card card">
+          <div class="eyebrow eyebrow-muted" style="margin-bottom:10px;">Quick routes</div>
+          <div class="display" style="font-size:26px;margin-bottom:16px;line-height:1;">Start where you<br/>actually work.</div>
+          <div class="finder-routes">
+            <a href="/best/hvac-software/" class="route"><span class="n">01</span><span class="l">HVAC</span><span class="r">View →</span></a>
+            <a href="/best/plumbing-software/" class="route"><span class="n">02</span><span class="l">Plumbing</span><span class="r">View →</span></a>
+            <a href="/best/roofing-software/" class="route"><span class="n">03</span><span class="l">Roofing</span><span class="r">View →</span></a>
+            <a href="/best/landscaping-software/" class="route"><span class="n">04</span><span class="l">Landscaping</span><span class="r">View →</span></a>
           </div>
-
-          <a href="/blog/jobber-review/" class="block w-full text-center py-3 bg-[#E07A3A] text-white font-semibold rounded-lg hover:bg-[#C05E20] transition-all text-sm">
-            Read the Full Review →
+          <a href="/reviews/" class="btn" style="width:100%;justify-content:center;">
+            All reviews <span class="arr">→</span>
           </a>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- FEATURED REVIEW -->
+  {featured && (
+    <section class="section">
+      <div class="wrap">
+        <div class="rule-label" style="margin-bottom:32px;">
+          <span>Featured review</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">
+            Updated {(featured.data.updatedDate ?? featured.data.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+          </span>
+        </div>
+        <div class="featured">
+          <div class="featured-img">
+            {featured.data.heroImage ? (
+              <img src={featured.data.heroImage} alt={featured.data.vendor} />
+            ) : (
+              <div class="placeholder" style="height:460px;">Hero · {featured.data.vendor}</div>
+            )}
+            <div class="featured-stamp">
+              <RatingStamp rating={featured.data.rating} rotate={-6} />
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+              <span class="pill ink">{featured.data.category}</span>
+              {featured.data.trades.slice(0, 3).map(t => <span class="pill">{t}</span>)}
+            </div>
+            <h2 class="display featured-title">{featured.data.vendor} Review <span class="accent">{featured.data.updatedDate?.getFullYear() ?? 2026}</span></h2>
+            <p class="serif featured-lede">{featured.data.description}</p>
+            <div class="featured-meta">
+              <div class="byline">
+                <div style="color:var(--graphite);">By the editor</div>
+                <div style="color:var(--ink);font-weight:700;margin-top:2px;">{featured.data.author}{featured.data.readTime ? ` · ${featured.data.readTime}` : ''}</div>
+              </div>
+              <a href={`/reviews/${featured.id}/`} class="btn">Read full review <span class="arr">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
-<!-- ═══════════════════════════════════════════════════════
-     BY TRADE  — Primary Discovery Path
-════════════════════════════════════════════════════════ -->
-<section id="by-trade" class="py-16 sm:py-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <!-- CATEGORY MATRIX -->
+  <section class="section">
+    <div class="wrap">
+      <div class="matrix-head">
+        <div>
+          <div class="eyebrow eyebrow-muted" style="margin-bottom:12px;">Browse · by category · by trade</div>
+          <h2 class="display" style="font-size:clamp(40px, 5vw, 56px); line-height:0.95;">Every tool,<br/>in its place.</h2>
+        </div>
+        <div style="text-align:right;max-width:360px;">
+          <p class="serif" style="font-size:15px;line-height:1.5;color:var(--ink-2);margin-bottom:14px;">
+            One flat matrix. Every tool we've covered, sortable by trade, team size, price, or recency. No tiers, no hidden drawers, no three-click detours.
+          </p>
+          <a href="/reviews/" class="btn outline sm">See all reviews →</a>
+        </div>
+      </div>
+      <div class="category-grid">
+        {categoryCards.map((cat, i) => (
+          <a href={`/best/${cat.slug}/`} class="cat-card" style={`border-right: ${(i + 1) % 4 !== 0 ? '1px solid var(--hair)' : 'none'}; border-bottom: ${i < categoryCards.length - 4 ? '1px solid var(--hair)' : 'none'};`}>
+            <div class="cat-top">
+              <div class="cat-n">{cat.n}</div>
+            </div>
+            <div class="display cat-h">{cat.h}</div>
+            <div class="cat-desc">{cat.desc}</div>
+            <div class="cat-pick">
+              <span class="dot"></span>View the roundup →
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <div class="flex items-end gap-4 mb-10">
+  <!-- HOW WE COVER -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="method-grid">
+        <div>
+          <div class="eyebrow" style="color:var(--orange); margin-bottom:16px;">Methodology · v3.1</div>
+          <h2 class="display" style="font-size:clamp(40px, 5vw, 56px); line-height:0.92; margin-bottom:20px;">
+            How we<br/>actually<br/>cover things.
+          </h2>
+          <p class="serif" style="font-size:16px;line-height:1.55;opacity:0.8;">
+            Every piece runs through the same pipeline. No exceptions for sponsors. No softening for affiliate partners. Coverage reflects what contractors actually say in aggregate — not what vendors want us to say.
+          </p>
+          <a href="/how-we-review/" class="btn orange" style="margin-top:24px;">Read the full method <span class="arr">→</span></a>
+        </div>
+        <div class="method-cells">
+          {[
+            { n: '01', h: 'Pull live pricing', t: "Every figure comes from the vendor's pricing page on the date of publication — never estimated or inherited from a past review." },
+            { n: '02', h: 'Aggregate contractor feedback', t: 'G2 and Capterra, filtered for contractor accounts. One complaint is an anecdote. A pattern gets named.' },
+            { n: '03', h: 'Check Reddit', t: 'r/Contractors, r/HVAC, r/Plumbing, r/Electricians. The complaints that never reach Capterra tend to live here.' },
+            { n: '04', h: 'Name the wrong buyer', t: 'Every product has a contractor type it is wrong for. If we can\'t identify them, the research isn\'t complete.' },
+            { n: '05', h: 'Verdict leads the piece', t: 'Top Pick, Recommended, Conditional, or Skip — stated before you scroll. The body explains why.' },
+            { n: '06', h: 'Refresh quarterly', t: "Pricing shifts. Features ship. A timestamped note tells you when we last re-verified." },
+          ].map((s, i) => (
+            <div class="method-cell" style={`border-left: ${i % 2 === 1 ? '1px solid rgba(243,239,230,0.2)' : 'none'};`}>
+              <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--orange);margin-bottom:10px;">{s.n}</div>
+              <div class="display" style="font-size:22px;margin-bottom:10px;line-height:1;">{s.h}</div>
+              <div class="serif" style="font-size:14px;line-height:1.55;opacity:0.75;">{s.t}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENTLY FILED -->
+  {recent.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="rule-label" style="margin-bottom:36px;">
+          <span>Recently filed</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">Last updates</span>
+        </div>
+        <div class="recent-grid">
+          {recent.map((item) => {
+            const coll = 'vendor' in item.data ? 'reviews' : ('vendorA' in item.data ? 'comparisons' : 'roundups');
+            const date = (item.data.updatedDate ?? item.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
+            const rating = 'rating' in item.data ? item.data.rating : null;
+            const title = 'vendor' in item.data ? item.data.title : item.data.title;
+            return (
+              <a class="recent-card" href={itemUrl(item.id, coll)}>
+                <div class="placeholder" style="height:200px;margin-bottom:18px;">{itemKind(item.id, coll)} · hero</div>
+                <div class="recent-meta">
+                  <span class="recent-kind">{itemKind(item.id, coll)}</span>
+                  <span style="color:var(--graphite);">{date}</span>
+                </div>
+                <h3 class="serif recent-title">{title}</h3>
+                {rating && (
+                  <div style="margin-top:auto;">
+                    <RatingStamp rating={rating} variant="flat" />
+                  </div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- TIP LINE -->
+  <section class="tipline">
+    <div class="wrap tipline-grid">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Find Software for Your Trade</h2>
-        <p class="text-gray-500">Pick your trade for a guide built around how you actually work.</p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-
-      <!-- HVAC — blue -->
-      <a href="/blog/hvac-software/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#3B82F6]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🔧</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">HVAC</p>
-          <p class="text-sm text-gray-500 mb-4">7 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
+        <div class="eyebrow" style="margin-bottom:10px;">Reader tip line · no schedule, no inbox</div>
+        <div class="display" style="font-size:clamp(32px, 4.4vw, 46px); line-height:0.95; margin-bottom:12px;">
+          Tell us what<br/>to cover next.
         </div>
-      </a>
-
-      <!-- Plumbing — cyan -->
-      <a href="/blog/plumbing-software/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#06B6D4]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🔩</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Plumbing</p>
-          <p class="text-sm text-gray-500 mb-4">5 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
-        </div>
-      </a>
-
-      <!-- Roofing — amber -->
-      <a href="/blog/roofing-software/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#F59E0B]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🏠</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Roofing</p>
-          <p class="text-sm text-gray-500 mb-4">5 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
-        </div>
-      </a>
-
-      <!-- Landscaping — green -->
-      <a href="/blog/landscaping-software/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#22C55E]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🌿</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Landscaping</p>
-          <p class="text-sm text-gray-500 mb-4">6 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
-        </div>
-      </a>
-
-      <!-- Pest Control — yellow -->
-      <a href="/blog/pest-control-software/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#EAB308]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🐛</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Pest Control</p>
-          <p class="text-sm text-gray-500 mb-4">5 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
-        </div>
-      </a>
-
-      <!-- Painting — purple -->
-      <a href="/blog/best-software-painting-contractors/" class="group relative bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-[#E07A3A] transition-all duration-200">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#A855F7]"></div>
-        <div class="p-6">
-          <div class="text-4xl mb-3">🎨</div>
-          <p class="text-xl font-bold text-[#1C2B4B] mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Painting</p>
-          <p class="text-sm text-gray-500 mb-4">5 options reviewed</p>
-          <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">View Guide →</span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     TOP PICKS
-════════════════════════════════════════════════════════ -->
-<section id="top-picks" class="bg-[#F5F7FA] border-y border-gray-200 py-16 sm:py-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-    <div class="mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Most-Read Reviews</h2>
-      <p class="text-gray-500">The tools contractors look up most. Each review aggregates real contractor feedback, pricing details, and hands-on testing.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Jobber — Top Pick (orange border) -->
-      <a href="/blog/jobber-review/" class="group bg-white border-2 border-[#E07A3A] rounded-xl p-6 hover:shadow-xl transition-all duration-200 flex flex-col relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-[#E07A3A]"></div>
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-12 h-12 bg-[#e0f2fe] rounded-xl flex items-center justify-center text-xl font-black text-[#0369a1] shrink-0">J</div>
-          <div>
-            <p class="font-bold text-lg text-[#1C2B4B] leading-tight">Jobber</p>
-            <p class="text-xs text-gray-400">From $49/mo</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-1.5 mb-3">
-          <span class="inline-flex items-center gap-1 text-xs bg-[#FFF3E8] text-[#E07A3A] border border-[#E07A3A]/30 px-2.5 py-0.5 rounded-full font-semibold">⭐ Top Pick</span>
-          <span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-0.5 rounded-full">1–25 techs</span>
-        </div>
-
-        <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">Best all-around field service software for small contractors. Scheduling, invoicing, and client comms in one clean package with a short learning curve.</p>
-
-        <div class="flex flex-wrap gap-1 mb-5">
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Scheduling</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Invoicing</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Client CRM</span>
-        </div>
-
-        <span class="text-sm font-semibold text-[#E07A3A] group-hover:underline">Read Full Review →</span>
-      </a>
-
-      <!-- Housecall Pro -->
-      <a href="/blog/housecall-pro-review/" class="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-[#1C2B4B] hover:shadow-xl transition-all duration-200 flex flex-col">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-12 h-12 bg-[#fce7f3] rounded-xl flex items-center justify-center text-xl font-black text-[#be185d] shrink-0">H</div>
-          <div>
-            <p class="font-bold text-lg text-[#1C2B4B] leading-tight">Housecall Pro</p>
-            <p class="text-xs text-gray-400">From $65/mo</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-1.5 mb-3">
-          <span class="text-xs bg-[#1C2B4B] text-white px-2.5 py-0.5 rounded-full font-semibold">Strong Pick</span>
-          <span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-0.5 rounded-full">1–20 techs</span>
-        </div>
-
-        <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">Best mobile app in the field service category. Built-in review requests on most plans — keeps your Google ratings growing without extra effort.</p>
-
-        <div class="flex flex-wrap gap-1 mb-5">
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Mobile App</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Review Requests</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Dispatch</span>
-        </div>
-
-        <span class="text-sm font-semibold text-[#1C2B4B] group-hover:underline">Read Full Review →</span>
-      </a>
-
-      <!-- ServiceTitan -->
-      <a href="/blog/servicetitan-review/" class="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-[#1C2B4B] hover:shadow-xl transition-all duration-200 flex flex-col">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-12 h-12 bg-[#e2e8f0] rounded-xl flex items-center justify-center text-lg font-black text-[#475569] shrink-0">ST</div>
-          <div>
-            <p class="font-bold text-lg text-[#1C2B4B] leading-tight">ServiceTitan</p>
-            <p class="text-xs text-gray-400">From $398/mo</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-1.5 mb-3">
-          <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-full font-semibold">Specialist</span>
-          <span class="text-xs bg-gray-100 text-gray-500 px-2.5 py-0.5 rounded-full">10+ techs</span>
-        </div>
-
-        <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-1">Enterprise-grade for contractors doing $1M+ in revenue. Best reporting and automation — but the price and learning curve are real.</p>
-
-        <div class="flex flex-wrap gap-1 mb-5">
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Enterprise</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Reporting</span>
-          <span class="text-[11px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Automation</span>
-        </div>
-
-        <span class="text-sm font-semibold text-[#1C2B4B] group-hover:underline">Read Full Review →</span>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     HEAD-TO-HEAD COMPARISONS
-════════════════════════════════════════════════════════ -->
-<section class="py-16 sm:py-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-    <div class="mb-8">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Head-to-Head Comparisons</h2>
-      <p class="text-gray-500">Stuck choosing between two tools? These cut straight to the verdict.</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-      <a href="/blog/jobber-vs-housecall-pro/" class="group flex items-center gap-4 p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="flex items-center gap-1.5 shrink-0">
-          <div class="w-10 h-10 bg-[#e0f2fe] rounded-lg flex items-center justify-center text-sm font-black text-[#0369a1]">J</div>
-          <span class="text-gray-300 font-bold text-xs">vs</span>
-          <div class="w-10 h-10 bg-[#fce7f3] rounded-lg flex items-center justify-center text-sm font-black text-[#be185d]">H</div>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="font-semibold text-[#1C2B4B] group-hover:text-[#E07A3A] transition-colors text-sm">Jobber vs Housecall Pro</p>
-          <p class="text-xs text-gray-500 mt-0.5">Best overall vs best mobile app</p>
-        </div>
-        <svg class="w-4 h-4 text-gray-300 group-hover:text-[#E07A3A] shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="/blog/servicetitan-vs-jobber/" class="group flex items-center gap-4 p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="flex items-center gap-1.5 shrink-0">
-          <div class="w-10 h-10 bg-[#e2e8f0] rounded-lg flex items-center justify-center text-sm font-black text-[#475569]">ST</div>
-          <span class="text-gray-300 font-bold text-xs">vs</span>
-          <div class="w-10 h-10 bg-[#e0f2fe] rounded-lg flex items-center justify-center text-sm font-black text-[#0369a1]">J</div>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="font-semibold text-[#1C2B4B] group-hover:text-[#E07A3A] transition-colors text-sm">ServiceTitan vs Jobber</p>
-          <p class="text-xs text-gray-500 mt-0.5">Enterprise scale vs small team</p>
-        </div>
-        <svg class="w-4 h-4 text-gray-300 group-hover:text-[#E07A3A] shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="/blog/housecall-pro-vs-fieldedge/" class="group flex items-center gap-4 p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="flex items-center gap-1.5 shrink-0">
-          <div class="w-10 h-10 bg-[#fce7f3] rounded-lg flex items-center justify-center text-sm font-black text-[#be185d]">H</div>
-          <span class="text-gray-300 font-bold text-xs">vs</span>
-          <div class="w-10 h-10 bg-[#fef3c7] rounded-lg flex items-center justify-center text-sm font-black text-[#92400e]">FE</div>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="font-semibold text-[#1C2B4B] group-hover:text-[#E07A3A] transition-colors text-sm">HCP vs FieldEdge</p>
-          <p class="text-xs text-gray-500 mt-0.5">Easy setup vs QuickBooks depth</p>
-        </div>
-        <svg class="w-4 h-4 text-gray-300 group-hover:text-[#E07A3A] shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     BY CATEGORY
-════════════════════════════════════════════════════════ -->
-<section class="bg-[#F5F7FA] border-y border-gray-200 py-16 sm:py-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-    <div class="mb-8">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="font-family: 'Barlow Condensed', sans-serif;">Browse by Business Function</h2>
-      <p class="text-gray-500">Looking to improve a specific part of your operation?</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-
-      <a href="/blog/best-estimating-software-small-contractors/" class="group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="w-10 h-10 bg-[#EBF5FF] rounded-lg flex items-center justify-center text-lg shrink-0">📊</div>
-        <div>
-          <p class="font-semibold text-[#1C2B4B] text-sm group-hover:text-[#E07A3A] transition-colors">Estimating</p>
-          <p class="text-[11px] text-gray-400">Small contractors</p>
-        </div>
-      </a>
-
-      <a href="/blog/best-estimating-software-general-contractors/" class="group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="w-10 h-10 bg-[#FEFCE8] rounded-lg flex items-center justify-center text-lg shrink-0">🏗️</div>
-        <div>
-          <p class="font-semibold text-[#1C2B4B] text-sm group-hover:text-[#E07A3A] transition-colors">Estimating (GC)</p>
-          <p class="text-[11px] text-gray-400">General contractors</p>
-        </div>
-      </a>
-
-      <a href="/blog/best-scheduling-software-contractors/" class="group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="w-10 h-10 bg-[#ECFDF5] rounded-lg flex items-center justify-center text-lg shrink-0">📅</div>
-        <div>
-          <p class="font-semibold text-[#1C2B4B] text-sm group-hover:text-[#E07A3A] transition-colors">Scheduling</p>
-          <p class="text-[11px] text-gray-400">6 best options</p>
-        </div>
-      </a>
-
-      <a href="/blog/best-crm-contractors/" class="group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="w-10 h-10 bg-[#FDF4FF] rounded-lg flex items-center justify-center text-lg shrink-0">👥</div>
-        <div>
-          <p class="font-semibold text-[#1C2B4B] text-sm group-hover:text-[#E07A3A] transition-colors">CRM</p>
-          <p class="text-[11px] text-gray-400">Customer management</p>
-        </div>
-      </a>
-
-      <a href="/blog/best-cad-software-contractors/" class="group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-[#E07A3A] hover:shadow-md transition-all duration-200">
-        <div class="w-10 h-10 bg-[#FAF5FF] rounded-lg flex items-center justify-center text-lg shrink-0">✏️</div>
-        <div>
-          <p class="font-semibold text-[#1C2B4B] text-sm group-hover:text-[#E07A3A] transition-colors">CAD Software</p>
-          <p class="text-[11px] text-gray-400">Design & drafting</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     TRUST / METHODOLOGY
-════════════════════════════════════════════════════════ -->
-<section class="py-16 sm:py-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="bg-[#1C2B4B] rounded-2xl p-8 sm:p-12 text-white overflow-hidden relative">
-
-      <!-- Background accent -->
-      <div class="absolute top-0 right-0 w-64 h-64 bg-white/[0.03] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-
-      <div class="relative">
-        <span class="inline-block text-[#E07A3A] text-xs font-bold uppercase tracking-widest mb-4">How We Review</span>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-3" style="font-family: 'Barlow Condensed', sans-serif; color: white;">The work behind every call</h2>
-        <p class="text-gray-300 max-w-2xl mb-10">
-          Most contractor software reviews skip the hard part. Here's what actually goes into every review on this site.
+        <p class="serif" style="font-size:16px;max-width:520px;opacity:0.88;line-height:1.5;">
+          No weekly email. No obligations. If there's a tool you want reviewed — or a software horror story we should dig into — send it our way. We read every one, and the most-requested tools move up our queue.
         </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-
-          <div class="p-5 bg-white/[0.07] border border-white/10 rounded-xl">
-            <div class="w-10 h-10 bg-[#E07A3A]/20 rounded-lg flex items-center justify-center mb-3">
-              <span class="text-xl">🧪</span>
-            </div>
-            <h3 class="font-bold mb-2 text-white text-base" style="font-family: 'Barlow Condensed', sans-serif;">01 — We trial the software</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">Every tool gets hands-on testing — not just a vendor demo. Real trials, real workflows.</p>
-          </div>
-
-          <div class="p-5 bg-white/[0.07] border border-white/10 rounded-xl">
-            <div class="w-10 h-10 bg-[#E07A3A]/20 rounded-lg flex items-center justify-center mb-3">
-              <span class="text-xl">💰</span>
-            </div>
-            <h3 class="font-bold mb-2 text-white text-base" style="font-family: 'Barlow Condensed', sans-serif;">02 — We dig into pricing</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">Real pricing — including hidden fees, tier restrictions, and contract gotchas vendors don't advertise.</p>
-          </div>
-
-          <div class="p-5 bg-white/[0.07] border border-white/10 rounded-xl">
-            <div class="w-10 h-10 bg-[#E07A3A]/20 rounded-lg flex items-center justify-center mb-3">
-              <span class="text-xl">📝</span>
-            </div>
-            <h3 class="font-bold mb-2 text-white text-base" style="font-family: 'Barlow Condensed', sans-serif;">03 — We read hundreds of reviews</h3>
-            <p class="text-sm text-gray-300 leading-relaxed">G2, Capterra, and industry forums — looking for patterns in real contractor feedback, not outliers.</p>
-          </div>
-
-        </div>
-
-        <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-          <p class="text-sm text-gray-400">Independent since 2024 · No vendor funding · Contractor-focused</p>
-          <a href="/about/" class="text-sm font-semibold text-[#E07A3A] hover:underline">Learn more about our process →</a>
-        </div>
       </div>
-
+      <div class="tip-contact">
+        <div class="eyebrow" style="margin-bottom:12px;">Send a line</div>
+        <a href="mailto:grant@contractorsoftwarehub.com" class="contact-email">grant@contractorsoftwarehub.com</a>
+        <a href="/contact/" class="btn" style="margin-top:16px;">Contact page →</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</BaseLayout>
 
-</Layout>
+<style>
+  .accent { color: var(--orange); }
+
+  .hero {
+    padding: 56px 28px 48px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: end;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--orange-deep);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-size: clamp(56px, 7.8vw, 112px);
+    line-height: 0.88;
+    margin: 0 0 28px;
+    letter-spacing: -0.015em;
+  }
+  .hero-lede {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.4;
+    max-width: 640px;
+    color: var(--ink-2);
+    margin: 0 0 32px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta {
+    margin-left: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+
+  .finder-card { padding: 28px; }
+  .finder-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .route {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.12s;
+  }
+  .route:hover { background: var(--ink); color: var(--paper); }
+  .route .n {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 3px 0;
+  }
+  .route:hover .n { background: var(--orange); color: var(--ink); }
+  .route .l { font-weight: 600; font-size: 14px; }
+  .route .r {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section {
+    padding: 72px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .section-dark {
+    padding: 72px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .featured {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .featured-img { position: relative; }
+  .featured-img img {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--ink);
+    aspect-ratio: 16/10;
+    object-fit: cover;
+  }
+  .featured-stamp {
+    position: absolute;
+    bottom: -18px;
+    right: -18px;
+  }
+  .featured-title {
+    font-size: clamp(44px, 6.2vw, 72px);
+    line-height: 0.9;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .featured-lede {
+    font-size: clamp(17px, 1.7vw, 19px);
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+  }
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    flex-wrap: wrap;
+  }
+  .byline {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .featured-meta .btn { margin-left: auto; }
+
+  .matrix-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1.5px solid var(--ink);
+  }
+  .cat-card {
+    padding: 22px 20px;
+    background: var(--paper);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.15s;
+    cursor: pointer;
+    display: block;
+  }
+  .cat-card:hover { background: var(--paper-deep); }
+  .cat-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .cat-n {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--graphite);
+  }
+  .cat-h {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .cat-desc {
+    font-size: 12px;
+    color: var(--graphite);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .cat-pick {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange-deep);
+    font-weight: 700;
+  }
+  .cat-pick .dot {
+    width: 6px; height: 6px;
+    background: var(--orange);
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .method-cells {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .method-cell {
+    padding: 24px 28px 28px;
+    border-top: 1px solid rgba(243,239,230,0.2);
+  }
+
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .recent-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--ink);
+    transition: opacity 0.12s;
+  }
+  .recent-card:hover { opacity: 0.7; }
+  .recent-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .recent-kind {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 7px;
+  }
+  .recent-title {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.22;
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+
+  .tipline {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--orange);
+    color: var(--ink);
+  }
+  .tipline-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .tip-contact {
+    padding: 28px 32px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+  }
+  .contact-email {
+    display: block;
+    font-family: var(--display);
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: var(--ink);
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .contact-email:hover { color: var(--orange-deep); }
+
+  @media (max-width: 1023px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .featured { grid-template-columns: 1fr; gap: 32px; }
+    .featured-stamp { position: static; margin-top: 16px; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-card { border-right: 1px solid var(--hair) !important; border-bottom: 1px solid var(--hair) !important; }
+    .cat-card:nth-child(2n) { border-right: none !important; }
+    .method-grid { grid-template-columns: 1fr; gap: 32px; }
+    .method-cells { grid-template-columns: 1fr; }
+    .method-cell { border-left: none !important; }
+    .recent-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .tipline-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 767px) {
+    .section, .section-dark, .hero, .tipline { padding: 40px 20px; }
+    .category-grid { grid-template-columns: 1fr; }
+    .cat-card { border-right: none !important; }
+    .recent-grid { grid-template-columns: 1fr; }
+    .hero-meta { margin-left: 0; margin-top: 10px; }
+  }
+</style>

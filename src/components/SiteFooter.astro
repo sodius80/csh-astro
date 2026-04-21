@@ -1,0 +1,73 @@
+---
+const year = new Date().getFullYear();
+const cols = [
+  {
+    h: 'Coverage',
+    links: [
+      { label: 'All Reviews', href: '/reviews/' },
+      { label: 'Head-to-Head', href: '/compare/' },
+      { label: 'Best of Roundups', href: '/best/' },
+      { label: 'How We Cover', href: '/how-we-review/' },
+    ],
+  },
+  {
+    h: 'By Trade',
+    links: [
+      { label: 'HVAC', href: '/best/hvac-software/' },
+      { label: 'Plumbing', href: '/best/plumbing-software/' },
+      { label: 'Roofing', href: '/best/roofing-software/' },
+      { label: 'Landscaping', href: '/best/landscaping-software/' },
+      { label: 'Pest Control', href: '/best/pest-control-software/' },
+      { label: 'Painting', href: '/best/best-software-painting-contractors/' },
+    ],
+  },
+  {
+    h: 'By Category',
+    links: [
+      { label: 'CRM', href: '/best/best-crm-contractors/' },
+      { label: 'Scheduling', href: '/best/best-scheduling-software-contractors/' },
+      { label: 'Estimating', href: '/best/best-estimating-software-general-contractors/' },
+      { label: 'CAD', href: '/best/best-cad-software-contractors/' },
+      { label: 'Accounting', href: '/best/best-accounting-software-electrical-contractors/' },
+    ],
+  },
+  {
+    h: 'Publication',
+    links: [
+      { label: 'About', href: '/about/' },
+      { label: 'How We Cover', href: '/how-we-review/' },
+      { label: 'Affiliate Disclosure', href: '/affiliate-disclosure/' },
+      { label: 'Contact', href: '/contact/' },
+    ],
+  },
+];
+---
+<footer class="site-footer">
+  <div class="site-footer-grid">
+    <div>
+      <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:18px;">
+        <div style="width:38px;height:38px;background:var(--orange);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:18px;">C/S</div>
+        <div style="font-family:var(--display);font-size:17px;line-height:1;text-transform:uppercase;">Contractor<br/>Software Hub</div>
+      </div>
+      <p style="font-family:var(--serif);font-size:14px;line-height:1.55;opacity:0.72;max-width:320px;">
+        Independent software coverage for contractors in the trades. No vendor influence. No fluff. Just honest reads on what works and what doesn't — from real reviews of real contractors.
+      </p>
+      <div style="margin-top:20px;font-family:var(--mono);font-size:10px;opacity:0.5;letter-spacing:0.1em;text-transform:uppercase;">
+        Editor · Chris Braden<br/>
+        grant@contractorsoftwarehub.com
+      </div>
+    </div>
+    {cols.map(col => (
+      <div>
+        <div class="col-h">{col.h}</div>
+        <ul>
+          {col.links.map(l => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="site-footer-bottom">
+    <div>© {year} Contractor Software Hub · All rights reserved</div>
+    <div>Independent · Reader-supported</div>
+  </div>
+</footer>

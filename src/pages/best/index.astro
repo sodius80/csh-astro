@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const roundups = await getCollection('roundups');
+const sorted = roundups.sort((a, b) => {
+  const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
+  const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
+  return db - da;
+});
+---
+<BaseLayout
+  title="Best-of Roundups · Contractor Software Hub"
+  description="Category roundups of the best contractor software for HVAC, plumbing, roofing, landscaping, and more. Opinionated, not comprehensive."
+  active="bestof"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Best-of roundups</span>
+        <span style="flex:1;"></span>
+        <span>{sorted.length} roundups · {new Set(sorted.map(r => r.data.category)).size} categories</span>
+      </div>
+      <h1 class="display" style="font-size:clamp(48px, 7vw, 88px); line-height:0.9; letter-spacing:-0.01em; margin:0;">
+        Opinionated<br/>shortlists.
+      </h1>
+      <p class="serif" style="font-size:19px;line-height:1.5;margin-top:20px;max-width:820px;color:var(--ink-2);">
+        We don't rank every tool in existence. Each roundup is a shortlist of software we'd actually recommend to a contractor in that trade or category — with the specific team size, budget, and profile we'd recommend it for.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding:56px 28px 72px;">
+    <div class="wrap">
+      <div class="grid">
+        {sorted.map(r => (
+          <a href={`/best/${r.id}/`} class="rcard">
+            {r.data.heroImage && (
+              <img src={r.data.heroImage} alt={r.data.title} class="rcard-img" />
+            )}
+            <div class="rcard-body">
+              <div class="pill ghost" style="margin-bottom:12px;">{r.data.category}</div>
+              <h2 class="display rcard-title">{r.data.title}</h2>
+              <p class="serif" style="font-size:15px;line-height:1.5;color:var(--ink-2);margin:0 0 18px;">{r.data.description}</p>
+              <div class="rcard-foot">
+                <span class="eyebrow">Read roundup →</span>
+                <span style="font-family:var(--mono);font-size:10.5px;color:var(--graphite);letter-spacing:0.1em;text-transform:uppercase;">
+                  Updated {(r.data.updatedDate ?? r.data.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 48px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .rcard {
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.12s;
+    display: flex;
+    flex-direction: column;
+  }
+  .rcard:hover { background: var(--paper-deep); }
+  .rcard-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .rcard-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .rcard-title {
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.02;
+    margin: 0 0 14px;
+  }
+  .rcard-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--hair);
+  }
+  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 767px) {
+    .grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 32px 20px 24px; }
+  }
+</style>

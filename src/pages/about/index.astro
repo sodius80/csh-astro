@@ -1,74 +1,88 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-
-<Layout title="About" description="Independent software reviews for contractors who need straight answers, not marketing copy.">
-
-<!-- Page Hero -->
-<section class="bg-[#0f172a] text-white">
-  <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-    <p class="text-[#E07A3A] font-semibold text-sm uppercase tracking-wider mb-4">About This Site</p>
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif; color: white;">About Contractor Software Hub</h1>
-    <p class="text-lg text-gray-300">Independent software reviews for contractors who need straight answers, not marketing copy.</p>
-  </div>
-</section>
-
-<main class="max-w-3xl mx-auto px-6 py-12">
-
-  <section class="mb-12">
-    <p class="text-lg font-semibold text-[#1C2B4B] mb-4">Most contractor software reviews are useless.</p>
-    <p class="text-gray-700 leading-relaxed mb-4">They're either written by someone who has never actually run a service business, or they're effectively vendor content — carefully worded to say nothing negative about any product that might be paying an affiliate commission. You end up reading four comparison articles and knowing less than when you started.</p>
-    <p class="text-gray-700 leading-relaxed mb-4">That's what Contractor Software Hub is trying to fix.</p>
-    <p class="text-gray-700 leading-relaxed">I'm Chris Harper. I started this site after spending more time than I'd like to admit trying to find honest, specific information about contractor software — and consistently coming up empty. What I found instead was a lot of articles that listed the same six tools, described each one's features in language lifted directly from the vendor's own website, and concluded with a recommendation based on nothing.</p>
-  </section>
-
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-6" style="font-family: 'Barlow Condensed', sans-serif;">What we actually do here</h2>
-    <p class="text-gray-700 leading-relaxed mb-6">Every review on Contractor Software Hub follows the same process:</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
-        <div class="w-8 h-8 bg-[#E07A3A] text-white rounded-lg flex items-center justify-center font-bold text-sm mb-3">1</div>
-        <h3 class="font-semibold text-[#1C2B4B] mb-2">We sign up for trials</h3>
-        <p class="text-sm text-gray-600">Or go deep enough on demos, pricing pages, and documentation to understand the real capabilities — not just the marketing copy.</p>
+<BaseLayout
+  title="About · Contractor Software Hub"
+  description="Who runs Contractor Software Hub, why the site exists, and why we're allergic to vendor-rewritten reviews."
+  active="about"
+>
+  <section class="page-hero">
+    <div class="wrap-content">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>About</span>
+        <span style="flex:1;"></span>
+        <span>Est. 2024</span>
       </div>
-      <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
-        <div class="w-8 h-8 bg-[#E07A3A] text-white rounded-lg flex items-center justify-center font-bold text-sm mb-3">2</div>
-        <h3 class="font-semibold text-[#1C2B4B] mb-2">We read hundreds of reviews</h3>
-        <p class="text-sm text-gray-600">Filtering G2 and Capterra feedback for patterns from real contractors, not paid promoters or one-time users with an axe to grind.</p>
-      </div>
-      <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
-        <div class="w-8 h-8 bg-[#E07A3A] text-white rounded-lg flex items-center justify-center font-bold text-sm mb-3">3</div>
-        <h3 class="font-semibold text-[#1C2B4B] mb-2">We analyze pricing honestly</h3>
-        <p class="text-sm text-gray-600">Including the hidden fees, tier restrictions, and contract terms vendors don't put in their pricing page headline.</p>
-      </div>
-      <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-5">
-        <div class="w-8 h-8 bg-[#E07A3A] text-white rounded-lg flex items-center justify-center font-bold text-sm mb-3">4</div>
-        <h3 class="font-semibold text-[#1C2B4B] mb-2">We say who it's wrong for</h3>
-        <p class="text-sm text-gray-600">Every review includes a clear "not for" section so you can disqualify tools that don't fit your operation.</p>
-      </div>
+      <h1 class="display hero-title">
+        Software coverage<br/>for people who<br/><span class="accent">actually swing hammers.</span>
+      </h1>
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">How we make money</h2>
-    <div class="border-l-4 border-[#E07A3A] pl-5 bg-amber-50 py-4 pr-4 rounded-r-lg mb-4">
-      <p class="text-gray-700 leading-relaxed">Contractor Software Hub earns affiliate commissions when you click through to a software product and sign up. That's disclosed on every article and on our <a href="/affiliate-disclosure/" class="text-[#1C2B4B] underline hover:text-[#E07A3A] font-medium">affiliate disclosure page</a>.</p>
+  <section class="section-pad">
+    <div class="wrap-reading">
+      <div class="prose prose-drop">
+        <p>Contractor Software Hub is an independent publication that covers software used by contractors — the kind of tools a 3-person HVAC shop or a 20-crew roofing operation is deciding whether to buy at 9pm on a Thursday.</p>
+
+        <p>Most "best software for contractors" articles you'll find online are rewritten vendor copy, stitched together by people who've never used the products and never talked to anyone who has. They rank the tools the site gets the biggest affiliate payout from. The reader comes out with a list that reads like a press release and still doesn't know what to buy.</p>
+
+        <p>We do it differently. Every piece on this site is built on three inputs:</p>
+
+        <ol>
+          <li><strong>Pricing pulled from vendor pages on the date of publication</strong> — never estimated, never inherited from a past article.</li>
+          <li><strong>Aggregated contractor feedback</strong> from G2, Capterra, and the relevant subreddits (r/HVAC, r/Plumbing, r/Contractors, r/Landscaping). One complaint is an anecdote. A pattern gets named.</li>
+          <li><strong>A named wrong-buyer</strong>. Every product has a contractor it's the wrong tool for. If we can't identify them, the research isn't done.</li>
+        </ol>
+
+        <h2>Who runs it</h2>
+
+        <p>Chris Braden is the editor. He's been writing about software for the trades for more than a decade and has spent enough time on jobsites to know the difference between a demo and a tool you actually reach for on a bad Tuesday.</p>
+
+        <h2>How we make money</h2>
+
+        <p>Some of the tools we cover have affiliate programs. If you sign up through one of our links, we earn a commission at no cost to you. Our coverage doesn't change because of that — if it did, the site wouldn't be worth reading.</p>
+
+        <p>We also cover plenty of tools that don't have affiliate programs, and recommend "don't buy this yet, use a better spreadsheet" when that's the honest answer. Read our <a href="/affiliate-disclosure/">full disclosure policy</a>.</p>
+
+        <h2>What we cover</h2>
+
+        <ul>
+          <li><a href="/reviews/">Individual vendor reviews</a> — Jobber, Housecall Pro, ServiceTitan, and growing.</li>
+          <li><a href="/compare/">Head-to-head comparisons</a> — when you're deciding between two specific tools.</li>
+          <li><a href="/best/">Best-of roundups</a> — shortlists by trade (HVAC, plumbing, roofing, landscaping, pest control, painting) and by category (CRM, scheduling, estimating, CAD, accounting).</li>
+        </ul>
+
+        <h2>What we don't do</h2>
+
+        <ul>
+          <li>We don't publish sponsored reviews.</li>
+          <li>We don't rank tools by affiliate payout.</li>
+          <li>We don't copy vendor marketing pages.</li>
+          <li>We don't recommend software you don't need yet.</li>
+        </ul>
+
+        <h2>Have a tool we should cover?</h2>
+
+        <p>The tip line is open. Email <a href="mailto:grant@contractorsoftwarehub.com">grant@contractorsoftwarehub.com</a> or use the <a href="/contact/">contact page</a>. The most-requested tools move up our queue.</p>
+      </div>
     </div>
-    <p class="text-gray-700 leading-relaxed">This means we have a financial incentive to be helpful enough that you trust the recommendation — because if the reviews aren't useful, you don't click, and the whole thing falls apart. A bad tool gets a critical review here, regardless of commission rates.</p>
   </section>
+</BaseLayout>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">Who this is for</h2>
-    <p class="text-gray-700 leading-relaxed mb-4">Painting contractors, electricians, plumbers, HVAC technicians, roofers, landscapers, general contractors — anyone running a real service business who needs to choose software without sitting through six vendor demos to get a straight answer.</p>
-    <p class="text-gray-700 leading-relaxed">We write for contractors running 1–50 people. If you're a 500-person enterprise evaluating ServiceTitan at the executive level, this isn't the site for you. If you're a 12-person plumbing company trying to figure out if Jobber is worth the money, it is.</p>
-  </section>
-
-  <section class="mb-8 bg-[#1C2B4B] rounded-xl p-6 text-white">
-    <h2 class="text-xl font-bold mb-2" style="font-family: 'Barlow Condensed', sans-serif; color: white;">Get in touch</h2>
-    <p class="text-gray-300 mb-4">Questions, corrections, or a tool you think we should cover? Use the <a href="/contact/" class="text-[#E07A3A] hover:underline font-medium">contact page</a>. If you've used a tool we haven't reviewed, or you think we got something wrong, say so.</p>
-    <p class="text-gray-400 text-sm">— Chris Harper | ContractorSoftwareHub.com</p>
-  </section>
-
-</main>
-
-</Layout>
+<style>
+  .accent { color: var(--orange); }
+  .page-hero {
+    padding: 64px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hero-title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+</style>

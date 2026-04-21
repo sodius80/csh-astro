@@ -1,0 +1,529 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingStamp from '../../components/RatingStamp.astro';
+import VendorLogo from '../../components/VendorLogo.astro';
+import ProsConsGrid from '../../components/ProsConsGrid.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('reviews');
+  return reviews.map(r => ({ params: { slug: r.id }, props: { entry: r } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const updatedTxt = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
+  month: 'long', day: 'numeric', year: 'numeric'
+});
+const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric', year: 'numeric'
+});
+
+// other reviews (up to 3) for "also consider"
+const all = await getCollection('reviews');
+const others = all.filter(r => r.id !== entry.id).slice(0, 3);
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  active="reviews"
+  ogImage={d.heroImage}
+>
+  <!-- Sticky affiliate bar -->
+  <div class="sticky-aff">
+    <div class="wrap sticky-grid">
+      <VendorLogo name={d.vendor} />
+      <div class="sticky-copy">
+        <div class="sticky-eyebrow">Currently reading · {d.vendor} Review</div>
+        <div class="sticky-title">
+          {d.rating === 'top-pick' ? 'TOP PICK' : d.rating === 'recommended' ? 'RECOMMENDED' : d.rating === 'conditional' ? 'CONDITIONAL' : 'SKIP'} · {d.category} · {d.bestFor}
+        </div>
+      </div>
+      <a class="btn orange sm" href={d.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
+        {d.ctaLabel ?? `Try ${d.vendor} Free`} <span class="arr">→</span>
+      </a>
+      <a href="/affiliate-disclosure/" class="sticky-disclose">Affiliate · disclosure →</a>
+    </div>
+  </div>
+
+  <!-- Disclosure strip -->
+  <div class="disclosure-strip">
+    <div class="wrap">
+      <strong>DISCLOSURE</strong>
+      Some links on this page are affiliate links. If you sign up through one, we earn a small commission at no extra cost to you. Our coverage doesn't change based on that.
+    </div>
+  </div>
+
+  <!-- Article masthead -->
+  <article class="masthead">
+    <div class="wrap-content">
+      <div class="pill-row">
+        <span class="pill ink">Review</span>
+        <span class="pill">{d.category}</span>
+        {d.trades.slice(0, 3).map(t => <span class="pill">{t}</span>)}
+      </div>
+      <h1 class="display masthead-title">
+        {d.vendor} review<br/>
+        <span class="accent">({(d.updatedDate ?? d.pubDate).getFullYear()})</span>
+      </h1>
+      <div class="masthead-grid">
+        <div>
+          <p class="serif lede">{d.description}</p>
+          <div class="byline-row">
+            <div class="byline-block">
+              <div class="avatar">{d.author.split(' ').map(p => p[0]).slice(0,2).join('')}</div>
+              <div>
+                <div class="byline-name">{d.author}</div>
+                <div class="byline-meta">Editor{d.readTime ? ` · ${d.readTime}` : ''}</div>
+              </div>
+            </div>
+            <div class="byline-updated">Updated {updatedShort}</div>
+          </div>
+        </div>
+        <div class="stamp-col">
+          <RatingStamp rating={d.rating} rotate={-4} />
+          <div class="freshness" style="margin-top:20px;">
+            <div class="r1">Research updated</div>
+            <div class="r2">{(d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+            <div class="r3">Refreshed quarterly</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Hero image -->
+  {d.heroImage && (
+    <section class="hero-img-section">
+      <div class="wrap-content">
+        <img src={d.heroImage} alt={d.vendor} class="hero-img" />
+      </div>
+    </section>
+  )}
+
+  <!-- VERDICT BOX -->
+  <section class="verdict">
+    <div class="wrap-content">
+      <div class="rule-label" style="color:var(--paper); margin-bottom:28px;">
+        <span style="color:var(--orange);">The Verdict</span>
+        <span style="flex:1;"></span>
+        <span style="color:var(--graphite);">Pricing verified {updatedShort}</span>
+      </div>
+      <div class="verdict-grid">
+        <div>
+          <div class="verdict-eyebrow">One-line verdict</div>
+          <div class="display verdict-headline">{d.verdictShort}</div>
+        </div>
+        <div>
+          <div class="verdict-eyebrow">Starting price</div>
+          <div class="display verdict-big">{d.startingPrice}</div>
+          {d.freeTrial && <div class="verdict-caption">{d.freeTrial}</div>}
+        </div>
+        <div>
+          <div class="verdict-eyebrow">Best-fit team</div>
+          <div class="display verdict-big">{d.bestFor}</div>
+          {d.teamSize && <div class="verdict-caption">{d.teamSize}</div>}
+        </div>
+      </div>
+      {(d.pros.length > 0 || d.cons.length > 0) && (
+        <div class="verdict-pros-cons">
+          <ProsConsGrid pros={d.pros} cons={d.cons} dark={true} />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- RIGHT FOR / NOT FOR -->
+  {d.notFor && (
+    <section class="section-pad">
+      <div class="wrap-content">
+        <div class="rule-label" style="margin-bottom:28px;">
+          <span>Right for · Not for</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">The section most reviews skip</span>
+        </div>
+        <div class="right-notfor">
+          <div class="stripe-card">
+            <div class="eyebrow" style="margin-bottom:10px;">✓ RIGHT FOR</div>
+            <div class="display sc-title">{d.bestFor}</div>
+          </div>
+          <div class="stripe-card wrong">
+            <div class="eyebrow" style="margin-bottom:10px;">✕ NOT FOR</div>
+            <div class="display sc-title">{d.notFor}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- QUICK FACTS -->
+  {d.quickFacts.length > 0 && (
+    <section class="section-pad" style="background:var(--paper-deep);">
+      <div class="wrap-content">
+        <div class="rule-label" style="margin-bottom:28px;">
+          <span>Quick Facts</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">At a glance</span>
+        </div>
+        <div class="quick-facts">
+          {d.quickFacts.map(([k, v], i) => (
+            <div class="qf-row" style={i === 0 ? '' : 'border-top:1px solid var(--hair);'}>
+              <div class="qf-key">{k}</div>
+              <div class="qf-val">{v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- BODY -->
+  <section class="section-pad">
+    <div class="wrap-reading">
+      <div class="rule-label" style="margin-bottom:36px;">
+        <span>The body of the review</span>
+      </div>
+      <div class="prose prose-drop">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {d.faqs.length > 0 && <FAQAccordion faqs={d.faqs} />}
+
+  <!-- ALSO CONSIDER -->
+  {others.length > 0 && (
+    <section class="also-consider">
+      <div class="wrap-content">
+        <div class="rule-label" style="color:var(--paper); margin-bottom:28px;">
+          <span style="color:var(--orange);">Also consider</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">If {d.vendor} isn't the fit</span>
+        </div>
+        <div class="also-grid">
+          {others.map(o => (
+            <div class="alt-card">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <VendorLogo name={o.data.vendor} />
+                <div>
+                  <div class="display" style="font-size:20px;line-height:1;">{o.data.vendor}</div>
+                  <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-top:3px;">{o.data.category} · {o.data.bestFor}</div>
+                </div>
+              </div>
+              <p class="serif" style="font-size:14px;line-height:1.55;opacity:0.82;margin-bottom:16px;">{o.data.verdictShort}</p>
+              <a class="btn outline sm" style="color:var(--paper);border-color:var(--paper);" href={`/reviews/${o.id}/`}>Read review →</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- BOTTOM LINE / CTA -->
+  <section class="bottom-line">
+    <div class="wrap-reading" style="text-align:center;">
+      <div class="rule-label" style="margin-bottom:28px; justify-content:center;">
+        <span>The bottom line</span>
+      </div>
+      <h2 class="display bl-title">{d.verdictShort}</h2>
+      <div class="bl-ctas">
+        <a href={d.affiliateUrl} class="btn orange" rel="sponsored nofollow noopener" target="_blank">
+          {d.ctaLabel ?? `Try ${d.vendor}`} <span class="arr">→</span>
+        </a>
+        <a href="/how-we-review/" class="btn outline">Read our methodology</a>
+      </div>
+      <div class="bl-foot">
+        Affiliate link · CSH earns a commission · our coverage doesn't change for it
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .accent { color: var(--orange); }
+
+  .sticky-aff {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1px solid var(--orange);
+  }
+  .sticky-grid {
+    padding: 12px 28px;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .sticky-copy { min-width: 0; }
+  .sticky-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 2px;
+  }
+  .sticky-title {
+    font-family: var(--display);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .sticky-disclose {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--graphite);
+    max-width: 140px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .sticky-disclose:hover { color: var(--paper); }
+
+  .disclosure-strip {
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--hair);
+    padding: 10px 28px;
+    font-family: var(--serif);
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--graphite);
+  }
+  .disclosure-strip strong {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-right: 10px;
+  }
+
+  .masthead {
+    padding: 64px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .pill-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .masthead-title {
+    font-size: clamp(56px, 10vw, 108px);
+    line-height: 0.88;
+    letter-spacing: -0.015em;
+    margin: 0 0 36px;
+  }
+  .masthead-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .lede {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+  }
+  .lede em { font-style: italic; }
+  .byline-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-top: 22px;
+    border-top: 1.5px solid var(--ink);
+    flex-wrap: wrap;
+  }
+  .byline-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 15px;
+  }
+  .byline-name { font-weight: 700; font-size: 13.5px; }
+  .byline-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--graphite);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .byline-updated {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--graphite);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stamp-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .hero-img-section {
+    padding: 36px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--ink);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .verdict {
+    padding: 48px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .verdict .rule-label::before,
+  .verdict .rule-label::after { background: var(--paper) !important; }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .verdict-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .verdict-headline {
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.02;
+  }
+  .verdict-big {
+    font-size: clamp(40px, 5vw, 54px);
+    line-height: 1;
+  }
+  .verdict-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--graphite);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .right-notfor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .sc-title {
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+  .quick-facts { border: 1.5px solid var(--ink); background: var(--paper); }
+  .qf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    align-items: baseline;
+  }
+  .qf-key {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+  .qf-val {
+    font-family: var(--mono);
+    font-weight: 500;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .also-consider {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .also-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .alt-card {
+    padding: 24px;
+    border: 1px solid rgba(243,239,230,0.2);
+    background: rgba(243,239,230,0.04);
+  }
+
+  .bottom-line {
+    padding: 72px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .bl-title {
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin: 0 0 36px;
+  }
+  .bl-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .bl-foot {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--graphite);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1023px) {
+    .sticky-grid { grid-template-columns: auto 1fr auto; gap: 12px; padding: 10px 20px; }
+    .sticky-disclose { display: none; }
+    .masthead-grid { grid-template-columns: 1fr; gap: 28px; }
+    .stamp-col { flex-direction: row; align-items: center; gap: 16px; }
+    .verdict-grid { grid-template-columns: 1fr; gap: 24px; }
+    .right-notfor { grid-template-columns: 1fr; }
+    .also-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 767px) {
+    .sticky-aff { position: static; }
+    .masthead { padding: 40px 20px 24px; }
+    .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }
+  }
+</style>

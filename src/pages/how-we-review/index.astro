@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="How We Cover Software · Contractor Software Hub"
+  description="Our methodology for reviewing contractor software: aggregate real feedback, pull live pricing, name the wrong buyer, verdict leads."
+  active="how"
+>
+  <section class="page-hero blueprint-bg">
+    <div class="wrap-content">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Methodology</span>
+        <span style="flex:1;"></span>
+        <span>v3.1 · Updated Apr 2026</span>
+      </div>
+      <h1 class="display hero-title">
+        How we<br/>actually<br/><span class="accent">cover things.</span>
+      </h1>
+      <p class="serif" style="font-size:clamp(18px, 2.2vw, 22px); line-height:1.45; color:var(--ink-2); max-width:820px; margin-top:24px;">
+        Every review, comparison, and roundup on this site runs through the same pipeline. No exceptions for sponsors. No softening for affiliate partners. Coverage reflects what contractors actually say in aggregate — not what vendors want us to say.
+      </p>
+    </div>
+  </section>
+
+  <section class="steps-section">
+    <div class="wrap-content">
+      <div class="steps-grid">
+        {[
+          { n: '01', h: 'Pull live pricing', t: "Every price on the site comes from the vendor's pricing page on the date of publication. If the vendor hides pricing behind a demo, we say so — we don't invent a number. We re-verify quarterly and timestamp the check." },
+          { n: '02', h: 'Aggregate contractor feedback', t: "G2 and Capterra, filtered for reviewers with contractor-relevant profiles. We read dozens of reviews per tool. A single complaint is an anecdote. A pattern across multiple reviewers gets named in the piece." },
+          { n: '03', h: 'Check the subreddits', t: "r/HVAC, r/Plumbing, r/Electricians, r/Contractors, r/Roofing, r/Landscaping. The complaints that never reach Capterra tend to live here — along with the recommendations contractors make to each other when nobody's watching." },
+          { n: '04', h: 'Name the wrong buyer', t: "Every product has a contractor it's the wrong tool for. If we can't identify them, the research isn't complete. We call that out explicitly — \"not for\" is as important as \"right for\" in our coverage." },
+          { n: '05', h: 'Verdict leads the piece', t: "Every review opens with a verdict — Top Pick, Recommended, Conditional, or Skip — plus a one-line summary. The body explains why. Scroll away if you want; the summary's already paid off." },
+          { n: '06', h: 'Refresh quarterly', t: "Pricing shifts. Features ship. A timestamped freshness note tells you when we last re-verified the piece — and when we'll check again." },
+        ].map(s => (
+          <div class="step">
+            <div class="step-n">{s.n}</div>
+            <h2 class="display step-h">{s.h}</h2>
+            <p class="serif step-t">{s.t}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ratings-explain">
+    <div class="wrap-content">
+      <div class="rule-label" style="color:var(--paper); margin-bottom:36px;">
+        <span style="color:var(--orange);">What the ratings mean</span>
+        <span style="flex:1;"></span>
+        <span style="color:var(--graphite);">Four calls. No grade inflation.</span>
+      </div>
+      <div class="ratings-grid">
+        <div class="r-card top">
+          <div class="r-stamp">TOP PICK</div>
+          <p class="serif">We'd recommend this to a contractor we know, in the right profile, without hedging. Usually best-in-class for a specific team size and trade.</p>
+        </div>
+        <div class="r-card rec">
+          <div class="r-stamp">RECOMMENDED</div>
+          <p class="serif">Solid. Well-built. Worth using — and in some cases worth preferring to a Top Pick if your profile tilts toward its strengths.</p>
+        </div>
+        <div class="r-card cond">
+          <div class="r-stamp">CONDITIONAL</div>
+          <p class="serif">Buy it only if you fit a narrow, specific profile. For everyone else, better options exist. We'll name the profile that makes it a fit.</p>
+        </div>
+        <div class="r-card skip">
+          <div class="r-stamp">SKIP</div>
+          <p class="serif">There's a better tool at the same price, or the product has a pattern of problems that outweigh its strengths. Rare but not hypothetical.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap-reading">
+      <div class="rule-label" style="margin-bottom:28px;">
+        <span>What we don't do</span>
+      </div>
+      <div class="prose">
+        <ul>
+          <li>We don't write sponsored reviews. Ever.</li>
+          <li>We don't rank tools by how much they pay in affiliate commissions.</li>
+          <li>We don't inflate grades to keep vendors happy.</li>
+          <li>We don't publish a "review" after a 15-minute demo.</li>
+          <li>We don't recommend software you don't need yet.</li>
+          <li>We don't lift copy from vendor pages.</li>
+        </ul>
+        <p>If you spot coverage that feels like it violates any of the above, email us. We'll look, we'll fix, and we'll credit the correction.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .accent { color: var(--orange); }
+  .page-hero {
+    padding: 64px 28px 48px;
+    border-bottom: 1.5px solid var(--ink);
+    background-color: var(--paper);
+  }
+  .hero-title {
+    font-size: clamp(56px, 9vw, 104px);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .steps-section {
+    padding: 72px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 56px 48px;
+  }
+  .step-n {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .step-h {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1;
+    margin: 0 0 14px;
+  }
+  .step-t {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .ratings-explain {
+    padding: 72px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .r-card {
+    padding: 28px;
+    border: 1.5px solid currentColor;
+    color: var(--orange);
+  }
+  .r-card.rec { color: var(--green); }
+  .r-card.cond { color: #8fa6c6; }
+  .r-card.skip { color: #d97c7c; }
+  .r-stamp {
+    font-family: var(--display);
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .r-card p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--paper);
+    margin: 0;
+  }
+
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  @media (max-width: 767px) {
+    .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+    .ratings-grid { grid-template-columns: 1fr; }
+    .page-hero, .steps-section, .ratings-explain, .section-pad { padding-left: 20px; padding-right: 20px; }
+  }
+</style>

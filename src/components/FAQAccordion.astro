@@ -1,0 +1,26 @@
+---
+interface Props {
+  faqs: { q: string; a: string }[];
+  title?: string;
+}
+const { faqs, title = 'Frequently asked' } = Astro.props;
+---
+{faqs.length > 0 && (
+  <section style="padding: 56px 28px; border-bottom: 1.5px solid var(--ink);">
+    <div class="wrap-reading">
+      <div class="rule-label" style="margin-bottom: 28px;">
+        <span>{title}</span>
+        <span style="flex:1;"></span>
+        <span style="color: var(--graphite);">{faqs.length} questions</span>
+      </div>
+      <div class="faq">
+        {faqs.map(f => (
+          <details>
+            <summary>{f.q}</summary>
+            <div set:html={f.a}></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

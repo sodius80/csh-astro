@@ -1,0 +1,416 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VendorLogo from '../../components/VendorLogo.astro';
+import RatingStamp from '../../components/RatingStamp.astro';
+
+export async function getStaticPaths() {
+  const comps = await getCollection('comparisons');
+  return comps.map(c => ({ params: { slug: c.id }, props: { entry: c } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric', year: 'numeric'
+});
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  active="comparisons"
+  ogImage={d.heroImage}
+>
+  <article class="masthead">
+    <div class="wrap-content">
+      <div class="pill-row">
+        <span class="pill ink">Head-to-head</span>
+        <span class="pill">{d.category}</span>
+      </div>
+      <h1 class="display comp-title">
+        {d.vendorA.name} <span class="vs">vs</span><br/>
+        {d.vendorB.name} <span class="accent">({(d.updatedDate ?? d.pubDate).getFullYear()})</span>
+      </h1>
+      <p class="serif lede">{d.description}</p>
+      <div class="byline-row">
+        <div class="byline-block">
+          <div class="avatar">{d.author.split(' ').map(p => p[0]).slice(0, 2).join('')}</div>
+          <div>
+            <div class="byline-name">{d.author}</div>
+            <div class="byline-meta">{d.readTime ? d.readTime : 'Editor'}</div>
+          </div>
+        </div>
+        <div class="byline-updated">Updated {updatedShort}</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SHORT ANSWER -->
+  <section class="short-answer">
+    <div class="wrap-content">
+      <div class="eyebrow" style="color:var(--orange); margin-bottom:14px; font-weight:500;">
+        The short answer · for people who won't scroll
+      </div>
+      <div class="sa-grid">
+        <div class="sa-col sa-a">
+          <div class="sa-when">{d.shortAnswer.aWhen}</div>
+          <div class="display sa-winner">{d.vendorA.name}<br/><span class="accent">wins.</span></div>
+        </div>
+        <div class="sa-slash">/</div>
+        <div class="sa-col sa-b">
+          <div class="sa-when">{d.shortAnswer.bWhen}</div>
+          <div class="display sa-winner">{d.vendorB.name}<br/><span class="accent">wins.</span></div>
+        </div>
+      </div>
+      {d.shortAnswer.nuance && (
+        <p class="serif sa-nuance">{d.shortAnswer.nuance}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  {d.atAGlance.length > 0 && (
+    <section class="section-pad">
+      <div class="wrap-content">
+        <div class="rule-label" style="margin-bottom:28px;">
+          <span>At a glance</span>
+          <span style="flex:1;"></span>
+          <span style="color:var(--graphite);">{updatedShort} pricing</span>
+        </div>
+        <div class="glance">
+          <div class="glance-head">
+            <div style="padding:20px 24px; font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;">Dimension</div>
+            <div class="glance-head-vendor">
+              <VendorLogo name={d.vendorA.name} />
+              <div>
+                <div class="display" style="font-size:20px;">{d.vendorA.name}</div>
+                {d.vendorA.tag && <div class="vendor-tag">{d.vendorA.tag}</div>}
+              </div>
+            </div>
+            <div class="glance-head-vendor">
+              <VendorLogo name={d.vendorB.name} />
+              <div>
+                <div class="display" style="font-size:20px;">{d.vendorB.name}</div>
+                {d.vendorB.tag && <div class="vendor-tag">{d.vendorB.tag}</div>}
+              </div>
+            </div>
+          </div>
+          {d.atAGlance.map(([k, a, b], i) => {
+            const isLast = i === d.atAGlance.length - 1;
+            return (
+              <div class={`glance-row ${isLast ? 'is-winner' : ''}`}>
+                <div class="gr-key">{k}</div>
+                <div class="gr-val">{a}</div>
+                <div class="gr-val">{b}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CHOOSE A / CHOOSE B -->
+  {(d.chooseA.length > 0 || d.chooseB.length > 0) && (
+    <section class="section-pad">
+      <div class="wrap-content">
+        <div class="choose-grid">
+          {[
+            { name: d.vendorA.name, color: 'var(--orange)', items: d.chooseA, label: `Choose ${d.vendorA.name} if…` },
+            { name: d.vendorB.name, color: 'var(--navy)', items: d.chooseB, label: `Choose ${d.vendorB.name} if…` },
+          ].map(col => (
+            <div class="choose-card" style={`border-color: ${col.color};`}>
+              <div class="choose-head" style={`border-bottom-color: ${col.color};`}>
+                <VendorLogo name={col.name} />
+                <div class="display" style={`font-size:24px; line-height:1; color: ${col.color};`}>{col.label}</div>
+              </div>
+              <ul>
+                {col.items.map((t, j) => (
+                  <li><span class="n" style={`color: ${col.color};`}>{String(j + 1).padStart(2, '0')}</span><span class="serif">{t}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- LONG-FORM BODY -->
+  <section class="section-pad" style="background:var(--paper-deep);">
+    <div class="wrap-reading">
+      <div class="rule-label" style="margin-bottom:36px;">
+        <span>The full comparison</span>
+      </div>
+      <div class="prose prose-drop">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- DUAL CTA -->
+  <section class="dual-cta">
+    <div class="wrap-content">
+      <div class="rule-label" style="color:var(--paper); margin-bottom:28px;">
+        <span style="color:var(--orange);">Ready to pick</span>
+        <span style="flex:1;"></span>
+        <span style="color:var(--graphite);">Affiliate links · disclosure →</span>
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card">
+          <VendorLogo name={d.vendorA.name} />
+          <div class="display" style="font-size:28px;margin:14px 0 8px;">{d.vendorA.name}</div>
+          {d.vendorA.startingPrice && <div class="vendor-tag" style="color:var(--orange);">From {d.vendorA.startingPrice}</div>}
+          {d.vendorA.affiliateUrl && (
+            <a class="btn orange" href={d.vendorA.affiliateUrl} rel="sponsored nofollow noopener" target="_blank" style="margin-top:18px;">
+              Try {d.vendorA.name} <span class="arr">→</span>
+            </a>
+          )}
+          <a href={`/reviews/${d.vendorA.slug}/`} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>
+        </div>
+        <div class="dual-card">
+          <VendorLogo name={d.vendorB.name} />
+          <div class="display" style="font-size:28px;margin:14px 0 8px;">{d.vendorB.name}</div>
+          {d.vendorB.startingPrice && <div class="vendor-tag" style="color:var(--orange);">From {d.vendorB.startingPrice}</div>}
+          {d.vendorB.affiliateUrl && (
+            <a class="btn orange" href={d.vendorB.affiliateUrl} rel="sponsored nofollow noopener" target="_blank" style="margin-top:18px;">
+              Try {d.vendorB.name} <span class="arr">→</span>
+            </a>
+          )}
+          <a href={`/reviews/${d.vendorB.slug}/`} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .accent { color: var(--orange); }
+  .vs { color: var(--graphite); }
+
+  .masthead {
+    padding: 56px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .pill-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .comp-title {
+    font-size: clamp(48px, 9vw, 104px);
+    line-height: 0.88;
+    letter-spacing: -0.015em;
+    margin: 0 0 28px;
+  }
+  .lede {
+    font-size: clamp(18px, 2.2vw, 23px);
+    line-height: 1.4;
+    color: var(--ink-2);
+    max-width: 980px;
+    margin: 0 0 24px;
+  }
+  .byline-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--ink);
+    flex-wrap: wrap;
+  }
+  .byline-block { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 13px;
+  }
+  .byline-name { font-weight: 700; font-size: 13px; }
+  .byline-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--graphite);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .byline-updated {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--graphite);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+
+  .short-answer {
+    padding: 48px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .sa-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .sa-a { text-align: right; }
+  .sa-when {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    margin-bottom: 10px;
+  }
+  .sa-winner {
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 0.9;
+  }
+  .sa-slash {
+    font-family: var(--display);
+    font-size: clamp(40px, 7vw, 72px);
+    color: var(--graphite);
+    opacity: 0.5;
+  }
+  .sa-nuance {
+    font-size: 17px;
+    line-height: 1.55;
+    opacity: 0.82;
+    max-width: 820px;
+    margin: 0;
+  }
+
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .glance { border: 1.5px solid var(--ink); }
+  .glance-head {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .glance-head > *:not(:first-child) {
+    border-left: 1px solid rgba(243,239,230,0.2);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .vendor-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .glance-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    border-top: 1px solid var(--hair);
+    background: var(--paper);
+  }
+  .glance-row.is-winner { background: var(--paper-deep); }
+  .gr-key {
+    padding: 14px 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    font-weight: 500;
+  }
+  .is-winner .gr-key { font-weight: 700; color: var(--ink); }
+  .gr-val {
+    padding: 14px 24px;
+    border-left: 1px solid var(--hair);
+    font-size: 13.5px;
+    font-family: var(--mono);
+  }
+  .is-winner .gr-val { font-weight: 700; color: var(--orange-deep); }
+
+  .choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .choose-card {
+    padding: 32px;
+    border: 2px solid var(--orange);
+    background: var(--paper);
+  }
+  .choose-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--orange);
+  }
+  .choose-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .choose-card li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .choose-card .n {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .dual-cta {
+    padding: 56px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .dual-card {
+    padding: 28px;
+    border: 1.5px solid var(--orange);
+    background: rgba(243,239,230,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 1023px) {
+    .sa-grid { grid-template-columns: 1fr; gap: 28px; text-align: left; }
+    .sa-a { text-align: left; }
+    .sa-slash { display: none; }
+    .glance-head { grid-template-columns: 1fr; }
+    .glance-head > *:not(:first-child) { border-left: none; border-top: 1px solid rgba(243,239,230,0.2); }
+    .glance-row { grid-template-columns: 1fr; }
+    .gr-val { border-left: none; border-top: 1px solid var(--hair); }
+    .choose-grid, .dual-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 767px) {
+    .masthead, .section-pad, .short-answer, .dual-cta { padding-left: 20px; padding-right: 20px; }
+  }
+</style>

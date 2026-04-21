@@ -1,69 +1,72 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-
-<Layout title="Affiliate Disclosure" description="How we earn revenue and why it doesn't affect our recommendations.">
-
-<!-- Page Hero -->
-<section class="bg-[#0f172a] text-white">
-  <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-    <p class="text-[#E07A3A] font-semibold text-sm uppercase tracking-wider mb-4">Transparency</p>
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif; color: white;">Affiliate Disclosure</h1>
-    <p class="text-lg text-gray-300">How we earn revenue and why it doesn't affect our recommendations.</p>
-  </div>
-</section>
-
-<main class="max-w-3xl mx-auto px-6 py-12">
-
-  <section class="mb-12">
-    <p class="text-gray-700 leading-relaxed mb-6">Contractor Software Hub earns affiliate commissions when you click through to a software product from this site and sign up for a paid plan. This is how we keep the site running without charging readers anything.</p>
-  </section>
-
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">What this means in practice</h2>
-    <p class="text-gray-700 leading-relaxed mb-4">Some of the links on Contractor Software Hub are affiliate links. If you click one of these links and purchase a subscription or sign up for a service, we may receive a commission from the software company — at no additional cost to you.</p>
-    <p class="text-gray-700 leading-relaxed mb-4">Not every link is an affiliate link. We link to products we haven't partnered with when it's relevant to the reader. Our editorial coverage isn't limited to products that pay us commissions.</p>
-  </section>
-
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">How affiliate relationships affect our reviews</h2>
-    <p class="text-gray-700 leading-relaxed mb-4">They don't — or they shouldn't, and we work hard to make sure they don't. Our review process is the same regardless of whether we earn a commission on a product:</p>
-    <ul class="space-y-3 mb-6">
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">We research pricing, features, and limitations the same way for every tool</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">We read real user reviews from G2, Capterra, and trade forums to find patterns</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="w-6 h-6 bg-[#E07A3A] text-white rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-        <span class="text-gray-700">We include a clear "not for" section so you can disqualify tools that don't fit your operation</span>
-      </li>
-    </ul>
-    <p class="text-gray-700 leading-relaxed mb-4">The long-term model here requires honest recommendations. If we steer readers toward bad tools that don't deliver value, they stop trusting the reviews — and that breaks the whole thing. Our business incentive is to be accurate, not to be flattering.</p>
-  </section>
-
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">Which products we have affiliate relationships with</h2>
-    <p class="text-gray-700 leading-relaxed mb-4">We have active affiliate relationships with the following software providers:</p>
-    <div class="bg-[#f8fafc] border border-gray-200 rounded-xl p-5 mb-4">
-      <ul class="space-y-2 text-gray-700">
-        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#E07A3A] rounded-full shrink-0"></span><span><strong>Jobber</strong> — Field service management</span></li>
-        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#E07A3A] rounded-full shrink-0"></span><span><strong>Housecall Pro</strong> — Field service management</span></li>
-        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#E07A3A] rounded-full shrink-0"></span><span><strong>Service Fusion</strong> — Field service management</span></li>
-      </ul>
+<BaseLayout
+  title="Affiliate Disclosure · Contractor Software Hub"
+  description="Contractor Software Hub's affiliate disclosure policy — how we make money and why our coverage doesn't change because of it."
+>
+  <section class="page-hero">
+    <div class="wrap-content">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Disclosure</span>
+        <span style="flex:1;"></span>
+        <span>Last updated · Apr 2026</span>
+      </div>
+      <h1 class="display hero-title">
+        Affiliate<br/>Disclosure.
+      </h1>
     </div>
-    <p class="text-gray-700 leading-relaxed mb-4">We are also in discussions with or have applied to several other field service and contractor software providers. Any commission relationship is disclosed on the article where the link appears. If you are unsure whether a link is affiliated, assume it might be — that is the safest assumption.</p>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold mb-4" style="font-family: 'Barlow Condensed', sans-serif;">Questions</h2>
-    <p class="text-gray-700 leading-relaxed">If you have questions about our affiliate relationships or want to know whether a specific link is affiliated, <a href="/contact/" class="text-[#1C2B4B] underline hover:text-[#E07A3A] font-medium">use the contact page</a> and we'll answer directly.</p>
-    <p class="text-gray-500 mt-4 text-sm"><em>Last updated: March 3, 2026</em></p>
+  <section class="section-pad">
+    <div class="wrap-reading">
+      <div class="prose prose-drop">
+        <p>Contractor Software Hub is reader-supported. Some of the software we cover has affiliate programs, and some of the links on this site are affiliate links. If you click one and sign up for the product, we earn a small commission — at no extra cost to you.</p>
+
+        <h2>The important part</h2>
+
+        <p>Our coverage doesn't change because of that. A tool we recommend is a tool we'd recommend to a contractor we actually know. A tool we say to avoid is a tool we'd tell that same contractor to avoid. If our rankings shifted based on affiliate payouts, this site wouldn't be worth reading — and nobody would.</p>
+
+        <p>There are tools we cover that don't offer affiliate programs. We recommend them when they're the right call. There are tools that offer generous affiliate programs that we rate <em>conditional</em> or <em>skip</em> because they don't hold up. That's the bargain.</p>
+
+        <h2>How we mark affiliate links</h2>
+
+        <ul>
+          <li>Every affiliate link is marked with <code>rel="sponsored nofollow"</code> per FTC and Google guidelines.</li>
+          <li>Review pages carry a disclosure banner near the top.</li>
+          <li>"Try [Vendor] →" and similar CTA buttons are affiliate links unless otherwise marked.</li>
+          <li>Links inside the editorial body that point to a vendor's official page may or may not be affiliate — we err on the side of marking them.</li>
+        </ul>
+
+        <h2>How we pick what to cover</h2>
+
+        <p>We cover software that contractors actually ask us about, or that's on our queue because we've seen enough patterns in reviews and forums to warrant a piece. The presence or absence of an affiliate program doesn't influence what gets reviewed. It influences how we get paid to keep the site running.</p>
+
+        <h2>FTC compliance</h2>
+
+        <p>This site complies with the U.S. Federal Trade Commission's <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener">endorsement guides</a> regarding disclosure of material connections. If you have a concern about a specific disclosure, email <a href="mailto:grant@contractorsoftwarehub.com">grant@contractorsoftwarehub.com</a>.</p>
+
+        <h2>Changes to this policy</h2>
+
+        <p>We'll update this page when our disclosure practices change. The "Last updated" date at the top of the page reflects the last meaningful revision.</p>
+      </div>
+    </div>
   </section>
+</BaseLayout>
 
-</main>
-
-</Layout>
+<style>
+  .page-hero {
+    padding: 64px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hero-title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-pad {
+    padding: 56px 28px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+</style>

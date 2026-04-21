@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VendorLogo from '../../components/VendorLogo.astro';
+
+const comparisons = await getCollection('comparisons');
+---
+<BaseLayout
+  title="Head-to-head Comparisons · Contractor Software Hub"
+  description="Direct head-to-head comparisons of contractor software. Picking between two tools? Start here."
+  active="comparisons"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Head to head</span>
+        <span style="flex:1;"></span>
+        <span>{comparisons.length} comparisons</span>
+      </div>
+      <h1 class="display" style="font-size:clamp(48px, 7vw, 88px); line-height:0.9; letter-spacing:-0.01em; margin:0;">
+        Picking between<br/>two tools?
+      </h1>
+      <p class="serif" style="font-size:19px; line-height:1.5; margin-top:20px; max-width:820px; color:var(--ink-2);">
+        Direct side-by-side comparisons. Short answer at the top, nuance in the middle, dual CTA at the bottom. Structured so you can scan or read.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding:56px 28px 72px;">
+    <div class="wrap">
+      <div class="grid">
+        {comparisons.map(c => (
+          <a href={`/compare/${c.id}/`} class="ccard">
+            <div class="ccard-top">
+              <div class="vpair">
+                <VendorLogo name={c.data.vendorA.name} />
+                <span class="vs">vs</span>
+                <VendorLogo name={c.data.vendorB.name} />
+              </div>
+              <span class="pill ghost">{c.data.category}</span>
+            </div>
+            <h2 class="display ccard-title">{c.data.vendorA.name} <span style="color:var(--graphite);">vs</span> {c.data.vendorB.name}</h2>
+            <p class="serif" style="font-size:15px;line-height:1.5;color:var(--ink-2);margin:0 0 18px;">{c.data.description}</p>
+            <div class="ccard-foot">
+              <span class="eyebrow">Read comparison →</span>
+              <span style="font-family:var(--mono);font-size:10.5px;color:var(--graphite);letter-spacing:0.1em;text-transform:uppercase;">
+                {(c.data.updatedDate ?? c.data.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 48px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .ccard {
+    padding: 28px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.12s;
+    display: flex;
+    flex-direction: column;
+  }
+  .ccard:hover { background: var(--paper-deep); }
+  .ccard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .vpair { display: flex; align-items: center; gap: 10px; }
+  .vs {
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--graphite);
+  }
+  .ccard-title {
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1;
+    margin: 0 0 14px;
+  }
+  .ccard-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--hair);
+  }
+  @media (max-width: 767px) {
+    .grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 32px 20px 24px; }
+  }
+</style>

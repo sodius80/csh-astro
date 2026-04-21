@@ -1,0 +1,20 @@
+---
+interface Props {
+  left: string;
+  right?: string;
+  dark?: boolean;
+  center?: boolean;
+}
+const { left, right, dark = false, center = false } = Astro.props;
+const style = dark ? 'color:var(--paper);' : '';
+---
+<div class="rule-label" style={`${style}${center ? 'justify-content:center;' : ''}`}>
+  <span style={dark ? 'color:var(--orange);' : ''}>{left}</span>
+  {right && <><span style="flex:1;"></span><span style={dark ? 'color:var(--graphite);' : 'color:var(--graphite);'}>{right}</span></>}
+</div>
+<style>
+  .rule-label[style*="color:var(--paper)"]::before,
+  .rule-label[style*="color:var(--paper)"]::after {
+    background: var(--paper) !important;
+  }
+</style>

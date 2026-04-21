@@ -1,0 +1,445 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VendorLogo from '../../components/VendorLogo.astro';
+
+const reviews = await getCollection('reviews');
+const sorted = reviews.sort((a, b) => {
+  const order = { 'top-pick': 0, recommended: 1, conditional: 2, skip: 3 };
+  return order[a.data.rating] - order[b.data.rating];
+});
+
+const byRating = {
+  all: sorted.length,
+  'top-pick': sorted.filter(r => r.data.rating === 'top-pick').length,
+  recommended: sorted.filter(r => r.data.rating === 'recommended').length,
+  conditional: sorted.filter(r => r.data.rating === 'conditional').length,
+  skip: sorted.filter(r => r.data.rating === 'skip').length,
+};
+
+const allTrades = Array.from(new Set(sorted.flatMap(r => r.data.trades))).sort();
+const stampMap = { 'top-pick': 'TOP PICK', recommended: 'RECOMMENDED', conditional: 'CONDITIONAL', skip: 'SKIP' };
+const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', conditional: 'var(--navy)', skip: 'var(--red)' };
+---
+<BaseLayout
+  title="All Reviews · Contractor Software Hub"
+  description="Every software review on Contractor Software Hub. Filter by rating, trade, and team size. One flat matrix — no hidden drawers."
+  active="reviews"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>The full library</span>
+        <span style="flex:1;"></span>
+        <span>{sorted.length} reviews indexed</span>
+      </div>
+      <div class="hero-grid">
+        <h1 class="display hero-title">
+          Every review.<br/>Nothing hidden.
+        </h1>
+        <div class="hero-dek">
+          <p class="serif" style="font-size:22px;line-height:1.35;margin:0;font-style:italic;">
+            One flat matrix.
+          </p>
+          <p class="serif" style="font-size:17px;line-height:1.55;color:var(--ink-2);margin-top:12px;margin-bottom:0;">
+            Every tool we've evaluated, sortable by whatever matters to you — trade, team size, rating, price, or recency. No tiers, no hidden drawers, no three-click detours.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="filter-bar" id="filter-bar">
+    <div class="wrap filter-grid">
+      <div>
+        <div class="eyebrow eyebrow-muted" style="margin-bottom:8px;">Filter by rating</div>
+        <div class="btn-row" role="group" aria-label="Filter by rating">
+          <button class="fbtn active" data-filter="rating" data-value="all">All <span class="n">{byRating.all}</span></button>
+          <button class="fbtn" data-filter="rating" data-value="top-pick">Top Pick <span class="n">{byRating['top-pick']}</span></button>
+          <button class="fbtn" data-filter="rating" data-value="recommended">Recommended <span class="n">{byRating.recommended}</span></button>
+          <button class="fbtn" data-filter="rating" data-value="conditional">Conditional <span class="n">{byRating.conditional}</span></button>
+          <button class="fbtn" data-filter="rating" data-value="skip">Skip <span class="n">{byRating.skip}</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow eyebrow-muted" style="margin-bottom:8px;">Filter by trade</div>
+        <div class="btn-row" role="group" aria-label="Filter by trade">
+          <button class="fbtn active" data-filter="trade" data-value="all">Any</button>
+          {allTrades.map(t => (
+            <button class="fbtn" data-filter="trade" data-value={t}>{t}</button>
+          ))}
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div class="eyebrow eyebrow-muted" style="margin-bottom:8px;">Sort</div>
+        <div class="btn-row" role="group" aria-label="Sort">
+          <button class="fbtn active" data-filter="sort" data-value="rating">Rating</button>
+          <button class="fbtn" data-filter="sort" data-value="recent">Recency</button>
+          <button class="fbtn" data-filter="sort" data-value="price">Price</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 36px 28px 72px;">
+    <div class="wrap">
+      <div class="matrix-meta">
+        <span id="visible-count">Showing {sorted.length} of {sorted.length} reviews</span>
+        <span>Sort: ▼ <span id="sort-label">RATING · TIE-BREAK: RECENCY</span></span>
+      </div>
+
+      <div class="matrix">
+        <div class="matrix-header">
+          <div>#</div>
+          <div>Product</div>
+          <div>Category</div>
+          <div>Best-Fit Trades</div>
+          <div>Team Size</div>
+          <div>Starting</div>
+          <div>Rating</div>
+          <div>Updated</div>
+        </div>
+        {sorted.map((r, i) => {
+          const updated = (r.data.updatedDate ?? r.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+          const ts = (r.data.updatedDate ?? r.data.pubDate).getTime();
+          return (
+            <a
+              class="matrix-row"
+              href={`/reviews/${r.id}/`}
+              data-rating={r.data.rating}
+              data-trades={r.data.trades.join(',')}
+              data-vendor={r.data.vendor}
+              data-price={r.data.startingPrice.replace(/[^0-9.]/g, '') || '0'}
+              data-ts={ts}
+              data-rating-order={{ 'top-pick': 0, recommended: 1, conditional: 2, skip: 3 }[r.data.rating]}
+            >
+              <div class="mrow-n">{String(i + 1).padStart(3, '0')}</div>
+              <div class="mrow-product">
+                <VendorLogo name={r.data.vendor} />
+                <div>
+                  <div style="font-weight:700;font-size:15px;">{r.data.vendor}</div>
+                  <div class="mrow-slug">/reviews/{r.id}</div>
+                </div>
+              </div>
+              <div style="font-size:13px;">{r.data.category}</div>
+              <div class="mrow-trades">
+                {r.data.trades.slice(0, 3).map(t => (
+                  <span class="trade-chip">{t}</span>
+                ))}
+              </div>
+              <div class="mrow-num">{r.data.teamSize ?? '—'}</div>
+              <div class="mrow-price">{r.data.startingPrice}</div>
+              <div>
+                <span class="mini-stamp" style={`border-color:${stampColor[r.data.rating]}; color:${stampColor[r.data.rating]};`}>
+                  {stampMap[r.data.rating]}
+                </span>
+              </div>
+              <div class="mrow-updated">{updated}</div>
+            </a>
+          );
+        })}
+      </div>
+
+      <div class="bottom-note">
+        <div class="eyebrow eyebrow-muted" style="display:flex;align-items:center;gap:10px;font-weight:700;">
+          <span style="width:8px;height:8px;background:var(--orange);border-radius:50%;"></span>
+          Don't see it?
+        </div>
+        <div class="serif" style="font-size:14.5px;line-height:1.5;">
+          If a tool isn't listed, it's either not worth covering yet or we're still working on it. Tell us what you want evaluated next — the request form genuinely influences the queue.
+        </div>
+        <a href="/contact/" class="btn orange sm">Request a review →</a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const state = { rating: 'all', trade: 'all', sort: 'rating' };
+      const bar = document.getElementById('filter-bar');
+      if (!bar) return;
+      const rows = Array.from(document.querySelectorAll('.matrix-row'));
+      const visCount = document.getElementById('visible-count');
+      const sortLbl = document.getElementById('sort-label');
+      const total = rows.length;
+
+      // initial state from URL
+      const qp = new URLSearchParams(window.location.search);
+      if (qp.get('rating')) state.rating = qp.get('rating');
+      if (qp.get('trade')) state.trade = qp.get('trade');
+      if (qp.get('sort')) state.sort = qp.get('sort');
+      // reflect buttons
+      bar.querySelectorAll('.fbtn').forEach(b => {
+        const f = b.getAttribute('data-filter');
+        const v = b.getAttribute('data-value');
+        b.classList.toggle('active', state[f] === v);
+      });
+
+      function apply() {
+        // filter
+        let visible = 0;
+        const sortedRows = [...rows].sort((a, b) => {
+          if (state.sort === 'recent') {
+            return Number(b.dataset.ts) - Number(a.dataset.ts);
+          } else if (state.sort === 'price') {
+            return Number(a.dataset.price) - Number(b.dataset.price);
+          }
+          const ra = Number(a.dataset.ratingOrder);
+          const rb = Number(b.dataset.ratingOrder);
+          if (ra !== rb) return ra - rb;
+          return Number(b.dataset.ts) - Number(a.dataset.ts);
+        });
+
+        const container = document.querySelector('.matrix');
+        sortedRows.forEach((row, i) => {
+          const okR = state.rating === 'all' || row.dataset.rating === state.rating;
+          const okT = state.trade === 'all' || row.dataset.trades.split(',').includes(state.trade);
+          const show = okR && okT;
+          row.style.display = show ? '' : 'none';
+          if (show) {
+            visible++;
+            const nEl = row.querySelector('.mrow-n');
+            if (nEl) nEl.textContent = String(visible).padStart(3, '0');
+            container.appendChild(row);
+          }
+        });
+
+        if (visCount) visCount.textContent = `Showing ${visible} of ${total} reviews`;
+        if (sortLbl) {
+          sortLbl.textContent = state.sort === 'recent'
+            ? 'RECENCY · MOST RECENT FIRST'
+            : state.sort === 'price'
+              ? 'PRICE · LOW → HIGH'
+              : 'RATING · TIE-BREAK: RECENCY';
+        }
+
+        // update URL (no reload)
+        const qp = new URLSearchParams();
+        if (state.rating !== 'all') qp.set('rating', state.rating);
+        if (state.trade !== 'all') qp.set('trade', state.trade);
+        if (state.sort !== 'rating') qp.set('sort', state.sort);
+        const url = qp.toString() ? `?${qp.toString()}` : window.location.pathname;
+        history.replaceState(null, '', url);
+      }
+
+      bar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.fbtn');
+        if (!btn) return;
+        const f = btn.getAttribute('data-filter');
+        const v = btn.getAttribute('data-value');
+        if (!f || v === null) return;
+        state[f] = v;
+        bar.querySelectorAll(`[data-filter="${f}"]`).forEach(b => {
+          b.classList.toggle('active', b.getAttribute('data-value') === v);
+        });
+        apply();
+      });
+
+      apply();
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 48px 28px 36px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+  .hero-title {
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .hero-dek {
+    padding-bottom: 12px;
+    border-left: 1.5px solid var(--ink);
+    padding-left: 28px;
+  }
+
+  .filter-bar {
+    padding: 20px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .btn-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .fbtn {
+    padding: 7px 12px;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0;
+  }
+  .fbtn:hover { background: var(--paper); }
+  .fbtn.active { background: var(--ink); color: var(--paper); }
+  .fbtn.active[data-value=""] { background: var(--orange); border-color: var(--orange); }
+  .fbtn .n { opacity: 0.6; margin-left: 4px; }
+
+  .matrix-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .matrix {
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+  .matrix-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 140px 180px 110px 110px 140px 110px;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 140px 180px 110px 110px 140px 110px;
+    gap: 16px;
+    padding: 16px 18px;
+    border-top: 1px solid var(--hair);
+    align-items: center;
+    cursor: pointer;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.12s;
+  }
+  .matrix-row:first-of-type { border-top: none; }
+  .matrix-row:hover { background: var(--paper-deep); }
+  .mrow-n {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--graphite);
+  }
+  .mrow-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  .mrow-slug {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--graphite);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+  .mrow-trades {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .trade-chip {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    padding: 2px 6px;
+    background: var(--paper-deep);
+    border: 1px solid var(--hair);
+    letter-spacing: 0.05em;
+  }
+  .mrow-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .mrow-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+  .mini-stamp {
+    font-family: var(--display);
+    font-size: 10px;
+    padding: 4px 7px;
+    border: 1.5px solid var(--orange);
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: inline-block;
+  }
+  .mrow-updated {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--graphite);
+  }
+
+  .bottom-note {
+    margin-top: 28px;
+    padding: 20px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  @media (max-width: 1023px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero-dek { padding-left: 0; border-left: none; border-top: 1.5px solid var(--ink); padding-top: 16px; }
+    .filter-grid { grid-template-columns: 1fr; gap: 16px; }
+    .filter-grid > div:last-child { text-align: left; }
+    .matrix-header, .matrix-row {
+      grid-template-columns: 40px 1fr 110px 140px 80px 110px 120px 90px;
+      gap: 10px;
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 767px) {
+    .page-hero { padding: 32px 20px 24px; }
+    .filter-bar { position: static; padding: 16px 20px; }
+    .matrix-header { display: none; }
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px 16px;
+      padding: 14px 14px;
+    }
+    .mrow-n { grid-column: 1 / -1; font-size: 10px; }
+    .mrow-product { grid-column: 1; }
+    .mrow-product + div { grid-column: 2; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--graphite); }
+    .mrow-trades, .mrow-num, .mrow-price, .mrow-updated { grid-column: 1 / -1; font-size: 12px; }
+    .mrow-trades { flex-direction: row; }
+    .mini-stamp { font-size: 9px; padding: 3px 6px; }
+    .bottom-note { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found · Contractor Software Hub" description="The page you're looking for doesn't exist.">
+  <section class="nf">
+    <div class="wrap-content nf-inner">
+      <div class="eyebrow" style="color:var(--orange); margin-bottom:12px;">Error · 404</div>
+      <h1 class="display nf-title">
+        Wrong site,<br/>wrong URL,<br/>or our mistake.
+      </h1>
+      <p class="serif nf-lede">
+        The page you asked for isn't here. Maybe it moved, maybe it never existed, maybe we redirected it to the wrong place. Any of those is possible.
+      </p>
+      <div class="nf-cta">
+        <a href="/" class="btn orange">Back to the front page →</a>
+        <a href="/reviews/" class="btn outline">Browse all reviews</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf { padding: 96px 28px; border-bottom: 1.5px solid var(--ink); }
+  .nf-inner { text-align: center; }
+  .nf-title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+  }
+  .nf-lede { font-size: 19px; line-height: 1.55; color: var(--ink-2); max-width: 640px; margin: 0 auto 32px; }
+  .nf-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+</style>
