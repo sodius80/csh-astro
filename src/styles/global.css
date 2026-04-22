@@ -728,3 +728,119 @@ a { color: inherit; }
   .brand .wordmark .l2 { font-size: 9px; }
   .brand .mark { width: 38px; height: 38px; font-size: 18px; }
 }
+
+/* ── Quick Picks — branded cards for MDX roundups ────────── */
+.qp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.qp-card {
+  background: var(--paper-deep);
+  padding: 24px 20px;
+  border: 1.5px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform .12s, box-shadow .12s;
+  box-shadow: 2px 2px 0 0 var(--hair);
+}
+.qp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 0 var(--orange);
+}
+.qp-card h3,
+.qp-card .qp-name {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0;
+}
+.qp-card .qp-bestfor {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--graphite);
+  margin: 0 0 4px 0;
+}
+.qp-card .qp-price {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 4px 0;
+}
+.qp-card .qp-desc {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--graphite);
+  margin: 0;
+}
+
+/* Quick Picks tablet */
+@media (max-width: 1023px) {
+  .qp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Quick Picks mobile */
+@media (max-width: 640px) {
+  .qp-grid { grid-template-columns: 1fr; gap: 0.875rem; }
+  .qp-card { padding: 20px 18px; }
+}
+
+/* ── Do You Need This Yet? — checklist box for MDX roundups ── */
+.need-check {
+  background: var(--paper-deep);
+  border: 1.5px solid var(--rule);
+  padding: 22px 24px;
+  margin: 1.25rem 0;
+}
+.need-check .need-do {
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.need-check .need-dont {
+  color: var(--red);
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--hair);
+}
+.need-check .need-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+}
+.need-check .need-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 0.35rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  font-family: var(--serif);
+  font-size: 14.5px;
+}
+.need-check .need-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
