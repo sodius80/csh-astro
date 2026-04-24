@@ -9,9 +9,14 @@ export async function getStaticPaths() {
   return comps.map(c => ({ params: { slug: c.id }, props: { entry: c } }));
 }
 
+const reviews = await getCollection('reviews');
+const reviewSlugs = new Set(reviews.map((review) => review.id));
+
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const vendorAReviewUrl = reviewSlugs.has(d.vendorA.slug) ? `/reviews/${d.vendorA.slug}/` : null;
+const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/reviews/${d.vendorB.slug}/` : null;
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
@@ -167,7 +172,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
               Try {d.vendorA.name} <span class="arr">→</span>
             </a>
           )}
-          <a href={`/reviews/${d.vendorA.slug}/`} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>
+          {vendorAReviewUrl && <a href={vendorAReviewUrl} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>}
         </div>
         <div class="dual-card">
           <VendorLogo name={d.vendorB.name} />
@@ -178,7 +183,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
               Try {d.vendorB.name} <span class="arr">→</span>
             </a>
           )}
-          <a href={`/reviews/${d.vendorB.slug}/`} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>
+          {vendorBReviewUrl && <a href={vendorBReviewUrl} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>}
         </div>
       </div>
     </div>

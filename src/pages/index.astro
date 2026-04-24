@@ -2,47 +2,25 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RatingStamp from '../components/RatingStamp.astro';
+import { buildCategorySummaries, getEntryDate, itemKindFromEntry, itemUrlFromEntry, sortByEntryDate } from '../lib/content';
 
 const reviews = await getCollection('reviews');
 const roundups = await getCollection('roundups');
 const comparisons = await getCollection('comparisons');
+const guides = await getCollection('guides');
 
-const featured = reviews.find(r => r.id === 'jobber') ?? reviews[0];
-const recent = [...reviews, ...roundups, ...comparisons]
-  .sort((a, b) => {
-    const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
-    const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
-    return db - da;
-  })
-  .slice(0, 6);
-
-const categoryCards = [
-  { n: '01', h: 'Field Service', slug: 'best-scheduling-software-contractors', desc: 'Jobber · Housecall Pro · ServiceTitan · FieldEdge' },
-  { n: '02', h: 'CRM & Sales', slug: 'best-crm-contractors', desc: 'Lead tracking, follow-up, customer management' },
-  { n: '03', h: 'CAD & Design', slug: 'best-cad-software-contractors', desc: 'AutoCAD · SketchUp · Fusion 360 · Chief Architect' },
-  { n: '04', h: 'Accounting', slug: 'best-accounting-software-electrical-contractors', desc: 'QuickBooks · Xero · FreshBooks · Wave' },
-  { n: '05', h: 'Estimating (GC)', slug: 'best-estimating-software-general-contractors', desc: 'STACK · PlanSwift · Bluebeam · Clear Estimates' },
-  { n: '06', h: 'Estimating (Small)', slug: 'best-estimating-software-small-contractors', desc: 'For solo ops and sub-$1M shops' },
-  { n: '07', h: 'Scheduling', slug: 'best-scheduling-software-contractors', desc: 'Calendar, dispatch, mobile dispatch' },
-  { n: '08', h: 'Siding / Roofing CRM', slug: 'best-crm-siding-contractors', desc: 'JobNimbus · AccuLynx · insurance restoration' },
-  { n: '09', h: 'HVAC', slug: 'hvac-software', desc: 'Service-first platforms for residential and light commercial' },
-  { n: '10', h: 'Plumbing', slug: 'plumbing-software', desc: 'Scheduling, dispatch, flat-rate pricing' },
-  { n: '11', h: 'Roofing', slug: 'roofing-software', desc: 'Measurement, estimating, insurance workflow' },
-  { n: '12', h: 'Landscaping', slug: 'landscaping-software', desc: 'Route optimization, crew management, recurring jobs' },
-  { n: '13', h: 'Pest Control', slug: 'pest-control-software', desc: 'Routing, IPM logs, recurring services' },
-  { n: '14', h: 'Painting', slug: 'best-software-painting-contractors', desc: 'Estimating, color matching, crew scheduling' },
-];
-
-const itemKind = (id: string, coll: string) => {
-  if (coll === 'reviews') return 'REVIEW';
-  if (coll === 'comparisons') return 'COMPARISON';
-  return 'BEST OF';
-};
-const itemUrl = (id: string, coll: string) => {
-  if (coll === 'reviews') return `/reviews/${id}/`;
-  if (coll === 'comparisons') return `/compare/${id}/`;
-  return `/best/${id}/`;
-};
+const featured = sortByEntryDate(reviews).find((r) => r.id === 'jobber') ?? sortByEntryDate(reviews)[0];
+const recent = sortByEntryDate([...reviews, ...roundups, ...comparisons, ...guides]).slice(0, 6);
+const categoryCards = buildCategorySummaries(reviews, roundups, comparisons)
+  .filter((card) => card.route.startsWith('/best/'))
+  .slice(0, 12)
+  .map((card, index) => ({
+    n: String(index + 1).padStart(2, '0'),
+    h: card.title,
+    href: card.route,
+    desc: card.description,
+  }));
+const quickRoutes = categoryCards.slice(0, 4);
 ---
 <BaseLayout
   title="Contractor Software Hub — Honest software coverage for the trades"
@@ -67,7 +45,7 @@ const itemUrl = (id: string, coll: string) => {
             <a class="btn orange" href="/reviews/">Find your tool <span class="arr">→</span></a>
             <a class="btn outline" href="/reviews/jobber/">Read a review</a>
             <div class="hero-meta">
-              {reviews.length} reviews · {comparisons.length} comparisons · {roundups.length} roundups
+              {reviews.length} reviews · {comparisons.length} comparisons · {roundups.length} roundups · {guides.length} guides
             </div>
           </div>
         </div>
@@ -76,13 +54,12 @@ const itemUrl = (id: string, coll: string) => {
           <div class="eyebrow eyebrow-muted" style="margin-bottom:10px;">Quick routes</div>
           <div class="display" style="font-size:26px;margin-bottom:16px;line-height:1;">Start where you<br/>actually work.</div>
           <div class="finder-routes">
-            <a href="/best/hvac-software/" class="route"><span class="n">01</span><span class="l">HVAC</span><span class="r">View →</span></a>
-            <a href="/best/plumbing-software/" class="route"><span class="n">02</span><span class="l">Plumbing</span><span class="r">View →</span></a>
-            <a href="/best/roofing-software/" class="route"><span class="n">03</span><span class="l">Roofing</span><span class="r">View →</span></a>
-            <a href="/best/landscaping-software/" class="route"><span class="n">04</span><span class="l">Landscaping</span><span class="r">View →</span></a>
+            {quickRoutes.map((route) => (
+              <a href={route.href} class="route"><span class="n">{route.n}</span><span class="l">{route.h}</span><span class="r">View →</span></a>
+            ))}
           </div>
-          <a href="/reviews/" class="btn" style="width:100%;justify-content:center;">
-            All reviews <span class="arr">→</span>
+          <a href="/finder/" class="btn" style="width:100%;justify-content:center;">
+            Open finder <span class="arr">→</span>
           </a>
         </div>
       </div>
@@ -148,7 +125,7 @@ const itemUrl = (id: string, coll: string) => {
       </div>
       <div class="category-grid">
         {categoryCards.map((cat, i) => (
-          <a href={`/best/${cat.slug}/`} class="cat-card" style={`border-right: ${(i + 1) % 4 !== 0 ? '1px solid var(--hair)' : 'none'}; border-bottom: ${i < categoryCards.length - 4 ? '1px solid var(--hair)' : 'none'};`}>
+          <a href={cat.href} class="cat-card" style={`border-right: ${(i + 1) % 4 !== 0 ? '1px solid var(--hair)' : 'none'}; border-bottom: ${i < categoryCards.length - 4 ? '1px solid var(--hair)' : 'none'};`}>
             <div class="cat-top">
               <div class="cat-n">{cat.n}</div>
             </div>
@@ -208,15 +185,19 @@ const itemUrl = (id: string, coll: string) => {
         </div>
         <div class="recent-grid">
           {recent.map((item) => {
-            const coll = 'vendor' in item.data ? 'reviews' : ('vendorA' in item.data ? 'comparisons' : 'roundups');
-            const date = (item.data.updatedDate ?? item.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
+            const date = getEntryDate(item).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
             const rating = 'rating' in item.data ? item.data.rating : null;
-            const title = 'vendor' in item.data ? item.data.title : item.data.title;
+            const title = item.data.title;
+            const heroImage = 'heroImage' in item.data ? item.data.heroImage : undefined;
             return (
-              <a class="recent-card" href={itemUrl(item.id, coll)}>
-                <div class="placeholder" style="height:200px;margin-bottom:18px;">{itemKind(item.id, coll)} · hero</div>
+              <a class="recent-card" href={itemUrlFromEntry(item)}>
+                {heroImage ? (
+                  <img class="recent-thumb" src={heroImage} alt={title} />
+                ) : (
+                  <div class="placeholder" style="height:200px;margin-bottom:18px;">{itemKindFromEntry(item)} · hero</div>
+                )}
                 <div class="recent-meta">
-                  <span class="recent-kind">{itemKind(item.id, coll)}</span>
+                  <span class="recent-kind">{itemKindFromEntry(item)}</span>
                   <span style="color:var(--graphite);">{date}</span>
                 </div>
                 <h3 class="serif recent-title">{title}</h3>
@@ -489,6 +470,13 @@ const itemUrl = (id: string, coll: string) => {
     transition: opacity 0.12s;
   }
   .recent-card:hover { opacity: 0.7; }
+  .recent-thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1.5px solid var(--ink);
+    margin-bottom: 18px;
+  }
   .recent-meta {
     display: flex;
     gap: 8px;

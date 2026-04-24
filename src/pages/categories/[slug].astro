@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { buildCategorySummaries, itemUrlFromEntry, slugifyCategory, sortByEntryDate } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const reviews = await getCollection('reviews');
+  const roundups = await getCollection('roundups');
+  const comparisons = await getCollection('comparisons');
+  const categories = buildCategorySummaries(reviews, roundups, comparisons);
+  return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const reviews = await getCollection('reviews');
+const roundups = await getCollection('roundups');
+const comparisons = await getCollection('comparisons');
+
+const categoryRoundups = sortByEntryDate(roundups.filter((entry) => slugifyCategory(entry.data.category) === category.slug));
+const categoryReviews = sortByEntryDate(reviews.filter((entry) => slugifyCategory(entry.data.category) === category.slug));
+const categoryComparisons = sortByEntryDate(comparisons.filter((entry) => slugifyCategory(entry.data.category) === category.slug));
+---
+<BaseLayout
+  title={`${category.title} Software Coverage · Contractor Software Hub`}
+  description={category.description}
+  active="categories"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Category page</span>
+        <span style="flex:1;"></span>
+        <span>{category.roundups + category.reviews + category.comparisons} pieces</span>
+      </div>
+      <h1 class="display title">{category.title}</h1>
+      <p class="serif lede">{category.description}</p>
+    </div>
+  </section>
+
+  {categoryRoundups.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="rule-label" style="margin-bottom:24px;"><span>Roundups</span></div>
+        <div class="grid">
+          {categoryRoundups.map((entry) => (
+            <a class="card" href={itemUrlFromEntry(entry)}>
+              <div class="pill ghost" style="margin-bottom:12px;">Best of</div>
+              <h2 class="display card-title">{entry.data.title}</h2>
+              <p class="serif card-desc">{entry.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {categoryReviews.length > 0 && (
+    <section class="section alt">
+      <div class="wrap">
+        <div class="rule-label" style="margin-bottom:24px;"><span>Reviews</span></div>
+        <div class="grid">
+          {categoryReviews.map((entry) => (
+            <a class="card" href={itemUrlFromEntry(entry)}>
+              <div class="pill ink" style="margin-bottom:12px;">{entry.data.rating}</div>
+              <h2 class="display card-title">{entry.data.title}</h2>
+              <p class="serif card-desc">{entry.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {categoryComparisons.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="rule-label" style="margin-bottom:24px;"><span>Comparisons</span></div>
+        <div class="grid">
+          {categoryComparisons.map((entry) => (
+            <a class="card" href={itemUrlFromEntry(entry)}>
+              <div class="pill ghost" style="margin-bottom:12px;">Compare</div>
+              <h2 class="display card-title">{entry.data.title}</h2>
+              <p class="serif card-desc">{entry.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 48px 28px 36px; border-bottom: 1.5px solid var(--ink); }
+  .title { font-size: clamp(44px, 6vw, 82px); line-height: 0.92; margin: 0 0 16px; }
+  .lede { max-width: 760px; font-size: 18px; line-height: 1.5; color: var(--ink-2); }
+  .section { padding: 56px 28px 72px; border-bottom: 1.5px solid var(--ink); }
+  .section.alt { background: var(--paper-deep); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); padding: 24px; }
+  .card:hover { background: var(--paper-deep); }
+  .card-title { font-size: clamp(22px, 2.4vw, 28px); line-height: 1; margin: 0 0 12px; }
+  .card-desc { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 767px) { .page-hero, .section { padding-left: 20px; padding-right: 20px; } .grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { buildFinderItems } from '../../lib/content';
+
+const reviews = await getCollection('reviews');
+const roundups = await getCollection('roundups');
+const guides = await getCollection('guides');
+const items = buildFinderItems(reviews, roundups, guides).sort((a, b) => a.name.localeCompare(b.name));
+const categories = Array.from(new Set(items.map((item) => item.category))).sort();
+---
+<BaseLayout
+  title="Software Finder · Contractor Software Hub"
+  description="Filter contractor software by category, coverage type, and use case."
+  active="finder"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="rule-label" style="margin-bottom:24px;">
+        <span>Software finder</span>
+        <span style="flex:1;"></span>
+        <span>{items.length} software entries</span>
+      </div>
+      <h1 class="display title">Find the short list faster.</h1>
+      <p class="serif lede">A simple filter layer across reviews and roundup entries. Search by product, narrow by category, and jump straight to the right page.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="filters">
+        <label>
+          <span>Search</span>
+          <input id="finder-search" type="search" placeholder="Jobber, roofing, CRM, estimating..." />
+        </label>
+        <label>
+          <span>Category</span>
+          <select id="finder-category">
+            <option value="all">All categories</option>
+            {categories.map((category) => <option value={category}>{category}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Type</span>
+          <select id="finder-type">
+            <option value="all">All types</option>
+            <option value="review">Reviews</option>
+            <option value="roundup">Roundup entries</option>
+            <option value="guide">Guides</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="finder-count" class="count">Showing {items.length} items</div>
+
+      <div class="grid" id="finder-grid">
+        {items.map((item) => (
+          <a
+            class="card"
+            href={item.href}
+            data-name={item.name.toLowerCase()}
+            data-category={item.category}
+            data-type={item.type}
+            data-tags={item.tags.join(' ').toLowerCase()}
+          >
+            <div class="meta-row">
+              <span class={`pill ${item.type === 'review' ? 'ink' : 'ghost'}`}>{item.type}</span>
+              {item.rating && <span class="pill">{item.rating}</span>}
+            </div>
+            <h2 class="display card-title">{item.name}</h2>
+            <p class="serif card-desc">{item.bestFor}</p>
+            <div class="foot">
+              <span>{item.category}</span>
+              <span>{item.price}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const search = document.getElementById('finder-search');
+    const category = document.getElementById('finder-category');
+    const type = document.getElementById('finder-type');
+    const cards = Array.from(document.querySelectorAll('#finder-grid .card'));
+    const count = document.getElementById('finder-count');
+
+    const apply = () => {
+      const q = (search?.value || '').trim().toLowerCase();
+      const cat = category?.value || 'all';
+      const selectedType = type?.value || 'all';
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const okQuery = !q || card.dataset.name.includes(q) || card.dataset.tags.includes(q);
+        const okCategory = cat === 'all' || card.dataset.category === cat;
+        const okType = selectedType === 'all' || card.dataset.type === selectedType;
+        const show = okQuery && okCategory && okType;
+        card.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      });
+
+      if (count) count.textContent = `Showing ${visible} item${visible === 1 ? '' : 's'}`;
+    };
+
+    [search, category, type].forEach((node) => node?.addEventListener('input', apply));
+    [category, type].forEach((node) => node?.addEventListener('change', apply));
+  </script>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 48px 28px 36px; border-bottom: 1.5px solid var(--ink); }
+  .title { font-size: clamp(44px, 6vw, 82px); line-height: 0.92; margin: 0 0 16px; }
+  .lede { max-width: 760px; font-size: 18px; line-height: 1.5; color: var(--ink-2); }
+  .section { padding: 56px 28px 72px; }
+  .filters { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .filters label { display: flex; flex-direction: column; gap: 8px; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--graphite); }
+  .filters input, .filters select { border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink); padding: 14px 12px; font: inherit; text-transform: none; letter-spacing: normal; font-size: 14px; }
+  .count { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--graphite); margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); padding: 20px; min-height: 220px; }
+  .card:hover { background: var(--paper-deep); }
+  .meta-row { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .card-title { font-size: clamp(24px, 2.6vw, 30px); line-height: 1; margin: 0 0 12px; }
+  .card-desc { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin: 0 0 20px; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; margin-top: auto; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--graphite); }
+  @media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, 1fr); } .filters { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 767px) { .page-hero, .section { padding-left: 20px; padding-right: 20px; } .grid, .filters { grid-template-columns: 1fr; } }
+</style>

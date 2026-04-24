@@ -1,0 +1,11 @@
+---
+import { normalizeLegacyHtml } from '../lib/legacy-html';
+
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+const normalizedHtml = normalizeLegacyHtml(html);
+---
+<div class="legacy-raw-html" set:html={normalizedHtml}></div>

@@ -1,0 +1,41 @@
+---
+import page from '../../migration/raw/pages/terms-of-service.json';
+import LegacyRawHtml from '../components/LegacyRawHtml.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Terms of Service"
+  description="Terms of Service for Contractor Software Hub."
+  active="home"
+>
+  <section class="legal-shell">
+    <div class="wrap-reading">
+      <div class="pill-row">
+        <span class="pill ink">Legal</span>
+        <span class="pill ghost">Terms of Service</span>
+      </div>
+      <div class="legal-body prose">
+        <LegacyRawHtml html={page.content.rendered} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-shell {
+    padding: 40px 28px 72px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .pill-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 767px) {
+    .legal-shell {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+</style>

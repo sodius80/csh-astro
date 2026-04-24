@@ -9,10 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:links": "node scripts/check-generated-links.mjs",
+    "validate": "npm run build && npm run check:links"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.8",
     "tailwindcss": "^4.2.2"

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active?: 'home' | 'reviews' | 'comparisons' | 'bestof' | 'about' | 'how';
+  active?: 'home' | 'reviews' | 'comparisons' | 'bestof' | 'finder' | 'categories' | 'about' | 'how';
 }
 const { active = 'home' } = Astro.props;
 const link = (key: string) => active === key ? 'active' : '';
@@ -28,9 +28,11 @@ const link = (key: string) => active === key ? 'active' : '';
   </a>
   <nav class="nav" aria-label="Primary">
     <a class={link('home')} href="/">Home</a>
+    <a class={link('finder')} href="/finder/">Finder</a>
     <a class={link('reviews')} href="/reviews/">All Reviews</a>
     <a class={link('comparisons')} href="/compare/">Comparisons</a>
     <a class={link('bestof')} href="/best/">Best of</a>
+    <a class={link('categories')} href="/categories/">Categories</a>
     <a class={link('how')} href="/how-we-review/">How We Cover</a>
     <a class={link('about')} href="/about/">About</a>
   </nav>

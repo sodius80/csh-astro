@@ -21,6 +21,16 @@ const reviews = defineCollection({
     notFor: z.string().optional(),
     teamSize: z.string().optional(),
     trades: z.array(z.string()).default([]),
+    tradeSlug: z.string().optional(),
+    product: z
+      .object({
+        slug: z.string().optional(),
+        pricingStart: z.string().optional(),
+        bestFor: z.string().optional(),
+        isAffiliate: z.boolean().optional(),
+      })
+      .optional(),
+    searchTags: z.array(z.string()).default([]),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Chris Braden'),
@@ -45,6 +55,7 @@ const comparisons = defineCollection({
     title: z.string(),
     description: z.string(),
     category: z.string().default('Field Service'),
+    tradeSlug: z.string().optional(),
     vendorA: z.object({
       name: z.string(),
       slug: z.string(),
@@ -69,6 +80,14 @@ const comparisons = defineCollection({
     atAGlance: z.array(z.tuple([z.string(), z.string(), z.string()])).default([]),
     chooseA: z.array(z.string()).default([]),
     chooseB: z.array(z.string()).default([]),
+    products: z.array(z.object({
+      name: z.string(),
+      slug: z.string().optional(),
+      pricingStart: z.string().optional(),
+      bestFor: z.string().optional(),
+      isAffiliate: z.boolean().optional(),
+    })).default([]),
+    searchTags: z.array(z.string()).default([]),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Chris Braden'),
@@ -85,6 +104,9 @@ const roundups = defineCollection({
     title: z.string(),
     description: z.string(),
     category: z.string(),
+    categorySlug: z.string().optional(),
+    tradeSlug: z.string().optional(),
+    searchTags: z.array(z.string()).default([]),
     year: z.number().default(2026),
     heroHeadline: z.string().optional(),
     heroSubhead: z.string().optional(),
@@ -114,6 +136,15 @@ const roundups = defineCollection({
       name: z.string(),
       why: z.string(),
     })).default([]),
+    products: z.array(z.object({
+      name: z.string(),
+      slug: z.string().optional(),
+      pricingStart: z.string().optional(),
+      pricingTop: z.string().optional(),
+      freeTrial: z.boolean().optional(),
+      bestFor: z.string().optional(),
+      isAffiliate: z.boolean().optional(),
+    })).default([]),
     bottomLine: z.string().optional(),
     faqs: z
       .array(z.object({ q: z.string(), a: z.string() }))
@@ -126,4 +157,23 @@ const roundups = defineCollection({
   }),
 });
 
-export const collections = { reviews, comparisons, roundups };
+/* Guides — legacy root-level posts that don't fit cleanly elsewhere
+   Route: /[slug]                                                   */
+const guides = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: './src/content/guides' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    guideType: z.enum(['guide', 'pricing', 'alternatives', 'roundup']),
+    category: z.string().optional(),
+    hasLegacyHero: z.boolean().default(false),
+    searchTags: z.array(z.string()).default([]),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default('Chris Braden'),
+    readTime: z.string().optional(),
+    heroImage: z.string().optional(),
+  }),
+});
+
+export const collections = { reviews, comparisons, roundups, guides };

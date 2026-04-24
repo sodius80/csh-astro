@@ -1,0 +1,340 @@
+{
+  "id": 85,
+  "date": "2026-02-20T08:00:00",
+  "date_gmt": "2026-02-20T08:00:00",
+  "guid": {
+    "rendered": "https://contractorsoftwarehub.com/?p=85"
+  },
+  "modified": "2026-04-14T05:33:14",
+  "modified_gmt": "2026-04-14T05:33:14",
+  "slug": "best-software-for-electrical-contractors",
+  "status": "publish",
+  "type": "post",
+  "link": "https://contractorsoftwarehub.com/best-software-for-electrical-contractors/",
+  "title": {
+    "rendered": "Best Software for Electrical Contractors (2026)"
+  },
+  "content": {
+    "rendered": "<p>Most electrical contractors do not need &#8220;electrical contractor software.&#8221;</p>\n<p>They need a shorter, more practical stack: a way to quote cleanly, schedule work without chaos, keep techs organized in the field, and invoice fast enough that cash flow does not lag behind completed jobs.</p>\n<p>That is especially true for smaller shops doing residential service, panel upgrades, EV chargers, light commercial work, and a mix of shorter jobs plus a few larger installs. A lot of software roundups blur together residential service software, commercial service management, and full construction project systems as if they solve the same problem. They do not.</p>\n<p style=\"background:#fff8f0;border-left:4px solid #e67e22;padding:12px 16px;margin:16px 0;font-size:0.9em;line-height:1.6;\"><strong>Disclosure:</strong> Some links on this page are affiliate links. If you sign up through one, I may earn a small commission at no extra cost to you. That does not change how I evaluate these tools.</p>\n<p>For this guide, I focused on the software electrical contractors are actually likely to consider when they have outgrown texting, paper invoices, and a basic calendar. I looked at pricing, feature fit, and review patterns across G2, Capterra, and contractor discussions to separate the tools that are genuinely useful from the ones that mostly sound impressive on a sales call.</p>\n<h2>Do You Need This Yet?</h2>\n<p>The honest answer: maybe not.</p>\n<div style=\"background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:18px 20px;margin:20px 0;\">\n<p style=\"margin:0 0 8px 0;\"><strong style=\"color:#1a7a3f;\">You probably do if:</strong></p>\n<ul style=\"margin:0 0 14px 0;padding-left:1.2em;line-height:1.8;\">\n<li>quotes, job notes, photos, and invoices live in different places</li>\n<li>dispatching technicians means too many calls and too much manual follow-up</li>\n<li>you are losing time re-entering customer and job information</li>\n<li>service agreements or repeat work need better location history</li>\n<li>you want cleaner approvals, faster invoicing, and more consistent payment collection</li>\n<li>the business is growing past what one owner can track from memory</li>\n</ul>\n<p style=\"margin:0 0 8px 0;\"><strong style=\"color:#c0392b;\">You may not yet if:</strong></p>\n<ul style=\"margin:0;padding-left:1.2em;line-height:1.8;\">\n<li>you are solo or very small and most jobs are straightforward</li>\n<li>QuickBooks plus a calendar is still holding together</li>\n<li>you are not dispatching multiple techs every day</li>\n<li>most of your work is larger project work that really needs project management or construction accounting instead</li>\n<li>you are buying software because you feel behind, not because you have a clear operational problem</li>\n</ul>\n</div>\n<h2>How to Choose</h2>\n<p>The category gets a lot easier once you stop asking which tool has the most features and start asking which kind of electrical business you actually run.</p>\n<ul>\n<li><strong>Residential service vs. commercial service:</strong> Residential shops usually care more about speed, ease of use, customer communication, and same-day quoting. Commercial service businesses care more about service agreements, location history, and tighter account management.</li>\n<li><strong>Administrative cleanup vs. operational depth:</strong> If your main problem is too much admin, start with Jobber or Housecall Pro. If you need stronger service history, agreement workflows, or more specialized dispatching, FieldEdge is a more serious fit.</li>\n<li><strong>Small-team practicality vs. bigger-company control:</strong> ServiceTitan has more power than the rest of this list, but most small electrical shops will not use enough of it to justify the cost or implementation burden.</li>\n<li><strong>Per-user pricing vs. flat pricing:</strong> If headcount is growing and seat-based pricing is starting to hurt, Service Fusion becomes more interesting even though it is not the most polished product here.</li>\n</ul>\n<div class=\"csh-freshness-note\" style=\"background:#f8fafc;border:1px solid #dbe7f3;border-radius:8px;padding:16px 18px;margin:20px 0;\">\n<p style=\"margin:0 0 8px 0;\"><strong>Freshness note:</strong> Research and pricing language on this page were reviewed in April 2026. Where vendors hide pricing or change packages often, I say that directly instead of pretending the numbers are cleaner than they are.</p>\n<p style=\"margin:0;\"><strong>Quick answer:</strong> Start with the tool that matches the bottleneck you actually have right now \u2014 sales follow-up, dispatch, job costing, proposal speed, or accounting visibility \u2014 not the platform with the longest feature list.</p>\n</div>\n<h2>Quick Picks</h2>\n<ul>\n<li><strong>Best overall for most small electrical contractors:</strong> <a href=\"https://contractorsoftwarehub.com/go/jobber-official-site/\" rel=\"nofollow sponsored\">Jobber</a></li>\n<li><strong>Best for customer communication and residential service:</strong> Housecall Pro</li>\n<li><strong>Best for electrical shops that need deeper service history:</strong> FieldEdge</li>\n<li><strong>Best for larger electrical operations:</strong> ServiceTitan</li>\n<li><strong>Best for growing teams that want unlimited users:</strong> <a href=\"https://contractorsoftwarehub.com/go/service-fusion-official-site/\" rel=\"nofollow sponsored\">Service Fusion</a></li>\n</ul>\n<h2>Electrical Software Comparison Table</h2>\n<table>\n<thead>\n<tr>\n<th>Tool</th>\n<th>Best For</th>\n<th>Pricing Signal</th>\n<th>Why It Stands Out</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong><a href=\"https://contractorsoftwarehub.com/go/jobber-official-site/\" rel=\"nofollow sponsored\">Jobber</a></strong></td>\n<td>Most small electrical contractors</td>\n<td>Transparent, moderate</td>\n<td>Best balance of quoting, scheduling, invoicing, and usability for smaller shops.</td>\n</tr>\n<tr>\n<td><strong>Housecall Pro</strong></td>\n<td>Residential service businesses</td>\n<td>Transparent, but jumps on better tiers</td>\n<td>Strong customer communication and dispatch experience.</td>\n</tr>\n<tr>\n<td><strong>FieldEdge</strong></td>\n<td>Shops that need deeper service history</td>\n<td>Custom / quote-led</td>\n<td>More mature service workflow depth if you can handle a heavier system.</td>\n</tr>\n<tr>\n<td><strong>ServiceTitan</strong></td>\n<td>Larger electrical operations</td>\n<td>Custom / enterprise-style</td>\n<td>Deeper reporting, call booking, and operational visibility for bigger teams.</td>\n</tr>\n<tr>\n<td><strong><a href=\"https://contractorsoftwarehub.com/go/service-fusion-official-site/\" rel=\"nofollow sponsored\">Service Fusion</a></strong></td>\n<td>Growing teams that want unlimited users</td>\n<td>Transparent, value-focused</td>\n<td>Appealing when seat-based pricing starts to feel punishing.</td>\n</tr>\n</tbody>\n</table>\n<div style=\"background:#f4f5f7;border-left:4px solid #1C2B4B;padding:16px 20px;margin:24px 0;border-radius:0 8px 8px 0;\">\n<p style=\"margin:0 0 8px 0;\"><strong style=\"color:#1a7a3f;\">Right for:</strong> Electrical contractors who need quoting, scheduling, dispatch, invoicing, and customer history in one place without jumping to full construction software.</p>\n<p style=\"margin:0;\"><strong style=\"color:#c0392b;\">Not for:</strong> Large commercial electrical contractors who mainly need construction project controls, union payroll, certified payroll, or deep job costing. That is a different software category.</p>\n</div>\n<h2>1. Jobber \u2014 Best Overall for Most Small Electrical Contractors</h2>\n<p>For most small electrical shops, Jobber is the easiest recommendation because it handles the day-to-day workflow cleanly without demanding a long implementation project. Quotes, scheduling, dispatch, job notes, invoices, payments, and customer communication all live in one place, and that is usually enough to make the office feel less scattered almost immediately.</p>\n<p><strong>What stands out:</strong> Jobber is strongest when speed and usability matter more than trade-specific depth. Reviewers consistently describe it as easy to adopt, and that matters a lot for electrical businesses where the owner, office admin, and field techs all need to use the system without weeks of setup. The quote \u2192 job \u2192 invoice flow is especially useful for residential service and light commercial work.</p>\n<p><strong>Where it falls short:</strong> It is not especially electrical-specific. There is no native flat-rate electrical pricebook, no real permit tracking, and no especially strong location-level equipment or panel history compared with more specialized platforms. If detailed service history per property is central to your workflow, you will feel that limitation.</p>\n<p><strong>Pricing:</strong> Core starts around $29/month on annual billing, with Connect and Grow plans around $129-$249/month annually for the tiers most real electrical shops would consider (as of March 2026; verify current pricing).</p>\n<p><strong>Best for:</strong> Residential and light commercial electrical contractors with roughly 1 to 15 field users who want one reliable system without a heavy learning curve.</p>\n<h2>2. Housecall Pro \u2014 Best for Customer Communication and Residential Service</h2>\n<p>Housecall Pro makes the most sense when your electrical business behaves like a residential home service company first and an electrical contractor second. That usually means you care a lot about booking flow, automated reminders, review generation, and making the customer experience feel polished from the first contact through payment.</p>\n<figure class=\"wp-block-image size-large\"><img decoding=\"async\" src=\"https://contractorsoftwarehub.com/wp-content/uploads/2026/04/85_electrical.png\" alt=\"Best Software for Electrical Contractors (2026) - Top Picks Summary\" class=\"wp-image-csh\" style=\"width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);\" /></figure>\n<p><strong>What stands out:</strong> Housecall Pro is strongest on the customer-facing side. Online booking, reminders, &#8220;on my way&#8221; texts, and built-in follow-up tools are a real advantage for residential electrical work like EV charger installs, panel upgrades, lighting, and smaller service calls where professionalism and responsiveness influence close rate.</p>\n<p><strong>Where it falls short:</strong> It is less natural for more layered electrical workflows. If you need deeper service agreement management, stronger per-location history, or more flexible operational tracking, Housecall Pro starts to feel more like a good residential service app than a serious electrical operations platform.</p>\n<p><strong>Pricing:</strong> Basic starts around $59/month annually, Essentials around $149/month annually, and MAX around $299/month for larger needs (as of March 2026; verify current pricing).</p>\n<p><strong>Best for:</strong> Small electrical companies focused on residential service, online booking, and smoother customer communication.</p>\n<p>{{housecall_pro}}</p>\n<div class=\"csh-mobile-cta\"><a class=\"csh-btn-orange\" href=\"/go/jobber-official-site/\" target=\"_blank\" rel=\"nofollow sponsored\">Try Jobber Free for 14 Days \u2192</a></div>\n<h2>3. FieldEdge \u2014 Best for Electrical Shops That Need Deeper Service History</h2>\n<p>FieldEdge is the tool on this list that makes the most sense when your electrical company has outgrown the lighter residential-first platforms but is not ready for the cost and complexity of ServiceTitan. It is especially worth considering if your business relies on service agreements, repeat commercial accounts, or location-specific service history.</p>\n<p><strong>What stands out:</strong> The deeper customer and location history is what separates FieldEdge from Jobber and Housecall Pro. For electrical work, being able to see more context about what has been done at a property before the tech arrives is genuinely useful. That is the kind of feature that does not sound exciting in a sales demo but matters a lot in real operations.</p>\n<p><strong>Where it falls short:</strong> FieldEdge is more expensive, less transparent on pricing, and feels older than the lighter tools. Review patterns also point to contract friction and add-on creep. It can be the right fit, but it is not the easy fit.</p>\n<p><strong>Pricing:</strong> Custom quote only. Real-world cost is typically much higher than small-shop tools and often includes setup and add-ons (as of March 2026).</p>\n<p><strong>Best for:</strong> Electrical contractors with repeat-service accounts, service agreements, and a real need for stronger location history and more mature field service workflows.</p>\n<h2>4. ServiceTitan \u2014 Best for Larger Electrical Operations</h2>\n<p>ServiceTitan is the most capable platform in this group, and for most small electrical companies it is still the wrong answer. That is not because the software is weak. It is because the software expects a larger, more process-heavy business than most shops looking at this page actually run.</p>\n<p><strong>What stands out:</strong> ServiceTitan goes deeper on dispatching, pricebooks, reporting, call tracking, marketing attribution, and overall business control than the other tools here. If you are running a larger electrical service operation with dedicated office staff and you want serious visibility into performance, it earns its reputation.</p>\n<p><strong>Where it falls short:</strong> Cost and implementation are the real barriers. This is not a &#8220;sign up today and use it tomorrow&#8221; system. Review patterns are consistent: it takes time, setup, training, and internal ownership. Small companies often pay for more platform than they can realistically absorb.</p>\n<p><strong>Pricing:</strong> Custom quote only. Small-business estimates often start above $500/month, with implementation requirements pushing real first-year cost higher (as of March 2026).</p>\n<p><strong>Best for:</strong> Electrical contractors with larger field teams, higher revenue, and enough operational complexity to justify enterprise-style software.</p>\n<h2>5. Service Fusion \u2014 Best for Growing Teams That Want Unlimited Users</h2>\n<p>Service Fusion is the value play on this list. It becomes interesting when an electrical shop is adding users and getting tired of per-seat pricing, but still wants a full field service platform rather than a stripped-down budget tool.</p>\n<p><strong>What stands out:</strong> Unlimited-user pricing is the reason to look at it. For growing teams, that can make the math more attractive than Jobber or Housecall Pro. The dispatch board is also a legitimate strength, and office teams often find it straightforward to use.</p>\n<p><strong>Where it falls short:</strong> The product feels less polished than the leaders. Reviewers repeatedly call out mobile app reliability and sync frustrations. That matters more in electrical service work than it might in other businesses, because techs need the field app to work without adding friction during a packed day.</p>\n<p><strong>Pricing:</strong> Starter around $245/month, Plus around $382/month, and Pro around $627/month on monthly billing, with annual discounts available (as of March 2026; verify current pricing).</p>\n<p><strong>Best for:</strong> Electrical businesses where team size is growing, per-user pricing is getting expensive, and the tradeoff for lower polish is acceptable.</p>\n<h2>Bottom Line</h2>\n<p>For most electrical contractors, the right decision is still about fit, not feature count.</p>\n<ul>\n<li>If you want the safest starting point for a small-to-midsize shop, <strong><a href=\"https://contractorsoftwarehub.com/go/jobber-official-site/\" rel=\"nofollow sponsored\">Jobber</a></strong> is the default recommendation.</li>\n<li>If your business is heavily residential and customer communication is part of how you win work, <strong>Housecall Pro</strong> deserves a close look.</li>\n<li>If you need deeper location history and more mature service workflows, <strong>FieldEdge</strong> is the more serious conversation.</li>\n<li>If you are already operating at larger scale and want more control over reporting, dispatch, and pricebooks, <strong>ServiceTitan</strong> is the platform to evaluate.</li>\n<li>If your team is growing and seat-based pricing is starting to hurt, <strong><a href=\"https://contractorsoftwarehub.com/go/service-fusion-official-site/\" rel=\"nofollow sponsored\">Service Fusion</a></strong> is worth considering.</li>\n</ul>\n<p>The honest answer for most readers here is simple: do not buy the most advanced software you can afford. Buy the one that matches the complexity of the electrical business you actually run right now.</p>\n<h2>FAQ</h2>\n<h3>Is Jobber the right starting point for electricians?</h3>\n<p>Jobber is a solid baseline for small electrical shops that want quoting, scheduling, and invoicing in one place. It\u2019s not deeply specialized, but it handles the core admin flow well for residential and light commercial work.</p>\n<h3>Why would I choose Housecall Pro for electrical work?</h3>\n<p>Housecall Pro excels in customer communication and field usability. If you rely on online scheduling, reminders, and a strong customer portal, it can improve the customer experience and speed up cash flow for service-oriented electrical work.</p>\n<h3>When is FieldEdge the right pick?</h3>\n<p>FieldEdge is best when you need deeper service history and location-based tracking, or you have repeat commercial accounts and more mature field service workflows that require more structure than a lighter tool offers.</p>\n<h3>Is ServiceTitan worth it for a small shop?</h3>\n<p>ServiceTitan is powerful but heavy. Most small electrical shops won\u2019t use enough of its features to justify the cost, implementation, and ongoing maintenance.</p>\n<h3>What about Service Fusion for growing teams?</h3>\n<p>Service Fusion offers unlimited users and can be cost-effective for growing teams, but you\u2019ll want to weigh the trade-offs in polish and reliability against the savings.</p>\n<div class=\"csh-related-articles\">\n<h3>Related Articles</h3>\n<ul>\n<li><a href=\"/best-scheduling-software-contractors/\">Best Scheduling Software for Contractors</a></li>\n<li><a href=\"/jobber-review/\">Jobber Review</a></li>\n<li><a href=\"/best-crm-for-contractors/\">Best CRM for Contractors</a></li>\n</ul>\n</div>\n<p><!-- Browse Next module will be auto-inserted by WPCode snippet 08-browse-next.php --></p>\n<div class=\"csh-related-articles\" style=\"background:#f5f7fa;border:1px solid #e0e4ea;border-radius:8px;padding:20px 24px;margin:32px 0 16px;\">\n<h3 style=\"margin:0 0 12px;font-size:1em;font-weight:600;color:#1a2332;\">Related Reading</h3>\n<ul style=\"margin:0;padding-left:1.2em;line-height:1.9;font-size:0.97em;\">\n<li><a href=\"/best-accounting-software-for-electrical-contractors/\">Best Accounting Software for Small Electrical Contractors</a></li>\n<li><a href=\"/best-scheduling-software-contractors/\">Best Scheduling Software for Contractors</a></li>\n<li><a href=\"/jobber-review/\">Jobber Review</a></li>\n<li><a href=\"/best-crm-for-contractors/\">Best CRM for Contractors</a></li>\n</ul>\n</div>\n",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Best software for electrical contractors in 2026. Compare Jobber, Housecall Pro, FieldEdge, ServiceTitan, and Service Fusion by fit, pricing style, and operational bottleneck.</p>\n",
+    "protected": false
+  },
+  "author": 1,
+  "featured_media": 452,
+  "comment_status": "open",
+  "ping_status": "open",
+  "sticky": false,
+  "template": "",
+  "format": "standard",
+  "meta": {
+    "_kad_post_transparent": "",
+    "_kad_post_title": "",
+    "_kad_post_layout": "",
+    "_kad_post_sidebar_id": "",
+    "_kad_post_content_style": "",
+    "_kad_post_vertical_padding": "",
+    "_kad_post_feature": "",
+    "_kad_post_feature_position": "",
+    "_kad_post_header": false,
+    "_kad_post_footer": false,
+    "_kad_post_classname": "",
+    "footnotes": ""
+  },
+  "categories": [
+    22
+  ],
+  "tags": [],
+  "class_list": [
+    "post-85",
+    "post",
+    "type-post",
+    "status-publish",
+    "format-standard",
+    "has-post-thumbnail",
+    "hentry",
+    "category-electrical-software"
+  ],
+  "_links": {
+    "self": [
+      {
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/posts/85",
+        "targetHints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    ],
+    "collection": [
+      {
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/posts"
+      }
+    ],
+    "about": [
+      {
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/types/post"
+      }
+    ],
+    "author": [
+      {
+        "embeddable": true,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/users/1"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/comments?post=85"
+      }
+    ],
+    "version-history": [
+      {
+        "count": 22,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/posts/85/revisions"
+      }
+    ],
+    "predecessor-version": [
+      {
+        "id": 1210,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/posts/85/revisions/1210"
+      }
+    ],
+    "wp:featuredmedia": [
+      {
+        "embeddable": true,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/media/452"
+      }
+    ],
+    "wp:attachment": [
+      {
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/media?parent=85"
+      }
+    ],
+    "wp:term": [
+      {
+        "taxonomy": "category",
+        "embeddable": true,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/categories?post=85"
+      },
+      {
+        "taxonomy": "post_tag",
+        "embeddable": true,
+        "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/tags?post=85"
+      }
+    ],
+    "curies": [
+      {
+        "name": "wp",
+        "href": "https://api.w.org/{rel}",
+        "templated": true
+      }
+    ]
+  },
+  "_embedded": {
+    "author": [
+      {
+        "id": 1,
+        "name": "Chris Harper",
+        "url": "https://contractorsoftwarehub.com",
+        "description": "",
+        "link": "https://contractorsoftwarehub.com/author/sodius80gmail-com/",
+        "slug": "sodius80gmail-com",
+        "avatar_urls": {
+          "24": "https://secure.gravatar.com/avatar/87dac859bc59f26b0eb2290b789edf704c59b84c6c7356fbc63e66cb1405de80?s=24&d=mm&r=g",
+          "48": "https://secure.gravatar.com/avatar/87dac859bc59f26b0eb2290b789edf704c59b84c6c7356fbc63e66cb1405de80?s=48&d=mm&r=g",
+          "96": "https://secure.gravatar.com/avatar/87dac859bc59f26b0eb2290b789edf704c59b84c6c7356fbc63e66cb1405de80?s=96&d=mm&r=g"
+        },
+        "_links": {
+          "self": [
+            {
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/users/1",
+              "targetHints": {
+                "allow": [
+                  "GET"
+                ]
+              }
+            }
+          ],
+          "collection": [
+            {
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/users"
+            }
+          ]
+        }
+      }
+    ],
+    "wp:featuredmedia": [
+      {
+        "id": 452,
+        "date": "2026-03-07T14:33:18",
+        "slug": "pexels-ranjeet-27928762",
+        "type": "attachment",
+        "link": "https://contractorsoftwarehub.com/pexels-ranjeet-27928762/",
+        "title": {
+          "rendered": "Electrical technician inspecting circuit breaker panel with screwdriver"
+        },
+        "author": 1,
+        "featured_media": 0,
+        "caption": {
+          "rendered": "<p>Photo by Ranjeet / Pexels</p>\n"
+        },
+        "alt_text": "Electrical technician inspecting circuit breaker panel with screwdriver, focusing on electrical wiri.",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "media_details": {
+          "width": 1733,
+          "height": 1300,
+          "file": "2026/03/pexels-ranjeet-27928762.jpg",
+          "filesize": 183001,
+          "sizes": {
+            "medium": {
+              "file": "pexels-ranjeet-27928762-300x225.jpg",
+              "width": 300,
+              "height": 225,
+              "filesize": 16005,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762-300x225.jpg"
+            },
+            "large": {
+              "file": "pexels-ranjeet-27928762-1024x768.jpg",
+              "width": 1024,
+              "height": 768,
+              "filesize": 101695,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762-1024x768.jpg"
+            },
+            "thumbnail": {
+              "file": "pexels-ranjeet-27928762-150x150.jpg",
+              "width": 150,
+              "height": 150,
+              "filesize": 6791,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762-150x150.jpg"
+            },
+            "medium_large": {
+              "file": "pexels-ranjeet-27928762-768x576.jpg",
+              "width": 768,
+              "height": 576,
+              "filesize": 65210,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762-768x576.jpg"
+            },
+            "1536x1536": {
+              "file": "pexels-ranjeet-27928762-1536x1152.jpg",
+              "width": 1536,
+              "height": 1152,
+              "filesize": 188486,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762-1536x1152.jpg"
+            },
+            "full": {
+              "file": "pexels-ranjeet-27928762.jpg",
+              "width": 1733,
+              "height": 1300,
+              "mime_type": "image/jpeg",
+              "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762.jpg"
+            }
+          },
+          "image_meta": {
+            "aperture": "0",
+            "credit": "",
+            "camera": "",
+            "caption": "",
+            "created_timestamp": "0",
+            "copyright": "",
+            "focal_length": "0",
+            "iso": "0",
+            "shutter_speed": "0",
+            "title": "",
+            "orientation": "0",
+            "keywords": []
+          }
+        },
+        "source_url": "https://contractorsoftwarehub.com/wp-content/uploads/2026/03/pexels-ranjeet-27928762.jpg",
+        "_links": {
+          "self": [
+            {
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/media/452",
+              "targetHints": {
+                "allow": [
+                  "GET"
+                ]
+              }
+            }
+          ],
+          "collection": [
+            {
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/media"
+            }
+          ],
+          "about": [
+            {
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/types/attachment"
+            }
+          ],
+          "author": [
+            {
+              "embeddable": true,
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/users/1"
+            }
+          ],
+          "replies": [
+            {
+              "embeddable": true,
+              "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/comments?post=452"
+            }
+          ]
+        }
+      }
+    ],
+    "wp:term": [
+      [
+        {
+          "id": 22,
+          "link": "https://contractorsoftwarehub.com/category/electrical-software/",
+          "name": "Electrical Software",
+          "slug": "electrical-software",
+          "taxonomy": "category",
+          "_links": {
+            "self": [
+              {
+                "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/categories/22",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/categories"
+              }
+            ],
+            "about": [
+              {
+                "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/taxonomies/category"
+              }
+            ],
+            "wp:post_type": [
+              {
+                "href": "https://contractorsoftwarehub.com/wp-json/wp/v2/posts?categories=22"
+              }
+            ],
+            "curies": [
+              {
+                "name": "wp",
+                "href": "https://api.w.org/{rel}",
+                "templated": true
+              }
+            ]
+          }
+        }
+      ],
+      []
+    ]
+  }
+}
