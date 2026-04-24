@@ -459,7 +459,7 @@ function baseFM(entry, extra = {}) {
     description: entry.description,
     pubDate: new Date(entry.pubDate),
     updatedDate: entry.updatedDate ? new Date(entry.updatedDate) : undefined,
-    author: 'Chris Braden',
+    author: 'Chris Harper',
     ...extra,
   };
 }
@@ -495,7 +495,7 @@ for (const [legacyName, meta] of Object.entries(reviewMap)) {
     trades: meta.trades,
     pubDate: new Date(data.pubDate),
     updatedDate: data.updatedDate ? new Date(data.updatedDate) : undefined,
-    author: 'Chris Braden',
+    author: 'Chris Harper',
     readTime: meta.readTime,
     affiliateUrl: meta.affiliateUrl,
     ctaLabel: meta.ctaLabel,
@@ -524,7 +524,7 @@ for (const [legacyName, meta] of Object.entries(comparisonMap)) {
     chooseB: meta.chooseB,
     pubDate: new Date(data.pubDate),
     updatedDate: data.updatedDate ? new Date(data.updatedDate) : undefined,
-    author: 'Chris Braden',
+    author: 'Chris Harper',
   };
   const out = dumpFM(fm) + '\n' + clean(body);
   fs.writeFileSync(path.join(comparisonsDir, `${legacyName}.mdx`), out);
@@ -545,7 +545,7 @@ for (const [legacyName, meta] of Object.entries(roundupMap)) {
     doYouNeed: meta.doYouNeed,
     pubDate: new Date(data.pubDate),
     updatedDate: data.updatedDate ? new Date(data.updatedDate) : undefined,
-    author: 'Chris Braden',
+    author: 'Chris Harper',
   };
   const out = dumpFM(fm) + '\n' + clean(body);
   fs.writeFileSync(path.join(roundupsDir, `${legacyName}.mdx`), out);
