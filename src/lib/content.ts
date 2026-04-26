@@ -153,11 +153,15 @@ export function buildFinderItems(reviews: ReviewEntry[], roundups: RoundupEntry[
     });
   }
 
-  const seen = new Set<string>();
-  return items.filter((item) => {
-    const key = `${item.name}::${item.category}::${item.href}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
+  const seen = new Map<string, FinderItem>();
+
+  for (const item of items) {
+    const existing = seen.get(item.href);
+    // Prefer review entries over roundup entries (reviews have richer data)
+    if (!existing || (existing.type === 'roundup' && item.type === 'review')) {
+      seen.set(item.href, item);
+    }
+  }
+
+  return [...seen.values()];
 }
