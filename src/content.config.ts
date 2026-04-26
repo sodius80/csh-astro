@@ -37,7 +37,7 @@ const reviews = defineCollection({
     readTime: z.string().optional(),
     affiliateUrl: z.string(),
     ctaLabel: z.string().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
     pros: z.array(z.string()).default([]),
     cons: z.array(z.string()).default([]),
     quickFacts: z.array(z.tuple([z.string(), z.string()])).default([]),
@@ -92,7 +92,7 @@ const comparisons = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Chris Harper'),
     readTime: z.string().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
   }),
 });
 
@@ -153,7 +153,7 @@ const roundups = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Chris Harper'),
     readTime: z.string().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
   }),
 });
 
@@ -172,7 +172,7 @@ const guides = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Chris Harper'),
     readTime: z.string().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
   }),
 });
 
