@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VendorLogo from '../../components/VendorLogo.astro';
+import { reviewRootSlug } from '../../lib/slugs';
 
 const reviews = await getCollection('reviews');
 const sorted = reviews.sort((a, b) => {
@@ -105,7 +106,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
           return (
             <a
               class="matrix-row"
-              href={`/reviews/${r.id}/`}
+              href={`/${reviewRootSlug(r.id)}/`}
               data-rating={r.data.rating}
               data-trades={r.data.trades.join(',')}
               data-vendor={r.data.vendor}
@@ -118,7 +119,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
                 <VendorLogo name={r.data.vendor} />
                 <div>
                   <div style="font-weight:700;font-size:15px;">{r.data.vendor}</div>
-                  <div class="mrow-slug">/reviews/{r.id}</div>
+                  <div class="mrow-slug">/{reviewRootSlug(r.id)}</div>
                 </div>
               </div>
               <div style="font-size:13px;">{r.data.category}</div>

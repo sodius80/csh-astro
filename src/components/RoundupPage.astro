@@ -1,13 +1,13 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import DoYouNeedThis from '../../components/DoYouNeedThis.astro';
-import RankedEntry from '../../components/RankedEntry.astro';
-import FAQAccordion from '../../components/FAQAccordion.astro';
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DoYouNeedThis from './DoYouNeedThis.astro';
+import RankedEntry from './RankedEntry.astro';
+import FAQAccordion from './FAQAccordion.astro';
+import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const roundups = await getCollection('roundups');
-  return roundups.map(r => ({ params: { slug: r.id }, props: { entry: r } }));
+interface Props {
+  entry: CollectionEntry<'roundups'>;
 }
 
 const { entry } = Astro.props;

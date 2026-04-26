@@ -1,4 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
+import { reviewRootSlug, comparisonRootSlug, roundupRootSlug, guideRootSlug } from './slugs';
 
 export type ReviewEntry = CollectionEntry<'reviews'>;
 export type ComparisonEntry = CollectionEntry<'comparisons'>;
@@ -22,10 +23,10 @@ export function itemKindFromEntry(entry: SiteEntry): 'REVIEW' | 'COMPARISON' | '
 }
 
 export function itemUrlFromEntry(entry: SiteEntry): string {
-  if ('vendor' in entry.data) return `/reviews/${entry.id}/`;
-  if ('vendorA' in entry.data) return `/compare/${entry.id}/`;
-  if ('guideType' in entry.data) return `/${entry.id}/`;
-  return `/best/${entry.id}/`;
+  if ('vendor' in entry.data) return `/${reviewRootSlug(entry.id)}/`;
+  if ('vendorA' in entry.data) return `/${comparisonRootSlug(entry.id)}/`;
+  if ('guideType' in entry.data) return `/${guideRootSlug(entry.id)}/`;
+  return `/${roundupRootSlug(entry.id)}/`;
 }
 
 export function slugifyCategory(value: string): string {
@@ -82,7 +83,7 @@ export function buildCategorySummaries(
     const record = ensure(roundup.data.category, getEntryDate(roundup));
     record.roundups += 1;
     record.description = roundup.data.description;
-    record.route = `/best/${roundup.id}/`;
+    record.route = `/${roundupRootSlug(roundup.id)}/`;
   }
 
   for (const review of reviews) {
@@ -118,7 +119,7 @@ export function buildFinderItems(reviews: ReviewEntry[], roundups: RoundupEntry[
       category: review.data.category,
       price: review.data.startingPrice,
       bestFor: review.data.bestFor,
-      href: `/reviews/${review.id}/`,
+      href: `/${reviewRootSlug(review.id)}/`,
       type: 'review',
       rating: review.data.rating,
       tags: [review.data.category, ...review.data.trades, review.data.vendor, review.data.bestFor],
@@ -132,7 +133,7 @@ export function buildFinderItems(reviews: ReviewEntry[], roundups: RoundupEntry[
         category: roundup.data.category,
         price: ranked.startingPrice,
         bestFor: ranked.bestFor,
-        href: ranked.slug ? `/reviews/${ranked.slug}/` : `/best/${roundup.id}/`,
+        href: ranked.slug ? `/${reviewRootSlug(ranked.slug)}/` : `/${roundupRootSlug(roundup.id)}/`,
         type: 'roundup',
         rating: ranked.rating,
         tags: [roundup.data.category, ranked.name, ranked.bestFor, ranked.tag],

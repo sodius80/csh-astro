@@ -1,14 +1,15 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import RatingStamp from '../../components/RatingStamp.astro';
-import VendorLogo from '../../components/VendorLogo.astro';
-import ProsConsGrid from '../../components/ProsConsGrid.astro';
-import FAQAccordion from '../../components/FAQAccordion.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RatingStamp from './RatingStamp.astro';
+import VendorLogo from './VendorLogo.astro';
+import ProsConsGrid from './ProsConsGrid.astro';
+import FAQAccordion from './FAQAccordion.astro';
+import { reviewRootSlug } from '../lib/slugs';
+import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const reviews = await getCollection('reviews');
-  return reviews.map(r => ({ params: { slug: r.id }, props: { entry: r } }));
+interface Props {
+  entry: CollectionEntry<'reviews'>;
 }
 
 const { entry } = Astro.props;
@@ -21,7 +22,6 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
 
-// other reviews (up to 3) for "also consider"
 const all = await getCollection('reviews');
 const others = all.filter(r => r.id !== entry.id).slice(0, 3);
 ---
@@ -214,7 +214,7 @@ const others = all.filter(r => r.id !== entry.id).slice(0, 3);
                 </div>
               </div>
               <p class="serif" style="font-size:14px;line-height:1.55;opacity:0.82;margin-bottom:16px;">{o.data.verdictShort}</p>
-              <a class="btn outline sm" style="color:var(--paper);border-color:var(--paper);" href={`/reviews/${o.id}/`}>Read review →</a>
+              <a class="btn outline sm" style="color:var(--paper);border-color:var(--paper);" href={`/${reviewRootSlug(o.id)}/`}>Read review →</a>
             </div>
           ))}
         </div>

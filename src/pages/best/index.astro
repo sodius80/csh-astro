@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { roundupRootSlug } from '../../lib/slugs';
 
 const roundups = await getCollection('roundups');
 const sorted = roundups.sort((a, b) => {
@@ -34,7 +35,7 @@ const sorted = roundups.sort((a, b) => {
     <div class="wrap">
       <div class="grid">
         {sorted.map(r => (
-          <a href={`/best/${r.id}/`} class="rcard">
+          <a href={`/${roundupRootSlug(r.id)}/`} class="rcard">
             {r.data.heroImage && (
               <img src={r.data.heroImage} alt={r.data.title} class="rcard-img" />
             )}

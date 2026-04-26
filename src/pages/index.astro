@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RatingStamp from '../components/RatingStamp.astro';
 import { buildCategorySummaries, getEntryDate, itemKindFromEntry, itemUrlFromEntry, sortByEntryDate } from '../lib/content';
+import { reviewRootSlug } from '../lib/slugs';
 
 const reviews = await getCollection('reviews');
 const roundups = await getCollection('roundups');
@@ -12,7 +13,7 @@ const guides = await getCollection('guides');
 const featured = sortByEntryDate(reviews).find((r) => r.id === 'jobber') ?? sortByEntryDate(reviews)[0];
 const recent = sortByEntryDate([...reviews, ...roundups, ...comparisons, ...guides]).slice(0, 6);
 const categoryCards = buildCategorySummaries(reviews, roundups, comparisons)
-  .filter((card) => card.route.startsWith('/best/'))
+  .filter((card) => card.roundups > 0)
   .slice(0, 12)
   .map((card, index) => ({
     n: String(index + 1).padStart(2, '0'),
@@ -43,7 +44,7 @@ const quickRoutes = categoryCards.slice(0, 4);
           </p>
           <div class="hero-ctas">
             <a class="btn orange" href="/reviews/">Find your tool <span class="arr">→</span></a>
-            <a class="btn outline" href="/reviews/jobber/">Read a review</a>
+            <a class="btn outline" href={`/${reviewRootSlug('jobber')}/`}>Read a review</a>
             <div class="hero-meta">
               {reviews.length} reviews · {comparisons.length} comparisons · {roundups.length} roundups · {guides.length} guides
             </div>
@@ -100,7 +101,7 @@ const quickRoutes = categoryCards.slice(0, 4);
                 <div style="color:var(--graphite);">By the editor</div>
                 <div style="color:var(--ink);font-weight:700;margin-top:2px;">{featured.data.author}{featured.data.readTime ? ` · ${featured.data.readTime}` : ''}</div>
               </div>
-              <a href={`/reviews/${featured.id}/`} class="btn">Read full review <span class="arr">→</span></a>
+              <a href={`/${reviewRootSlug(featured.id)}/`} class="btn">Read full review <span class="arr">→</span></a>
             </div>
           </div>
         </div>

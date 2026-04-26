@@ -1,12 +1,13 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import VendorLogo from '../../components/VendorLogo.astro';
-import RatingStamp from '../../components/RatingStamp.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VendorLogo from './VendorLogo.astro';
+import RatingStamp from './RatingStamp.astro';
+import { reviewRootSlug } from '../lib/slugs';
+import type { CollectionEntry } from 'astro:content';
 
-export async function getStaticPaths() {
-  const comps = await getCollection('comparisons');
-  return comps.map(c => ({ params: { slug: c.id }, props: { entry: c } }));
+interface Props {
+  entry: CollectionEntry<'comparisons'>;
 }
 
 const reviews = await getCollection('reviews');
@@ -15,8 +16,8 @@ const reviewSlugs = new Set(reviews.map((review) => review.id));
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const vendorAReviewUrl = reviewSlugs.has(d.vendorA.slug) ? `/reviews/${d.vendorA.slug}/` : null;
-const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/reviews/${d.vendorB.slug}/` : null;
+const vendorAReviewUrl = reviewSlugs.has(d.vendorA.slug) ? `/${reviewRootSlug(d.vendorA.slug)}/` : null;
+const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/${reviewRootSlug(d.vendorB.slug)}/` : null;
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
