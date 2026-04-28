@@ -30,7 +30,7 @@ const comparisons = await getCollection('comparisons');
     <div class="wrap">
       <div class="grid">
         {comparisons.map(c => (
-          <a href={`/compare/${c.id}/`} class="ccard">
+          <a href={`/${c.id}/`} class="ccard">
             <div class="ccard-top">
               <div class="vpair">
                 <VendorLogo name={c.data.vendorA.name} />

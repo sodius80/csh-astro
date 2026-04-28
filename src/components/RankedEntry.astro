@@ -1,6 +1,7 @@
 ---
 import RatingStamp from './RatingStamp.astro';
 import ProsConsGrid from './ProsConsGrid.astro';
+import { reviewRootSlug } from '../lib/slugs';
 
 interface Props {
   rank: number;
@@ -32,7 +33,7 @@ const {
   affiliateUrl,
   isFirst = false,
 } = Astro.props;
-const reviewUrl = slug ? `/reviews/${slug}/` : null;
+const reviewUrl = slug ? `/${reviewRootSlug(slug)}/` : null;
 const rotate = [-5, 3, -4, 4, -3, 2][(rank - 1) % 6];
 ---
 <div class={`ranked ${isFirst ? 'first' : ''}`} id={`rank-${rank}`}>

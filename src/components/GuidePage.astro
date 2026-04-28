@@ -1,0 +1,246 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'guides'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const guideLabel = {
+  guide: 'Guide',
+  pricing: 'Pricing',
+  alternatives: 'Alternatives',
+  roundup: 'Best of',
+}[d.guideType];
+const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  active="home"
+  ogImage={d.heroImage}
+>
+  <section class="guide-meta-strip">
+    <div class="wrap-content guide-meta-inner">
+      <div class="pill-row">
+        <span class="pill ink">Legacy {guideLabel}</span>
+        {d.category && <span class="pill">{d.category}</span>}
+        <span class="pill ghost">Updated {updatedShort}</span>
+      </div>
+      {!d.hasLegacyHero && (
+        <div class="guide-header">
+          <h1 class="display guide-title">{d.title}</h1>
+          <p class="serif guide-lede">{d.description}</p>
+          <div class="guide-byline">By {d.author}</div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="guide-body">
+    <div class="wrap-content">
+      <div class="prose guide-prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .guide-meta-strip {
+    padding: 28px 28px 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .guide-meta-inner {
+    padding-bottom: 24px;
+  }
+  .pill-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .guide-header {
+    padding: 8px 0 6px;
+  }
+  .guide-title {
+    font-size: clamp(46px, 7vw, 86px);
+    line-height: 0.92;
+    margin: 0 0 18px;
+    letter-spacing: -0.015em;
+  }
+  .guide-lede {
+    font-size: clamp(19px, 2.2vw, 24px);
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+    max-width: 920px;
+  }
+  .guide-byline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+  .guide-body {
+    padding: 40px 28px 72px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .guide-prose {
+    max-width: none;
+  }
+  .guide-prose h1 {
+    font-family: var(--display);
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  .guide-prose .legacy-raw-html > :first-child {
+    margin-top: 0;
+  }
+  .guide-prose .csh-review-hero-wrap {
+    margin: 0 0 40px;
+  }
+  .guide-prose .csh-review-hero {
+    border: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px;
+  }
+  .guide-prose .csh-rh-inner {
+    display: grid;
+    gap: 24px;
+    align-items: start;
+  }
+  .guide-prose .csh-rh-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 120px;
+    border: 1px solid rgba(243, 239, 230, 0.2);
+    background: rgba(243, 239, 230, 0.06);
+    padding: 12px;
+  }
+  .guide-prose .csh-rh-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .guide-prose .csh-rh-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 5.8vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+    color: var(--paper);
+  }
+  .guide-prose .csh-rh-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.45;
+    color: rgba(243, 239, 230, 0.88);
+    margin: 0;
+  }
+  .guide-prose .csh-rh-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .guide-prose .csh-rh-meta-item,
+  .guide-prose .csh-rh-verdict-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid rgba(243, 239, 230, 0.2);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+  }
+  .guide-prose .csh-rh-verdict-badge,
+  .guide-prose .csh-vb-strong {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .guide-prose .csh-rh-cta,
+  .guide-prose .csh-btn-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--orange);
+    color: var(--paper) !important;
+    border: 1px solid var(--orange);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-family: var(--ui);
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .guide-prose .csh-mobile-cta,
+  .guide-prose .csh-related-articles,
+  .guide-prose .csh-browse-next,
+  .guide-prose .csh-freshness-note {
+    margin: 32px 0;
+    padding: 20px 22px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+  }
+  .guide-prose .csh-mobile-cta p:last-child,
+  .guide-prose .csh-related-articles p:last-child,
+  .guide-prose .csh-browse-next p:last-child,
+  .guide-prose .csh-freshness-note p:last-child {
+    margin-bottom: 0;
+  }
+  .guide-prose .wp-block-image {
+    margin: 28px 0;
+  }
+  .guide-prose .wp-block-image img {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--ink);
+  }
+  .guide-prose .wp-block-separator {
+    border: none;
+    border-top: 1.5px solid var(--hair);
+    margin: 36px 0;
+  }
+
+  @media (min-width: 900px) {
+    .guide-prose .csh-rh-inner {
+      grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .guide-meta-strip,
+    .guide-body {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .guide-prose .csh-review-hero {
+      padding: 22px 20px;
+    }
+  }
+</style>
