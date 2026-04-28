@@ -19,6 +19,8 @@ const {
 } = Astro.props;
 const siteUrl = 'https://contractorsoftwarehub.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const defaultOgImage = '/images/csh-og-default.png';
+const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage, siteUrl).toString() : new URL(defaultOgImage, siteUrl).toString();
 ---
 <!doctype html>
 <html lang="en">
@@ -33,7 +35,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString(
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalUrl} />
-  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:image" content={resolvedOgImage} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />

@@ -70,10 +70,13 @@
     { "source": "/go/buildxact-official-site/", "destination": "https://www.buildxact.com", "permanent": false },
     { "source": "/go/fieldedge-official-site/", "destination": "https://www.fieldedge.com", "permanent": false },
     { "source": "/go/housecall-pro-official-site/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
+    { "source": "/go/housecall-pro/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
     { "source": "/go/jobber-official-site/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
+    { "source": "/go/jobber/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
     { "source": "/go/jobnimbus-official-site/", "destination": "https://www.jobnimbus.com", "permanent": false },
     { "source": "/go/knowify-official-site/", "destination": "https://www.knowify.com", "permanent": false },
     { "source": "/go/service-fusion-official-site/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
+    { "source": "/go/service-fusion/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
     { "source": "/go/servicetitan-official-site/", "destination": "https://www.servicetitan.com", "permanent": false },
     { "source": "/go/workiz-official-site/", "destination": "https://www.workiz.com", "permanent": false }
   ]
