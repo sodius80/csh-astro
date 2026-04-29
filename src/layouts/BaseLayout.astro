@@ -44,5 +44,32 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
   <SiteHeader active={active} />
   <main><slot /></main>
   <SiteFooter />
+  
+  <!-- Cookie Consent Banner -->
+  <div id="csh-cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1a2332;color:#fff;padding:16px 20px;z-index:9999;font-size:14px;line-height:1.5;display:none;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+      <span style="flex:1;min-width:280px;">We use cookies to improve your experience and deliver personalized content. By continuing, you agree to our <a href="/privacy-policy/" style="color:#4dabf7;text-decoration:underline;">Privacy Policy</a> and <a href="/terms-of-service/" style="color:#4dabf7;text-decoration:underline;">Terms of Service</a>.</span>
+      <div style="display:flex;gap:10px;flex-shrink:0;">
+        <button onclick="cshCookieAccept()" style="background:#2ecc71;color:#fff;border:none;padding:8px 20px;border-radius:4px;cursor:pointer;font-weight:600;">Accept</button>
+        <button onclick="cshCookieDecline()" style="background:transparent;color:#adb5bd;border:1px solid #495057;padding:8px 16px;border-radius:4px;cursor:pointer;">Close</button>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    (function() {
+      var consent = localStorage.getItem('csh_cookie_consent');
+      if (!consent) {
+        document.getElementById('csh-cookie-banner').style.display = 'block';
+      }
+      window.cshCookieAccept = function() {
+        localStorage.setItem('csh_cookie_consent', 'accepted');
+        document.getElementById('csh-cookie-banner').style.display = 'none';
+      };
+      window.cshCookieDecline = function() {
+        localStorage.setItem('csh_cookie_consent', 'declined');
+        document.getElementById('csh-cookie-banner').style.display = 'none';
+      };
+    })();
+  </script>
 </body>
 </html>
