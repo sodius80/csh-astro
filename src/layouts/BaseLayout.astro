@@ -34,6 +34,23 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L9PZVWY24"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    var consent = localStorage.getItem('csh_cookie_consent');
+    gtag('js', new Date());
+    gtag('config', 'G-5L9PZVWY24', {
+      'anonymize_ip': true,
+      'send_page_view': consent === 'accepted'
+    });
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': consent === 'accepted' ? 'granted' : 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
@@ -64,9 +81,15 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
       if (!consent) {
         document.getElementById('csh-cookie-banner').style.display = 'block';
       }
-      window.cshCookieAccept = function() {
+        window.cshCookieAccept = function() {
         localStorage.setItem('csh_cookie_consent', 'accepted');
         document.getElementById('csh-cookie-banner').style.display = 'none';
+        if (typeof gtag !== 'undefined') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+          gtag('event', 'page_view');
+        }
       };
       window.cshCookieDecline = function() {
         localStorage.setItem('csh_cookie_consent', 'declined');
