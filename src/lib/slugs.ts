@@ -22,8 +22,8 @@ const ROUNDUP_ROOT_SLUGS: Record<string, string> = {
 };
 
 export function reviewRootSlug(id: string): string {
-  // Prevent double '-review' suffix for files like procore-review-2026
-  if (id.endsWith('-review')) return id;
+  // Prevent double '-review' suffix for IDs that already contain it (e.g. procore-review-2026)
+  if (id.includes('-review')) return id;
   return `${id}-review`;
 }
 
