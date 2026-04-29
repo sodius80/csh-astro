@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://contractorsoftwarehub.com/sitemap-index.xml
+Sitemap: https://www.contractorsoftwarehub.com/sitemap-index.xml
