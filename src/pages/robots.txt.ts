@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-const SITE = 'https://contractorsoftwarehub.com';
+const SITE = 'https://www.contractorsoftwarehub.com';
 const SITEMAP_PATH = '/sitemap-index.xml';
 
 export const GET: APIRoute = () => {

@@ -1,4 +1,4 @@
-const SITE_URL = 'https://contractorsoftwarehub.com';
+const SITE_URL = 'https://www.contractorsoftwarehub.com';
 
 /**
  * Maps legacy WordPress URLs to their current root-level Astro URLs.
