@@ -9,6 +9,7 @@ interface Props {
   active?: 'home' | 'reviews' | 'comparisons' | 'bestof' | 'finder' | 'categories' | 'about' | 'how';
   canonical?: string;
   ogImage?: string;
+  schema?: string;
 }
 const {
   title,
@@ -16,6 +17,7 @@ const {
   active = 'home',
   canonical,
   ogImage,
+  schema,
 } = Astro.props;
 const siteUrl = 'https://www.contractorsoftwarehub.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
@@ -59,6 +61,7 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  {schema && <script type="application/ld+json" set:html={schema} />}
 </head>
 <body>
   <SiteHeader active={active} />

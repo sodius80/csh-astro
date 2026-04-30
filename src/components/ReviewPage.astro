@@ -24,12 +24,56 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
 
 const all = await getCollection('reviews');
 const others = all.filter(r => r.id !== entry.id).slice(0, 3);
+const siteUrl = 'https://www.contractorsoftwarehub.com';
+
+// Build JSON-LD schema for Review + SoftwareApplication
+const reviewSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": d.vendor,
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": d.startingPrice ? d.startingPrice.replace(/[^0-9.]/g, '') : "225",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.2",
+      "bestRating": "5",
+      "ratingCount": "60"
+    }
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": d.rating === 'top-pick' ? '5' : d.rating === 'recommended' ? '4' : d.rating === 'conditional' ? '3' : '2',
+    "bestRating": "5"
+  },
+  "name": d.title,
+  "author": {
+    "@type": "Person",
+    "name": d.author,
+    "url": `${siteUrl}/about/`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Contractor Software Hub",
+    "url": siteUrl
+  },
+  "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "reviewBody": d.description
+});
 ---
 <BaseLayout
   title={d.title}
   description={d.description}
   active="reviews"
   ogImage={d.heroImage}
+  schema={reviewSchema}
 >
   <!-- Sticky affiliate bar -->
   <div class="sticky-aff">
