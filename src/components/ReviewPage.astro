@@ -23,8 +23,16 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
 });
 
 const all = await getCollection('reviews');
-const others = all.filter(r => r.id !== entry.id).slice(0, 3);
 const siteUrl = 'https://www.contractorsoftwarehub.com';
+
+// Build related reviews: same category or overlapping trades first, then fallback
+let related = all.filter(r => r.id !== entry.id)
+  .filter(r => r.data.category === d.category || r.data.trades.some(t => d.trades.includes(t)));
+if (related.length < 3) {
+  const fallback = all.filter(r => r.id !== entry.id && !related.includes(r));
+  related = [...related, ...fallback];
+}
+const others = related.slice(0, 3);
 
 // Build JSON-LD schema for Review + SoftwareApplication
 const reviewSchema = JSON.stringify({
@@ -109,12 +117,12 @@ const reviewSchema = JSON.stringify({
         {d.trades.slice(0, 3).map(t => <span class="pill">{t}</span>)}
       </div>
       <h1 class="display masthead-title">
-        {d.vendor} review<br/>
+        {d.vendor} review {d.category ? `for ${d.category}` : ''}<br/>
         <span class="accent">({(d.updatedDate ?? d.pubDate).getFullYear()})</span>
       </h1>
       <div class="masthead-grid">
         <div>
-          <p class="serif lede">{d.description}</p>
+          <p class="serif lede">{(d as any).heroSubhead ?? d.description}</p>
           <div class="byline-row">
             <div class="byline-block">
               <div class="avatar">{d.author.split(' ').map(p => p[0]).slice(0,2).join('')}</div>

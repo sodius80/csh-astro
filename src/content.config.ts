@@ -38,6 +38,7 @@ const reviews = defineCollection({
     affiliateUrl: z.string(),
     ctaLabel: z.string().optional(),
     heroImage: z.string(),
+    heroSubhead: z.string().optional(),
     pros: z.array(z.string()).default([]),
     cons: z.array(z.string()).default([]),
     quickFacts: z.array(z.tuple([z.string(), z.string()])).default([]),
