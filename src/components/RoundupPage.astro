@@ -5,6 +5,17 @@ import DoYouNeedThis from './DoYouNeedThis.astro';
 import RankedEntry from './RankedEntry.astro';
 import FAQAccordion from './FAQAccordion.astro';
 import type { CollectionEntry } from 'astro:content';
+import imageDims from '../data/imageDims.json';
+
+function getImgDims(imgPath: string): { width: number; height: number } | null {
+  if (!imgPath) return null;
+  const filename = imgPath.split('/').pop();
+  const clean = filename?.split('?')[0];
+  if (clean && (imageDims as Record<string, { width: number; height: number }>)[clean]) {
+    return (imageDims as Record<string, { width: number; height: number }>)[clean];
+  }
+  return null;
+}
 
 interface Props {
   entry: CollectionEntry<'roundups'>;
@@ -13,6 +24,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const heroDims = getImgDims(d.heroImage);
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
@@ -45,7 +57,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   {d.heroImage && (
     <section class="hero-img-section">
       <div class="wrap-content">
-        <img src={d.heroImage} alt={d.title} class="hero-img" />
+        <img src={d.heroImage} alt={d.title} class="hero-img" width={heroDims?.width} height={heroDims?.height} />
       </div>
     </section>
   )}

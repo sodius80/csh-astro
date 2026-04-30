@@ -7,6 +7,18 @@ import ProsConsGrid from './ProsConsGrid.astro';
 import FAQAccordion from './FAQAccordion.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
+import imageDims from '../data/imageDims.json';
+
+function getImgDims(imgPath: string): { width: number; height: number } | null {
+  if (!imgPath) return null;
+  const filename = imgPath.split('/').pop();
+  // Remove query params if any
+  const clean = filename?.split('?')[0];
+  if (clean && (imageDims as Record<string, { width: number; height: number }>)[clean]) {
+    return (imageDims as Record<string, { width: number; height: number }>)[clean];
+  }
+  return null;
+}
 
 interface Props {
   entry: CollectionEntry<'reviews'>;
@@ -22,17 +34,21 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
 
+const heroDims = getImgDims(d.heroImage);
+
 const all = await getCollection('reviews');
 const siteUrl = 'https://www.contractorsoftwarehub.com';
 
-// Build related reviews: same category or overlapping trades first, then fallback
-let related = all.filter(r => r.id !== entry.id)
-  .filter(r => r.data.category === d.category || r.data.trades.some(t => d.trades.includes(t)));
-if (related.length < 3) {
-  const fallback = all.filter(r => r.id !== entry.id && !related.includes(r));
-  related = [...related, ...fallback];
-}
-const others = related.slice(0, 3);
+// Build related reviews: score by category/trade overlap, then pick top 3
+const scored = all.filter(r => r.id !== entry.id).map(r => {
+  let score = 0;
+  if (r.data.category === d.category) score += 10;
+  const sharedTrades = r.data.trades.filter(t => d.trades.includes(t || ''));
+  score += sharedTrades.length * 5;
+  return { entry: r, score };
+});
+scored.sort((a, b) => b.score - a.score);
+const others = scored.slice(0, 3).map(s => s.entry);
 
 // Build JSON-LD schema for Review + SoftwareApplication
 const reviewSchema = JSON.stringify({
@@ -150,7 +166,7 @@ const reviewSchema = JSON.stringify({
   {d.heroImage && (
     <section class="hero-img-section">
       <div class="wrap-content">
-        <img src={d.heroImage} alt={d.vendor} class="hero-img" />
+        <img src={d.heroImage} alt={d.vendor} class="hero-img" width={heroDims?.width} height={heroDims?.height} />
       </div>
     </section>
   )}
