@@ -44,6 +44,7 @@ const reviews = defineCollection({
     schemaRatingValue: z.string().optional(),
     schemaRatingCount: z.number().optional(),
     schemaReviewBody: z.string().optional(),
+    externalRatingSource: z.string().optional(),
     pros: z.array(z.string()).default([]),
     cons: z.array(z.string()).default([]),
     quickFacts: z.array(z.tuple([z.string(), z.string()])).default([]),

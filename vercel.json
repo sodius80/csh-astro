@@ -1,5 +1,12 @@
 {
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "contractorsoftwarehub.com" }],
+      "destination": "https://www.contractorsoftwarehub.com/$1",
+      "permanent": true
+    },
+
     { "source": "/reviews/acculynx", "destination": "/acculynx-review", "permanent": true },
     { "source": "/reviews/acculynx/", "destination": "/acculynx-review/", "permanent": true },
     { "source": "/reviews/buildertrend", "destination": "/buildertrend-review", "permanent": true },
