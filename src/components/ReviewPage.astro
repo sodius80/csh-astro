@@ -57,54 +57,125 @@ if ((d as any).relatedReviews?.length >= 2) {
   others = scored.slice(0, 3).map(s => s.entry);
 }
 
-// Build JSON-LD schema for Review + SoftwareApplication
+// Build JSON-LD schema blocks
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const reviewId = `${pageUrl}#review`;
+const softwareId = `${pageUrl}#software`;
+
 const reviewSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Review",
-  "itemReviewed": {
-    "@type": "SoftwareApplication",
-    "name": d.vendor,
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web, iOS, Android",
-    "offers": {
-      "@type": "Offer",
-      "price": d.startingPrice ? d.startingPrice.replace(/[^0-9.]/g, '') : "225",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.2",
-      "bestRating": "5",
-      "ratingCount": "60"
+  "@id": reviewId,
+  "url": pageUrl,
+  "name": d.title,
+  "headline": (d as any).heroHeadline ?? d.title,
+  "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "inLanguage": "en-US",
+  "author": {
+    "@type": "Person",
+    "name": d.author,
+    "url": `${siteUrl}/about/`,
+    "jobTitle": "Editor",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Contractor Software Hub",
+      "url": siteUrl
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Contractor Software Hub",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/csh-logo.png`
     }
   },
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": d.rating === 'top-pick' ? '5' : d.rating === 'recommended' ? '4' : d.rating === 'conditional' ? '3' : '2',
-    "bestRating": "5"
+    "bestRating": "5",
+    "worstRating": "1"
   },
-  "name": d.title,
-  "author": {
-    "@type": "Person",
-    "name": d.author,
-    "url": `${siteUrl}/about/`
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Contractor Software Hub",
-    "url": siteUrl
-  },
-  "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
-  "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
-  "reviewBody": d.description
+  "reviewBody": (d as any).schemaReviewBody ?? d.description,
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "@id": softwareId,
+    "name": d.vendor,
+    "url": `https://www.${d.vendor.toLowerCase().replace(/\s+/g, '')}.com/`,
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": `${d.category} CRM and Project Management`,
+    "operatingSystem": "Web, iOS, Android",
+    "description": d.description,
+    "offers": {
+      "@type": "Offer",
+      "price": d.startingPrice ? d.startingPrice.replace(/[^0-9.]/g, '') : "225",
+      "priceCurrency": "USD",
+      "priceValidUntil": `${new Date().getFullYear()}-12-31`,
+      "availability": "https://schema.org/InStock",
+      "url": `https://www.${d.vendor.toLowerCase().replace(/\s+/g, '')}.com/pricing`
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": (d as any).schemaRatingValue ?? "4.2",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": String((d as any).schemaRatingCount ?? "60"),
+      "reviewCount": String((d as any).schemaRatingCount ?? "60")
+    }
+  }
 });
+
+// FAQPage schema (only if faqs exist)
+const faqSchema = d.faqs.length > 0 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${pageUrl}#faq`,
+  "mainEntity": d.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+}) : null;
+
+// BreadcrumbList schema (auto from URL)
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [{ name: "Home", item: `${siteUrl}/` }];
+let pathAcc = "";
+for (let i = 0; i < segments.length; i++) {
+  const seg = segments[i];
+  pathAcc += `/${seg}`;
+  const name = seg.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+  if (i === segments.length - 1) {
+    breadcrumbItems.push({ name: d.title, item: `${siteUrl}${pathAcc}/` });
+  } else {
+    breadcrumbItems.push({ name, item: `${siteUrl}${pathAcc}/` });
+  }
+}
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${pageUrl}#breadcrumb`,
+  "itemListElement": breadcrumbItems.map((item, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": item.name,
+    "item": item.item
+  }))
+});
+
+const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as string[];
 ---
 <BaseLayout
   title={d.title}
   description={d.description}
   active="reviews"
   ogImage={d.heroImage}
-  schema={reviewSchema}
+  schema={schemas}
 >
   <!-- Sticky affiliate bar -->
   <div class="sticky-aff">

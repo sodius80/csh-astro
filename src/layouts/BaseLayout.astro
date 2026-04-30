@@ -9,7 +9,7 @@ interface Props {
   active?: 'home' | 'reviews' | 'comparisons' | 'bestof' | 'finder' | 'categories' | 'about' | 'how';
   canonical?: string;
   ogImage?: string;
-  schema?: string;
+  schema?: string | string[];
 }
 const {
   title,
@@ -61,7 +61,11 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  {schema && <script type="application/ld+json" set:html={schema} />}
+  {schema &&
+    (Array.isArray(schema) ? schema : [schema]).map((s) => (
+      <script type="application/ld+json" set:html={s} />
+    ))
+  }
 </head>
 <body>
   <SiteHeader active={active} />

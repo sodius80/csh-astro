@@ -1,0 +1,298 @@
+
+============================================================
+Scanning internal links...
+============================================================
+Scanning source content...
+
+============================================================
+Production endpoint checks...
+
+============================================================
+# SEO / Pre-Launch Audit Report — contractorsoftwarehub.com
+============================================================
+
+## ✅ Passing Checks
+  ✅ robots.txt exists and references sitemap
+  ✅ sitemap-index.xml exists
+  ✅ Sitemap contains 151 URLs
+  ✅ favicon.svg present in dist/
+  ✅ favicon.ico present in dist/
+  ✅ apple-touch-icon.png present in dist/
+  ✅ site.webmanifest present in dist/
+  ✅ Built 153 HTML files
+  ✅ Content collection "reviews": 24 files
+  ✅ Content collection "comparisons": 13 files
+  ✅ Content collection "roundups": 41 files
+  ✅ Content collection "guides": 13 files
+  ✅ 404.html exists
+  ✅ Homepage returns HTTP 200
+  ✅ Homepage has <title>
+  ✅ Live robots.txt accessible
+  ✅ Live sitemap-index.xml accessible
+
+## ❌ Critical Issues (181)
+  ❌ index.html: possible placeholder text detected: "coming soon"
+  ❌ google328457cf5bd1a6ea.html: missing <title> | FIX: Add title tag in layout or page component
+  ❌ google328457cf5bd1a6ea.html: missing H1 tag | FIX: Add <h1> in page component
+  ❌ 404.html: possible placeholder text detected: "coming soon"
+  ❌ best-glass-glazing-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-pricing-is-it-worth-it/index.html: possible placeholder text detected: "coming soon"
+  ❌ fieldedge-vs-servicetitan/index.html: possible placeholder text detected: "coming soon"
+  ❌ exayard-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ followup-crm-alternatives/index.html: possible placeholder text detected: "coming soon"
+  ❌ housecall-pro-vs-servicetitan/index.html: possible placeholder text detected: "coming soon"
+  ❌ arbostar-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-estimating-software-general-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ acculynx-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-fence-contractor-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ crm-with-quickbooks-integration-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ contact/index.html: possible placeholder text detected: "coming soon"
+  ❌ housecall-pro-alternatives/index.html: possible placeholder text detected: "coming soon"
+  ❌ aspire-landscaping-software-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ procore-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ buildxact-vs-joist-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobtread-vs-buildertrend-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ fieldwire-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ servicetitan-alternatives/index.html: possible placeholder text detected: "coming soon"
+  ❌ housecall-pro-vs-fieldedge/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-cad-software-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ fieldedge-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-contractor-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-appliance-repair-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ buildertrend-vs-acculynx-roofing/index.html: possible placeholder text detected: "coming soon"
+  ❌ zuper-vs-acculynx-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ buildertrend-vs-jobnimbus-roofing/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-home-inspection-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-fire-life-safety-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ privacy-policy/index.html: missing H1 tag | FIX: Add <h1> in page component
+  ❌ privacy-policy/index.html: possible placeholder text detected: "coming soon"
+  ❌ buildertrend-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ affiliate-disclosure/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-moving-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-low-voltage-security-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobnimbus-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ acculynx-vs-jobnimbus/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-tree-service-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-hvac-software-small-business/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-landscaping-software-small-business/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-masonry-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-estimating-software-for-small-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-pest-control-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ servicetitan-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ small-contractor-bookkeeping-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ coconstruct-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ contractor-foreman-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-handyman-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ buildxact-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ about/index.html: possible placeholder text detected: "coming soon"
+  ❌ housecall-pro-pricing/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-concrete-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ servicetitan-vs-jobber/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-janitorial-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-paving-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ knowify-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ joist-vs-clear-estimates-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ gorilladesk-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-alternatives-landscaping-companies/index.html: possible placeholder text detected: "coming soon"
+  ❌ arborgold-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-alternatives/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-time-tracking-software-for-small-contractor-businesses-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-solar-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-garage-door-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ service-fusion-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-restoration-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-proposal-software-for-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ finder/index.html: possible placeholder text detected: "coming soon"
+  ❌ finder/index.html: possible placeholder text detected: "placeholder"
+  ❌ best-roofing-software-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ compare/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-deck-fence-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ terms-of-service/index.html: possible placeholder text detected: "coming soon"
+  ❌ servicetitan-pricing/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-plumbing-software-small-business/index.html: possible placeholder text detected: "coming soon"
+  ❌ zuper-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-accounting-software-for-electrical-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ housecall-pro-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-crm-for-siding-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-crm-for-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-flooring-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-locksmith-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-software-for-electrical-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ singleops-review-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-pressure-washing-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-vs-housecall-pro/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/appliance-repair-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/solar/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/accounting/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/field-service/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/janitorial-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/moving-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/estimating-gc/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/pest-control/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/paving-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/bookkeeping/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/pool-and-spa-management/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/roofing-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/scheduling/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/flooring-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/garage-door-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/field-service-management/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/project-management/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/construction-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/crm/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/general-contracting/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/remodeling-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/siding-crm/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/hvac/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/estimating/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/home-inspection-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/fire-and-life-safety-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/roofing/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/locksmith-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/cad-and-design/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/low-voltage-and-security-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/restoration-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/landscaping/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/glass-and-glazing-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/handyman-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/deck-and-fence-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/painting/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/fencing/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/construction-management/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/tree-service-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/excavation-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/business-management/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/plumbing/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/pressure-washing-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/concrete-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/masonry-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/estimating-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/landscaping-software/index.html: possible placeholder text detected: "coming soon"
+  ❌ categories/estimating-small/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobtread-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-pool-spa-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-remodeling-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ how-we-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-landscape-design-software-small-business/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-software-for-painting-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-excavation-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ field-service-management-mobile-app-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-construction-inventory-management-software-2026/index.html: possible placeholder text detected: "coming soon"
+  ❌ best-scheduling-software-contractors/index.html: possible placeholder text detected: "coming soon"
+  ❌ reviews/index.html: possible placeholder text detected: "coming soon"
+  ❌ workiz-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-vs-workiz/index.html: possible placeholder text detected: "coming soon"
+  ❌ projul-2026-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ jobber-review/index.html: possible placeholder text detected: "coming soon"
+  ❌ Broken internal link: href="/go/jobber-official-site/" from best-software-for-electrical-contractors/index.html
+  ❌ Broken internal link: href="/404/" from 404.html
+  ❌ Broken internal link: href="/go/workiz-official-site/" from housecall-pro-alternatives/index.html
+  ❌ Broken internal link: href="/go/fieldedge-official-site/" from jobber-alternatives/index.html
+  ❌ Broken internal link: href="/go/servicetitan-official-site/" from housecall-pro-alternatives/index.html
+  ❌ Broken internal link: href="/go/jobber-official-site/" from best-proposal-software-for-contractors/index.html
+  ❌ Broken internal link: href="/go/jobber-official-site/" from best-time-tracking-software-for-small-contractor-businesses-2026/index.html
+  ❌ Broken internal link: href="/go/jobber-official-site/" from jobber-alternatives-landscaping-companies/index.html
+  ❌ Broken internal link: href="/go/jobber-official-site/" from best-landscape-design-software-small-business/index.html
+  ❌ Broken internal link: href="/go/jobber-official-site/" from followup-crm-alternatives/index.html
+  ❌ Broken internal link: href="/go/workiz-official-site/" from jobber-alternatives/index.html
+  ❌ Broken internal link: href="/go/fieldedge-official-site/" from housecall-pro-alternatives/index.html
+  ❌ Broken internal link: href="/go/servicetitan-official-site/" from jobber-alternatives/index.html
+  ❌ content/guides/servicetitan-alternatives.mdx: only 9 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/servicetitan-pricing.mdx: only 9 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/jobber-alternatives.mdx: only 9 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/followup-crm-alternatives.mdx: only 10 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/housecall-pro-pricing.mdx: only 10 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/housecall-pro-alternatives.mdx: only 10 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/jobber-alternatives-landscaping-companies.mdx: only 11 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/best-software-for-electrical-contractors.mdx: only 12 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/best-proposal-software-for-contractors.mdx: only 12 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/best-landscape-design-software-small-business.mdx: only 13 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/jobber-pricing-is-it-worth-it.mdx: only 13 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+  ❌ content/guides/best-time-tracking-software-for-small-contractor-businesses-2026.mdx: only 16 words — stub/wrapper | FIX: Expand or remove before considering SEO-ready
+
+## ⚠️ High Priority Issues (52)
+  ⚠️ google328457cf5bd1a6ea.html: missing meta description
+  ⚠️ google328457cf5bd1a6ea.html: missing canonical link | FIX: Add <link rel="canonical"> in BaseLayout
+  ⚠️ google328457cf5bd1a6ea.html: missing Open Graph tags: og:title, og:description, og:type, og:url, og:image
+  ⚠️ google328457cf5bd1a6ea.html: missing viewport meta
+  ⚠️ 404.html: meta description too short (12 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ arbostar-review-2026/index.html: year in title (2025) does not match slug year (2026)
+  ⚠️ crm-with-quickbooks-integration-2026/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ procore-review-2026/index.html: meta description too short (13 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ privacy-policy/index.html: meta description too short (43 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ affiliate-disclosure/index.html: meta description too short (23 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ small-contractor-bookkeeping-software-2026/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ terms-of-service/index.html: meta description too short (45 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ categories/field-service/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ categories/bookkeeping/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ categories/crm/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ field-service-management-mobile-app-2026/index.html: meta description too short (16 chars) | FIX: Write a descriptive 120-160 char description
+  ⚠️ content/comparisons/jobber-vs-housecall-pro.mdx: only 604 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/reviews/arborgold-review-2026.mdx: only 630 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/comparisons/buildxact-vs-joist-2026.mdx: only 650 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/guides/best-contractor-software.mdx: only 654 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/comparisons/joist-vs-clear-estimates-2026.mdx: only 656 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/reviews/arbostar-review-2026.mdx: only 664 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/reviews/singleops-review-2026.mdx: only 677 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/reviews/zuper-review-2026.mdx: only 695 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/reviews/coconstruct-review-2026.mdx: only 797 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/roundups/best-locksmith-software-2026.mdx: only 852 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/comparisons/housecall-pro-vs-servicetitan.mdx: only 880 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ content/roundups/best-construction-inventory-management-software-2026.mdx: only 887 words — thin for long-form | FIX: Expand to >1200 words for ranking potential
+  ⚠️ buildxact-vs-joist-2026.mdx: empty vendorA.affiliateUrl
+  ⚠️ buildxact-vs-joist-2026.mdx: empty vendorB.affiliateUrl
+  ⚠️ jobber-vs-workiz.mdx: empty vendorB.affiliateUrl
+  ⚠️ fieldedge-vs-servicetitan.mdx: empty vendorA.affiliateUrl
+  ⚠️ housecall-pro-vs-fieldedge.mdx: empty vendorB.affiliateUrl
+  ⚠️ joist-vs-clear-estimates-2026.mdx: empty vendorA.affiliateUrl
+  ⚠️ joist-vs-clear-estimates-2026.mdx: empty vendorB.affiliateUrl
+  ⚠️ jobtread-vs-buildertrend-2026.mdx: empty vendorA.affiliateUrl
+  ⚠️ jobtread-vs-buildertrend-2026.mdx: empty vendorB.affiliateUrl
+  ⚠️ zuper-vs-acculynx-2026.mdx: empty vendorA.affiliateUrl
+  ⚠️ zuper-vs-acculynx-2026.mdx: empty vendorB.affiliateUrl
+  ⚠️ acculynx-vs-jobnimbus.mdx: empty vendorA.affiliateUrl
+  ⚠️ acculynx-vs-jobnimbus.mdx: empty vendorB.affiliateUrl
+  ⚠️ jobtread-2026.mdx: empty affiliateUrl
+  ⚠️ arborgold-review-2026.mdx: empty affiliateUrl
+  ⚠️ contractor-foreman-2026.mdx: empty affiliateUrl
+  ⚠️ zuper-review-2026.mdx: empty affiliateUrl
+  ⚠️ exayard-2026.mdx: empty affiliateUrl
+  ⚠️ arbostar-review-2026.mdx: empty affiliateUrl
+  ⚠️ projul-2026.mdx: empty affiliateUrl
+  ⚠️ coconstruct-review-2026.mdx: empty affiliateUrl
+  ⚠️ singleops-review-2026.mdx: empty affiliateUrl
+  ⚠️ fieldwire-2026.mdx: empty affiliateUrl
+  ⚠️ HTTP does not redirect to HTTPS (HTTP None)
+
+## 📋 Medium Priority Issues (22)
+  📋 google328457cf5bd1a6ea.html: missing twitter:card meta
+  📋 fieldedge-vs-servicetitan/index.html: meta description possibly truncated (283 chars)
+  📋 servicetitan-alternatives/index.html: meta description possibly truncated (202 chars)
+  📋 housecall-pro-vs-fieldedge/index.html: meta description possibly truncated (210 chars)
+  📋 fieldedge-review/index.html: meta description possibly truncated (181 chars)
+  📋 jobber-alternatives-landscaping-companies/index.html: meta description possibly truncated (174 chars)
+  📋 jobber-alternatives/index.html: meta description possibly truncated (178 chars)
+  📋 service-fusion-review/index.html: meta description possibly truncated (181 chars)
+  📋 servicetitan-pricing/index.html: meta description possibly truncated (209 chars)
+  📋 workiz-review/index.html: meta description possibly truncated (201 chars)
+  📋 housecall-pro-vs-fieldedge.mdx: prohibited word "best-in-class"
+  📋 landscaping-software.mdx: prohibited word "at the end of the day"
+  📋 best-scheduling-software-contractors.mdx: prohibited word "unlock"
+  📋 best-crm-contractors.mdx: prohibited word "unlock"
+  📋 best-cad-software-contractors.mdx: prohibited word "best-in-class"
+  📋 best-estimating-software-general-contractors.mdx: prohibited word "unlock"
+  📋 best-software-painting-contractors.mdx: prohibited word "streamline"
+  📋 buildertrend.mdx: prohibited word "best-in-class"
+  📋 servicetitan.mdx: prohibited word "best-in-class"
+  📋 jobber.mdx: prohibited word "best-in-class"
+  📋 housecall-pro.mdx: prohibited word "best-in-class"
+  📋 No JSON-LD structured data found in first 50 pages. Consider adding Article/Review/Product schema.
+
+## 🟢 Low Priority / Cosmetic (0)
+
+============================================================
+
+Summary: 181 critical, 52 high, 22 medium, 0 low
