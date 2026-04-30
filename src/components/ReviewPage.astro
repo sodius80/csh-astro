@@ -48,7 +48,14 @@ const scored = all.filter(r => r.id !== entry.id).map(r => {
   return { entry: r, score };
 });
 scored.sort((a, b) => b.score - a.score);
-const others = scored.slice(0, 3).map(s => s.entry);
+// Override with explicit curation if provided
+let others;
+if ((d as any).relatedReviews?.length >= 2) {
+  const map = new Map(all.map(r => [r.id, r]));
+  others = (d as any).relatedReviews.map((id: string) => map.get(id)).filter(Boolean).slice(0, 3);
+} else {
+  others = scored.slice(0, 3).map(s => s.entry);
+}
 
 // Build JSON-LD schema for Review + SoftwareApplication
 const reviewSchema = JSON.stringify({
@@ -133,8 +140,10 @@ const reviewSchema = JSON.stringify({
         {d.trades.slice(0, 3).map(t => <span class="pill">{t}</span>)}
       </div>
       <h1 class="display masthead-title">
-        {d.vendor} review {d.category ? `for ${d.category}` : ''}<br/>
-        <span class="accent">({(d.updatedDate ?? d.pubDate).getFullYear()})</span>
+        {(d as any).heroHeadline ?? (<>
+          {d.vendor} review {d.category ? `for ${d.category}` : ''}<br/>
+          <span class="accent">({(d.updatedDate ?? d.pubDate).getFullYear()})</span>
+        </>)}
       </h1>
       <div class="masthead-grid">
         <div>

@@ -39,6 +39,8 @@ const reviews = defineCollection({
     ctaLabel: z.string().optional(),
     heroImage: z.string(),
     heroSubhead: z.string().optional(),
+    heroHeadline: z.string().optional(),
+    relatedReviews: z.array(z.string()).default([]),
     pros: z.array(z.string()).default([]),
     cons: z.array(z.string()).default([]),
     quickFacts: z.array(z.tuple([z.string(), z.string()])).default([]),
