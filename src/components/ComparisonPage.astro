@@ -1,8 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import VendorLogo from './VendorLogo.astro';
-import RatingStamp from './RatingStamp.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
 
@@ -88,14 +86,12 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
           <div class="glance-head">
             <div style="padding:20px 24px; font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;">Dimension</div>
             <div class="glance-head-vendor">
-              <VendorLogo name={d.vendorA.name} />
               <div>
                 <div class="display" style="font-size:20px;">{d.vendorA.name}</div>
                 {d.vendorA.tag && <div class="vendor-tag">{d.vendorA.tag}</div>}
               </div>
             </div>
             <div class="glance-head-vendor">
-              <VendorLogo name={d.vendorB.name} />
               <div>
                 <div class="display" style="font-size:20px;">{d.vendorB.name}</div>
                 {d.vendorB.tag && <div class="vendor-tag">{d.vendorB.tag}</div>}
@@ -128,7 +124,6 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
           ].map(col => (
             <div class="choose-card" style={`border-color: ${col.color};`}>
               <div class="choose-head" style={`border-bottom-color: ${col.color};`}>
-                <VendorLogo name={col.name} />
                 <div class="display" style={`font-size:24px; line-height:1; color: ${col.color};`}>{col.label}</div>
               </div>
               <ul>
@@ -165,8 +160,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
       </div>
       <div class="dual-grid">
         <div class="dual-card">
-          <VendorLogo name={d.vendorA.name} />
-          <div class="display" style="font-size:28px;margin:14px 0 8px;">{d.vendorA.name}</div>
+          <div class="display" style="font-size:28px;margin:0 0 8px;">{d.vendorA.name}</div>
           {d.vendorA.startingPrice && <div class="vendor-tag" style="color:var(--orange);">From {d.vendorA.startingPrice}</div>}
           {d.vendorA.affiliateUrl && (
             <a class="btn orange" href={d.vendorA.affiliateUrl} rel="sponsored nofollow noopener" target="_blank" style="margin-top:18px;">
@@ -176,8 +170,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
           {vendorAReviewUrl && <a href={vendorAReviewUrl} class="btn outline sm" style="color:var(--paper);border-color:var(--paper);margin-top:10px;">Read full review</a>}
         </div>
         <div class="dual-card">
-          <VendorLogo name={d.vendorB.name} />
-          <div class="display" style="font-size:28px;margin:14px 0 8px;">{d.vendorB.name}</div>
+          <div class="display" style="font-size:28px;margin:0 0 8px;">{d.vendorB.name}</div>
           {d.vendorB.startingPrice && <div class="vendor-tag" style="color:var(--orange);">From {d.vendorB.startingPrice}</div>}
           {d.vendorB.affiliateUrl && (
             <a class="btn orange" href={d.vendorB.affiliateUrl} rel="sponsored nofollow noopener" target="_blank" style="margin-top:18px;">
