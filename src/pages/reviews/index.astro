@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import VendorLogo from '../../components/VendorLogo.astro';
 import { reviewRootSlug } from '../../lib/slugs';
 
 const reviews = await getCollection('reviews');
@@ -116,7 +115,6 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
             >
               <div class="mrow-n">{String(i + 1).padStart(3, '0')}</div>
               <div class="mrow-product">
-                <VendorLogo name={r.data.vendor} />
                 <div>
                   <div style="font-weight:700;font-size:15px;">{r.data.vendor}</div>
                   <div class="mrow-slug">/{reviewRootSlug(r.id)}</div>

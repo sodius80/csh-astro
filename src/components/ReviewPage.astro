@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RatingStamp from './RatingStamp.astro';
-import VendorLogo from './VendorLogo.astro';
 import ProsConsGrid from './ProsConsGrid.astro';
 import FAQAccordion from './FAQAccordion.astro';
 import { reviewRootSlug } from '../lib/slugs';
@@ -180,7 +179,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   <!-- Sticky affiliate bar -->
   <div class="sticky-aff">
     <div class="wrap sticky-grid">
-      <VendorLogo name={d.vendor} />
       <div class="sticky-copy">
         <div class="sticky-eyebrow">Currently reading · {d.vendor} Review</div>
         <div class="sticky-title">
@@ -355,7 +353,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
           {others.map(o => (
             <div class="alt-card">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-                <VendorLogo name={o.data.vendor} />
                 <div>
                   <div class="display" style="font-size:20px;line-height:1;">{o.data.vendor}</div>
                   <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-top:3px;">{o.data.category} · {o.data.bestFor}</div>
