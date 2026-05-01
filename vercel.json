@@ -85,6 +85,13 @@
     { "source": "/go/service-fusion-official-site/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
     { "source": "/go/service-fusion/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
     { "source": "/go/servicetitan-official-site/", "destination": "https://www.servicetitan.com", "permanent": false },
-    { "source": "/go/workiz-official-site/", "destination": "https://www.workiz.com", "permanent": false }
+    { "source": "/go/workiz-official-site/", "destination": "https://www.workiz.com", "permanent": false },
+
+    { "source": "/best-construction-management-software-2026", "destination": "/best-construction-inventory-management-software-2026", "permanent": true },
+    { "source": "/best-construction-management-software-2026/", "destination": "/best-construction-inventory-management-software-2026/", "permanent": true },
+    { "source": "/housecall-pro-vs-jobber", "destination": "/jobber-vs-housecall-pro", "permanent": true },
+    { "source": "/housecall-pro-vs-jobber/", "destination": "/jobber-vs-housecall-pro/", "permanent": true },
+    { "source": "/best-field-service-software-contractors", "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026", "permanent": true },
+    { "source": "/best-field-service-software-contractors/", "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026/", "permanent": true }
   ]
 }
