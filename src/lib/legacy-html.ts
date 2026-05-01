@@ -1,4 +1,5 @@
 const SITE_URL = 'https://www.contractorsoftwarehub.com';
+const LEGACY_NON_WWW_URL = 'https://contractorsoftwarehub.com';
 
 /**
  * Maps legacy WordPress URLs to their current root-level Astro URLs.
@@ -70,7 +71,7 @@ const pathMap: Record<string, string> = {
   '/reviews/servicetitan/': '/servicetitan-review/',
   '/reviews/workiz/': '/workiz-review/',
   '/compare/acculynx-vs-jobnimbus/': '/acculynx-vs-jobnimbus/',
-  '/compare/fieldedge-vs-servicetitan/': '/fieldedge-vs-servicetitan/',
+  '/compare/fieldedge-vs-servicetitan/': '/fieldedge-vs-sicetitan/',
   '/compare/housecall-pro-vs-fieldedge/': '/housecall-pro-vs-fieldedge/',
   '/compare/housecall-pro-vs-servicetitan/': '/housecall-pro-vs-servicetitan/',
   '/compare/jobber-vs-housecall-pro/': '/jobber-vs-housecall-pro/',
@@ -110,17 +111,41 @@ function splitUrl(url: string) {
   };
 }
 
+/** Rewrite any wp-content image to a transparent 1x1 PNG so browsers skip layout shift */
+function rewriteWpContentImage(pathname: string): string | null {
+  if (pathname.startsWith('/wp-content/uploads/')) {
+    return '/images/transparent-1x1.png';
+  }
+  return null;
+}
+
 function rewriteUrl(url: string): string {
   if (!url) return url;
 
-  const isAbsoluteInternal = url.startsWith(`${SITE_URL}/`);
-  const target = isAbsoluteInternal ? url.slice(SITE_URL.length) : url;
+  let isAbsoluteInternal = false;
+  let target = url;
+
+  if (url.startsWith(`${SITE_URL}/`)) {
+    isAbsoluteInternal = true;
+    target = url.slice(SITE_URL.length);
+  } else if (url.startsWith(`${LEGACY_NON_WWW_URL}/`)) {
+    isAbsoluteInternal = true;
+    target = url.slice(LEGACY_NON_WWW_URL.length);
+  }
 
   if (!target.startsWith('/')) {
     return url;
   }
 
   const { pathname, search, hash } = splitUrl(target);
+
+  // Drop any wp-content image to a transparent 1x1 PNG — prevents 403s
+  // without touching layout. Old WordPress media does not exist on
+  // Astro/Vercel.
+  const wpRewrite = rewriteWpContentImage(pathname);
+  if (wpRewrite) {
+    return `${wpRewrite}${search}${hash}`;
+  }
 
   if (pathname.startsWith('/go/')) {
     return `${pathname}${search}${hash}`;
