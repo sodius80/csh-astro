@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import VendorLogo from '../../components/VendorLogo.astro';
 
 const comparisons = await getCollection('comparisons');
 ---
@@ -32,11 +31,6 @@ const comparisons = await getCollection('comparisons');
         {comparisons.map(c => (
           <a href={`/${c.id}/`} class="ccard">
             <div class="ccard-top">
-              <div class="vpair">
-                <VendorLogo name={c.data.vendorA.name} />
-                <span class="vs">vs</span>
-                <VendorLogo name={c.data.vendorB.name} />
-              </div>
               <span class="pill ghost">{c.data.category}</span>
             </div>
             <h2 class="display ccard-title">{c.data.vendorA.name} <span style="color:var(--graphite);">vs</span> {c.data.vendorB.name}</h2>
@@ -77,16 +71,10 @@ const comparisons = await getCollection('comparisons');
   .ccard:hover { background: var(--paper-deep); }
   .ccard-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 16px;
     margin-bottom: 18px;
-  }
-  .vpair { display: flex; align-items: center; gap: 10px; }
-  .vs {
-    font-family: var(--display);
-    font-size: 18px;
-    color: var(--graphite);
   }
   .ccard-title {
     font-size: clamp(22px, 2.6vw, 30px);
