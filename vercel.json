@@ -79,6 +79,7 @@
     { "source": "/best/best-accounting-software-electrical-contractors/", "destination": "/best-accounting-software-for-electrical-contractors/", "permanent": true },
 
     { "source": "/go/acculynx-official-site/", "destination": "https://www.acculynx.com", "permanent": false },
+    { "source": "/go/arborgold-official-site/", "destination": "https://arborgold.com/pricing/", "permanent": false },
     { "source": "/go/buildertrend-official-site/", "destination": "https://www.buildertrend.com", "permanent": false },
     { "source": "/go/buildxact-official-site/", "destination": "https://www.buildxact.com", "permanent": false },
     { "source": "/go/fieldedge-official-site/", "destination": "https://www.fieldedge.com", "permanent": false },

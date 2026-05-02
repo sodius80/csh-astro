@@ -96,6 +96,7 @@ const pathMap: Record<string, string> = {
   '/category/landscaping-software/': '/categories/landscaping/',
 
   // Affiliate redirects (keep as-is)
+  '/go/arborgold-official-site/': '/go/arborgold-official-site/',
   '/go/fieldedge-official-site/': '/go/fieldedge-official-site/',
   '/go/jobber-official-site/': '/go/jobber-official-site/',
   '/go/servicetitan-official-site/': '/go/servicetitan-official-site/',
