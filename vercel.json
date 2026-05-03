@@ -397,6 +397,16 @@
       "permanent": false
     },
     {
+      "source": "/go/procore-official-site/",
+      "destination": "https://www.procore.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/projul-official-site/",
+      "destination": "https://www.projul.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/prolandscape-official-site/",
       "destination": "https://prolandscape.com/en/buy-now/",
       "permanent": false
