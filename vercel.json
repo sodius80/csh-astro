@@ -547,6 +547,51 @@
       "permanent": false
     },
     {
+      "source": "/go/essential-official-site/",
+      "destination": "https://www.withessential.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/goaudits-official-site/",
+      "destination": "https://goaudits.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/inspect-point-official-site/",
+      "destination": "https://www.inspectpoint.com/plans/",
+      "permanent": false
+    },
+    {
+      "source": "/go/joyfill-official-site/",
+      "destination": "https://joyfill.io/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/pool-office-manager-official-site/",
+      "destination": "https://poolofficemanager.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/quoteiq-official-site/",
+      "destination": "https://myquoteiq.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/schedulingkit-official-site/",
+      "destination": "https://schedulingkit.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/skimmer-official-site/",
+      "destination": "https://www.getskimmer.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/zenfire-official-site/",
+      "destination": "https://zentrades.pro/zenfire",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
