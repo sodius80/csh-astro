@@ -307,6 +307,11 @@
       "permanent": false
     },
     {
+      "source": "/go/field-promax-official-site/",
+      "destination": "https://www.fieldpromax.com/",
+      "permanent": false
+    },
+    {
       "source": "/go/fieldwire-official-site/",
       "destination": "https://www.fieldwire.com",
       "permanent": false
