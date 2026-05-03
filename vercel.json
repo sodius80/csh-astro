@@ -2,123 +2,574 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "contractorsoftwarehub.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "contractorsoftwarehub.com"
+        }
+      ],
       "destination": "https://www.contractorsoftwarehub.com/$1",
       "permanent": true
     },
-
+    {
+      "source": "/best-construction-management-software-2026",
+      "destination": "/best-construction-inventory-management-software-2026",
+      "permanent": true
+    },
+    {
+      "source": "/best-construction-management-software-2026/",
+      "destination": "/best-construction-inventory-management-software-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/best-field-service-software-contractors",
+      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026",
+      "permanent": true
+    },
+    {
+      "source": "/best-field-service-software-contractors/",
+      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-accounting-software-electrical-contractors",
+      "destination": "/best-accounting-software-for-electrical-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-accounting-software-electrical-contractors/",
+      "destination": "/best-accounting-software-for-electrical-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-cad-software-contractors",
+      "destination": "/best-cad-software-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-cad-software-contractors/",
+      "destination": "/best-cad-software-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-crm-contractors",
+      "destination": "/best-crm-for-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-crm-contractors/",
+      "destination": "/best-crm-for-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-crm-siding-contractors",
+      "destination": "/best-crm-for-siding-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-crm-siding-contractors/",
+      "destination": "/best-crm-for-siding-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-estimating-software-general-contractors",
+      "destination": "/best-estimating-software-general-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-estimating-software-general-contractors/",
+      "destination": "/best-estimating-software-general-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-estimating-software-small-contractors",
+      "destination": "/best-estimating-software-for-small-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-estimating-software-small-contractors/",
+      "destination": "/best-estimating-software-for-small-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-scheduling-software-contractors",
+      "destination": "/best-scheduling-software-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-scheduling-software-contractors/",
+      "destination": "/best-scheduling-software-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-software-painting-contractors",
+      "destination": "/best-software-for-painting-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-software-painting-contractors/",
+      "destination": "/best-software-for-painting-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best/hvac-software",
+      "destination": "/best-hvac-software-small-business",
+      "permanent": true
+    },
+    {
+      "source": "/best/hvac-software/",
+      "destination": "/best-hvac-software-small-business/",
+      "permanent": true
+    },
+    {
+      "source": "/best/landscaping-software",
+      "destination": "/best-landscaping-software-small-business",
+      "permanent": true
+    },
+    {
+      "source": "/best/landscaping-software/",
+      "destination": "/best-landscaping-software-small-business/",
+      "permanent": true
+    },
+    {
+      "source": "/best/pest-control-software",
+      "destination": "/best-pest-control-software",
+      "permanent": true
+    },
+    {
+      "source": "/best/pest-control-software/",
+      "destination": "/best-pest-control-software/",
+      "permanent": true
+    },
+    {
+      "source": "/best/plumbing-software",
+      "destination": "/best-plumbing-software-small-business",
+      "permanent": true
+    },
+    {
+      "source": "/best/plumbing-software/",
+      "destination": "/best-plumbing-software-small-business/",
+      "permanent": true
+    },
+    {
+      "source": "/best/roofing-software",
+      "destination": "/best-roofing-software-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best/roofing-software/",
+      "destination": "/best-roofing-software-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/acculynx-vs-jobnimbus",
+      "destination": "/acculynx-vs-jobnimbus",
+      "permanent": true
+    },
+    {
+      "source": "/compare/acculynx-vs-jobnimbus/",
+      "destination": "/acculynx-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/fieldedge-vs-servicetitan",
+      "destination": "/fieldedge-vs-servicetitan",
+      "permanent": true
+    },
+    {
+      "source": "/compare/fieldedge-vs-servicetitan/",
+      "destination": "/fieldedge-vs-servicetitan/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/housecall-pro-vs-fieldedge",
+      "destination": "/housecall-pro-vs-fieldedge",
+      "permanent": true
+    },
+    {
+      "source": "/compare/housecall-pro-vs-fieldedge/",
+      "destination": "/housecall-pro-vs-fieldedge/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/housecall-pro-vs-servicetitan",
+      "destination": "/housecall-pro-vs-servicetitan",
+      "permanent": true
+    },
+    {
+      "source": "/compare/housecall-pro-vs-servicetitan/",
+      "destination": "/housecall-pro-vs-servicetitan/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/jobber-vs-housecall-pro",
+      "destination": "/jobber-vs-housecall-pro",
+      "permanent": true
+    },
+    {
+      "source": "/compare/jobber-vs-housecall-pro/",
+      "destination": "/jobber-vs-housecall-pro/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/jobber-vs-workiz",
+      "destination": "/jobber-vs-workiz",
+      "permanent": true
+    },
+    {
+      "source": "/compare/jobber-vs-workiz/",
+      "destination": "/jobber-vs-workiz/",
+      "permanent": true
+    },
+    {
+      "source": "/compare/servicetitan-vs-jobber",
+      "destination": "/servicetitan-vs-jobber",
+      "permanent": true
+    },
+    {
+      "source": "/compare/servicetitan-vs-jobber/",
+      "destination": "/servicetitan-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/go/acculynx-official-site/",
+      "destination": "https://www.acculynx.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/arborgold-official-site/",
+      "destination": "https://arborgold.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/aspire-official-site/",
+      "destination": "https://www.youraspire.com/aspire-plans",
+      "permanent": false
+    },
+    {
+      "source": "/go/buildertrend-official-site/",
+      "destination": "https://www.buildertrend.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/buildxact-official-site/",
+      "destination": "https://www.buildxact.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/clockify-official-site/",
+      "destination": "https://clockify.me/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/clockshark-official-site/",
+      "destination": "https://www.clockshark.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/coconstruct-official-site/",
+      "destination": "https://www.coconstruct.com/migration",
+      "permanent": false
+    },
+    {
+      "source": "/go/connecteam-official-site/",
+      "destination": "https://connecteam.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/contractor-foreman-official-site/",
+      "destination": "https://contractorforeman.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/contractorplus-official-site/",
+      "destination": "https://contractorplus.app/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/dynascape-official-site/",
+      "destination": "https://www.dynascape.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/exayard-official-site/",
+      "destination": "https://exayard.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldedge-official-site/",
+      "destination": "https://www.fieldedge.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldwire-official-site/",
+      "destination": "https://www.fieldwire.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/followup-crm-official-site/",
+      "destination": "https://www.followupcrm.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/housecall-pro-official-site/",
+      "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b",
+      "permanent": false
+    },
+    {
+      "source": "/go/housecall-pro/",
+      "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b",
+      "permanent": false
+    },
+    {
+      "source": "/go/hubstaff-official-site/",
+      "destination": "https://hubstaff.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/iscape-official-site/",
+      "destination": "https://www.iscapeit.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/jibble-official-site/",
+      "destination": "https://www.jibble.io/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/jobber-official-site/",
+      "destination": "https://go.getjobber.com/wtuf58h3dc5t",
+      "permanent": false
+    },
+    {
+      "source": "/go/jobber/",
+      "destination": "https://go.getjobber.com/wtuf58h3dc5t",
+      "permanent": false
+    },
+    {
+      "source": "/go/jobnimbus-official-site/",
+      "destination": "https://www.jobnimbus.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/jobtread-official-site/",
+      "destination": "https://www.jobtread.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/joist-official-site/",
+      "destination": "https://www.joist.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/knowify-official-site/",
+      "destination": "https://www.knowify.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/lmn-official-site/",
+      "destination": "https://granum.com/lmn/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/pandadoc-official-site/",
+      "destination": "https://www.pandadoc.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/prolandscape-official-site/",
+      "destination": "https://prolandscape.com/en/buy-now/",
+      "permanent": false
+    },
+    {
+      "source": "/go/proposify-official-site/",
+      "destination": "https://www.proposify.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/quickbooks-time-official-site/",
+      "destination": "https://quickbooks.intuit.com/time-tracking/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/realtime-landscaping-official-site/",
+      "destination": "https://ideaspectrum.com/professional-landscape-software/",
+      "permanent": false
+    },
+    {
+      "source": "/go/roofr-official-site/",
+      "destination": "https://www.roofr.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/service-autopilot-official-site/",
+      "destination": "https://www.serviceautopilot.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/service-fusion-official-site/",
+      "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/",
+      "permanent": false
+    },
+    {
+      "source": "/go/service-fusion/",
+      "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/",
+      "permanent": false
+    },
+    {
+      "source": "/go/servicetitan-official-site/",
+      "destination": "https://www.servicetitan.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/singleops-official-site/",
+      "destination": "https://granum.com/singleops/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/sketchup-official-site/",
+      "destination": "https://www.sketchup.com/en/plans-and-pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/vizterra-official-site/",
+      "destination": "https://www.structurestudios.com/landscape-design-software-and-pool-design-software-pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/workiz-official-site/",
+      "destination": "https://www.workiz.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/zuper-official-site/",
+      "destination": "https://www.zuper.co",
+      "permanent": false
+    },
+    {
+      "source": "/housecall-pro-vs-jobber",
+      "destination": "/jobber-vs-housecall-pro",
+      "permanent": true
+    },
+    {
+      "source": "/housecall-pro-vs-jobber/",
+      "destination": "/jobber-vs-housecall-pro/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/acculynx",
+      "destination": "/acculynx-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/acculynx/",
+      "destination": "/acculynx-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/buildertrend",
+      "destination": "/buildertrend-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/buildertrend/",
+      "destination": "/buildertrend-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/buildxact",
+      "destination": "/buildxact-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/buildxact/",
+      "destination": "/buildxact-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/fieldedge",
+      "destination": "/fieldedge-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/fieldedge/",
+      "destination": "/fieldedge-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/housecall-pro",
+      "destination": "/housecall-pro-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/housecall-pro/",
+      "destination": "/housecall-pro-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/jobber",
+      "destination": "/jobber-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/jobber/",
+      "destination": "/jobber-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/jobnimbus",
+      "destination": "/jobnimbus-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/jobnimbus/",
+      "destination": "/jobnimbus-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/knowify",
+      "destination": "/knowify-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/knowify/",
+      "destination": "/knowify-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/service-fusion",
+      "destination": "/service-fusion-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/service-fusion/",
+      "destination": "/service-fusion-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/servicetitan",
+      "destination": "/servicetitan-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/servicetitan/",
+      "destination": "/servicetitan-review/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/workiz",
+      "destination": "/workiz-review",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/workiz/",
+      "destination": "/workiz-review/",
+      "permanent": true
+    },
     {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
-    },
-
-    { "source": "/reviews/acculynx", "destination": "/acculynx-review", "permanent": true },
-    { "source": "/reviews/acculynx/", "destination": "/acculynx-review/", "permanent": true },
-    { "source": "/reviews/buildertrend", "destination": "/buildertrend-review", "permanent": true },
-    { "source": "/reviews/buildertrend/", "destination": "/buildertrend-review/", "permanent": true },
-    { "source": "/reviews/buildxact", "destination": "/buildxact-review", "permanent": true },
-    { "source": "/reviews/buildxact/", "destination": "/buildxact-review/", "permanent": true },
-    { "source": "/reviews/fieldedge", "destination": "/fieldedge-review", "permanent": true },
-    { "source": "/reviews/fieldedge/", "destination": "/fieldedge-review/", "permanent": true },
-    { "source": "/reviews/housecall-pro", "destination": "/housecall-pro-review", "permanent": true },
-    { "source": "/reviews/housecall-pro/", "destination": "/housecall-pro-review/", "permanent": true },
-    { "source": "/reviews/jobber", "destination": "/jobber-review", "permanent": true },
-    { "source": "/reviews/jobber/", "destination": "/jobber-review/", "permanent": true },
-    { "source": "/reviews/jobnimbus", "destination": "/jobnimbus-review", "permanent": true },
-    { "source": "/reviews/jobnimbus/", "destination": "/jobnimbus-review/", "permanent": true },
-    { "source": "/reviews/knowify", "destination": "/knowify-review", "permanent": true },
-    { "source": "/reviews/knowify/", "destination": "/knowify-review/", "permanent": true },
-    { "source": "/reviews/service-fusion", "destination": "/service-fusion-review", "permanent": true },
-    { "source": "/reviews/service-fusion/", "destination": "/service-fusion-review/", "permanent": true },
-    { "source": "/reviews/servicetitan", "destination": "/servicetitan-review", "permanent": true },
-    { "source": "/reviews/servicetitan/", "destination": "/servicetitan-review/", "permanent": true },
-    { "source": "/reviews/workiz", "destination": "/workiz-review", "permanent": true },
-    { "source": "/reviews/workiz/", "destination": "/workiz-review/", "permanent": true },
-
-    { "source": "/compare/acculynx-vs-jobnimbus", "destination": "/acculynx-vs-jobnimbus", "permanent": true },
-    { "source": "/compare/acculynx-vs-jobnimbus/", "destination": "/acculynx-vs-jobnimbus/", "permanent": true },
-    { "source": "/compare/fieldedge-vs-servicetitan", "destination": "/fieldedge-vs-servicetitan", "permanent": true },
-    { "source": "/compare/fieldedge-vs-servicetitan/", "destination": "/fieldedge-vs-servicetitan/", "permanent": true },
-    { "source": "/compare/housecall-pro-vs-fieldedge", "destination": "/housecall-pro-vs-fieldedge", "permanent": true },
-    { "source": "/compare/housecall-pro-vs-fieldedge/", "destination": "/housecall-pro-vs-fieldedge/", "permanent": true },
-    { "source": "/compare/housecall-pro-vs-servicetitan", "destination": "/housecall-pro-vs-servicetitan", "permanent": true },
-    { "source": "/compare/housecall-pro-vs-servicetitan/", "destination": "/housecall-pro-vs-servicetitan/", "permanent": true },
-    { "source": "/compare/jobber-vs-housecall-pro", "destination": "/jobber-vs-housecall-pro", "permanent": true },
-    { "source": "/compare/jobber-vs-housecall-pro/", "destination": "/jobber-vs-housecall-pro/", "permanent": true },
-    { "source": "/compare/jobber-vs-workiz", "destination": "/jobber-vs-workiz", "permanent": true },
-    { "source": "/compare/jobber-vs-workiz/", "destination": "/jobber-vs-workiz/", "permanent": true },
-    { "source": "/compare/servicetitan-vs-jobber", "destination": "/servicetitan-vs-jobber", "permanent": true },
-    { "source": "/compare/servicetitan-vs-jobber/", "destination": "/servicetitan-vs-jobber/", "permanent": true },
-
-    { "source": "/best/hvac-software", "destination": "/best-hvac-software-small-business", "permanent": true },
-    { "source": "/best/hvac-software/", "destination": "/best-hvac-software-small-business/", "permanent": true },
-    { "source": "/best/plumbing-software", "destination": "/best-plumbing-software-small-business", "permanent": true },
-    { "source": "/best/plumbing-software/", "destination": "/best-plumbing-software-small-business/", "permanent": true },
-    { "source": "/best/roofing-software", "destination": "/best-roofing-software-contractors", "permanent": true },
-    { "source": "/best/roofing-software/", "destination": "/best-roofing-software-contractors/", "permanent": true },
-    { "source": "/best/landscaping-software", "destination": "/best-landscaping-software-small-business", "permanent": true },
-    { "source": "/best/landscaping-software/", "destination": "/best-landscaping-software-small-business/", "permanent": true },
-    { "source": "/best/pest-control-software", "destination": "/best-pest-control-software", "permanent": true },
-    { "source": "/best/pest-control-software/", "destination": "/best-pest-control-software/", "permanent": true },
-    { "source": "/best/best-crm-contractors", "destination": "/best-crm-for-contractors", "permanent": true },
-    { "source": "/best/best-crm-contractors/", "destination": "/best-crm-for-contractors/", "permanent": true },
-    { "source": "/best/best-crm-siding-contractors", "destination": "/best-crm-for-siding-contractors", "permanent": true },
-    { "source": "/best/best-crm-siding-contractors/", "destination": "/best-crm-for-siding-contractors/", "permanent": true },
-    { "source": "/best/best-cad-software-contractors", "destination": "/best-cad-software-contractors", "permanent": true },
-    { "source": "/best/best-cad-software-contractors/", "destination": "/best-cad-software-contractors/", "permanent": true },
-    { "source": "/best/best-estimating-software-small-contractors", "destination": "/best-estimating-software-for-small-contractors", "permanent": true },
-    { "source": "/best/best-estimating-software-small-contractors/", "destination": "/best-estimating-software-for-small-contractors/", "permanent": true },
-    { "source": "/best/best-estimating-software-general-contractors", "destination": "/best-estimating-software-general-contractors", "permanent": true },
-    { "source": "/best/best-estimating-software-general-contractors/", "destination": "/best-estimating-software-general-contractors/", "permanent": true },
-    { "source": "/best/best-scheduling-software-contractors", "destination": "/best-scheduling-software-contractors", "permanent": true },
-    { "source": "/best/best-scheduling-software-contractors/", "destination": "/best-scheduling-software-contractors/", "permanent": true },
-    { "source": "/best/best-software-painting-contractors", "destination": "/best-software-for-painting-contractors", "permanent": true },
-    { "source": "/best/best-software-painting-contractors/", "destination": "/best-software-for-painting-contractors/", "permanent": true },
-    { "source": "/best/best-accounting-software-electrical-contractors", "destination": "/best-accounting-software-for-electrical-contractors", "permanent": true },
-    { "source": "/best/best-accounting-software-electrical-contractors/", "destination": "/best-accounting-software-for-electrical-contractors/", "permanent": true },
-
-    { "source": "/go/acculynx-official-site/", "destination": "https://www.acculynx.com", "permanent": false },
-    { "source": "/go/aspire-official-site/", "destination": "https://www.youraspire.com/aspire-plans", "permanent": false },
-    { "source": "/go/arborgold-official-site/", "destination": "https://arborgold.com/pricing/", "permanent": false },
-    { "source": "/go/buildertrend-official-site/", "destination": "https://www.buildertrend.com", "permanent": false },
-    { "source": "/go/buildxact-official-site/", "destination": "https://www.buildxact.com", "permanent": false },
-    { "source": "/go/clockify-official-site/", "destination": "https://clockify.me/pricing", "permanent": false },
-    { "source": "/go/clockshark-official-site/", "destination": "https://www.clockshark.com/pricing", "permanent": false },
-    { "source": "/go/coconstruct-official-site/", "destination": "https://www.coconstruct.com/migration", "permanent": false },
-    { "source": "/go/connecteam-official-site/", "destination": "https://connecteam.com/pricing/", "permanent": false },
-    { "source": "/go/dynascape-official-site/", "destination": "https://www.dynascape.com/pricing/", "permanent": false },
-    { "source": "/go/exayard-official-site/", "destination": "https://exayard.com/pricing", "permanent": false },
-    { "source": "/go/fieldedge-official-site/", "destination": "https://www.fieldedge.com", "permanent": false },
-    { "source": "/go/fieldwire-official-site/", "destination": "https://www.fieldwire.com", "permanent": false },
-    { "source": "/go/housecall-pro-official-site/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
-    { "source": "/go/housecall-pro/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
-    { "source": "/go/hubstaff-official-site/", "destination": "https://hubstaff.com/pricing", "permanent": false },
-    { "source": "/go/iscape-official-site/", "destination": "https://www.iscapeit.com/pricing", "permanent": false },
-    { "source": "/go/jibble-official-site/", "destination": "https://www.jibble.io/pricing", "permanent": false },
-    { "source": "/go/jobber-official-site/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
-    { "source": "/go/jobber/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
-    { "source": "/go/jobnimbus-official-site/", "destination": "https://www.jobnimbus.com", "permanent": false },
-    { "source": "/go/knowify-official-site/", "destination": "https://www.knowify.com", "permanent": false },
-    { "source": "/go/lmn-official-site/", "destination": "https://granum.com/lmn/pricing/", "permanent": false },
-    { "source": "/go/prolandscape-official-site/", "destination": "https://prolandscape.com/en/buy-now/", "permanent": false },
-    { "source": "/go/quickbooks-time-official-site/", "destination": "https://quickbooks.intuit.com/time-tracking/pricing/", "permanent": false },
-    { "source": "/go/realtime-landscaping-official-site/", "destination": "https://ideaspectrum.com/professional-landscape-software/", "permanent": false },
-    { "source": "/go/service-fusion-official-site/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
-    { "source": "/go/service-fusion/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
-    { "source": "/go/service-autopilot-official-site/", "destination": "https://www.serviceautopilot.com/pricing/", "permanent": false },
-    { "source": "/go/servicetitan-official-site/", "destination": "https://www.servicetitan.com", "permanent": false },
-    { "source": "/go/singleops-official-site/", "destination": "https://granum.com/singleops/pricing/", "permanent": false },
-    { "source": "/go/sketchup-official-site/", "destination": "https://www.sketchup.com/en/plans-and-pricing", "permanent": false },
-    { "source": "/go/vizterra-official-site/", "destination": "https://www.structurestudios.com/landscape-design-software-and-pool-design-software-pricing", "permanent": false },
-    { "source": "/go/workiz-official-site/", "destination": "https://www.workiz.com", "permanent": false },
-    { "source": "/go/zuper-official-site/", "destination": "https://www.zuper.co", "permanent": false },
-
-    { "source": "/best-construction-management-software-2026", "destination": "/best-construction-inventory-management-software-2026", "permanent": true },
-    { "source": "/best-construction-management-software-2026/", "destination": "/best-construction-inventory-management-software-2026/", "permanent": true },
-    { "source": "/housecall-pro-vs-jobber", "destination": "/jobber-vs-housecall-pro", "permanent": true },
-    { "source": "/housecall-pro-vs-jobber/", "destination": "/jobber-vs-housecall-pro/", "permanent": true },
-    { "source": "/best-field-service-software-contractors", "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026", "permanent": true },
-    { "source": "/best-field-service-software-contractors/", "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026/", "permanent": true }
+    }
   ]
 }
