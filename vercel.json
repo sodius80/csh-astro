@@ -272,6 +272,11 @@
       "permanent": false
     },
     {
+      "source": "/go/clear-estimates-official-site/",
+      "destination": "https://www.clearestimates.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/coconstruct-official-site/",
       "destination": "https://www.coconstruct.com/migration",
       "permanent": false
