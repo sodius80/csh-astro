@@ -242,6 +242,11 @@
       "permanent": false
     },
     {
+      "source": "/go/arbostar-official-site/",
+      "destination": "https://arbostar.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/go/aspire-official-site/",
       "destination": "https://www.youraspire.com/aspire-plans",
       "permanent": false
