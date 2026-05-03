@@ -632,6 +632,21 @@
       "permanent": false
     },
     {
+      "source": "/go/eagleview-official-site/",
+      "destination": "https://www.eagleview.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/pipeline-crm-official-site/",
+      "destination": "https://pipelinecrm.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/hubspot-official-site/",
+      "destination": "https://www.hubspot.com/products/crm",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
