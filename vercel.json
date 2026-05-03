@@ -297,6 +297,11 @@
       "permanent": false
     },
     {
+      "source": "/go/dynamics-365-field-service-official-site/",
+      "destination": "https://www.microsoft.com/en-us/dynamics-365/products/field-service/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/dynascape-official-site/",
       "destination": "https://www.dynascape.com/pricing/",
       "permanent": false
@@ -317,8 +322,18 @@
       "permanent": false
     },
     {
+      "source": "/go/fenevision-official-site/",
+      "destination": "https://www.cyncly.com/products/fenevision",
+      "permanent": false
+    },
+    {
       "source": "/go/field-promax-official-site/",
       "destination": "https://www.fieldpromax.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/glazier-official-site/",
+      "destination": "https://glaziersoftware.com/",
       "permanent": false
     },
     {
@@ -432,6 +447,11 @@
       "permanent": false
     },
     {
+      "source": "/go/repair-crm-official-site/",
+      "destination": "https://www.repair-crm.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/go/roofr-official-site/",
       "destination": "https://www.roofr.com/pricing",
       "permanent": false
@@ -472,6 +492,11 @@
       "permanent": false
     },
     {
+      "source": "/go/smart-glazier-official-site/",
+      "destination": "https://smartglazier.com/en/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/go/tradify-official-site/",
       "destination": "https://www.tradifyhq.com/us/pricing",
       "permanent": false
@@ -484,6 +509,11 @@
     {
       "source": "/go/workiz-official-site/",
       "destination": "https://www.workiz.com/pricing-plans/",
+      "permanent": false
+    },
+    {
+      "source": "/go/zoho-fsm-official-site/",
+      "destination": "https://www.zoho.com/fsm/pricing.html",
       "permanent": false
     },
     {
