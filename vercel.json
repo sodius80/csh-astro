@@ -327,6 +327,11 @@
       "permanent": false
     },
     {
+      "source": "/go/gorilladesk-official-site/",
+      "destination": "https://gorilladesk.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/go/housecall-pro-official-site/",
       "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b",
       "permanent": false
