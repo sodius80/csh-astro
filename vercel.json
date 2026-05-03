@@ -672,6 +672,26 @@
       "permanent": false
     },
     {
+      "source": "/go/sage-100-contractor-official-site/",
+      "destination": "https://www.sage.com/en-us/products/sage-100-contractor/",
+      "permanent": false
+    },
+    {
+      "source": "/go/paintscout-official-site/",
+      "destination": "https://www.paintscout.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/markate-official-site/",
+      "destination": "https://www.markate.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/estimate-rocket-official-site/",
+      "destination": "https://www.estimaterocket.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
