@@ -707,6 +707,46 @@
       "permanent": false
     },
     {
+      "source": "/go/autocad-lt-official-site/",
+      "destination": "https://www.autodesk.com/products/autocad-lt/overview",
+      "permanent": false
+    },
+    {
+      "source": "/go/chief-architect-official-site/",
+      "destination": "https://www.chiefarchitect.com/software-subscription/",
+      "permanent": false
+    },
+    {
+      "source": "/go/draftsight-official-site/",
+      "destination": "https://www.draftsight.com/product/draftsight-professional-2d-cad-software",
+      "permanent": false
+    },
+    {
+      "source": "/go/floorsoft-official-site/",
+      "destination": "https://www.floorsoft.com/Page_Products_FW.html",
+      "permanent": false
+    },
+    {
+      "source": "/go/measuresquare-official-site/",
+      "destination": "https://measuresquare.com/pricing/measuresquare-8/",
+      "permanent": false
+    },
+    {
+      "source": "/go/progecad-official-site/",
+      "destination": "https://www.progesoft.com/products/progecad-professional/licensing",
+      "permanent": false
+    },
+    {
+      "source": "/go/redteam-flex-official-site/",
+      "destination": "https://redteam.com/pricing/redteam/",
+      "permanent": false
+    },
+    {
+      "source": "/go/rfms-official-site/",
+      "destination": "https://www.cyncly.com/products/rfms-core",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
