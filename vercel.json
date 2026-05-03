@@ -647,6 +647,31 @@
       "permanent": false
     },
     {
+      "source": "/go/method-crm-official-site/",
+      "destination": "https://www.method.me/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/quickbooks-online-official-site/",
+      "destination": "https://quickbooks.intuit.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/xero-official-site/",
+      "destination": "https://www.xero.com/us/pricing-plans/",
+      "permanent": false
+    },
+    {
+      "source": "/go/freshbooks-official-site/",
+      "destination": "https://www.freshbooks.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/wave-official-site/",
+      "destination": "https://www.waveapps.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
