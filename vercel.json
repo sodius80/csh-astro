@@ -84,6 +84,7 @@
     { "source": "/go/buildxact-official-site/", "destination": "https://www.buildxact.com", "permanent": false },
     { "source": "/go/exayard-official-site/", "destination": "https://exayard.com/pricing", "permanent": false },
     { "source": "/go/fieldedge-official-site/", "destination": "https://www.fieldedge.com", "permanent": false },
+    { "source": "/go/fieldwire-official-site/", "destination": "https://www.fieldwire.com", "permanent": false },
     { "source": "/go/housecall-pro-official-site/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
     { "source": "/go/housecall-pro/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
     { "source": "/go/jobber-official-site/", "destination": "https://go.getjobber.com/wtuf58h3dc5t", "permanent": false },
@@ -94,6 +95,7 @@
     { "source": "/go/service-fusion/", "destination": "https://referrals.servicefusion.com/l/1CHRISHARPE72/", "permanent": false },
     { "source": "/go/servicetitan-official-site/", "destination": "https://www.servicetitan.com", "permanent": false },
     { "source": "/go/workiz-official-site/", "destination": "https://www.workiz.com", "permanent": false },
+    { "source": "/go/zuper-official-site/", "destination": "https://www.zuper.co", "permanent": false },
 
     { "source": "/best-construction-management-software-2026", "destination": "/best-construction-inventory-management-software-2026", "permanent": true },
     { "source": "/best-construction-management-software-2026/", "destination": "/best-construction-inventory-management-software-2026/", "permanent": true },
