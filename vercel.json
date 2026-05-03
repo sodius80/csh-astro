@@ -747,6 +747,36 @@
       "permanent": false
     },
     {
+      "source": "/go/bitumio-official-site/",
+      "destination": "https://bitumio.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/esub-official-site/",
+      "destination": "https://esub.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/estimator360-official-site/",
+      "destination": "https://estimator360.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/hcss-heavyjob-official-site/",
+      "destination": "https://www.hcss.com/products/construction-project-management-software/",
+      "permanent": false
+    },
+    {
+      "source": "/go/onecrew-official-site/",
+      "destination": "https://www.getonecrew.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/pavementsoft-official-site/",
+      "destination": "https://www.pavementsoft.com/",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
