@@ -82,6 +82,7 @@
     { "source": "/go/arborgold-official-site/", "destination": "https://arborgold.com/pricing/", "permanent": false },
     { "source": "/go/buildertrend-official-site/", "destination": "https://www.buildertrend.com", "permanent": false },
     { "source": "/go/buildxact-official-site/", "destination": "https://www.buildxact.com", "permanent": false },
+    { "source": "/go/exayard-official-site/", "destination": "https://exayard.com/pricing", "permanent": false },
     { "source": "/go/fieldedge-official-site/", "destination": "https://www.fieldedge.com", "permanent": false },
     { "source": "/go/housecall-pro-official-site/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },
     { "source": "/go/housecall-pro/", "destination": "https://housecallpro.partnerlinks.io/l1lt3au6la8b", "permanent": false },

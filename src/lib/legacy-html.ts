@@ -97,8 +97,10 @@ const pathMap: Record<string, string> = {
 
   // Affiliate redirects (keep as-is)
   '/go/arborgold-official-site/': '/go/arborgold-official-site/',
+  '/go/exayard-official-site/': '/go/exayard-official-site/',
   '/go/fieldedge-official-site/': '/go/fieldedge-official-site/',
   '/go/jobber-official-site/': '/go/jobber-official-site/',
+  '/go/knowify-official-site/': '/go/knowify-official-site/',
   '/go/servicetitan-official-site/': '/go/servicetitan-official-site/',
   '/go/workiz-official-site/': '/go/workiz-official-site/',
 };
