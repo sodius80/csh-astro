@@ -592,6 +592,66 @@
       "permanent": false
     },
     {
+      "source": "/go/albiware-official-site/",
+      "destination": "https://albiware.com/albi-pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/buildbook-official-site/",
+      "destination": "https://buildbook.co/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/dash-restoration-official-site/",
+      "destination": "https://www.nextgearsolutions.com/solutions/job-management/dash-restoration-business-management/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldrate-official-site/",
+      "destination": "https://fieldrate.app/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldfuze-official-site/",
+      "destination": "https://fieldfuze.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/home-inspector-pro-official-site/",
+      "destination": "https://homeinspectorpro.com/home-inspection-software-pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/homegauge-official-site/",
+      "destination": "https://www.homegauge.com/one/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/palmtech-official-site/",
+      "destination": "https://www.palmtech.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/psa-restoration-official-site/",
+      "destination": "https://canamsys.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/spectora-official-site/",
+      "destination": "https://www.spectora.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/tap-inspect-official-site/",
+      "destination": "https://www.tapinspect.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/xcelerate-restoration-official-site/",
+      "destination": "https://www.xlrestorationsoftware.com/",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
