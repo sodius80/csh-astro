@@ -682,6 +682,31 @@
       "permanent": false
     },
     {
+      "source": "/go/planswift-official-site/",
+      "destination": "https://www.planswift.com/checkout/",
+      "permanent": false
+    },
+    {
+      "source": "/go/sage-estimating-official-site/",
+      "destination": "https://www.sage.com/en-us/products/sage-estimating/",
+      "permanent": false
+    },
+    {
+      "source": "/go/sortly-official-site/",
+      "destination": "https://www.sortly.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/stack-official-site/",
+      "destination": "https://www.stackct.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/zoho-inventory-official-site/",
+      "destination": "https://www.zoho.com/us/inventory/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
