@@ -777,6 +777,71 @@
       "permanent": false
     },
     {
+      "source": "/go/aurora-solar-official-site/",
+      "destination": "https://aurorasolar.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/bluebeam-official-site/",
+      "destination": "https://www.bluebeam.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/clean-smarts-official-site/",
+      "destination": "https://www.cleansmarts.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/gosolo-official-site/",
+      "destination": "https://gosolo.io/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/helioscope-official-site/",
+      "destination": "https://helioscope.aurorasolar.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/janitorial-manager-official-site/",
+      "destination": "https://www.janitorialmanager.com/plans-pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/jonas-construction-official-site/",
+      "destination": "https://www.jonasconstruction.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/masonry-estimating-made-easy-official-site/",
+      "destination": "https://www.masonryestimatingmadeeasy.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/opensolar-official-site/",
+      "destination": "https://www.opensolar.com/free/",
+      "permanent": false
+    },
+    {
+      "source": "/go/solargraf-official-site/",
+      "destination": "https://www.solargraf.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/sweepops-official-site/",
+      "destination": "https://sweepops.app/compare/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/swept-official-site/",
+      "destination": "https://sweptworks.com/compare-plans",
+      "permanent": false
+    },
+    {
+      "source": "/go/winteam-official-site/",
+      "destination": "https://teamsoftware.com/winteam",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
