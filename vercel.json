@@ -387,6 +387,11 @@
       "permanent": false
     },
     {
+      "source": "/go/elromco-official-site/",
+      "destination": "https://www.elromco.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/jobnimbus-official-site/",
       "destination": "https://www.jobnimbus.com",
       "permanent": false
@@ -412,6 +417,16 @@
       "permanent": false
     },
     {
+      "source": "/go/movegistics-official-site/",
+      "destination": "https://movegistics.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/moverstech-crm-official-site/",
+      "destination": "https://moverstech.com/plans/",
+      "permanent": false
+    },
+    {
       "source": "/go/pandadoc-official-site/",
       "destination": "https://www.pandadoc.com/pricing/",
       "permanent": false
@@ -434,6 +449,11 @@
     {
       "source": "/go/proposify-official-site/",
       "destination": "https://www.proposify.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/pipedrive-official-site/",
+      "destination": "https://www.pipedrive.com/en/pricing",
       "permanent": false
     },
     {
@@ -489,6 +509,11 @@
     {
       "source": "/go/sketchup-official-site/",
       "destination": "https://www.sketchup.com/en/plans-and-pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/smartmoving-official-site/",
+      "destination": "https://www.smartmoving.com/pricing",
       "permanent": false
     },
     {
