@@ -652,6 +652,36 @@
       "permanent": false
     },
     {
+      "source": "/go/amag-technology-official-site/",
+      "destination": "https://www.amag.com/resources/symmetry-security-management-system/",
+      "permanent": false
+    },
+    {
+      "source": "/go/builder-prime-official-site/",
+      "destination": "https://www.builderprime.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/genetec-security-center-official-site/",
+      "destination": "https://www.genetec.com/products/unified-security/security-center-saas",
+      "permanent": false
+    },
+    {
+      "source": "/go/hid-global-official-site/",
+      "destination": "https://www.hidglobal.com/solutions/access-control-systems",
+      "permanent": false
+    },
+    {
+      "source": "/go/houzz-pro-official-site/",
+      "destination": "https://www.houzz.com/houzz-pro/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/leap-official-site/",
+      "destination": "https://leaptodigital.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
