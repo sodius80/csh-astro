@@ -612,6 +612,26 @@
       "permanent": true
     },
     {
+      "source": "/go/pestpac-official-site/",
+      "destination": "https://www.pestpac.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldroutes-official-site/",
+      "destination": "https://fieldroutes.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/briostack-official-site/",
+      "destination": "https://www.briostack.com/request-demo/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldproxy-official-site/",
+      "destination": "https://fieldproxy.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
