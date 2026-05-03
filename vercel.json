@@ -842,6 +842,26 @@
       "permanent": false
     },
     {
+      "source": "/go/attentive-ai-official-site/",
+      "destination": "https://attentive.ai/",
+      "permanent": false
+    },
+    {
+      "source": "/go/buildops-official-site/",
+      "destination": "https://buildops.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/greenlite-official-site/",
+      "destination": "https://greenlite.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/tallie-official-site/",
+      "destination": "https://www.tallie.io/pricing",
+      "permanent": false
+    },
+    {
       "source": "/housecall-pro-vs-jobber",
       "destination": "/jobber-vs-housecall-pro",
       "permanent": true
