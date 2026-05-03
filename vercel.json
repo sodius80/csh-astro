@@ -302,6 +302,11 @@
       "permanent": false
     },
     {
+      "source": "/go/fieldpulse-official-site/",
+      "destination": "https://www.fieldpulse.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/fieldwire-official-site/",
       "destination": "https://www.fieldwire.com",
       "permanent": false
@@ -417,6 +422,11 @@
       "permanent": false
     },
     {
+      "source": "/go/servicem8-official-site/",
+      "destination": "https://www.servicem8.com/us/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/servicetitan-official-site/",
       "destination": "https://www.servicetitan.com",
       "permanent": false
@@ -429,6 +439,11 @@
     {
       "source": "/go/sketchup-official-site/",
       "destination": "https://www.sketchup.com/en/plans-and-pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/tradify-official-site/",
+      "destination": "https://www.tradifyhq.com/us/pricing",
       "permanent": false
     },
     {
