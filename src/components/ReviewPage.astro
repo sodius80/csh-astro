@@ -38,6 +38,13 @@ const heroDims = getImgDims(d.heroImage);
 const all = await getCollection('reviews');
 const siteUrl = 'https://www.contractorsoftwarehub.com';
 
+function schemaOfferPrice(startingPrice: string): string | undefined {
+  const match = startingPrice.match(/\d[\d,]*(?:\.\d+)?/);
+  return match ? match[0].replace(/,/g, '') : undefined;
+}
+
+const offerPrice = schemaOfferPrice(d.startingPrice);
+
 // Build related reviews: score by category/trade overlap, then pick top 3
 const scored = all.filter(r => r.id !== entry.id).map(r => {
   let score = 0;
@@ -109,9 +116,13 @@ const reviewSchema = JSON.stringify({
     "description": d.description,
     "offers": {
       "@type": "Offer",
-      "price": d.startingPrice ? d.startingPrice.replace(/[^0-9.]/g, '') : "225",
-      "priceCurrency": "USD",
-      "priceValidUntil": `${new Date().getFullYear()}-12-31`,
+      ...(offerPrice
+        ? {
+            "price": offerPrice,
+            "priceCurrency": "USD",
+            "priceValidUntil": `${new Date().getFullYear()}-12-31`
+          }
+        : { "description": d.startingPrice }),
       "availability": "https://schema.org/InStock",
       "url": `https://www.${d.vendor.toLowerCase().replace(/\s+/g, '')}.com/pricing`
     },
