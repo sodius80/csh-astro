@@ -24,6 +24,8 @@ const ROUNDUP_ROOT_SLUGS: Record<string, string> = {
 export function reviewRootSlug(id: string): string {
   // Prevent double '-review' suffix for IDs that already contain it (e.g. procore-review-2026)
   if (id.includes('-review')) return id;
+  // Comparison slugs (containing -vs-) already render at root without -review
+  if (id.includes('-vs-')) return id;
   return `${id}-review`;
 }
 
