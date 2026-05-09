@@ -1062,6 +1062,66 @@
       "permanent": false
     },
     {
+      "source": "/go/square-official-site/",
+      "destination": "https://squareup.com/us/en/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/go/zoho-invoice-official-site/",
+      "destination": "https://www.zoho.com/us/invoice",
+      "permanent": false
+    },
+    {
+      "source": "/go/tenna-official-site/",
+      "destination": "https://www.tenna.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/hcss-official-site/",
+      "destination": "https://www.hcss.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/samsara-official-site/",
+      "destination": "https://www.samsara.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/fleetio-official-site/",
+      "destination": "https://www.fleetio.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/motive-official-site/",
+      "destination": "https://www.gomotive.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/autodesk-tradetapp-official-site/",
+      "destination": "https://construction.autodesk.com/products/tradetapp",
+      "permanent": false
+    },
+    {
+      "source": "/go/highwire-official-site/",
+      "destination": "https://www.highwire.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/constrafor-official-site/",
+      "destination": "https://www.constrafor.com",
+      "permanent": false
+    },
+    {
+      "source": "/go/oracle-textura-official-site/",
+      "destination": "https://www.oracle.com/industries/construction-engineering/textura-payment-management",
+      "permanent": false
+    },
+    {
+      "source": "/go/quickbooks-official-site/",
+      "destination": "https://quickbooks.intuit.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true

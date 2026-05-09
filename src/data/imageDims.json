@@ -374,5 +374,17 @@
   "zuper-vs-acculynx-2026-hero.jpg": {
     "width": 1880,
     "height": 1253
+  },
+  "invoicing-hero.jpg": {
+    "width": 1024,
+    "height": 576
+  },
+  "equipment-tracking-hero.jpg": {
+    "width": 1024,
+    "height": 576
+  },
+  "subcontractor-management-hero.jpg": {
+    "width": 1024,
+    "height": 576
   }
 }
