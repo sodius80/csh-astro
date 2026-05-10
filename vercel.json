@@ -1122,6 +1122,21 @@
       "permanent": false
     },
     {
+      "source": "/go/konstructiq-official-site/",
+      "destination": "https://konstructiq.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/dave-official-site/",
+      "destination": "https://www.buildwithdave.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/handoff-official-site/",
+      "destination": "https://handoff.ai/",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true

@@ -7,6 +7,7 @@ interface Props {
   rank: number;
   name: string;
   slug?: string;
+  hasReview?: boolean;
   rating: 'top-pick' | 'recommended' | 'conditional' | 'skip';
   tag: string;
   bestFor: string;
@@ -22,6 +23,7 @@ const {
   rank,
   name,
   slug,
+  hasReview = false,
   rating,
   tag,
   bestFor,
@@ -33,7 +35,7 @@ const {
   affiliateUrl,
   isFirst = false,
 } = Astro.props;
-const reviewUrl = slug ? `/${reviewRootSlug(slug)}/` : null;
+const reviewUrl = slug && hasReview ? `/${reviewRootSlug(slug)}/` : null;
 const rotate = [-5, 3, -4, 4, -3, 2][(rank - 1) % 6];
 ---
 <div class={`ranked ${isFirst ? 'first' : ''}`} id={`rank-${rank}`}>

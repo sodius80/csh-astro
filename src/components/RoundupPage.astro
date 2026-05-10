@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DoYouNeedThis from './DoYouNeedThis.astro';
 import RankedEntry from './RankedEntry.astro';
@@ -25,6 +26,10 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const heroDims = getImgDims(d.heroImage);
+
+// Check which ranked products have actual review pages
+const reviews = await getCollection('reviews');
+const reviewSlugs = new Set(reviews.map((r) => r.id));
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
@@ -89,6 +94,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
             rank={r.rank}
             name={r.name}
             slug={r.slug}
+            hasReview={r.slug ? reviewSlugs.has(r.slug) : false}
             rating={r.rating}
             tag={r.tag}
             bestFor={r.bestFor}

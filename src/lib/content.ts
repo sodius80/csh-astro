@@ -110,8 +110,14 @@ export interface FinderItem {
   tags: string[];
 }
 
-export function buildFinderItems(reviews: ReviewEntry[], roundups: RoundupEntry[], guides: GuideEntry[] = []): FinderItem[] {
+export function buildFinderItems(
+  reviews: ReviewEntry[],
+  roundups: RoundupEntry[],
+  guides: GuideEntry[] = [],
+  reviewSlugs?: Set<string>,
+): FinderItem[] {
   const items: FinderItem[] = [];
+  const slugSet = reviewSlugs ?? new Set(reviews.map((r) => r.id));
 
   for (const review of reviews) {
     items.push({
@@ -128,12 +134,13 @@ export function buildFinderItems(reviews: ReviewEntry[], roundups: RoundupEntry[
 
   for (const roundup of roundups) {
     for (const ranked of roundup.data.ranked) {
+      const hasReview = ranked.slug ? slugSet.has(ranked.slug) : false;
       items.push({
         name: ranked.name,
         category: roundup.data.category,
         price: ranked.startingPrice,
         bestFor: ranked.bestFor,
-        href: ranked.slug ? `/${reviewRootSlug(ranked.slug)}/` : `/${roundupRootSlug(roundup.id)}/`,
+        href: hasReview ? `/${reviewRootSlug(ranked.slug!)}/` : `/${roundupRootSlug(roundup.id)}/`,
         type: 'roundup',
         rating: ranked.rating,
         tags: [roundup.data.category, ranked.name, ranked.bestFor, ranked.tag],
