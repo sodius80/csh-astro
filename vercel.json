@@ -1133,7 +1133,7 @@
     },
     {
       "source": "/go/handoff-official-site/",
-      "destination": "https://handoff.ai/",
+      "destination": "https://handoff.ai/?linkId=lp_756439&sourceId=csh&tenantId=handoff",
       "permanent": false
     },
     {
