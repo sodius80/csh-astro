@@ -3,6 +3,17 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
+import imageDims from '../data/imageDims.json';
+
+function getImgDims(imgPath: string): { width: number; height: number } | null {
+  if (!imgPath) return null;
+  const filename = imgPath.split('/').pop();
+  const clean = filename?.split('?')[0];
+  if (clean && (imageDims as Record<string, { width: number; height: number }>)[clean]) {
+    return (imageDims as Record<string, { width: number; height: number }>)[clean];
+  }
+  return null;
+}
 
 interface Props {
   entry: CollectionEntry<'comparisons'>;
@@ -14,6 +25,7 @@ const reviewSlugs = new Set(reviews.map((review) => review.id));
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const heroDims = getImgDims(d.heroImage);
 const vendorAReviewUrl = reviewSlugs.has(d.vendorA.slug) ? `/${reviewRootSlug(d.vendorA.slug)}/` : null;
 const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/${reviewRootSlug(d.vendorB.slug)}/` : null;
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
@@ -49,6 +61,14 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
       </div>
     </div>
   </article>
+
+  {d.heroImage && (
+    <section class="hero-img-section">
+      <div class="wrap-content">
+        <img src={d.heroImage} alt={`${d.vendorA.name} vs ${d.vendorB.name}`} class="hero-img" width={heroDims?.width} height={heroDims?.height} />
+      </div>
+    </section>
+  )}
 
   <!-- SHORT ANSWER -->
   <section class="short-answer">
@@ -399,6 +419,19 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
     align-items: flex-start;
   }
 
+  .hero-img-section {
+    padding: 36px 28px;
+    border-bottom: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+  .hero-img {
+    width: 100%;
+    height: auto;
+    border: 1.5px solid var(--ink);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
   @media (max-width: 1023px) {
     .sa-grid { grid-template-columns: 1fr; gap: 28px; text-align: left; }
     .sa-a { text-align: left; }
@@ -410,6 +443,6 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
     .choose-grid, .dual-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 767px) {
-    .masthead, .section-pad, .short-answer, .dual-cta { padding-left: 20px; padding-right: 20px; }
+    .masthead, .section-pad, .short-answer, .dual-cta, .hero-img-section { padding-left: 20px; padding-right: 20px; }
   }
 </style>
