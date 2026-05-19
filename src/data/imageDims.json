@@ -394,5 +394,9 @@
   "clear-estimates-2026-hero.jpg": {
     "width": 1880,
     "height": 1253
+  },
+  "houzz-pro-hero.jpg": {
+    "width": 1200,
+    "height": 799
   }
 }
