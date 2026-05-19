@@ -573,7 +573,7 @@
     },
     {
       "source": "/go/quoteiq-official-site/",
-      "destination": "https://myquoteiq.com/pricing/",
+      "destination": "https://admin-quoteiq.web.app/register?via=csh",
       "permanent": false
     },
     {
