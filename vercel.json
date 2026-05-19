@@ -1137,6 +1137,26 @@
       "permanent": false
     },
     {
+      "source": "/go/jobber-free-trial/",
+      "destination": "https://go.getjobber.com/wtuf58h3dc5t",
+      "permanent": false
+    },
+    {
+      "source": "/go/jobber-pricing/",
+      "destination": "https://getjobber.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldpulse-demo/",
+      "destination": "https://www.fieldpulse.com/demo/",
+      "permanent": false
+    },
+    {
+      "source": "/go/fieldpulse-pricing/",
+      "destination": "https://www.fieldpulse.com/pricing/",
+      "permanent": false
+    },
+    {
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
