@@ -398,5 +398,9 @@
   "houzz-pro-hero.jpg": {
     "width": 1200,
     "height": 799
+  },
+  "leap-hero.jpg": {
+    "width": 1024,
+    "height": 576
   }
 }
