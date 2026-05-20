@@ -25,6 +25,8 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   description={d.description}
   active="comparisons"
   ogImage={d.heroImage}
+  pubDate={d.pubDate}
+  updatedDate={d.updatedDate ?? d.pubDate}
 >
   <article class="masthead">
     <div class="wrap-content">

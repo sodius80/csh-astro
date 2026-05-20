@@ -10,6 +10,8 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   schema?: string | string[];
+  pubDate?: Date;
+  updatedDate?: Date;
 }
 const {
   title,
@@ -18,6 +20,8 @@ const {
   canonical,
   ogImage,
   schema,
+  pubDate,
+  updatedDate,
 } = Astro.props;
 const siteUrl = 'https://www.contractorsoftwarehub.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
@@ -61,6 +65,8 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  {pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
+  {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
   {schema &&
     (Array.isArray(schema) ? schema : [schema]).map((s) => (
       <script type="application/ld+json" set:html={s} />

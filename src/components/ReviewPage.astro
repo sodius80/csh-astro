@@ -185,6 +185,8 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   description={d.description}
   active="reviews"
   ogImage={d.heroImage}
+  pubDate={d.pubDate}
+  updatedDate={d.updatedDate ?? d.pubDate}
   schema={schemas}
 >
   <!-- Sticky affiliate bar -->

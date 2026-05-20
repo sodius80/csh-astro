@@ -27,6 +27,8 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   description={d.description}
   active="home"
   ogImage={d.heroImage}
+  pubDate={d.pubDate}
+  updatedDate={d.updatedDate ?? d.pubDate}
 >
   <section class="guide-meta-strip">
     <div class="wrap-content guide-meta-inner">

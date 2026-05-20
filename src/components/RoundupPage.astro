@@ -39,6 +39,8 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   description={d.description}
   active="bestof"
   ogImage={d.heroImage}
+  pubDate={d.pubDate}
+  updatedDate={d.updatedDate ?? d.pubDate}
 >
   <section class="masthead blueprint-bg">
     <div class="wrap-content">
