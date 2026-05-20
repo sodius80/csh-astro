@@ -175,13 +175,16 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
     .csh-search-inner {
       background: #f3efe6;
       width: 100%; max-width: 640px;
+      max-height: calc(100vh - 160px);
       border-radius: 8px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       overflow: hidden;
+      display: flex; flex-direction: column;
     }
     .csh-search-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 20px 0;
+      flex-shrink: 0;
     }
     .csh-search-label {
       font-family: 'SF Mono', 'Menlo', monospace;
@@ -195,7 +198,12 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
       opacity: 0.5; transition: opacity 0.12s;
     }
     .csh-search-close:hover { opacity: 1; }
-    .csh-search-inner .pagefind-ui { padding: 0 20px 20px; }
+    .csh-search-inner .pagefind-ui {
+      padding: 0 20px 20px;
+      overflow-y: auto;
+      flex: 1;
+      min-height: 0;
+    }
     .csh-search-inner .pagefind-ui__search-input {
       border: 1.5px solid #1a2332; border-radius: 4px;
       padding: 10px 14px; font-size: 16px;
