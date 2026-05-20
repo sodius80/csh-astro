@@ -36,7 +36,7 @@ const link = (key: string) => active === key ? 'active' : '';
     <a class={link('how')} href="/how-we-review/">How We Cover</a>
     <a class={link('about')} href="/about/">About</a>
   </nav>
-  <button class="search-btn" type="button" disabled aria-disabled="true" title="Coming soon">
+  <button class="search-btn" type="button" onclick="cshOpenSearch()" title="Search (⌘K)">
     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="m11 11 4 4"/></svg>
     Search
     <span class="kbd">⌘K</span>

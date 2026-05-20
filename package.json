@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "check:links": "node scripts/check-generated-links.mjs",
@@ -16,8 +16,12 @@
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
     "@astrojs/sitemap": "^3.7.2",
+    "@pagefind/default-ui": "^1.5.2",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.8",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "pagefind": "^1.5.2"
   }
 }
