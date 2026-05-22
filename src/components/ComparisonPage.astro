@@ -19,12 +19,105 @@ const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/${reviewRootSlug(d.
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
+
+// ─── JSON-LD Schema ───
+const siteUrl = 'https://www.contractorsoftwarehub.com';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// BreadcrumbList
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [{ name: "Home", item: `${siteUrl}/` }];
+let pathAcc = "";
+for (let i = 0; i < segments.length; i++) {
+  const seg = segments[i];
+  pathAcc += `/${seg}`;
+  const name = seg.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+  if (i === segments.length - 1) {
+    breadcrumbItems.push({ name: d.title, item: `${siteUrl}${pathAcc}/` });
+  } else {
+    breadcrumbItems.push({ name, item: `${siteUrl}${pathAcc}/` });
+  }
+}
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${pageUrl}#breadcrumb`,
+  "itemListElement": breadcrumbItems.map((item, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": item.name,
+    "item": item.item
+  }))
+});
+
+// Review schema for vendorA
+const buildVendorReview = (vendor: typeof d.vendorA, side: 'A' | 'B') => {
+  const vendorUrlSlug = vendor.slug.replace(/-/g, '').toLowerCase();
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "@id": `${pageUrl}#review-${side}`,
+    "name": `${vendor.name} review in ${d.title}`,
+    "url": pageUrl,
+    "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
+    "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
+    "author": {
+      "@type": "Person",
+      "name": d.author,
+      "url": `${siteUrl}/about/`,
+      "jobTitle": "Editor",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Contractor Software Hub",
+        "url": siteUrl
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Contractor Software Hub",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/csh-logo.png`
+      }
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": vendor.rating === 'top-pick' ? '5' : vendor.rating === 'recommended' ? '4' : vendor.rating === 'conditional' ? '3' : '2',
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "itemReviewed": {
+      "@type": "SoftwareApplication",
+      "@id": `${pageUrl}#software-${side}`,
+      "name": vendor.name,
+      "url": `https://www.${vendorUrlSlug}.com/`,
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": `${d.category} CRM and Project Management`,
+      "operatingSystem": "Web, iOS, Android",
+      "description": d.description,
+      "offers": {
+        "@type": "Offer",
+        ...(vendor.startingPrice
+          ? { "description": vendor.startingPrice }
+          : {}),
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  });
+};
+
+const vendorAReview = buildVendorReview(d.vendorA, 'A');
+const vendorBReview = buildVendorReview(d.vendorB, 'B');
+const schemas = [breadcrumbSchema, vendorAReview, vendorBReview];
+---|---
 ---
 <BaseLayout
   title={d.title}
   description={d.description}
   active="comparisons"
   ogImage={d.heroImage}
+  schema={schemas}
   pubDate={d.pubDate}
   updatedDate={d.updatedDate ?? d.pubDate}
 >

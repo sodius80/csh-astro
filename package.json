@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:links": "node scripts/check-generated-links.mjs",
+    "lint:mdx": "node scripts/lint-mdx.mjs",
     "validate": "npm run build && npm run check:links"
   },
   "dependencies": {
