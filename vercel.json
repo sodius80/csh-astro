@@ -458,7 +458,7 @@
     },
     {
       "source": "/go/quickbooks-time-official-site/",
-      "destination": "https://quickbooks.intuit.com/time-tracking/pricing/",
+      "destination": "https://quickbooks.intuit.com/time-tracking/",
       "permanent": false
     },
     {
