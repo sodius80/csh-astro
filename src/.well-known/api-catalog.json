@@ -1,0 +1,26 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.contractorsoftwarehub.com/docs/",
+      "rel": [
+        {
+          "rel": "service-doc",
+          "description": "API documentation"
+        },
+        {
+          "rel": "service-desc",
+          "description": "OpenAPI specification"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.contractorsoftwarehub.com/robots.txt",
+      "rel": [
+        {
+          "rel": "service",
+          "description": "Service endpoint"
+        }
+      ]
+    }
+  ]
+}

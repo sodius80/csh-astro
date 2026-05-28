@@ -1161,5 +1161,11 @@
       "destination": "/images/transparent-1x1.png",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
   ]
 }

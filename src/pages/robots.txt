@@ -1,0 +1,8 @@
+# Content Signals for AI Agents
+Content-Signal: ai-train=no, search=yes, ai-input=no
+Content-Signal: ai-ratings=yes
+
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-content/uploads/
