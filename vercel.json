@@ -262,6 +262,11 @@
       "permanent": false
     },
     {
+      "source": "/go/timemark-official-site/",
+      "destination": "https://www.timemark.com",
+      "permanent": false
+    },
+    {
       "source": "/go/clockify-official-site/",
       "destination": "https://clockify.me/pricing",
       "permanent": false
