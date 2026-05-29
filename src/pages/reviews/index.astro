@@ -420,6 +420,12 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     .filter-bar { position: static; padding: 16px 20px; }
     .filter-grid { grid-template-columns: 1fr; gap: 12px; }
     .filter-grid > div:last-child { text-align: left; }
+    .filter-grid .btn-row[aria-label="Filter by trade"] {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+    }
     .matrix { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .matrix-header, .matrix-row {
       grid-template-columns: 40px minmax(160px, 1.2fr) 110px 140px 80px 110px 120px 90px;
