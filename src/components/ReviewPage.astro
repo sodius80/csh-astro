@@ -581,6 +581,8 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   .verdict-big {
     font-size: clamp(40px, 5vw, 54px);
     line-height: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .verdict-caption {
     font-family: var(--mono);
@@ -675,7 +677,8 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     .sticky-disclose { display: none; }
     .masthead-grid { grid-template-columns: 1fr; gap: 28px; }
     .stamp-col { flex-direction: row; align-items: center; gap: 16px; }
-    .verdict-grid { grid-template-columns: 1fr; gap: 24px; }
+    .verdict-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .verdict-grid > div:first-child { grid-column: 1 / -1; }
     .right-notfor { grid-template-columns: 1fr; }
     .also-grid { grid-template-columns: 1fr; gap: 16px; }
   }
