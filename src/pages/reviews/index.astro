@@ -63,11 +63,16 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
       </div>
       <div>
         <div class="eyebrow eyebrow-muted" style="margin-bottom:8px;">Filter by trade</div>
-        <div class="btn-row" role="group" aria-label="Filter by trade">
-          <button class="fbtn active" data-filter="trade" data-value="all">Any</button>
-          {allTrades.map(t => (
-            <button class="fbtn" data-filter="trade" data-value={t}>{t}</button>
-          ))}
+        <div class="trade-wrap" id="trade-wrap">
+          <div class="btn-row collapsed" id="trade-row" role="group" aria-label="Filter by trade">
+            <button class="fbtn active" data-filter="trade" data-value="all">Any</button>
+            {allTrades.map(t => (
+              <button class="fbtn" data-filter="trade" data-value={t}>{t}</button>
+            ))}
+          </div>
+          <button class="trade-toggle" id="trade-toggle" type="button" onclick="toggleTrades()" aria-expanded="false" data-count={allTrades.length}>
+            Show all {allTrades.length} trades <span class="trade-arrow">▼</span>
+          </button>
         </div>
       </div>
       <div style="text-align:right;">
@@ -236,6 +241,19 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
 
       apply();
     })();
+
+    window.toggleTrades = function() {
+      const row = document.getElementById('trade-row');
+      const wrap = document.getElementById('trade-wrap');
+      const toggle = document.getElementById('trade-toggle');
+      if (!row || !wrap || !toggle) return;
+      const open = row.classList.toggle('collapsed');
+      wrap.classList.toggle('trade-row-open');
+      toggle.setAttribute('aria-expanded', !open);
+      toggle.innerHTML = open
+        ? 'Show all ' + toggle.getAttribute('data-count') + ' trades <span class="trade-arrow">▼</span>'
+        : 'Show fewer <span class="trade-arrow">▼</span>';
+    };
   </script>
 </BaseLayout>
 
@@ -282,6 +300,25 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     gap: 6px;
     flex-wrap: wrap;
   }
+  .trade-wrap { position: relative; }
+  .trade-toggle {
+    display: none;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 0;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+  }
+  .trade-toggle:hover { text-decoration: underline; }
+  .trade-arrow { display: inline-block; transition: transform 0.2s; margin-left: 4px; }
+  .trade-row-open .trade-arrow { transform: rotate(180deg); }
   .fbtn {
     padding: 7px 12px;
     border: 1.5px solid var(--ink);
@@ -420,6 +457,11 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     .filter-bar { position: static; padding: 16px 20px; }
     .filter-grid { grid-template-columns: 1fr; gap: 12px; }
     .filter-grid > div:last-child { text-align: left; }
+    .trade-toggle { display: block; }
+    .btn-row.collapsed {
+      max-height: 84px;
+      overflow: hidden;
+    }
     .matrix { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .matrix-header, .matrix-row {
       grid-template-columns: 40px minmax(160px, 1.2fr) 110px 140px 80px 110px 120px 90px;
