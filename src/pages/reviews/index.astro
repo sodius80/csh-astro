@@ -280,7 +280,10 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
   .btn-row {
     display: flex;
     gap: 6px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
   }
   .fbtn {
     padding: 7px 12px;
@@ -412,7 +415,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     align-items: center;
   }
 
-  @media (max-width: 1023px) {
+  @media (max-width: 1199px) {
     .page-hero { padding: 28px 20px 24px; }
     .hero-title { font-size: clamp(36px, 5.5vw, 56px); }
     .hero-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -420,12 +423,6 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     .filter-bar { position: static; padding: 16px 20px; }
     .filter-grid { grid-template-columns: 1fr; gap: 12px; }
     .filter-grid > div:last-child { text-align: left; }
-    .filter-grid .btn-row[aria-label="Filter by trade"] {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 8px;
-    }
     .matrix { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .matrix-header, .matrix-row {
       grid-template-columns: 40px minmax(160px, 1.2fr) 110px 140px 80px 110px 120px 90px;
