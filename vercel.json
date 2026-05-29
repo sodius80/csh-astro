@@ -657,6 +657,11 @@
       "permanent": false
     },
     {
+      "source": "/go/builderprime-official-site/",
+      "destination": "https://www.builderprime.com/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/builder-prime-official-site/",
       "destination": "https://www.builderprime.com/pricing",
       "permanent": false
