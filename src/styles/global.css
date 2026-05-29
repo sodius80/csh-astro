@@ -719,9 +719,9 @@ a { color: inherit; }
   .nav { flex-wrap: wrap; }
   .search-btn { display: none; }
   .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .top-strip { padding: 8px 14px; font-size: 10px; }
-  .top-strip .msg { font-size: 11.5px; }
-  .dateline { padding: 7px 14px; font-size: 9.5px; }
+  .top-strip { padding: 6px 14px; font-size: 9.5px; }
+  .top-strip .msg { display: none; }
+  .dateline { display: none; }
 }
 @media (max-width: 767px) {
   .site-footer-grid { grid-template-columns: 1fr; }

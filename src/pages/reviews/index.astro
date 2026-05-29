@@ -413,9 +413,12 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
   }
 
   @media (max-width: 1023px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-    .hero-dek { padding-left: 0; border-left: none; border-top: 1.5px solid var(--ink); padding-top: 16px; }
-    .filter-grid { grid-template-columns: 1fr; gap: 16px; }
+    .page-hero { padding: 28px 20px 24px; }
+    .hero-title { font-size: clamp(36px, 5.5vw, 56px); }
+    .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+    .hero-dek { padding-left: 0; border-left: none; border-top: 1.5px solid var(--ink); padding-top: 12px; }
+    .filter-bar { position: static; padding: 16px 20px; }
+    .filter-grid { grid-template-columns: 1fr; gap: 12px; }
     .filter-grid > div:last-child { text-align: left; }
     .matrix-header, .matrix-row {
       grid-template-columns: 40px 1fr 110px 140px 80px 110px 120px 90px;
