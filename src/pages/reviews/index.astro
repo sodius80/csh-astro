@@ -449,6 +449,13 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     align-items: center;
   }
 
+  @media (max-width: 1399px) {
+    .trade-toggle { display: block; }
+    .btn-row.collapsed {
+      max-height: 84px;
+      overflow: hidden;
+    }
+  }
   @media (max-width: 1199px) {
     .page-hero { padding: 28px 20px 24px; }
     .hero-title { font-size: clamp(36px, 5.5vw, 56px); }
