@@ -258,9 +258,8 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
       const featured = document.getElementById('trade-featured');
       const full = document.getElementById('trade-row');
       if (!featured || !full) return;
-      const showingFeatured = featured.style.display !== 'none';
-      featured.style.display = showingFeatured ? 'none' : '';
-      full.style.display = showingFeatured ? '' : 'none';
+      featured.classList.toggle('hidden');
+      full.classList.toggle('hidden');
     };
   </script>
 </BaseLayout>
