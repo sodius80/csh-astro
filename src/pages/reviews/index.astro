@@ -18,6 +18,9 @@ const byRating = {
 };
 
 const allTrades = Array.from(new Set(sorted.flatMap(r => r.data.trades))).sort();
+const FEATURED_TRADES = new Set(['Roofing', 'HVAC', 'Plumbing', 'Electrical', 'General Contracting', 'Field Service']);
+const featuredTrades = allTrades.filter(t => FEATURED_TRADES.has(t));
+const otherTrades = allTrades.filter(t => !FEATURED_TRADES.has(t));
 const stampMap = { 'top-pick': 'TOP PICK', recommended: 'RECOMMENDED', conditional: 'CONDITIONAL', skip: 'SKIP' };
 const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', conditional: 'var(--navy)', skip: 'var(--red)' };
 ---
@@ -64,15 +67,24 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
       <div>
         <div class="eyebrow eyebrow-muted" style="margin-bottom:8px;">Filter by trade</div>
         <div class="trade-wrap" id="trade-wrap">
-          <div class="btn-row collapsed" id="trade-row" role="group" aria-label="Filter by trade">
+          <div class="btn-row" id="trade-featured" role="group" aria-label="Filter by trade">
+            <button class="fbtn active" data-filter="trade" data-value="all">Any</button>
+            {featuredTrades.map(t => (
+              <button class="fbtn" data-filter="trade" data-value={t}>{t}</button>
+            ))}
+            <button class="trade-toggle" id="trade-toggle" type="button" onclick="toggleTrades()" aria-expanded="false" data-total={allTrades.length} data-featured={featuredTrades.length}>
+              +{allTrades.length - featuredTrades.length} more
+            </button>
+          </div>
+          <div class="btn-row hidden" id="trade-row" role="group">
             <button class="fbtn active" data-filter="trade" data-value="all">Any</button>
             {allTrades.map(t => (
               <button class="fbtn" data-filter="trade" data-value={t}>{t}</button>
             ))}
+            <button class="trade-toggle" id="trade-toggle-full" type="button" onclick="toggleTrades()">
+              Show fewer ▲
+            </button>
           </div>
-          <button class="trade-toggle" id="trade-toggle" type="button" onclick="toggleTrades()" aria-expanded="false" data-count={allTrades.length}>
-            Show all {allTrades.length} trades <span class="trade-arrow">▼</span>
-          </button>
         </div>
       </div>
       <div style="text-align:right;">
@@ -243,16 +255,12 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     })();
 
     window.toggleTrades = function() {
-      const row = document.getElementById('trade-row');
-      const wrap = document.getElementById('trade-wrap');
-      const toggle = document.getElementById('trade-toggle');
-      if (!row || !wrap || !toggle) return;
-      const open = row.classList.toggle('collapsed');
-      wrap.classList.toggle('trade-row-open');
-      toggle.setAttribute('aria-expanded', !open);
-      toggle.innerHTML = open
-        ? 'Show all ' + toggle.getAttribute('data-count') + ' trades <span class="trade-arrow">▼</span>'
-        : 'Show fewer <span class="trade-arrow">▼</span>';
+      const featured = document.getElementById('trade-featured');
+      const full = document.getElementById('trade-row');
+      if (!featured || !full) return;
+      const showingFeatured = featured.style.display !== 'none';
+      featured.style.display = showingFeatured ? 'none' : '';
+      full.style.display = showingFeatured ? '' : 'none';
     };
   </script>
 </BaseLayout>
@@ -302,23 +310,24 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
   }
   .trade-wrap { position: relative; }
   .trade-toggle {
-    display: none;
     font-family: var(--mono);
-    font-size: 10.5px;
+    font-size: 9.5px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--orange);
-    background: none;
-    border: none;
+    background: transparent;
+    border: 1.5px solid var(--orange);
     cursor: pointer;
-    padding: 4px 0;
+    padding: 5px 10px;
     font-weight: 600;
-    width: 100%;
-    text-align: left;
+    border-radius: 0;
+    white-space: nowrap;
   }
-  .trade-toggle:hover { text-decoration: underline; }
-  .trade-arrow { display: inline-block; transition: transform 0.2s; margin-left: 4px; }
-  .trade-row-open .trade-arrow { transform: rotate(180deg); }
+  .trade-toggle:hover {
+    background: var(--orange);
+    color: var(--paper);
+  }
+  .hidden { display: none; }
   .fbtn {
     padding: 7px 12px;
     border: 1.5px solid var(--ink);
@@ -449,13 +458,6 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     align-items: center;
   }
 
-  @media (max-width: 1399px) {
-    .trade-toggle { display: block; }
-    .btn-row.collapsed {
-      max-height: 84px;
-      overflow: hidden;
-    }
-  }
   @media (max-width: 1199px) {
     .page-hero { padding: 28px 20px 24px; }
     .hero-title { font-size: clamp(36px, 5.5vw, 56px); }
@@ -464,11 +466,6 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
     .filter-bar { position: static; padding: 16px 20px; }
     .filter-grid { grid-template-columns: 1fr; gap: 12px; }
     .filter-grid > div:last-child { text-align: left; }
-    .trade-toggle { display: block; }
-    .btn-row.collapsed {
-      max-height: 84px;
-      overflow: hidden;
-    }
     .matrix { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .matrix-header, .matrix-row {
       grid-template-columns: 40px minmax(160px, 1.2fr) 110px 140px 80px 110px 120px 90px;
