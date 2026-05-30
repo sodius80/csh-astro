@@ -277,12 +277,12 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
         </div>
         <div>
           <div class="verdict-eyebrow">Starting price</div>
-          <div class="display verdict-big">{d.startingPrice}</div>
+          <div class="display verdict-headline">{d.startingPrice}</div>
           {d.freeTrial && <div class="verdict-caption">{d.freeTrial}</div>}
         </div>
         <div>
           <div class="verdict-eyebrow">Best-fit team</div>
-          <div class="display verdict-big">{d.bestFor}</div>
+          <div class="display verdict-headline">{d.bestFor}</div>
           {d.teamSize && <div class="verdict-caption">{d.teamSize}</div>}
         </div>
       </div>
@@ -577,12 +577,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   .verdict-headline {
     font-size: clamp(22px, 2.4vw, 28px);
     line-height: 1.2;
-  }
-  .verdict-big {
-    font-size: clamp(28px, 3.2vw, 38px);
-    line-height: 1.15;
-    overflow-wrap: break-word;
-    word-break: break-word;
   }
   .verdict-caption {
     font-family: var(--mono);
