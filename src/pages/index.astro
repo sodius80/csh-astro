@@ -2,13 +2,13 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RatingStamp from '../components/RatingStamp.astro';
-import { buildCategorySummaries, getEntryDate, itemKindFromEntry, itemUrlFromEntry, sortByEntryDate } from '../lib/content';
+import { buildCategorySummaries, getEntryDate, itemKindFromEntry, itemUrlFromEntry, sortByEntryDate, filterPublished } from '../lib/content';
 import { reviewRootSlug } from '../lib/slugs';
 
-const reviews = await getCollection('reviews');
-const roundups = await getCollection('roundups');
-const comparisons = await getCollection('comparisons');
-const guides = await getCollection('guides');
+const reviews = filterPublished(await getCollection('reviews'));
+const roundups = filterPublished(await getCollection('roundups'));
+const comparisons = filterPublished(await getCollection('comparisons'));
+const guides = filterPublished(await getCollection('guides'));
 
 const featured = sortByEntryDate(reviews).find((r) => r.id === 'jobber') ?? sortByEntryDate(reviews)[0];
 const recent = sortByEntryDate([...reviews, ...roundups, ...comparisons, ...guides]).slice(0, 6);

@@ -11,13 +11,14 @@ import {
   guideRootSlug,
   roundupIdFromRootSlug,
 } from '../lib/slugs';
+import { filterPublished } from '../lib/content';
 
 export async function getStaticPaths() {
   const [guides, reviews, comparisons, roundups] = await Promise.all([
-    getCollection('guides'),
-    getCollection('reviews'),
-    getCollection('comparisons'),
-    getCollection('roundups'),
+    filterPublished(await getCollection('guides')),
+    filterPublished(await getCollection('reviews')),
+    filterPublished(await getCollection('comparisons')),
+    filterPublished(await getCollection('roundups')),
   ]);
 
   const paths = [];

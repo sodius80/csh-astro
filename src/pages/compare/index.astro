@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { filterPublished } from '../../lib/content';
 
-const comparisons = await getCollection('comparisons');
+const comparisons = filterPublished(await getCollection('comparisons'));
 ---
 <BaseLayout
   title="Head-to-head Comparisons · Contractor Software Hub"

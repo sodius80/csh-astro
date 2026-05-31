@@ -7,6 +7,7 @@ import FAQAccordion from './FAQAccordion.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
 import imageDims from '../data/imageDims.json';
+import { filterPublished } from '../lib/content';
 
 function getImgDims(imgPath: string): { width: number; height: number } | null {
   if (!imgPath) return null;
@@ -35,7 +36,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
 
 const heroDims = getImgDims(d.heroImage);
 
-const all = await getCollection('reviews');
+const all = filterPublished(await getCollection('reviews'));
 const siteUrl = 'https://www.contractorsoftwarehub.com';
 
 function schemaOfferPrice(startingPrice: string): string | undefined {

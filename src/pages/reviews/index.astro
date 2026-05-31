@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { reviewRootSlug } from '../../lib/slugs';
+import { filterPublished } from '../../lib/content';
 
-const reviews = await getCollection('reviews');
+const reviews = filterPublished(await getCollection('reviews'));
 const sorted = reviews.sort((a, b) => {
   const order = { 'top-pick': 0, recommended: 1, conditional: 2, skip: 3 };
   return order[a.data.rating] - order[b.data.rating];

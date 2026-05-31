@@ -7,6 +7,7 @@ import RankedEntry from './RankedEntry.astro';
 import FAQAccordion from './FAQAccordion.astro';
 import type { CollectionEntry } from 'astro:content';
 import imageDims from '../data/imageDims.json';
+import { filterPublished } from '../lib/content';
 
 function getImgDims(imgPath: string): { width: number; height: number } | null {
   if (!imgPath) return null;
@@ -28,7 +29,7 @@ const d = entry.data;
 const heroDims = getImgDims(d.heroImage);
 
 // Check which ranked products have actual review pages
-const reviews = await getCollection('reviews');
+const reviews = filterPublished(await getCollection('reviews'));
 const reviewSlugs = new Set(reviews.map((r) => r.id));
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'

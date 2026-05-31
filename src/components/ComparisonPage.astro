@@ -3,12 +3,13 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
+import { filterPublished } from '../lib/content';
 
 interface Props {
   entry: CollectionEntry<'comparisons'>;
 }
 
-const reviews = await getCollection('reviews');
+const reviews = filterPublished(await getCollection('reviews'));
 const reviewSlugs = new Set(reviews.map((review) => review.id));
 
 const { entry } = Astro.props;

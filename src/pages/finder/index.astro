@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { buildFinderItems } from '../../lib/content';
+import { buildFinderItems, filterPublished } from '../../lib/content';
 
-const reviews = await getCollection('reviews');
-const roundups = await getCollection('roundups');
-const guides = await getCollection('guides');
+const reviews = filterPublished(await getCollection('reviews'));
+const roundups = filterPublished(await getCollection('roundups'));
+const guides = filterPublished(await getCollection('guides'));
 const items = buildFinderItems(reviews, roundups, guides)
   .filter(item => item.type === 'review')
   .sort((a, b) => a.name.localeCompare(b.name));

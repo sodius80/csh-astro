@@ -7,6 +7,16 @@ export type RoundupEntry = CollectionEntry<'roundups'>;
 export type GuideEntry = CollectionEntry<'guides'>;
 export type SiteEntry = ReviewEntry | ComparisonEntry | RoundupEntry | GuideEntry;
 
+/**
+ * Filter entries to only those whose pubDate has already arrived.
+ * Supports scheduled publishing — articles with future pubDates
+ * stay hidden until their publication date.
+ */
+export function filterPublished<T extends { data: { pubDate: Date } }>(entries: T[]): T[] {
+  const now = new Date();
+  return entries.filter((entry) => entry.data.pubDate.getTime() <= now.getTime());
+}
+
 export function getEntryDate(entry: SiteEntry): Date {
   return entry.data.updatedDate ?? entry.data.pubDate;
 }

@@ -1,20 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { buildCategorySummaries, itemUrlFromEntry, slugifyCategory, sortByEntryDate } from '../../lib/content';
+import { buildCategorySummaries, itemUrlFromEntry, slugifyCategory, sortByEntryDate, filterPublished } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const reviews = await getCollection('reviews');
-  const roundups = await getCollection('roundups');
-  const comparisons = await getCollection('comparisons');
+  const reviews = filterPublished(await getCollection('reviews'));
+  const roundups = filterPublished(await getCollection('roundups'));
+  const comparisons = filterPublished(await getCollection('comparisons'));
   const categories = buildCategorySummaries(reviews, roundups, comparisons);
   return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
 }
 
 const { category } = Astro.props;
-const reviews = await getCollection('reviews');
-const roundups = await getCollection('roundups');
-const comparisons = await getCollection('comparisons');
+const reviews = filterPublished(await getCollection('reviews'));
+const roundups = filterPublished(await getCollection('roundups'));
+const comparisons = filterPublished(await getCollection('comparisons'));
 
 const categoryRoundups = sortByEntryDate(roundups.filter((entry) => slugifyCategory(entry.data.category) === category.slug));
 const categoryReviews = sortByEntryDate(reviews.filter((entry) => slugifyCategory(entry.data.category) === category.slug));

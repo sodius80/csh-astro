@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { buildCategorySummaries } from '../../lib/content';
+import { buildCategorySummaries, filterPublished } from '../../lib/content';
 
-const reviews = await getCollection('reviews');
-const roundups = await getCollection('roundups');
-const comparisons = await getCollection('comparisons');
+const reviews = filterPublished(await getCollection('reviews'));
+const roundups = filterPublished(await getCollection('roundups'));
+const comparisons = filterPublished(await getCollection('comparisons'));
 const categories = buildCategorySummaries(reviews, roundups, comparisons);
 ---
 <BaseLayout

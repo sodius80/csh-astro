@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { roundupRootSlug } from '../../lib/slugs';
+import { filterPublished } from '../../lib/content';
 
-const roundups = await getCollection('roundups');
+const roundups = filterPublished(await getCollection('roundups'));
 const sorted = roundups.sort((a, b) => {
   const da = (a.data.updatedDate ?? a.data.pubDate).getTime();
   const db = (b.data.updatedDate ?? b.data.pubDate).getTime();
