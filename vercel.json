@@ -1175,6 +1175,21 @@
       "source": "/wp-content/uploads/(.*)",
       "destination": "/images/transparent-1x1.png",
       "permanent": true
+    },
+    {
+      "source": "/go/roofclaw-official-site/",
+      "destination": "https://roofclaw.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/intuit-official-site/",
+      "destination": "https://quickbooks.intuit.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/bluebeam-revu-official-site/",
+      "destination": "https://www.bluebeam.com/",
+      "permanent": false
     }
   ],
   "rewrites": [
