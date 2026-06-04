@@ -60,6 +60,9 @@ const buildVendorReview = (vendor: typeof d.vendorA, side: 'A' | 'B') => {
     "@id": `${pageUrl}#review-${side}`,
     "name": `${vendor.name} review in ${d.title}`,
     "url": pageUrl,
+    "headline": d.title,
+    "description": d.description,
+    "inLanguage": "en-US",
     "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
     "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
     "author": {
