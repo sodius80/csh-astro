@@ -1158,7 +1158,7 @@
     },
     {
       "source": "/go/fieldpulse-demo/",
-      "destination": "https://www.fieldpulse.com/demo/",
+      "destination": "https://www.fieldpulse.com/book-demo",
       "permanent": false
     },
     {
