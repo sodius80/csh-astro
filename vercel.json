@@ -667,6 +667,11 @@
       "permanent": false
     },
     {
+      "source": "/builderprime-2026-review/",
+      "destination": "/builder-prime-review-2026/",
+      "permanent": true
+    },
+    {
       "source": "/go/builder-prime-official-site/",
       "destination": "https://www.builderprime.com/pricing",
       "permanent": false
