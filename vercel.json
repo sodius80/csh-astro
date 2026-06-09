@@ -1195,6 +1195,11 @@
       "source": "/go/bluebeam-revu-official-site/",
       "destination": "https://www.bluebeam.com/",
       "permanent": false
+    },
+    {
+      "source": "/go/keap-official-site/",
+      "destination": "https://get.keap.com/j91mlhu42ry6",
+      "permanent": false
     }
   ],
   "rewrites": [
