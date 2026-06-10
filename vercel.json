@@ -262,6 +262,11 @@
       "permanent": false
     },
     {
+      "source": "/go/gusto-official-site/",
+      "destination": "https://get.gusto.com/ea5n7f1n9fn8",
+      "permanent": false
+    },
+    {
       "source": "/go/timemark-official-site/",
       "destination": "https://www.timemark.com",
       "permanent": false
@@ -288,7 +293,7 @@
     },
     {
       "source": "/go/connecteam-official-site/",
-      "destination": "https://connecteam.com/pricing/",
+      "destination": "https://partners.connecteam.com/c0qnpxmb7sml-fs4ir",
       "permanent": false
     },
     {
@@ -533,7 +538,7 @@
     },
     {
       "source": "/go/tradify-official-site/",
-      "destination": "https://www.tradifyhq.com/us/pricing",
+      "destination": "https://partners.tradifyhq.com/pleplh3wyaou",
       "permanent": false
     },
     {
