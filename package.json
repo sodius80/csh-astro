@@ -12,7 +12,7 @@
     "astro": "astro",
     "check:links": "node scripts/check-generated-links.mjs",
     "lint:mdx": "node scripts/lint-mdx.mjs",
-    "validate": "npm run build && npm run check:links"
+    "validate": "node scripts/check-hero-images.mjs && npm run build && npm run check:links"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
