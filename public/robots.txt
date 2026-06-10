@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /go/
 
 Sitemap: https://www.contractorsoftwarehub.com/sitemap-index.xml

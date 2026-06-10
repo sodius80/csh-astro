@@ -178,7 +178,8 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
       max-height: calc(100vh - 160px);
       border-radius: 8px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       display: flex; flex-direction: column;
     }
     .csh-search-header {
@@ -200,7 +201,6 @@ const resolvedOgImage = ogImage && typeof ogImage === 'string' ? new URL(ogImage
     .csh-search-close:hover { opacity: 1; }
     .csh-search-inner .pagefind-ui {
       padding: 0 20px 20px;
-      overflow-y: auto;
       flex: 1;
       min-height: 0;
     }

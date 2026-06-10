@@ -78,7 +78,7 @@ export function buildCategorySummaries(
     const created: CategorySummary = {
       title,
       slug,
-      description: `${title} software coverage, reviews, comparisons, and roundups.`,
+      description: `${title} coverage, reviews, comparisons, and roundups.`,
       route: `/categories/${slug}/`,
       roundups: 0,
       reviews: 0,
