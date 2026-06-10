@@ -92,6 +92,9 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
           <span style="flex:1;"></span>
           <span style="color:var(--graphite);">Opinionated — not comprehensive</span>
         </div>
+        <p style="font-size:13px; color:var(--graphite); margin-bottom:28px; line-height:1.4;">
+          <strong>Affiliate disclosure:</strong> Some links on this page may be affiliate links. If you purchase through one, ContractorSoftwareHub may earn a commission at no extra cost to you. Every product is evaluated independently based on features, pricing, and user feedback.
+        </p>
         {d.ranked.map((r, i) => (
           <RankedEntry
             rank={r.rank}
