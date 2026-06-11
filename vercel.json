@@ -523,7 +523,7 @@
     },
     {
       "source": "/go/sketchup-official-site/",
-      "destination": "https://www.sketchup.com/en/plans-and-pricing",
+      "destination": "https://sketchup.trimble.com/en/plans-and-pricing",
       "permanent": false
     },
     {
@@ -758,7 +758,7 @@
     },
     {
       "source": "/go/progecad-official-site/",
-      "destination": "https://www.progesoft.com/products/progecad-professional/licensing",
+      "destination": "https://progecad.us",
       "permanent": false
     },
     {
