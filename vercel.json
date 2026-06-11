@@ -1215,6 +1215,26 @@
       "source": "/go/activecampaign-official-site/",
       "destination": "https://www.activecampaign.com/free?utm_medium=affiliate&utm_source=ps_link",
       "permanent": false
+    },
+    {
+      "source": "/go/mailerlite-official-site/",
+      "destination": "https://www.mailerlite.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/aweber-official-site/",
+      "destination": "https://www.aweber.com/pricing.htm",
+      "permanent": false
+    },
+    {
+      "source": "/go/getresponse-official-site/",
+      "destination": "https://www.getresponse.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/moosend-official-site/",
+      "destination": "https://moosend.com/pricing/",
+      "permanent": false
     }
   ],
   "rewrites": [
