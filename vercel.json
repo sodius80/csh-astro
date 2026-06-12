@@ -1237,8 +1237,13 @@
       "permanent": false
     },
     {
+      "source": "/go/bluebeam-revu/",
+      "destination": "https://refer.bluebeam.com/l/CHRISTOPHE36/",
+      "permanent": false
+    },
+    {
       "source": "/go/bluebeam-revu-official-site/",
-      "destination": "https://www.bluebeam.com/",
+      "destination": "https://refer.bluebeam.com/l/CHRISTOPHE36/",
       "permanent": false
     },
     {
