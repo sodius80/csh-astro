@@ -1232,6 +1232,11 @@
       "permanent": false
     },
     {
+      "source": "/go/keap/",
+      "destination": "https://get.keap.com/j91mlhu42ry6",
+      "permanent": false
+    },
+    {
       "source": "/go/activecampaign-official-site/",
       "destination": "https://www.activecampaign.com/free?utm_medium=affiliate&utm_source=ps_link",
       "permanent": false
