@@ -267,6 +267,11 @@
       "permanent": false
     },
     {
+      "source": "/go/gusto/",
+      "destination": "https://get.gusto.com/ea5n7f1n9fn8",
+      "permanent": false
+    },
+    {
       "source": "/go/timemark-official-site/",
       "destination": "https://www.timemark.com",
       "permanent": false
