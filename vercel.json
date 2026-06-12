@@ -327,11 +327,6 @@
       "permanent": false
     },
     {
-      "source": "/go/microsoft-official-site/",
-      "destination": "https://www.microsoft.com/en-us/dynamics-365/products/field-service/pricing",
-      "permanent": false
-    },
-    {
       "source": "/go/dynascape-official-site/",
       "destination": "https://www.dynascape.com/pricing/",
       "permanent": false
