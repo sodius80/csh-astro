@@ -812,6 +812,11 @@
       "permanent": false
     },
     {
+      "source": "/go/estimax-official-site/",
+      "destination": "https://estimax.io",
+      "permanent": false
+    },
+    {
       "source": "/go/estimator360-official-site/",
       "destination": "https://estimator360.com/pricing",
       "permanent": false
