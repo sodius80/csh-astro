@@ -452,6 +452,11 @@
       "permanent": false
     },
     {
+      "source": "/go/nickel/",
+      "destination": "https://partners.app.nickel.com/uutadgef015m",
+      "permanent": false
+    },
+    {
       "source": "/go/pandadoc-official-site/",
       "destination": "https://www.pandadoc.com/pricing/",
       "permanent": false
