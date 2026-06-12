@@ -282,8 +282,13 @@
       "permanent": false
     },
     {
+      "source": "/go/clockshark/",
+      "destination": "https://clockshark-referral.referral-factory.com/un3kUvOA",
+      "permanent": false
+    },
+    {
       "source": "/go/clockshark-official-site/",
-      "destination": "https://www.clockshark.com/pricing",
+      "destination": "https://clockshark-referral.referral-factory.com/un3kUvOA",
       "permanent": false
     },
     {
