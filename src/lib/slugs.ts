@@ -12,6 +12,7 @@ const ROUNDUP_ROOT_SLUGS: Record<string, string> = {
   'landscaping-software': 'best-landscaping-software-small-business',
   'pest-control-software': 'best-pest-control-software',
   'best-crm-contractors': 'best-crm-for-contractors',
+  'best-crm-restoration-contractors': 'best-crm-for-restoration-contractors',
   'best-crm-siding-contractors': 'best-crm-for-siding-contractors',
   'best-free-crm-contractors': 'best-free-crm-for-contractors',
   'best-cad-software-contractors': 'best-cad-software-contractors',
@@ -20,6 +21,7 @@ const ROUNDUP_ROOT_SLUGS: Record<string, string> = {
   'best-scheduling-software-contractors': 'best-scheduling-software-contractors',
   'best-software-painting-contractors': 'best-software-for-painting-contractors',
   'best-accounting-software-electrical-contractors': 'best-accounting-software-for-electrical-contractors',
+  'best-crm-roofing-contractors': 'best-crm-for-roofing-contractors',
 };
 
 export function reviewRootSlug(id: string): string {
