@@ -1280,6 +1280,16 @@
       "source": "/go/xero/",
       "destination": "https://referrals.xero.com/qez33lnul694-q1e71",
       "permanent": false
+    },
+    {
+      "source": "/go/freshsales-official-site/",
+      "destination": "https://www.freshworks.com/crm/sales/",
+      "permanent": true
+    },
+    {
+      "source": "/go/zoho-crm-official-site/",
+      "destination": "https://www.zoho.com/crm/",
+      "permanent": true
     }
   ],
   "rewrites": [

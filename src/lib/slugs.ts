@@ -13,6 +13,7 @@ const ROUNDUP_ROOT_SLUGS: Record<string, string> = {
   'pest-control-software': 'best-pest-control-software',
   'best-crm-contractors': 'best-crm-for-contractors',
   'best-crm-siding-contractors': 'best-crm-for-siding-contractors',
+  'best-free-crm-contractors': 'best-free-crm-for-contractors',
   'best-cad-software-contractors': 'best-cad-software-contractors',
   'best-estimating-software-small-contractors': 'best-estimating-software-for-small-contractors',
   'best-estimating-software-general-contractors': 'best-estimating-software-general-contractors',
