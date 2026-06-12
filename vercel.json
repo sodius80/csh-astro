@@ -312,6 +312,11 @@
       "permanent": false
     },
     {
+      "source": "/go/microsoft-official-site/",
+      "destination": "https://www.microsoft.com/en-us/dynamics-365/products/field-service/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/dynascape-official-site/",
       "destination": "https://www.dynascape.com/pricing/",
       "permanent": false
@@ -618,6 +623,11 @@
     },
     {
       "source": "/go/dash-restoration-official-site/",
+      "destination": "https://www.nextgearsolutions.com/solutions/job-management/dash-restoration-business-management/",
+      "permanent": false
+    },
+    {
+      "source": "/go/dash-by-next-gear-official-site/",
       "destination": "https://www.nextgearsolutions.com/solutions/job-management/dash-restoration-business-management/",
       "permanent": false
     },
