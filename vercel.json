@@ -722,6 +722,11 @@
       "permanent": false
     },
     {
+      "source": "/go/houzz-pro/",
+      "destination": "https://affiliates.houzz.com/m5guz6zfj2ce",
+      "permanent": false
+    },
+    {
       "source": "/go/leap-official-site/",
       "destination": "https://leaptodigital.com/pricing/",
       "permanent": false
