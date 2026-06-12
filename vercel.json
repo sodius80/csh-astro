@@ -1255,6 +1255,11 @@
       "source": "/go/moosend-official-site/",
       "destination": "https://moosend.com/pricing/",
       "permanent": false
+    },
+    {
+      "source": "/go/xero/",
+      "destination": "https://referrals.xero.com/qez33lnul694-q1e71",
+      "permanent": false
     }
   ],
   "rewrites": [
