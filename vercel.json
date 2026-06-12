@@ -302,8 +302,13 @@
       "permanent": false
     },
     {
+      "source": "/go/contractor-foreman/",
+      "destination": "https://try.contractorforeman.com/0fuvlhhkedjj",
+      "permanent": false
+    },
+    {
       "source": "/go/contractor-foreman-official-site/",
-      "destination": "https://contractorforemancms.com/plans/",
+      "destination": "https://try.contractorforeman.com/0fuvlhhkedjj",
       "permanent": false
     },
     {
