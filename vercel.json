@@ -1295,6 +1295,16 @@
       "source": "/go/zoho-crm-official-site/",
       "destination": "https://www.zoho.com/crm/",
       "permanent": true
+    },
+    {
+      "source": "/zoho-invoice-review-2026",
+      "destination": "/zoho-invoice-review/",
+      "permanent": true
+    },
+    {
+      "source": "/zoho-invoice-review-2026/",
+      "destination": "/zoho-invoice-review/",
+      "permanent": true
     }
   ],
   "rewrites": [
