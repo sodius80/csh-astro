@@ -212,6 +212,16 @@
       "permanent": true
     },
     {
+      "source": "/compare/buildertrend-vs-housecall-pro",
+      "destination": "/buildertrend-vs-housecall-pro",
+      "permanent": true
+    },
+    {
+      "source": "/compare/buildertrend-vs-housecall-pro/",
+      "destination": "/buildertrend-vs-housecall-pro/",
+      "permanent": true
+    },
+    {
       "source": "/compare/jobber-vs-workiz",
       "destination": "/jobber-vs-workiz",
       "permanent": true
