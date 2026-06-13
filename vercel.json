@@ -1353,12 +1353,22 @@
     },
     {
       "source": "/5-contractor-software-tools-to-watch-2026",
-      "destination": "/5-contractor-software-tools-to-watch/",
+      "destination": "/contractor-software-watchlist/",
       "permanent": true
     },
     {
       "source": "/5-contractor-software-tools-to-watch-2026/",
-      "destination": "/5-contractor-software-tools-to-watch/",
+      "destination": "/contractor-software-watchlist/",
+      "permanent": true
+    },
+    {
+      "source": "/5-contractor-software-tools-to-watch",
+      "destination": "/contractor-software-watchlist/",
+      "permanent": true
+    },
+    {
+      "source": "/5-contractor-software-tools-to-watch/",
+      "destination": "/contractor-software-watchlist/",
       "permanent": true
     },
     {
