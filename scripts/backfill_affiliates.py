@@ -27,7 +27,7 @@ fixes = {
         'vendorA': {'affiliateUrl': 'https://www.joist.com'},
         'vendorB': {'affiliateUrl': 'https://www.clearestimates.com'},
     },
-    'zuper-vs-acculynx-2026.mdx': {
+    'zuper-vs-acculynx.mdx': {
         'vendorA': {'affiliateUrl': 'https://www.zuper.co'},
         'vendorB': {'affiliateUrl': '/go/acculynx-official-site/'},
     },

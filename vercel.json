@@ -1305,6 +1305,26 @@
       "source": "/zoho-invoice-review-2026/",
       "destination": "/zoho-invoice-review/",
       "permanent": true
+    },
+    {
+      "source": "/zuper-review-2026",
+      "destination": "/zuper-review",
+      "permanent": true
+    },
+    {
+      "source": "/zuper-review-2026/",
+      "destination": "/zuper-review/",
+      "permanent": true
+    },
+    {
+      "source": "/zuper-vs-acculynx-2026",
+      "destination": "/zuper-vs-acculynx",
+      "permanent": true
+    },
+    {
+      "source": "/zuper-vs-acculynx-2026/",
+      "destination": "/zuper-vs-acculynx/",
+      "permanent": true
     }
   ],
   "rewrites": [
