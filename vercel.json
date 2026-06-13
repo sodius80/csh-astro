@@ -703,7 +703,7 @@
     },
     {
       "source": "/builderprime-2026-review/",
-      "destination": "/builder-prime-review-2026/",
+      "destination": "/builder-prime-review/",
       "permanent": true
     },
     {
@@ -1654,6 +1654,816 @@
     {
       "source": "/small-contractor-bookkeeping-software-2026/",
       "destination": "/small-contractor-bookkeeping-software/",
+      "permanent": true
+    },
+    {
+      "source": "/acculynx-vs-jobber-2026",
+      "destination": "/acculynx-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/acculynx-vs-jobber-2026/",
+      "destination": "/acculynx-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/acculynx-vs-leap-2026",
+      "destination": "/acculynx-vs-leap/",
+      "permanent": true
+    },
+    {
+      "source": "/acculynx-vs-leap-2026/",
+      "destination": "/acculynx-vs-leap/",
+      "permanent": true
+    },
+    {
+      "source": "/activecampaign-vs-keap-2026",
+      "destination": "/activecampaign-vs-keap/",
+      "permanent": true
+    },
+    {
+      "source": "/activecampaign-vs-keap-2026/",
+      "destination": "/activecampaign-vs-keap/",
+      "permanent": true
+    },
+    {
+      "source": "/amag-technology-vs-jobber-2026",
+      "destination": "/amag-technology-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/amag-technology-vs-jobber-2026/",
+      "destination": "/amag-technology-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/arborgold-vs-jobber-2026",
+      "destination": "/arborgold-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/arborgold-vs-jobber-2026/",
+      "destination": "/arborgold-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/arbostar-vs-jobber-2026",
+      "destination": "/arbostar-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/arbostar-vs-jobber-2026/",
+      "destination": "/arbostar-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/aspire-vs-lmn-2026",
+      "destination": "/aspire-vs-lmn/",
+      "permanent": true
+    },
+    {
+      "source": "/aspire-vs-lmn-2026/",
+      "destination": "/aspire-vs-lmn/",
+      "permanent": true
+    },
+    {
+      "source": "/bluebeam-revu-vs-topbuilder-2026",
+      "destination": "/bluebeam-revu-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/bluebeam-revu-vs-topbuilder-2026/",
+      "destination": "/bluebeam-revu-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/buildertrend-vs-coconstruct-2026",
+      "destination": "/buildertrend-vs-coconstruct/",
+      "permanent": true
+    },
+    {
+      "source": "/buildertrend-vs-coconstruct-2026/",
+      "destination": "/buildertrend-vs-coconstruct/",
+      "permanent": true
+    },
+    {
+      "source": "/buildxact-vs-clear-estimates-2026",
+      "destination": "/buildxact-vs-clear-estimates/",
+      "permanent": true
+    },
+    {
+      "source": "/buildxact-vs-clear-estimates-2026/",
+      "destination": "/buildxact-vs-clear-estimates/",
+      "permanent": true
+    },
+    {
+      "source": "/buildxact-vs-joist-2026",
+      "destination": "/buildxact-vs-joist/",
+      "permanent": true
+    },
+    {
+      "source": "/buildxact-vs-joist-2026/",
+      "destination": "/buildxact-vs-joist/",
+      "permanent": true
+    },
+    {
+      "source": "/clockshark-vs-handoff-2026",
+      "destination": "/clockshark-vs-handoff/",
+      "permanent": true
+    },
+    {
+      "source": "/clockshark-vs-handoff-2026/",
+      "destination": "/clockshark-vs-handoff/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldedge-vs-jobber-2026",
+      "destination": "/fieldedge-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldedge-vs-jobber-2026/",
+      "destination": "/fieldedge-vs-jobber/",
+      "permanent": true
+    },
+    {
+      "source": "/followup-crm-vs-topbuilder-2026",
+      "destination": "/followup-crm-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/followup-crm-vs-topbuilder-2026/",
+      "destination": "/followup-crm-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/housecall-pro-vs-jobnimbus-2026",
+      "destination": "/housecall-pro-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/housecall-pro-vs-jobnimbus-2026/",
+      "destination": "/housecall-pro-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/housecall-pro-vs-service-fusion-2026",
+      "destination": "/housecall-pro-vs-service-fusion/",
+      "permanent": true
+    },
+    {
+      "source": "/housecall-pro-vs-service-fusion-2026/",
+      "destination": "/housecall-pro-vs-service-fusion/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-aspire-2026",
+      "destination": "/jobber-vs-aspire/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-aspire-2026/",
+      "destination": "/jobber-vs-aspire/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-fieldpulse-2026",
+      "destination": "/jobber-vs-fieldpulse/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-fieldpulse-2026/",
+      "destination": "/jobber-vs-fieldpulse/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-jobnimbus-2026",
+      "destination": "/jobber-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-jobnimbus-2026/",
+      "destination": "/jobber-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-paintscout-2026",
+      "destination": "/jobber-vs-paintscout/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-paintscout-2026/",
+      "destination": "/jobber-vs-paintscout/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-service-fusion-2026",
+      "destination": "/jobber-vs-service-fusion/",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-vs-service-fusion-2026/",
+      "destination": "/jobber-vs-service-fusion/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-followup-crm-2026",
+      "destination": "/jobnimbus-vs-followup-crm/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-followup-crm-2026/",
+      "destination": "/jobnimbus-vs-followup-crm/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-leap-2026",
+      "destination": "/jobnimbus-vs-leap/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-leap-2026/",
+      "destination": "/jobnimbus-vs-leap/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-roofr-2026",
+      "destination": "/jobnimbus-vs-roofr/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-roofr-2026/",
+      "destination": "/jobnimbus-vs-roofr/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-topbuilder-2026",
+      "destination": "/jobnimbus-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-topbuilder-2026/",
+      "destination": "/jobnimbus-vs-topbuilder/",
+      "permanent": true
+    },
+    {
+      "source": "/jobtread-vs-buildertrend-2026",
+      "destination": "/jobtread-vs-buildertrend/",
+      "permanent": true
+    },
+    {
+      "source": "/jobtread-vs-buildertrend-2026/",
+      "destination": "/jobtread-vs-buildertrend/",
+      "permanent": true
+    },
+    {
+      "source": "/joist-vs-clear-estimates-2026",
+      "destination": "/joist-vs-clear-estimates/",
+      "permanent": true
+    },
+    {
+      "source": "/joist-vs-clear-estimates-2026/",
+      "destination": "/joist-vs-clear-estimates/",
+      "permanent": true
+    },
+    {
+      "source": "/knowify-vs-contractor-foreman-2026",
+      "destination": "/knowify-vs-contractor-foreman/",
+      "permanent": true
+    },
+    {
+      "source": "/knowify-vs-contractor-foreman-2026/",
+      "destination": "/knowify-vs-contractor-foreman/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-online-vs-xero-2026",
+      "destination": "/quickbooks-online-vs-xero/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-online-vs-xero-2026/",
+      "destination": "/quickbooks-online-vs-xero/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-time-vs-clockshark-2026",
+      "destination": "/quickbooks-time-vs-clockshark/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-time-vs-clockshark-2026/",
+      "destination": "/quickbooks-time-vs-clockshark/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-vs-sage-100-contractor-2026",
+      "destination": "/quickbooks-vs-sage-100-contractor/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-vs-sage-100-contractor-2026/",
+      "destination": "/quickbooks-vs-sage-100-contractor/",
+      "permanent": true
+    },
+    {
+      "source": "/roofr-vs-acculynx-2026",
+      "destination": "/roofr-vs-acculynx/",
+      "permanent": true
+    },
+    {
+      "source": "/roofr-vs-acculynx-2026/",
+      "destination": "/roofr-vs-acculynx/",
+      "permanent": true
+    },
+    {
+      "source": "/servicetitan-vs-jobnimbus-2026",
+      "destination": "/servicetitan-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/servicetitan-vs-jobnimbus-2026/",
+      "destination": "/servicetitan-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/stack-vs-planswift-2026",
+      "destination": "/stack-vs-planswift/",
+      "permanent": true
+    },
+    {
+      "source": "/stack-vs-planswift-2026/",
+      "destination": "/stack-vs-planswift/",
+      "permanent": true
+    },
+    {
+      "source": "/best-time-tracking-software-for-small-contractor-businesses-2026",
+      "destination": "/best-time-tracking-software-for-small-contractor-businesses/",
+      "permanent": true
+    },
+    {
+      "source": "/best-time-tracking-software-for-small-contractor-businesses-2026/",
+      "destination": "/best-time-tracking-software-for-small-contractor-businesses/",
+      "permanent": true
+    },
+    {
+      "source": "/albiware-review-2026",
+      "destination": "/albiware-review/",
+      "permanent": true
+    },
+    {
+      "source": "/albiware-review-2026/",
+      "destination": "/albiware-review/",
+      "permanent": true
+    },
+    {
+      "source": "/arborgold-review-2026",
+      "destination": "/arborgold-review/",
+      "permanent": true
+    },
+    {
+      "source": "/arborgold-review-2026/",
+      "destination": "/arborgold-review/",
+      "permanent": true
+    },
+    {
+      "source": "/arbostar-review-2026",
+      "destination": "/arbostar-review/",
+      "permanent": true
+    },
+    {
+      "source": "/arbostar-review-2026/",
+      "destination": "/arbostar-review/",
+      "permanent": true
+    },
+    {
+      "source": "/aspire-landscaping-software-2026-review",
+      "destination": "/aspire-landscaping-software-review/",
+      "permanent": true
+    },
+    {
+      "source": "/aspire-landscaping-software-2026-review/",
+      "destination": "/aspire-landscaping-software-review/",
+      "permanent": true
+    },
+    {
+      "source": "/aurora-solar-review-2026",
+      "destination": "/aurora-solar-review/",
+      "permanent": true
+    },
+    {
+      "source": "/aurora-solar-review-2026/",
+      "destination": "/aurora-solar-review/",
+      "permanent": true
+    },
+    {
+      "source": "/autocad-lt-review-2026",
+      "destination": "/autocad-lt-review/",
+      "permanent": true
+    },
+    {
+      "source": "/autocad-lt-review-2026/",
+      "destination": "/autocad-lt-review/",
+      "permanent": true
+    },
+    {
+      "source": "/autodesk-tradetapp-review-2026",
+      "destination": "/autodesk-tradetapp-review/",
+      "permanent": true
+    },
+    {
+      "source": "/autodesk-tradetapp-review-2026/",
+      "destination": "/autodesk-tradetapp-review/",
+      "permanent": true
+    },
+    {
+      "source": "/bluebeam-revu-2026-review",
+      "destination": "/bluebeam-revu-review/",
+      "permanent": true
+    },
+    {
+      "source": "/bluebeam-revu-2026-review/",
+      "destination": "/bluebeam-revu-review/",
+      "permanent": true
+    },
+    {
+      "source": "/briostack-review-2026",
+      "destination": "/briostack-review/",
+      "permanent": true
+    },
+    {
+      "source": "/briostack-review-2026/",
+      "destination": "/briostack-review/",
+      "permanent": true
+    },
+    {
+      "source": "/buildbook-review-2026",
+      "destination": "/buildbook-review/",
+      "permanent": true
+    },
+    {
+      "source": "/buildbook-review-2026/",
+      "destination": "/buildbook-review/",
+      "permanent": true
+    },
+    {
+      "source": "/builder-prime-review-2026",
+      "destination": "/builder-prime-review/",
+      "permanent": true
+    },
+    {
+      "source": "/builder-prime-review-2026/",
+      "destination": "/builder-prime-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clean-smarts-review-2026",
+      "destination": "/clean-smarts-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clean-smarts-review-2026/",
+      "destination": "/clean-smarts-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clear-estimates-2026-review",
+      "destination": "/clear-estimates-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clear-estimates-2026-review/",
+      "destination": "/clear-estimates-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clockshark-review-2026",
+      "destination": "/clockshark-review/",
+      "permanent": true
+    },
+    {
+      "source": "/clockshark-review-2026/",
+      "destination": "/clockshark-review/",
+      "permanent": true
+    },
+    {
+      "source": "/coconstruct-review-2026",
+      "destination": "/coconstruct-review/",
+      "permanent": true
+    },
+    {
+      "source": "/coconstruct-review-2026/",
+      "destination": "/coconstruct-review/",
+      "permanent": true
+    },
+    {
+      "source": "/constrafor-review-2026",
+      "destination": "/constrafor-review/",
+      "permanent": true
+    },
+    {
+      "source": "/constrafor-review-2026/",
+      "destination": "/constrafor-review/",
+      "permanent": true
+    },
+    {
+      "source": "/contractor-foreman-2026-review",
+      "destination": "/contractor-foreman-review/",
+      "permanent": true
+    },
+    {
+      "source": "/contractor-foreman-2026-review/",
+      "destination": "/contractor-foreman-review/",
+      "permanent": true
+    },
+    {
+      "source": "/draftsight-review-2026",
+      "destination": "/draftsight-review/",
+      "permanent": true
+    },
+    {
+      "source": "/draftsight-review-2026/",
+      "destination": "/draftsight-review/",
+      "permanent": true
+    },
+    {
+      "source": "/dynamics-365-field-service-review-2026",
+      "destination": "/dynamics-365-field-service-review/",
+      "permanent": true
+    },
+    {
+      "source": "/dynamics-365-field-service-review-2026/",
+      "destination": "/dynamics-365-field-service-review/",
+      "permanent": true
+    },
+    {
+      "source": "/elromco-review-2026",
+      "destination": "/elromco-review/",
+      "permanent": true
+    },
+    {
+      "source": "/elromco-review-2026/",
+      "destination": "/elromco-review/",
+      "permanent": true
+    },
+    {
+      "source": "/estimator360-review-2026",
+      "destination": "/estimator360-review/",
+      "permanent": true
+    },
+    {
+      "source": "/estimator360-review-2026/",
+      "destination": "/estimator360-review/",
+      "permanent": true
+    },
+    {
+      "source": "/esub-review-2026",
+      "destination": "/esub-review/",
+      "permanent": true
+    },
+    {
+      "source": "/esub-review-2026/",
+      "destination": "/esub-review/",
+      "permanent": true
+    },
+    {
+      "source": "/exayard-2026-review",
+      "destination": "/exayard-review/",
+      "permanent": true
+    },
+    {
+      "source": "/exayard-2026-review/",
+      "destination": "/exayard-review/",
+      "permanent": true
+    },
+    {
+      "source": "/field-promax-review-2026",
+      "destination": "/field-promax-review/",
+      "permanent": true
+    },
+    {
+      "source": "/field-promax-review-2026/",
+      "destination": "/field-promax-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldpulse-review-2026",
+      "destination": "/fieldpulse-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldpulse-review-2026/",
+      "destination": "/fieldpulse-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldwire-2026-review",
+      "destination": "/fieldwire-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fieldwire-2026-review/",
+      "destination": "/fieldwire-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fleetio-review-2026",
+      "destination": "/fleetio-review/",
+      "permanent": true
+    },
+    {
+      "source": "/fleetio-review-2026/",
+      "destination": "/fleetio-review/",
+      "permanent": true
+    },
+    {
+      "source": "/followup-crm-2026-review",
+      "destination": "/followup-crm-review/",
+      "permanent": true
+    },
+    {
+      "source": "/followup-crm-2026-review/",
+      "destination": "/followup-crm-review/",
+      "permanent": true
+    },
+    {
+      "source": "/freshbooks-review-2026",
+      "destination": "/freshbooks-review/",
+      "permanent": true
+    },
+    {
+      "source": "/freshbooks-review-2026/",
+      "destination": "/freshbooks-review/",
+      "permanent": true
+    },
+    {
+      "source": "/hcss-heavyjob-review-2026",
+      "destination": "/hcss-heavyjob-review/",
+      "permanent": true
+    },
+    {
+      "source": "/hcss-heavyjob-review-2026/",
+      "destination": "/hcss-heavyjob-review/",
+      "permanent": true
+    },
+    {
+      "source": "/hid-global-review-2026",
+      "destination": "/hid-global-review/",
+      "permanent": true
+    },
+    {
+      "source": "/hid-global-review-2026/",
+      "destination": "/hid-global-review/",
+      "permanent": true
+    },
+    {
+      "source": "/inspect-point-review-2026",
+      "destination": "/inspect-point-review/",
+      "permanent": true
+    },
+    {
+      "source": "/inspect-point-review-2026/",
+      "destination": "/inspect-point-review/",
+      "permanent": true
+    },
+    {
+      "source": "/jobtread-2026-review",
+      "destination": "/jobtread-review/",
+      "permanent": true
+    },
+    {
+      "source": "/jobtread-2026-review/",
+      "destination": "/jobtread-review/",
+      "permanent": true
+    },
+    {
+      "source": "/nickel-review-2026",
+      "destination": "/nickel-review/",
+      "permanent": true
+    },
+    {
+      "source": "/nickel-review-2026/",
+      "destination": "/nickel-review/",
+      "permanent": true
+    },
+    {
+      "source": "/procore-review-2026",
+      "destination": "/procore-review/",
+      "permanent": true
+    },
+    {
+      "source": "/procore-review-2026/",
+      "destination": "/procore-review/",
+      "permanent": true
+    },
+    {
+      "source": "/progecad-review-2026",
+      "destination": "/progecad-review/",
+      "permanent": true
+    },
+    {
+      "source": "/progecad-review-2026/",
+      "destination": "/progecad-review/",
+      "permanent": true
+    },
+    {
+      "source": "/projul-2026-review",
+      "destination": "/projul-review/",
+      "permanent": true
+    },
+    {
+      "source": "/projul-2026-review/",
+      "destination": "/projul-review/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-online-review-2026",
+      "destination": "/quickbooks-online-review/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-online-review-2026/",
+      "destination": "/quickbooks-online-review/",
+      "permanent": true
+    },
+    {
+      "source": "/quoteiq-review-2026",
+      "destination": "/quoteiq-review/",
+      "permanent": true
+    },
+    {
+      "source": "/quoteiq-review-2026/",
+      "destination": "/quoteiq-review/",
+      "permanent": true
+    },
+    {
+      "source": "/roofr-review-2026",
+      "destination": "/roofr-review/",
+      "permanent": true
+    },
+    {
+      "source": "/roofr-review-2026/",
+      "destination": "/roofr-review/",
+      "permanent": true
+    },
+    {
+      "source": "/sage-100-contractor-review-2026",
+      "destination": "/sage-100-contractor-review/",
+      "permanent": true
+    },
+    {
+      "source": "/sage-100-contractor-review-2026/",
+      "destination": "/sage-100-contractor-review/",
+      "permanent": true
+    },
+    {
+      "source": "/singleops-review-2026",
+      "destination": "/singleops-review/",
+      "permanent": true
+    },
+    {
+      "source": "/singleops-review-2026/",
+      "destination": "/singleops-review/",
+      "permanent": true
+    },
+    {
+      "source": "/sketchup-review-2026",
+      "destination": "/sketchup-review/",
+      "permanent": true
+    },
+    {
+      "source": "/sketchup-review-2026/",
+      "destination": "/sketchup-review/",
+      "permanent": true
+    },
+    {
+      "source": "/tallie-review-2026",
+      "destination": "/tallie-review/",
+      "permanent": true
+    },
+    {
+      "source": "/tallie-review-2026/",
+      "destination": "/tallie-review/",
+      "permanent": true
+    },
+    {
+      "source": "/topbuilder-review-2026",
+      "destination": "/topbuilder-review/",
+      "permanent": true
+    },
+    {
+      "source": "/topbuilder-review-2026/",
+      "destination": "/topbuilder-review/",
+      "permanent": true
+    },
+    {
+      "source": "/xero-review-2026",
+      "destination": "/xero-review/",
+      "permanent": true
+    },
+    {
+      "source": "/xero-review-2026/",
+      "destination": "/xero-review/",
       "permanent": true
     }
   ],
