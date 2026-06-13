@@ -2490,6 +2490,16 @@
       "source": "/jobnimbus-vs-acculynx/",
       "destination": "/acculynx-vs-jobnimbus/",
       "permanent": true
+    },
+    {
+      "source": "/best-hvac-software",
+      "destination": "/best-hvac-software-small-business/",
+      "permanent": true
+    },
+    {
+      "source": "/best-hvac-software/",
+      "destination": "/best-hvac-software-small-business/",
+      "permanent": true
     }
   ],
   "rewrites": [
