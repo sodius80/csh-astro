@@ -277,8 +277,13 @@
       "permanent": false
     },
     {
+      "source": "/go/clockify/",
+      "destination": "https://clockify.me/pricing?fpr=brnkrb",
+      "permanent": false
+    },
+    {
       "source": "/go/clockify-official-site/",
-      "destination": "https://clockify.me/pricing",
+      "destination": "https://clockify.me/pricing?fpr=brnkrb",
       "permanent": false
     },
     {
