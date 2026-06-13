@@ -2480,6 +2480,16 @@
       "source": "/xero-review-2026/",
       "destination": "/xero-review/",
       "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-acculynx",
+      "destination": "/acculynx-vs-jobnimbus/",
+      "permanent": true
+    },
+    {
+      "source": "/jobnimbus-vs-acculynx/",
+      "destination": "/acculynx-vs-jobnimbus/",
+      "permanent": true
     }
   ],
   "rewrites": [
