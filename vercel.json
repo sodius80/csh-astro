@@ -33,12 +33,12 @@
     },
     {
       "source": "/best-field-service-software-contractors",
-      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan",
+      "destination": "/field-service-software-alternatives",
       "permanent": true
     },
     {
       "source": "/best-field-service-software-contractors/",
-      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan/",
+      "destination": "/field-service-software-alternatives/",
       "permanent": true
     },
     {
@@ -1452,13 +1452,23 @@
       "permanent": true
     },
     {
+      "source": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan",
+      "destination": "/field-service-software-alternatives/",
+      "permanent": true
+    },
+    {
+      "source": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan/",
+      "destination": "/field-service-software-alternatives/",
+      "permanent": true
+    },
+    {
       "source": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026",
-      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan/",
+      "destination": "/field-service-software-alternatives/",
       "permanent": true
     },
     {
       "source": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan-2026/",
-      "destination": "/best-field-service-software-alternatives-jobber-housecall-pro-servicetitan/",
+      "destination": "/field-service-software-alternatives/",
       "permanent": true
     },
     {
