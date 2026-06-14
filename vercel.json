@@ -12,6 +12,16 @@
       "permanent": true
     },
     {
+      "source": "/dynamics-365-field-service-vs-housecall-pro",
+      "destination": "/dynamics-365-vs-housecall-pro",
+      "permanent": true
+    },
+    {
+      "source": "/dynamics-365-field-service-vs-housecall-pro/",
+      "destination": "/dynamics-365-vs-housecall-pro/",
+      "permanent": true
+    },
+    {
       "source": "/jobber-pricing-is-it-worth-it",
       "destination": "/jobber-pricing",
       "permanent": true
