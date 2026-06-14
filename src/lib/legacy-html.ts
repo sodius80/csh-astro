@@ -56,7 +56,8 @@ const pathMap: Record<string, string> = {
   '/housecall-pro-pricing/': '/housecall-pro-pricing/',
   '/jobber-alternatives-landscaping-companies/': '/jobber-alternatives-landscaping-companies/',
   '/jobber-alternatives/': '/jobber-alternatives/',
-  '/jobber-pricing-is-it-worth-it/': '/jobber-pricing-is-it-worth-it/',
+  '/jobber-pricing-is-it-worth-it/': '/jobber-pricing/',
+  '/jobber-pricing/': '/jobber-pricing/',
   '/servicetitan-alternatives/': '/servicetitan-alternatives/',
   '/servicetitan-pricing/': '/servicetitan-pricing/',
 

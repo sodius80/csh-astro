@@ -12,6 +12,16 @@
       "permanent": true
     },
     {
+      "source": "/jobber-pricing-is-it-worth-it",
+      "destination": "/jobber-pricing",
+      "permanent": true
+    },
+    {
+      "source": "/jobber-pricing-is-it-worth-it/",
+      "destination": "/jobber-pricing/",
+      "permanent": true
+    },
+    {
       "source": "/best-landscape-design-software-small-business",
       "destination": "/best-landscape-design-software",
       "permanent": true
