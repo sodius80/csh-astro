@@ -2043,12 +2043,22 @@
     },
     {
       "source": "/best-time-tracking-software-for-small-contractor-businesses-2026",
-      "destination": "/best-time-tracking-software-for-small-contractor-businesses/",
+      "destination": "/best-time-tracking-software-contractors/",
       "permanent": true
     },
     {
       "source": "/best-time-tracking-software-for-small-contractor-businesses-2026/",
-      "destination": "/best-time-tracking-software-for-small-contractor-businesses/",
+      "destination": "/best-time-tracking-software-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best-time-tracking-software-for-small-contractor-businesses",
+      "destination": "/best-time-tracking-software-contractors/",
+      "permanent": true
+    },
+    {
+      "source": "/best-time-tracking-software-for-small-contractor-businesses/",
+      "destination": "/best-time-tracking-software-contractors/",
       "permanent": true
     },
     {

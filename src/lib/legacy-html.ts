@@ -25,7 +25,8 @@ const pathMap: Record<string, string> = {
   '/best-roofing-software-contractors/': '/best-roofing-software-contractors/',
   '/best-scheduling-software-contractors/': '/best-scheduling-software-contractors/',
   '/best-software-for-painting-contractors/': '/best-software-for-painting-contractors/',
-  '/best-time-tracking-software-for-small-contractor-businesses/': '/best-time-tracking-software-for-small-contractor-businesses/',
+  '/best-time-tracking-software-contractors/': '/best-time-tracking-software-contractors/',
+  '/best-time-tracking-software-for-small-contractor-businesses/': '/best-time-tracking-software-contractors/',
 
   // Reviews — map to root URLs
   '/acculynx-review/': '/acculynx-review/',
