@@ -1394,12 +1394,12 @@
     {
       "source": "/go/freshsales-official-site/",
       "destination": "https://www.freshworks.com/crm/sales/",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/go/zoho-crm-official-site/",
       "destination": "https://www.zoho.com/crm/",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/zoho-invoice-review-2026",
