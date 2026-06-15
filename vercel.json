@@ -677,8 +677,8 @@
       "permanent": false
     },
     {
-      "source": "/go/beam-ai-official-site/",
-      "destination": "https://www.ibeam.ai/pricing",
+      "source": "/go/beam-official-site/",
+      "destination": "https://www.ibeam.ai",
       "permanent": false
     },
     {
@@ -974,11 +974,6 @@
     {
       "source": "/go/winteam-official-site/",
       "destination": "https://teamsoftware.com/winteam",
-      "permanent": false
-    },
-    {
-      "source": "/go/attentive-ai-official-site/",
-      "destination": "https://attentive.ai/",
       "permanent": false
     },
     {
