@@ -677,8 +677,18 @@
       "permanent": false
     },
     {
+      "source": "/go/beam-ai-official-site/",
+      "destination": "https://www.ibeam.ai/pricing",
+      "permanent": false
+    },
+    {
       "source": "/go/buildbook-official-site/",
       "destination": "https://buildbook.co/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/companycam-official-site/",
+      "destination": "https://companycam.com/pricing",
       "permanent": false
     },
     {
@@ -704,6 +714,16 @@
     {
       "source": "/go/fieldfuze-official-site/",
       "destination": "https://fieldfuze.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/floorsoft-floorwizard-official-site/",
+      "destination": "https://www.floorsoft.com/Page_Products_FW.html",
+      "permanent": false
+    },
+    {
+      "source": "/go/hcss-equipment360-official-site/",
+      "destination": "https://www.hcss.com/pricing/",
       "permanent": false
     },
     {
@@ -1289,6 +1309,41 @@
     {
       "source": "/go/intuit-official-site/",
       "destination": "https://quickbooks.intuit.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/hubspot-free-official-site/",
+      "destination": "https://www.hubspot.com/pricing/crm",
+      "permanent": false
+    },
+    {
+      "source": "/go/jonas-construction-software-official-site/",
+      "destination": "https://www.jonasconstruction.com/pricing/",
+      "permanent": false
+    },
+    {
+      "source": "/go/psa-canam-systems-official-site/",
+      "destination": "https://www.canamsystems.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/responsibid-official-site/",
+      "destination": "https://www.responsibid.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/rfms-erp-official-site/",
+      "destination": "https://www.cyncly.com/products/rfms-core",
+      "permanent": false
+    },
+    {
+      "source": "/go/square-invoices-official-site/",
+      "destination": "https://squareup.com/us/en/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/synchroteam-official-site/",
+      "destination": "https://www.synchroteam.com/pricing.php",
       "permanent": false
     },
     {
