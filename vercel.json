@@ -682,6 +682,11 @@
       "permanent": false
     },
     {
+      "source": "/go/dash-official-site/",
+      "destination": "https://www.nextgearsolutions.com/solutions/job-management/dash-restoration-business-management/",
+      "permanent": false
+    },
+    {
       "source": "/go/dash-restoration-official-site/",
       "destination": "https://www.nextgearsolutions.com/solutions/job-management/dash-restoration-business-management/",
       "permanent": false
@@ -894,6 +899,11 @@
     {
       "source": "/go/clean-smarts-official-site/",
       "destination": "https://www.cleansmarts.com/pricing",
+      "permanent": false
+    },
+    {
+      "source": "/go/solo-official-site/",
+      "destination": "https://gosolo.io/pricing/",
       "permanent": false
     },
     {
