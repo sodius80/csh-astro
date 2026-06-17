@@ -114,7 +114,36 @@ const buildVendorReview = (vendor: typeof d.vendorA, side: 'A' | 'B') => {
 const vendorAReview = buildVendorReview(d.vendorA, 'A');
 const vendorBReview = buildVendorReview(d.vendorB, 'B');
 const schemas = [breadcrumbSchema, vendorAReview, vendorBReview];
----|---
+
+const escapeHtml = (value: string) => value
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
+
+const inlineMarkdownLinks = (value: string) => {
+  const linkPattern = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]+)\)/g;
+  let html = '';
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = linkPattern.exec(value)) !== null) {
+    const [raw, label, href] = match;
+    const attrs = href.startsWith('/go/')
+      ? ' rel="nofollow sponsored"'
+      : href.startsWith('http')
+        ? ' rel="nofollow noopener" target="_blank"'
+        : '';
+
+    html += escapeHtml(value.slice(lastIndex, match.index));
+    html += `<a href="${escapeHtml(href)}"${attrs}>${escapeHtml(label)}</a>`;
+    lastIndex = match.index + raw.length;
+  }
+
+  html += escapeHtml(value.slice(lastIndex));
+  return html;
+};
 ---
 <BaseLayout
   title={d.title}
@@ -202,8 +231,8 @@ const schemas = [breadcrumbSchema, vendorAReview, vendorBReview];
             return (
               <div class={`glance-row ${isLast ? 'is-winner' : ''}`}>
                 <div class="gr-key">{k}</div>
-                <div class="gr-val">{a}</div>
-                <div class="gr-val">{b}</div>
+                <div class="gr-val" set:html={inlineMarkdownLinks(a)}></div>
+                <div class="gr-val" set:html={inlineMarkdownLinks(b)}></div>
               </div>
             );
           })}
