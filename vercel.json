@@ -2625,6 +2625,16 @@
       "source": "/best-hvac-software/",
       "destination": "/best-hvac-software-small-business/",
       "permanent": true
+    },
+    {
+      "source": "/go/assembly-official-site/",
+      "destination": "https://www.assembly.com/",
+      "permanent": false
+    },
+    {
+      "source": "/go/deputy-official-site/",
+      "destination": "https://www.deputy.com/",
+      "permanent": false
     }
   ],
   "rewrites": [
