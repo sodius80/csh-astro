@@ -508,7 +508,12 @@
     },
     {
       "source": "/go/pandadoc-official-site/",
-      "destination": "https://www.pandadoc.com/pricing/",
+      "destination": "https://pandadoc.partnerlinks.io/xetnmsi6mnbr",
+      "permanent": false
+    },
+    {
+      "source": "/go/pandadoc/",
+      "destination": "https://pandadoc.partnerlinks.io/xetnmsi6mnbr",
       "permanent": false
     },
     {
