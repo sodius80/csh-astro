@@ -857,6 +857,11 @@
       "permanent": false
     },
     {
+      "source": "/go/floorwizard-official-site/",
+      "destination": "https://www.floorsoft.com/Page_Products_FW.html",
+      "permanent": false
+    },
+    {
       "source": "/go/measuresquare-official-site/",
       "destination": "https://measuresquare.com/pricing/measuresquare-8/",
       "permanent": false
