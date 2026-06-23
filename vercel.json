@@ -272,6 +272,36 @@
       "permanent": true
     },
     {
+      "source": "/category/field-service-management-software",
+      "destination": "/categories/field-service-management",
+      "permanent": true
+    },
+    {
+      "source": "/category/field-service-management-software/",
+      "destination": "/categories/field-service-management/",
+      "permanent": true
+    },
+    {
+      "source": "/category/crm-software",
+      "destination": "/categories/crm",
+      "permanent": true
+    },
+    {
+      "source": "/category/crm-software/",
+      "destination": "/categories/crm/",
+      "permanent": true
+    },
+    {
+      "source": "/category/plumbing-software",
+      "destination": "/categories/plumbing",
+      "permanent": true
+    },
+    {
+      "source": "/category/plumbing-software/",
+      "destination": "/categories/plumbing/",
+      "permanent": true
+    },
+    {
       "source": "/category(.*)",
       "destination": "/categories$1",
       "permanent": true
