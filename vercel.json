@@ -272,6 +272,46 @@
       "permanent": true
     },
     {
+      "source": "/jobtread-2026",
+      "destination": "/jobtread-review",
+      "permanent": true
+    },
+    {
+      "source": "/jobtread-2026/",
+      "destination": "/jobtread-review/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/solar",
+      "destination": "/categories/solar-software",
+      "permanent": true
+    },
+    {
+      "source": "/categories/solar/",
+      "destination": "/categories/solar-software/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/fencing",
+      "destination": "/categories/fencing-software",
+      "permanent": true
+    },
+    {
+      "source": "/categories/fencing/",
+      "destination": "/categories/fencing-software/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/pool-and-spa-management",
+      "destination": "/categories/pool-and-spa-software",
+      "permanent": true
+    },
+    {
+      "source": "/categories/pool-and-spa-management/",
+      "destination": "/categories/pool-and-spa-software/",
+      "permanent": true
+    },
+    {
       "source": "/category/field-service-management-software",
       "destination": "/categories/field-service-management",
       "permanent": true
