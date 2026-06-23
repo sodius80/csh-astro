@@ -272,6 +272,51 @@
       "permanent": true
     },
     {
+      "source": "/category(.*)",
+      "destination": "/categories$1",
+      "permanent": true
+    },
+    {
+      "source": "/draftingsight-review",
+      "destination": "/draftsight-review",
+      "permanent": true
+    },
+    {
+      "source": "/draftingsight-review/",
+      "destination": "/draftsight-review/",
+      "permanent": true
+    },
+    {
+      "source": "/cleansmarts-review",
+      "destination": "/clean-smarts-review",
+      "permanent": true
+    },
+    {
+      "source": "/cleansmarts-review/",
+      "destination": "/clean-smarts-review/",
+      "permanent": true
+    },
+    {
+      "source": "/constrator-review",
+      "destination": "/constrafor-review",
+      "permanent": true
+    },
+    {
+      "source": "/constrator-review/",
+      "destination": "/constrafor-review/",
+      "permanent": true
+    },
+    {
+      "source": "/zo-ho-invoice-review",
+      "destination": "/zoho-invoice-review",
+      "permanent": true
+    },
+    {
+      "source": "/zo-ho-invoice-review/",
+      "destination": "/zoho-invoice-review/",
+      "permanent": true
+    },
+    {
       "source": "/go/acculynx-official-site/",
       "destination": "https://www.acculynx.com",
       "permanent": false
