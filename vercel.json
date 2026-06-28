@@ -2208,12 +2208,22 @@
     },
     {
       "source": "/quickbooks-vs-sage-100-contractor-2026",
-      "destination": "/quickbooks-vs-sage-100-contractor/",
+      "destination": "/quickbooks-online-vs-sage-100-contractor/",
       "permanent": true
     },
     {
       "source": "/quickbooks-vs-sage-100-contractor-2026/",
-      "destination": "/quickbooks-vs-sage-100-contractor/",
+      "destination": "/quickbooks-online-vs-sage-100-contractor/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-vs-sage-100-contractor",
+      "destination": "/quickbooks-online-vs-sage-100-contractor/",
+      "permanent": true
+    },
+    {
+      "source": "/quickbooks-vs-sage-100-contractor/",
+      "destination": "/quickbooks-online-vs-sage-100-contractor/",
       "permanent": true
     },
     {
