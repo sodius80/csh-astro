@@ -2775,6 +2775,11 @@
       "source": "/go/deputy-official-site/",
       "destination": "https://partner.deputy.com/97ud84box9ve",
       "permanent": false
+    },
+    {
+      "source": "/go/jobnix-official-site/",
+      "destination": "https://www.myjobnix.com/us",
+      "permanent": false
     }
   ],
   "rewrites": [
