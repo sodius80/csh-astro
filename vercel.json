@@ -2780,6 +2780,16 @@
       "source": "/go/jobnix-official-site/",
       "destination": "https://www.myjobnix.com/us",
       "permanent": false
+    },
+    {
+      "source": "/zuper-vs-arbostar",
+      "destination": "/arbostar-vs-zuper",
+      "permanent": true
+    },
+    {
+      "source": "/zuper-vs-arbostar/",
+      "destination": "/arbostar-vs-zuper/",
+      "permanent": true
     }
   ],
   "rewrites": [
