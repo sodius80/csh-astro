@@ -1127,6 +1127,16 @@
       "permanent": true
     },
     {
+      "source": "/knowify-vs-bluebeam-revu",
+      "destination": "/bluebeam-revu-vs-knowify",
+      "permanent": true
+    },
+    {
+      "source": "/knowify-vs-bluebeam-revu/",
+      "destination": "/bluebeam-revu-vs-knowify/",
+      "permanent": true
+    },
+    {
       "source": "/reviews/acculynx",
       "destination": "/acculynx-review",
       "permanent": true
