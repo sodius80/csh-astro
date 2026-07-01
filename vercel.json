@@ -12,6 +12,16 @@
       "permanent": true
     },
     {
+      "source": "/best-crm-contractors",
+      "destination": "/best-crm-for-contractors",
+      "permanent": true
+    },
+    {
+      "source": "/best-crm-contractors/",
+      "destination": "/best-crm-for-contractors/",
+      "permanent": true
+    },
+    {
       "source": "/dynamics-365-field-service-vs-housecall-pro",
       "destination": "/dynamics-365-vs-housecall-pro",
       "permanent": true
