@@ -18,7 +18,7 @@ const {
   dontBullets,
 } = Astro.props;
 const lead = framingLead ?? `The honest answer: **maybe not.** Many small ${category.toLowerCase()} operations need better discipline before they need a full operations platform.`;
-const body = framingBody ?? `Most roundup posts pretend every reader is the ideal buyer. They're not. Before you compare the tools below, work through this checklist. If you land mostly on the right side, save your money — a better spreadsheet will do more for you this quarter than any of these.`;
+const body = framingBody ?? `Most roundup posts pretend every reader is the ideal buyer. They're not. Before you compare the tools below, work through this checklist. If you land mostly on the right side, save your money - a better spreadsheet will do more for you this quarter than any of these.`;
 // render simple **markdown** → <strong>
 const md = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
 ---

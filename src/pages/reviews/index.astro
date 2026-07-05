@@ -27,7 +27,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
 ---
 <BaseLayout
   title="All Reviews · Contractor Software Hub"
-  description="Every software review on Contractor Software Hub. Filter by rating, trade, and team size. One flat matrix — no hidden drawers."
+  description="Every software review on Contractor Software Hub. Filter by rating, trade, and team size. One flat matrix - no hidden drawers."
   active="reviews"
 >
   <section class="page-hero">
@@ -46,7 +46,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
             One flat matrix.
           </p>
           <p class="serif" style="font-size:17px;line-height:1.55;color:var(--ink-2);margin-top:12px;margin-bottom:0;">
-            Every tool we've evaluated, sortable by whatever matters to you — trade, team size, rating, price, or recency. No tiers, no hidden drawers, no three-click detours.
+            Every tool we've evaluated, sortable by whatever matters to you - trade, team size, rating, price, or recency. No tiers, no hidden drawers, no three-click detours.
           </p>
         </div>
       </div>
@@ -144,7 +144,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
                   <span class="trade-chip">{t}</span>
                 ))}
               </div>
-              <div class="mrow-num">{r.data.teamSize ?? '—'}</div>
+              <div class="mrow-num">{r.data.teamSize ?? ' - '}</div>
               <div class="mrow-price">{r.data.startingPrice}</div>
               <div>
                 <span class="mini-stamp" style={`border-color:${stampColor[r.data.rating]}; color:${stampColor[r.data.rating]};`}>
@@ -163,7 +163,7 @@ const stampColor = { 'top-pick': 'var(--orange)', recommended: 'var(--green)', c
           Don't see it?
         </div>
         <div class="serif" style="font-size:14.5px;line-height:1.5;">
-          If a tool isn't listed, it's either not worth covering yet or we're still working on it. Tell us what you want evaluated next — the request form genuinely influences the queue.
+          If a tool isn't listed, it's either not worth covering yet or we're still working on it. Tell us what you want evaluated next - the request form genuinely influences the queue.
         </div>
         <a href="/contact/" class="btn orange sm">Request a review →</a>
       </div>

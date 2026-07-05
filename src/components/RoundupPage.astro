@@ -90,7 +90,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
         <div class="rule-label" style="margin-bottom:36px;">
           <span>The ranking</span>
           <span style="flex:1;"></span>
-          <span style="color:var(--graphite);">Opinionated — not comprehensive</span>
+          <span style="color:var(--graphite);">Opinionated - not comprehensive</span>
         </div>
         <p style="font-size:13px; color:var(--graphite); margin-bottom:28px; line-height:1.4;">
           <strong>Affiliate disclosure:</strong> Some links on this page may be affiliate links. If you purchase through one, ContractorSoftwareHub may earn a commission at no extra cost to you. Every product is evaluated independently based on features, pricing, and user feedback.
@@ -122,14 +122,14 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
                 {d.cutList.length} more we tested and cut
               </div>
               <div class="serif" style="font-size:15px; line-height:1.55; opacity:0.85;">
-                {d.cutList.map(c => c.name).join(' · ')} — each had a case for inclusion but didn't clear the bar for {d.year}. If you want the why, here's the short version.
+                {d.cutList.map(c => c.name).join(' · ')} - each had a case for inclusion but didn't clear the bar for {d.year}. If you want the why, here's the short version.
               </div>
               <details class="cuts-details">
                 <summary>See the cuts →</summary>
                 <ul>
                   {d.cutList.map(c => (
                     <li>
-                      <strong>{c.name}</strong> — {c.why}
+                      <strong>{c.name}</strong> - {c.why}
                     </li>
                   ))}
                 </ul>
