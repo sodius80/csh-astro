@@ -1517,6 +1517,11 @@
       "permanent": false
     },
     {
+      "source": "/go/mailerlite",
+      "destination": "https://www.mailerlite.com/?linkId=lp_170762&sourceId=christopher-lee&tenantId=mailerlite",
+      "permanent": false
+    },
+    {
       "source": "/go/aweber-official-site/",
       "destination": "https://www.aweber.com/easy-email.htm?id=561707",
       "permanent": false
