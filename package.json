@@ -11,8 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:links": "node scripts/check-generated-links.mjs",
+    "check:comparison-responsive": "node scripts/check-comparison-responsive.mjs",
     "lint:mdx": "node scripts/lint-mdx.mjs",
-    "validate": "node scripts/check-hero-images.mjs && npm run build && npm run check:links"
+    "validate": "node scripts/check-hero-images.mjs && npm run build && npm run check:links && npm run check:comparison-responsive"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",

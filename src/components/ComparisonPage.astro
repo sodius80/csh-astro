@@ -231,8 +231,8 @@ const inlineMarkdownLinks = (value: string) => {
             return (
               <div class={`glance-row ${isLast ? 'is-winner' : ''}`}>
                 <div class="gr-key">{k}</div>
-                <div class="gr-val" set:html={inlineMarkdownLinks(a)}></div>
-                <div class="gr-val" set:html={inlineMarkdownLinks(b)}></div>
+                <div class="gr-val" data-vendor={d.vendorA.name} set:html={inlineMarkdownLinks(a)}></div>
+                <div class="gr-val" data-vendor={d.vendorB.name} set:html={inlineMarkdownLinks(b)}></div>
               </div>
             );
           })}
@@ -537,13 +537,45 @@ const inlineMarkdownLinks = (value: string) => {
     .sa-grid { grid-template-columns: 1fr; gap: 28px; text-align: left; }
     .sa-a { text-align: left; }
     .sa-slash { display: none; }
-    .glance-head { grid-template-columns: 1fr; }
-    .glance-head > *:not(:first-child) { border-left: none; border-top: 1px solid rgba(243,239,230,0.2); }
-    .glance-row { grid-template-columns: 1fr; }
-    .gr-val { border-left: none; border-top: 1px solid var(--hair); }
+    .glance-head { grid-template-columns: 1fr 1fr; }
+    .glance-head > :first-child {
+      grid-column: 1 / -1;
+      border-bottom: 1px solid rgba(243,239,230,0.2);
+    }
+    .glance-head > *:not(:first-child) { border-top: none; }
+    .glance-head > :nth-child(2) { border-left: none; }
+    .glance-row { grid-template-columns: 1fr 1fr; }
+    .gr-key {
+      grid-column: 1 / -1;
+      border-bottom: 1px solid var(--hair);
+      background: var(--paper-deep);
+    }
+    .gr-val { border-top: none; }
+    .gr-val:nth-child(2) { border-left: none; }
     .choose-grid, .dual-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 767px) {
     .masthead, .section-pad, .short-answer, .dual-cta { padding-left: 20px; padding-right: 20px; }
+  }
+  @media (max-width: 599px) {
+    .glance-head { display: none; }
+    .glance-row { display: block; }
+    .gr-key { border-bottom: none; }
+    .gr-val {
+      border-left: none;
+      border-top: 1px solid var(--hair);
+      padding-top: 12px;
+    }
+    .gr-val::before {
+      content: attr(data-vendor);
+      display: block;
+      margin-bottom: 5px;
+      color: var(--graphite);
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
   }
 </style>
