@@ -10,7 +10,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.contractorsoftwarehub.com',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['chriss-macbook-pro-1.tail311e16.ts.net']
+    }
   },
 
   integrations: [mdx(), sitemap()]
