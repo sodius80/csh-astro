@@ -1,2 +1,4 @@
-Photo by RDNE Stock project on Pexels
-https://www.pexels.com/photo/assorted-types-of-vehicles-parked-on-parking-lot-8782658/
+AI-generated editorial illustration created for Contractor Software Hub.
+Generated 2026-07-13 for the Fleetio review hero image.
+Style: polished editorial cartoon, contractor fleet maintenance context, no vendor logos or readable UI/text.
+Source generation file: /Users/chris/.hermes/cache/images/openai_codex_gpt-image-2-medium_20260713_015133_b471b00a.png
