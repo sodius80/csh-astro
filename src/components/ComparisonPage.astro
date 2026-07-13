@@ -18,7 +18,7 @@ const d = entry.data;
 const vendorAReviewUrl = reviewSlugs.has(d.vendorA.slug) ? `/${reviewRootSlug(d.vendorA.slug)}/` : null;
 const vendorBReviewUrl = reviewSlugs.has(d.vendorB.slug) ? `/${reviewRootSlug(d.vendorB.slug)}/` : null;
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
-  month: 'short', day: 'numeric', year: 'numeric'
+  month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC'
 });
 
 // ─── JSON-LD Schema ───
