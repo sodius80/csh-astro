@@ -99,6 +99,7 @@ const comparisons = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Christopher Lee'),
     readTime: z.string().optional(),
+    heroHeadline: z.string().optional(),
     heroImage: z.string(),
   }),
 });
