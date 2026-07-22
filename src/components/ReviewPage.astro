@@ -433,7 +433,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 0.01em;
-    overflow-wrap: anywhere;
   }
   .sticky-disclose {
     font-family: var(--mono);
@@ -481,8 +480,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     line-height: 0.88;
     letter-spacing: -0.015em;
     margin: 0 0 36px;
-    max-width: 100%;
-    overflow-wrap: anywhere;
   }
   .masthead-grid {
     display: grid;
@@ -671,7 +668,7 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   }
 
   @media (max-width: 1023px) {
-    .sticky-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 10px 20px; }
+    .sticky-grid { grid-template-columns: auto 1fr auto; gap: 12px; padding: 10px 20px; }
     .sticky-disclose { display: none; }
     .masthead-grid { grid-template-columns: 1fr; gap: 28px; }
     .stamp-col { flex-direction: row; align-items: center; gap: 16px; }
@@ -683,12 +680,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   @media (max-width: 767px) {
     .sticky-aff { position: static; }
     .masthead { padding: 40px 20px 24px; }
-    .masthead-title { font-size: clamp(40px, 12vw, 56px); line-height: 0.9; }
-    .sticky-grid { grid-template-columns: 1fr; }
-    .sticky-grid .btn { display: none; }
     .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }
-    .wrap-reading, .prose { max-width: 100%; }
-    .prose { overflow-x: auto; }
-    .prose table { display: block; max-width: 100%; overflow-x: auto; }
   }
 </style>
