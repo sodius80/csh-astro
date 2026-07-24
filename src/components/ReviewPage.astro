@@ -30,7 +30,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
-  month: 'short', day: 'numeric', year: 'numeric'
+  month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC'
 });
 
 const heroDims = getImgDims(d.heroImage);
@@ -98,42 +98,48 @@ const reviewSchema = JSON.stringify({
       "url": `${siteUrl}/images/csh-logo.png`
     }
   },
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": d.rating === 'top-pick' ? '5' : d.rating === 'recommended' ? '4' : d.rating === 'conditional' ? '3' : '2',
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "reviewBody": (d as any).schemaReviewBody ?? d.description,
+  ...(d.pros.length > 0 ? {
+    "positiveNotes": {
+      "@type": "ItemList",
+      "itemListElement": d.pros.map((name, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": name
+      }))
+    }
+  } : {}),
+  ...(d.cons.length > 0 ? {
+    "negativeNotes": {
+      "@type": "ItemList",
+      "itemListElement": d.cons.map((name, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": name
+      }))
+    }
+  } : {}),
   "itemReviewed": {
     "@type": "SoftwareApplication",
     "@id": softwareId,
     "name": d.vendor,
-    "url": `https://www.${d.vendor.toLowerCase().replace(/\s+/g, '')}.com/`,
+    ...((d as any).schemaProductUrl ? { "url": (d as any).schemaProductUrl } : {}),
     "applicationCategory": "BusinessApplication",
-    "applicationSubCategory": `${d.category} CRM and Project Management`,
-    "operatingSystem": "Web, iOS, Android",
+    ...((d as any).schemaApplicationSubCategory
+      ? { "applicationSubCategory": (d as any).schemaApplicationSubCategory }
+      : {}),
+    ...((d as any).schemaOperatingSystem
+      ? { "operatingSystem": (d as any).schemaOperatingSystem }
+      : {}),
     "description": d.description,
-    "offers": {
-      "@type": "Offer",
-      ...(offerPrice
-        ? {
+    ...(offerPrice ? {
+      "offers": {
+        "@type": "Offer",
             "price": offerPrice,
             "priceCurrency": "USD",
-            "priceValidUntil": `${new Date().getFullYear()}-12-31`
-          }
-        : { "description": d.startingPrice }),
-      "availability": "https://schema.org/InStock",
-      "url": `https://www.${d.vendor.toLowerCase().replace(/\s+/g, '')}.com/pricing`
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": (d as any).schemaRatingValue ?? "4.2",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": String((d as any).schemaRatingCount ?? "60"),
-      "reviewCount": String((d as any).schemaRatingCount ?? "60")
-    }
+        ...((d as any).schemaPricingUrl ? { "url": (d as any).schemaPricingUrl } : {})
+      }
+    } : {})
   }
 });
 
@@ -246,7 +252,7 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
           <div class="freshness" style="margin-top:20px;">
             <div class="r1">Research updated</div>
             <div class="r2">{(d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
-            <div class="r3">Refreshed quarterly</div>
+            {d.refreshCadence === 'quarterly' && <div class="r3">Quarterly review queue</div>}
           </div>
         </div>
       </div>
@@ -264,19 +270,33 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   )}
 
   {d.decision ? (
-    <ReviewDecisionPanel
-      vendor={d.vendor}
-      rating={d.rating}
-      verdict={d.verdictShort}
-      startingPrice={d.startingPrice}
-      freeTrial={d.freeTrial}
-      bestFor={d.bestFor}
-      notFor={d.notFor}
-      affiliateUrl={d.affiliateUrl}
-      ctaLabel={d.ctaLabel}
-      updated={updatedShort}
-      decision={d.decision}
-    />
+    <>
+      <ReviewDecisionPanel
+        vendor={d.vendor}
+        rating={d.rating}
+        verdict={d.verdictShort}
+        startingPrice={d.startingPrice}
+        freeTrial={d.freeTrial}
+        bestFor={d.bestFor}
+        notFor={d.notFor}
+        affiliateUrl={d.affiliateUrl}
+        ctaLabel={d.ctaLabel}
+        updated={updatedShort}
+        decision={d.decision}
+      />
+      {(d.pros.length > 0 || d.cons.length > 0) && (
+        <section class="decision-notes">
+          <div class="wrap-content">
+            <div class="rule-label" style="margin-bottom:28px;">
+              <span>What works · What to watch</span>
+              <span style="flex:1;"></span>
+              <span style="color:var(--graphite);">The evidence in one view</span>
+            </div>
+            <ProsConsGrid pros={d.pros} cons={d.cons} />
+          </div>
+        </section>
+      )}
+    </>
   ) : (
     <>
       <!-- Legacy review summary; new reviews use the consolidated decision panel above. -->
@@ -424,6 +444,12 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
 
 <style>
   .accent { color: var(--orange); }
+
+  .decision-notes {
+    padding: 48px 28px;
+    background: var(--paper-deep);
+    border-bottom: 1.5px solid var(--ink);
+  }
 
   .sticky-aff {
     position: sticky;
@@ -693,6 +719,7 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     .also-grid { grid-template-columns: 1fr; gap: 16px; }
   }
   @media (max-width: 767px) {
+    .decision-notes { padding: 40px 20px; }
     .sticky-aff { position: static; }
     .masthead { padding: 40px 20px 24px; }
     .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }

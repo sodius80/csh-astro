@@ -662,9 +662,33 @@ a { color: inherit; }
 .prose .csh-infographic,
 .prose .csh-evidence-signal,
 .prose .csh-inline-cta,
+.prose .csh-jump-nav,
 .prose .csh-related-read {
   margin: 34px 0;
 }
+
+.prose .csh-jump-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 15px 18px;
+  background: var(--paper-deep);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.prose .csh-jump-nav strong { color: var(--ink); }
+.prose .csh-jump-nav a {
+  color: var(--orange-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+.prose .csh-jump-nav a:hover { color: var(--ink); text-decoration: underline; }
 
 .prose .csh-aid-label {
   display: flex;

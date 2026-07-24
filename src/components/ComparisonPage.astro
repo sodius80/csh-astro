@@ -51,69 +51,38 @@ const breadcrumbSchema = JSON.stringify({
   }))
 });
 
-// Review schema for vendorA
-const buildVendorReview = (vendor: typeof d.vendorA, side: 'A' | 'B') => {
-  const vendorUrlSlug = vendor.slug.replace(/-/g, '').toLowerCase();
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "@id": `${pageUrl}#review-${side}`,
-    "name": `${vendor.name} review in ${d.title}`,
-    "url": pageUrl,
-    "headline": d.title,
-    "description": d.description,
-    "inLanguage": "en-US",
-    "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
-    "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
-    "author": {
-      "@type": "Person",
-      "name": d.author,
-      "url": `${siteUrl}/about/`,
-      "jobTitle": "Editor",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Contractor Software Hub",
-        "url": siteUrl
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Contractor Software Hub",
-      "url": siteUrl,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteUrl}/images/csh-logo.png`
-      }
-    },
-    "reviewRating": {
-      "@type": "Rating",
-      "ratingValue": vendor.rating === 'top-pick' ? '5' : vendor.rating === 'recommended' ? '4' : vendor.rating === 'conditional' ? '3' : '2',
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "itemReviewed": {
-      "@type": "SoftwareApplication",
-      "@id": `${pageUrl}#software-${side}`,
-      "name": vendor.name,
-      "url": `https://www.${vendorUrlSlug}.com/`,
-      "applicationCategory": "BusinessApplication",
-      "applicationSubCategory": `${d.category} CRM and Project Management`,
-      "operatingSystem": "Web, iOS, Android",
-      "description": d.description,
-      "offers": {
-        "@type": "Offer",
-        ...(vendor.startingPrice
-          ? { "description": vendor.startingPrice }
-          : {}),
-        "availability": "https://schema.org/InStock"
-      }
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${pageUrl}#article`,
+  "url": pageUrl,
+  "headline": (d as any).heroHeadline ?? d.title,
+  "description": d.description,
+  "inLanguage": "en-US",
+  "datePublished": (d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "dateModified": (d.updatedDate ?? d.pubDate ?? new Date()).toISOString().split('T')[0],
+  "author": {
+    "@type": "Person",
+    "name": d.author,
+    "url": `${siteUrl}/about/`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Contractor Software Hub",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/csh-logo.png`
     }
-  });
-};
+  },
+  "about": [d.vendorA, d.vendorB].map((vendor) => ({
+    "@type": "SoftwareApplication",
+    "name": vendor.name,
+    "applicationCategory": "BusinessApplication"
+  }))
+});
 
-const vendorAReview = buildVendorReview(d.vendorA, 'A');
-const vendorBReview = buildVendorReview(d.vendorB, 'B');
-const schemas = [breadcrumbSchema, vendorAReview, vendorBReview];
+const schemas = [breadcrumbSchema, articleSchema];
 
 const escapeHtml = (value: string) => value
   .replace(/&/g, '&amp;')
