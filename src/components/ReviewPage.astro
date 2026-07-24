@@ -436,10 +436,11 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   .sticky-grid {
     padding: 12px 28px;
     display: grid;
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     gap: 16px;
     align-items: center;
   }
+  .sticky-grid .btn { white-space: nowrap; }
   .sticky-copy { min-width: 0; }
   .sticky-eyebrow {
     font-family: var(--mono);
@@ -682,7 +683,7 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   }
 
   @media (max-width: 1023px) {
-    .sticky-grid { grid-template-columns: auto 1fr auto; gap: 12px; padding: 10px 20px; }
+    .sticky-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 10px 20px; }
     .sticky-disclose { display: none; }
     .masthead-grid { grid-template-columns: 1fr; gap: 28px; }
     .stamp-col { flex-direction: row; align-items: center; gap: 16px; }
