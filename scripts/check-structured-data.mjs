@@ -12,6 +12,7 @@ const forbiddenSourceTokens = [
   'reviewRating',
 ];
 const strictPolicy = 'evidence-linked-v1';
+const strictPolicyStartDate = '2026-07-24';
 const baselinePath = path.join(root, 'scripts/structured-data-legacy-baseline.json');
 
 function sha256(value) {
@@ -388,7 +389,16 @@ if (!fs.existsSync(baselinePath)) {
 const roundupMappings = roundupRootSlugs();
 for (const absolute of walkFiles(path.join(root, 'src/content'), (file) => file.endsWith('.mdx'))) {
   const source = fs.readFileSync(absolute, 'utf8');
-  if (scalar(frontmatter(source), 'schemaPolicy') === strictPolicy) validateStrictArticle(absolute, roundupMappings);
+  const fm = frontmatter(source);
+  const policy = scalar(fm, 'schemaPolicy');
+  const newestEditorialDate = [scalar(fm, 'pubDate'), scalar(fm, 'updatedDate')]
+    .filter(Boolean)
+    .sort()
+    .at(-1);
+  if (newestEditorialDate >= strictPolicyStartDate && policy !== strictPolicy) {
+    failures.push(`${relative(absolute)} is new or refreshed on ${newestEditorialDate} and must declare schemaPolicy: ${strictPolicy}.`);
+  }
+  if (policy === strictPolicy) validateStrictArticle(absolute, roundupMappings);
 }
 
 if (failures.length > 0) {
