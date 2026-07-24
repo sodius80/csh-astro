@@ -1,0 +1,23 @@
+{
+  "policy": "Known legacy rating markup is frozen. Any addition, reuse, edit, or removal requires an explicit baseline review.",
+  "source": {
+    "digest": "5ffd23852800cbab25ba95639632ff32d89383b4c20265a94136808880399cc5",
+    "totals": {
+      "files": 294,
+      "schemaRatingValue": 165,
+      "schemaRatingCount": 84,
+      "reviewRating": 173,
+      "aggregateRating": 10,
+      "jsonLdFragments": 173
+    }
+  },
+  "output": {
+    "digest": "869bd9a32022642716247081ddf1c88f8a292051c2d6142bdcb8e20d08d6e971",
+    "totals": {
+      "files": 36,
+      "reviewRating": 36,
+      "aggregateRating": 1,
+      "jsonLdFragments": 36
+    }
+  }
+}
