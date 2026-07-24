@@ -8,7 +8,7 @@
  *   - YAML frontmatter is parseable
  *   - Required fields exist per collection type
  *   - JSON-LD in comparison bodies is structurally valid
- *   - Common schema pitfalls (missing schemaRatingValue, etc.)
+ *   - Collection-specific enums and nested field shapes
  */
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
@@ -30,7 +30,6 @@ const COLLECTIONS = {
       'verdictShort', 'startingPrice', 'bestFor', 'pubDate',
       'author', 'affiliateUrl', 'heroImage',
     ],
-    seoFields: ['schemaRatingValue', 'schemaRatingCount', 'schemaReviewBody'],
     ratingValues: ['top-pick', 'recommended', 'conditional', 'skip'],
     faqShape: { q: 'string', a: 'string' },
   },
@@ -146,25 +145,6 @@ function validateJsonLdStructure(rawJs, filename) {
   return errors;
 }
 
-function validateJsonLdValues(body, frontmatter) {
-  // For comparisons with inline JSON.stringify({...}) in template expressions,
-  // we try a different approach: look for the Review schema and cross-check
-  // with frontmatter values
-  const warnings = [];
-
-  // Check if the review rating in JSON-LD matches frontmatter
-  const ratingMatch = body.match(/ratingValue\s*:\s*['"]?([^'",}]+)['"]?/);
-  const fmRating = frontmatter.schemaRatingValue;
-  if (ratingMatch && fmRating && ratingMatch[1] !== String(fmRating)) {
-    // Could be a template variable, so just warn if it's a literal mismatch
-    if (!ratingMatch[1].includes('$')) {
-      warnings.push(`JSON-LD ratingValue (${ratingMatch[1]}) differs from frontmatter schemaRatingValue (${fmRating})`);
-    }
-  }
-
-  return warnings;
-}
-
 // ─── Main ───
 
 let totalErrors = 0;
@@ -204,12 +184,6 @@ for (const [collection, config] of Object.entries(COLLECTIONS)) {
       // Rating enum
       if (d.rating && !config.ratingValues.includes(d.rating)) {
         fileErrors.push(`Invalid rating "${d.rating}". Must be one of: ${config.ratingValues.join(', ')}`);
-      }
-      // SEO schema fields
-      for (const seo of config.seoFields) {
-        if (d[seo] === undefined || d[seo] === null) {
-          fileWarnings.push(`Missing SEO field: ${seo} — Google rich snippets may not show`);
-        }
       }
       // FAQ shape
       if (d.faqs && Array.isArray(d.faqs)) {

@@ -1,0 +1,242 @@
+---
+import RatingStamp from './RatingStamp.astro';
+
+interface Decision {
+  primaryStrength: string;
+  biggestCatch: string;
+  userSignal: string;
+  nextStep: string;
+  pricingNote?: string;
+}
+
+interface Props {
+  vendor: string;
+  rating: 'top-pick' | 'recommended' | 'conditional' | 'skip';
+  verdict: string;
+  startingPrice: string;
+  freeTrial?: string;
+  bestFor: string;
+  notFor?: string;
+  affiliateUrl: string;
+  ctaLabel?: string;
+  updated: string;
+  decision: Decision;
+}
+
+const {
+  vendor,
+  rating,
+  verdict,
+  startingPrice,
+  freeTrial,
+  bestFor,
+  notFor,
+  affiliateUrl,
+  ctaLabel,
+  updated,
+  decision,
+} = Astro.props;
+---
+
+<section class="decision" aria-labelledby="quick-decision-heading">
+  <div class="wrap-content">
+    <div class="decision__topline">
+      <div>
+        <div class="decision__kicker">The quick decision</div>
+        <div class="decision__verified">Pricing and evidence checked {updated}</div>
+      </div>
+      <RatingStamp rating={rating} rotate={-2} />
+    </div>
+
+    <h2 id="quick-decision-heading" class="display decision__verdict">{verdict}</h2>
+
+    <div class="decision__fit-grid">
+      <div class="decision__fit decision__fit--yes">
+        <div class="decision__label">Who it is for</div>
+        <p>{bestFor}</p>
+      </div>
+      {notFor && (
+        <div class="decision__fit decision__fit--no">
+          <div class="decision__label">Who should pass</div>
+          <p>{notFor}</p>
+        </div>
+      )}
+      <div class="decision__fit decision__fit--price">
+        <div class="decision__label">What it costs</div>
+        <p>{startingPrice}</p>
+        {(decision.pricingNote || freeTrial) && <small>{decision.pricingNote ?? freeTrial}</small>}
+      </div>
+    </div>
+
+    <div class="decision__evidence-grid">
+      <article>
+        <div class="decision__number">01</div>
+        <div>
+          <div class="decision__label">Most useful part</div>
+          <p>{decision.primaryStrength}</p>
+        </div>
+      </article>
+      <article>
+        <div class="decision__number decision__number--caution">02</div>
+        <div>
+          <div class="decision__label">The catch</div>
+          <p>{decision.biggestCatch}</p>
+        </div>
+      </article>
+      <article>
+        <div class="decision__number decision__number--signal">03</div>
+        <div>
+          <div class="decision__label">What users consistently signal</div>
+          <p>{decision.userSignal}</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="decision__next">
+      <div>
+        <div class="decision__label">The sensible next step</div>
+        <p>{decision.nextStep}</p>
+      </div>
+      <a class="btn orange" href={affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
+        {ctaLabel ?? `Check ${vendor}`} <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .decision {
+    padding: 52px 28px;
+    color: var(--paper);
+    background:
+      linear-gradient(rgba(243,239,230,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(243,239,230,.035) 1px, transparent 1px),
+      var(--ink);
+    background-size: 32px 32px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .decision__topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(243,239,230,.22);
+  }
+  .decision__kicker,
+  .decision__label,
+  .decision__verified {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .13em;
+  }
+  .decision__kicker { color: var(--orange); font-size: 12px; font-weight: 700; }
+  .decision__verified { margin-top: 5px; color: #aaa9a2; font-size: 9px; }
+  :global(.decision .stamp-seal.conditional) { --seal-c: var(--caution); }
+  .decision__verdict {
+    max-width: 960px;
+    margin: 34px 0 38px;
+    font-family: var(--serif);
+    font-size: clamp(27px, 3vw, 40px);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.12;
+    text-transform: none;
+    text-wrap: balance;
+  }
+  .decision__fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(243,239,230,.24);
+    border: 1px solid rgba(243,239,230,.24);
+  }
+  .decision__fit {
+    min-height: 150px;
+    padding: 22px;
+    background: #1d2026;
+    border-top: 5px solid var(--green);
+  }
+  .decision__fit--no { border-top-color: var(--red); }
+  .decision__fit--price { border-top-color: var(--orange); }
+  .decision__label { color: var(--orange); font-size: 9.5px; font-weight: 700; }
+  .decision__fit p {
+    margin: 12px 0 0;
+    color: var(--paper);
+    font-family: var(--ui);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.38;
+  }
+  .decision__fit small {
+    display: block;
+    margin-top: 9px;
+    color: #bcbab2;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    line-height: 1.45;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .decision__evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 38px;
+  }
+  .decision__evidence-grid article {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .decision__number {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+  .decision__number--caution { border-color: var(--caution); color: var(--caution); }
+  .decision__number--signal { border-color: var(--orange); color: var(--orange); }
+  .decision__evidence-grid p {
+    margin: 8px 0 0;
+    color: #d8d3c9;
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .decision__next {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+    margin-top: 38px;
+    padding: 22px 0 0;
+    border-top: 1px solid rgba(243,239,230,.22);
+  }
+  .decision__next p {
+    max-width: 760px;
+    margin: 7px 0 0;
+    color: #d8d3c9;
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .decision__fit-grid,
+    .decision__evidence-grid { grid-template-columns: 1fr; }
+    .decision__fit { min-height: auto; }
+    .decision__evidence-grid { gap: 22px; }
+  }
+  @media (max-width: 640px) {
+    .decision { padding: 40px 20px; }
+    .decision__topline { align-items: center; }
+    .decision__verdict { margin: 28px 0 30px; }
+    .decision__next { grid-template-columns: 1fr; }
+    .decision__next .btn { width: 100%; justify-content: center; }
+  }
+</style>

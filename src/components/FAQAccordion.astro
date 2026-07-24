@@ -6,7 +6,7 @@ interface Props {
 const { faqs, title = 'Frequently asked' } = Astro.props;
 ---
 {faqs.length > 0 && (
-  <section style="padding: 56px 28px; border-bottom: 1.5px solid var(--ink);">
+  <section id="faq" style="padding: 56px 28px; border-bottom: 1.5px solid var(--ink);">
     <div class="wrap-reading">
       <div class="rule-label" style="margin-bottom: 28px;">
         <span>{title}</span>
