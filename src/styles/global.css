@@ -657,6 +657,168 @@ a { color: inherit; }
   border: 1px solid var(--hair);
 }
 
+/* ── CSH decision aids for article bodies ────────────────── */
+.prose .csh-decision-table,
+.prose .csh-infographic,
+.prose .csh-evidence-signal,
+.prose .csh-inline-cta,
+.prose .csh-related-read {
+  margin: 34px 0;
+}
+
+.prose .csh-aid-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  color: var(--graphite);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.prose .csh-aid-label::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.prose .csh-decision-table {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  -webkit-overflow-scrolling: touch;
+}
+.prose .csh-decision-table table {
+  min-width: 620px;
+  margin: 0;
+  border: 0;
+}
+.prose .csh-decision-table th:first-child,
+.prose .csh-decision-table td:first-child { font-weight: 700; }
+.prose .csh-decision-table tr.csh-table-winner td { background: rgba(47,125,79,.09); }
+.prose .csh-decision-table tr.csh-table-caution td { background: rgba(245,197,66,.12); }
+
+.prose .csh-infographic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  padding: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+}
+.prose .csh-infographic > div {
+  min-width: 0;
+  padding: 20px;
+  background: var(--paper-deep);
+}
+.prose .csh-infographic .csh-step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 18px;
+  border: 1px solid var(--orange);
+  color: var(--orange-deep);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+.prose .csh-infographic h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1;
+}
+.prose .csh-infographic p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.prose .csh-evidence-signal {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(110px, .35fr) 1fr;
+  gap: 22px;
+  padding: 24px;
+  overflow: hidden;
+  color: var(--paper);
+  background: var(--navy);
+  border: 1.5px solid var(--ink);
+}
+.prose .csh-evidence-signal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 100%;
+  background: repeating-linear-gradient(135deg, var(--orange) 0 9px, var(--navy) 9px 18px);
+}
+.prose .csh-evidence-signal .csh-signal-source {
+  color: var(--orange);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.prose .csh-evidence-signal p { margin: 0; color: var(--paper); font-size: 16px; }
+
+.prose .csh-inline-cta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--orange);
+}
+.prose .csh-inline-cta.is-internal { box-shadow: 6px 6px 0 var(--navy); }
+.prose .csh-inline-cta h3 { margin: 0 0 8px; font-size: 21px; }
+.prose .csh-inline-cta p { margin: 0; font-size: 14.5px; line-height: 1.5; }
+.prose .csh-inline-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1.5px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.prose .csh-inline-cta a:hover { color: var(--ink); background: var(--orange); }
+
+.prose .csh-related-read {
+  padding: 18px 20px;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  font-family: var(--ui);
+}
+.prose .csh-related-read strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.prose .csh-related-read a { font-weight: 700; }
+
 /* Drop-cap first paragraph inside .prose-drop */
 .prose-drop > p:first-of-type::first-letter {
   font-family: var(--display);
@@ -729,6 +891,10 @@ a { color: inherit; }
   .brand .wordmark .l1 { font-size: 16px; }
   .brand .wordmark .l2 { font-size: 9px; }
   .brand .mark { width: 38px; height: 38px; font-size: 18px; }
+  .prose .csh-infographic { grid-template-columns: 1fr; }
+  .prose .csh-evidence-signal,
+  .prose .csh-inline-cta { grid-template-columns: 1fr; }
+  .prose .csh-inline-cta a { width: 100%; }
 }
 
 /* ── Quick Picks — branded cards for MDX roundups ────────── */

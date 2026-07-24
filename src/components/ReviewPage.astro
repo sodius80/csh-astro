@@ -4,6 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import RatingStamp from './RatingStamp.astro';
 import ProsConsGrid from './ProsConsGrid.astro';
 import FAQAccordion from './FAQAccordion.astro';
+import ArticleHero from './ArticleHero.astro';
+import ReviewDecisionPanel from './ReviewDecisionPanel.astro';
 import { reviewRootSlug } from '../lib/slugs';
 import type { CollectionEntry } from 'astro:content';
 import imageDims from '../data/imageDims.json';
@@ -27,9 +29,6 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const updatedTxt = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
-  month: 'long', day: 'numeric', year: 'numeric'
-});
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short', day: 'numeric', year: 'numeric'
 });
@@ -254,96 +253,114 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     </div>
   </article>
 
-  <!-- Hero image -->
   {d.heroImage && (
-    <section class="hero-img-section">
-      <div class="wrap-content">
-        <img src={d.heroImage} alt={d.vendor} class="hero-img" width={heroDims?.width} height={heroDims?.height} />
-      </div>
-    </section>
+    <ArticleHero
+      src={d.heroImage}
+      alt={`${d.vendor} review illustration`}
+      width={heroDims?.width}
+      height={heroDims?.height}
+      style={d.heroStyle}
+    />
   )}
 
-  <!-- VERDICT BOX -->
-  <section class="verdict">
-    <div class="wrap-content">
-      <div class="rule-label" style="color:var(--paper); margin-bottom:28px;">
-        <span style="color:var(--orange);">The Verdict</span>
-        <span style="flex:1;"></span>
-        <span style="color:var(--graphite);">Pricing verified {updatedShort}</span>
-      </div>
-      <div class="verdict-grid">
-        <div>
-          <div class="verdict-eyebrow">One-line verdict</div>
-          <div class="display verdict-headline">{d.verdictShort}</div>
-        </div>
-        <div>
-          <div class="verdict-eyebrow">Starting price</div>
-          <div class="display verdict-headline">{d.startingPrice}</div>
-          {d.freeTrial && <div class="verdict-caption">{d.freeTrial}</div>}
-        </div>
-        <div>
-          <div class="verdict-eyebrow">Best-fit team</div>
-          <div class="display verdict-headline">{d.bestFor}</div>
-          {d.teamSize && <div class="verdict-caption">{d.teamSize}</div>}
-        </div>
-      </div>
-      {(d.pros.length > 0 || d.cons.length > 0) && (
-        <div class="verdict-pros-cons">
-          <ProsConsGrid pros={d.pros} cons={d.cons} dark={true} />
-        </div>
-      )}
-    </div>
-  </section>
-
-  <!-- RIGHT FOR / NOT FOR -->
-  {d.notFor && (
-    <section class="section-pad">
-      <div class="wrap-content">
-        <div class="rule-label" style="margin-bottom:28px;">
-          <span>Right for · Not for</span>
-          <span style="flex:1;"></span>
-          <span style="color:var(--graphite);">The section most reviews skip</span>
-        </div>
-        <div class="right-notfor">
-          <div class="stripe-card">
-            <div class="eyebrow" style="margin-bottom:10px;">✓ RIGHT FOR</div>
-            <div class="display sc-title">{d.bestFor}</div>
+  {d.decision ? (
+    <ReviewDecisionPanel
+      vendor={d.vendor}
+      rating={d.rating}
+      verdict={d.verdictShort}
+      startingPrice={d.startingPrice}
+      freeTrial={d.freeTrial}
+      bestFor={d.bestFor}
+      notFor={d.notFor}
+      affiliateUrl={d.affiliateUrl}
+      ctaLabel={d.ctaLabel}
+      updated={updatedShort}
+      decision={d.decision}
+    />
+  ) : (
+    <>
+      <!-- Legacy review summary; new reviews use the consolidated decision panel above. -->
+      <section class="verdict">
+        <div class="wrap-content">
+          <div class="rule-label" style="color:var(--paper); margin-bottom:28px;">
+            <span style="color:var(--orange);">The Verdict</span>
+            <span style="flex:1;"></span>
+            <span style="color:var(--graphite);">Pricing verified {updatedShort}</span>
           </div>
-          <div class="stripe-card wrong">
-            <div class="eyebrow" style="margin-bottom:10px;">✕ NOT FOR</div>
-            <div class="display sc-title">{d.notFor}</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- QUICK FACTS -->
-  {d.quickFacts.length > 0 && (
-    <section class="section-pad" style="background:var(--paper-deep);">
-      <div class="wrap-content">
-        <div class="rule-label" style="margin-bottom:28px;">
-          <span>Quick Facts</span>
-          <span style="flex:1;"></span>
-          <span style="color:var(--graphite);">At a glance</span>
-        </div>
-        <div class="quick-facts">
-          {d.quickFacts.map(([k, v], i) => (
-            <div class="qf-row" style={i === 0 ? '' : 'border-top:1px solid var(--hair);'}>
-              <div class="qf-key">{k}</div>
-              <div class="qf-val">{v}</div>
+          <div class="verdict-grid">
+            <div>
+              <div class="verdict-eyebrow">One-line verdict</div>
+              <div class="display verdict-headline">{d.verdictShort}</div>
             </div>
-          ))}
+            <div>
+              <div class="verdict-eyebrow">Starting price</div>
+              <div class="display verdict-headline">{d.startingPrice}</div>
+              {d.freeTrial && <div class="verdict-caption">{d.freeTrial}</div>}
+            </div>
+            <div>
+              <div class="verdict-eyebrow">Best-fit team</div>
+              <div class="display verdict-headline">{d.bestFor}</div>
+              {d.teamSize && <div class="verdict-caption">{d.teamSize}</div>}
+            </div>
+          </div>
+          {(d.pros.length > 0 || d.cons.length > 0) && (
+            <div class="verdict-pros-cons">
+              <ProsConsGrid pros={d.pros} cons={d.cons} dark={true} />
+            </div>
+          )}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {d.notFor && (
+        <section class="section-pad">
+          <div class="wrap-content">
+            <div class="rule-label" style="margin-bottom:28px;">
+              <span>Right for · Not for</span>
+              <span style="flex:1;"></span>
+              <span style="color:var(--graphite);">The section most reviews skip</span>
+            </div>
+            <div class="right-notfor">
+              <div class="stripe-card">
+                <div class="eyebrow" style="margin-bottom:10px;">✓ RIGHT FOR</div>
+                <div class="display sc-title">{d.bestFor}</div>
+              </div>
+              <div class="stripe-card wrong">
+                <div class="eyebrow" style="margin-bottom:10px;">✕ NOT FOR</div>
+                <div class="display sc-title">{d.notFor}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {d.quickFacts.length > 0 && (
+        <section class="section-pad" style="background:var(--paper-deep);">
+          <div class="wrap-content">
+            <div class="rule-label" style="margin-bottom:28px;">
+              <span>Quick Facts</span>
+              <span style="flex:1;"></span>
+              <span style="color:var(--graphite);">At a glance</span>
+            </div>
+            <div class="quick-facts">
+              {d.quickFacts.map(([k, v], i) => (
+                <div class="qf-row" style={i === 0 ? '' : 'border-top:1px solid var(--hair);'}>
+                  <div class="qf-key">{k}</div>
+                  <div class="qf-val">{v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   )}
 
   <!-- BODY -->
   <section class="section-pad">
     <div class="wrap-reading">
       <div class="rule-label" style="margin-bottom:36px;">
-        <span>The body of the review</span>
+        <span>{d.decision ? 'The full review' : 'The body of the review'}</span>
+        {d.decision && <span class="body-route">How it works · where it bends · what users report</span>}
       </div>
       <div class="prose prose-drop">
         <Content />
@@ -387,7 +404,11 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
       <div class="rule-label" style="margin-bottom:28px; justify-content:center;">
         <span>The bottom line</span>
       </div>
-      <h2 class="display bl-title">{d.verdictShort}</h2>
+      <h2 class="display bl-title">
+        {d.decision
+          ? `If ${d.vendor} fits the way your crew works, verify the current terms before you commit.`
+          : d.verdictShort}
+      </h2>
       <div class="bl-ctas">
         <a href={d.affiliateUrl} class="btn orange" rel="sponsored nofollow noopener" target="_blank">
           {d.ctaLabel ?? `Try ${d.vendor}`} <span class="arr">→</span>
@@ -540,19 +561,6 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
     align-items: flex-start;
   }
 
-  .hero-img-section {
-    padding: 36px 28px;
-    border-bottom: 1.5px solid var(--ink);
-    background: var(--paper-deep);
-  }
-  .hero-img {
-    width: 100%;
-    height: auto;
-    border: 1.5px solid var(--ink);
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-
   .verdict {
     padding: 48px 28px;
     background: var(--ink);
@@ -591,6 +599,12 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   .section-pad {
     padding: 56px 28px;
     border-bottom: 1.5px solid var(--ink);
+  }
+  .body-route {
+    margin-left: auto;
+    color: var(--graphite);
+    font-size: 9px;
+    letter-spacing: .09em;
   }
   .right-notfor {
     display: grid;
