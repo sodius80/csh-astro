@@ -10,6 +10,10 @@ const requirements = [
     /@media\s*\(max-width:\s*767px\)[\s\S]*?\.sticky-aff\s*\{\s*display:\s*none;\s*\}/.test(source),
   ],
   [
+    'long mobile review headlines stay inside the viewport',
+    /@media\s*\(max-width:\s*767px\)[\s\S]*?\.masthead-title\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?font-size:\s*clamp\(34px,\s*11vw,\s*44px\);[\s\S]*?overflow-wrap:\s*break-word;[\s\S]*?\}/.test(source),
+  ],
+  [
     'editorial intent is the single no-CTA switch',
     source.includes("const isEditorialNoCta = d.commercialIntent === 'none';")
       && !source.includes('noCta'),
