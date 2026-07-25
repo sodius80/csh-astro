@@ -298,6 +298,12 @@ function validateStrictArticle(absolute, roundupMappings) {
   }
 
   if (collection === 'reviews') {
+    const commercialIntent = scalar(fm, 'commercialIntent') ?? 'affiliate';
+    if (commercialIntent === 'none') {
+      if (scalar(fm, 'affiliateUrl')) failures.push(`${sourcePath} is non-commercial and must not carry an affiliateUrl.`);
+      if (html.includes('class="sticky-aff"')) failures.push(`${sourcePath} is non-commercial but rendered the sticky product CTA rail.`);
+      if (/rel=["'][^"']*\bsponsored\b/i.test(html)) failures.push(`${sourcePath} is non-commercial but rendered a sponsored product link.`);
+    }
     const reviews = schemas.flatMap((schema) => collectTypedNodes(schema, 'Review'));
     if (reviews.length !== 1) {
       failures.push(`${sourcePath} must generate exactly one Review schema; found ${reviews.length}.`);

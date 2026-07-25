@@ -37,8 +37,9 @@ const reviews = defineCollection({
     refreshCadence: z.enum(['quarterly']).optional(),
     author: z.string().default('Christopher Lee'),
     readTime: z.string().optional(),
-    affiliateUrl: z.string(),
+    affiliateUrl: z.string().optional().default(''),
     ctaLabel: z.string().optional(),
+    commercialIntent: z.enum(['affiliate', 'sponsored', 'none']).default('affiliate'),
     heroImage: z.string(),
     heroStyle: z.enum(['standard', 'csh-illustrated']).default('standard'),
     heroSubhead: z.string().optional(),
@@ -63,6 +64,14 @@ const reviews = defineCollection({
     faqs: z
       .array(z.object({ q: z.string(), a: z.string() }))
       .default([]),
+  }).superRefine((review, ctx) => {
+    if (review.commercialIntent !== 'none' && !review.affiliateUrl) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['affiliateUrl'],
+        message: 'Commercial reviews require an affiliateUrl; use commercialIntent: none for editorial reviews without a product CTA.',
+      });
+    }
   }),
 });
 
