@@ -381,6 +381,13 @@ const schemas = [articleSchema, itemListSchema, faqSchema, breadcrumbSchema]
 
   @media (max-width: 767px) {
     .masthead, .section-pad, .hero-img-section, .bottom-line { padding-left: 20px; padding-right: 20px; }
+    .bo-title {
+      max-width: 100%;
+      font-size: clamp(34px, 11vw, 44px);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      overflow-wrap: break-word;
+    }
     .cuts { flex-direction: column; gap: 16px; padding: 24px 20px; }
   }
 </style>
