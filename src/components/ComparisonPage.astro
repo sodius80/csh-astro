@@ -527,6 +527,11 @@ const inlineMarkdownLinks = (value: string) => {
     .masthead, .section-pad, .short-answer, .dual-cta { padding-left: 20px; padding-right: 20px; }
   }
   @media (max-width: 599px) {
+    .comp-title {
+      font-size: clamp(36px, 10.5vw, 42px);
+      line-height: 0.92;
+      overflow-wrap: anywhere;
+    }
     .glance-head { display: none; }
     .glance-row { display: block; }
     .gr-key { border-bottom: none; }

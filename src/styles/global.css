@@ -981,6 +981,13 @@ a { color: inherit; }
 
 /* Quick Picks mobile */
 @media (max-width: 640px) {
+  .prose table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .qp-grid { grid-template-columns: 1fr; gap: 0.875rem; }
   .qp-card { padding: 20px 18px; }
 }
