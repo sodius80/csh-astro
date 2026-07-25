@@ -720,7 +720,10 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   }
   @media (max-width: 767px) {
     .decision-notes { padding: 40px 20px; }
-    .sticky-aff { position: static; }
+    /* The desktop rail repeats the verdict/CTA and becomes a large marketing
+       block before the article on phones. Mobile already has the masthead,
+       decision panel, and full-width contextual CTAs, so remove this duplicate. */
+    .sticky-aff { display: none; }
     .masthead { padding: 40px 20px 24px; }
     .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }
   }
