@@ -20,20 +20,57 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
 });
+
+// Refreshed guides use the evidence-linked contract: one rating-free Article
+// schema whose dates and image come directly from visible frontmatter. Legacy
+// guides keep their existing page-level schema until they are migrated.
+const siteUrl = 'https://www.contractorsoftwarehub.com';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const strictSchema = (d as any).schemaPolicy === 'evidence-linked-v1';
+const articleSchema = strictSchema ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${pageUrl}#article`,
+  "url": pageUrl,
+  "headline": d.title,
+  "description": d.description,
+  "inLanguage": "en-US",
+  "datePublished": d.pubDate.toISOString().split('T')[0],
+  "dateModified": (d.updatedDate ?? d.pubDate).toISOString().split('T')[0],
+  "author": {
+    "@type": "Person",
+    "name": d.author,
+    "url": `${siteUrl}/about/`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Contractor Software Hub",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/csh-logo.png`
+    }
+  },
+  ...(d.heroImage ? {
+    "image": new URL(d.heroImage, siteUrl).toString()
+  } : {})
+}) : null;
 ---
 <BaseLayout
   title={d.title}
   description={d.description}
   active="home"
   ogImage={d.heroImage}
+  schema={articleSchema ?? undefined}
   pubDate={d.pubDate}
   updatedDate={d.updatedDate ?? d.pubDate}
 >
   <section class="guide-meta-strip">
     <div class="wrap-content guide-meta-inner">
       <div class="pill-row">
-        <span class="pill ink">Legacy {guideLabel}</span>
+        <span class="pill ink">{strictSchema ? guideLabel : `Legacy ${guideLabel}`}</span>
         {d.category && <span class="pill">{d.category}</span>}
         <span class="pill ghost">Updated {updatedShort}</span>
       </div>
@@ -42,6 +79,18 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
           <h1 class="display guide-title">{d.title}</h1>
           <p class="serif guide-lede">{d.description}</p>
           <div class="guide-byline">By {d.author}</div>
+          {strictSchema && d.heroImage && (
+            <figure class="guide-hero">
+              <img
+                src={d.heroImage}
+                alt={`${d.title} editorial illustration`}
+                width="1536"
+                height="864"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </figure>
+          )}
         </div>
       )}
     </div>
@@ -92,6 +141,17 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--graphite);
+  }
+  .guide-hero {
+    margin: 24px 0 0;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+    overflow: hidden;
+  }
+  .guide-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
   .guide-body {
     padding: 40px 28px 72px;
@@ -240,6 +300,11 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
     .guide-body {
       padding-left: 20px;
       padding-right: 20px;
+    }
+    .guide-title {
+      font-size: clamp(38px, 11vw, 46px);
+      overflow-wrap: anywhere;
+      min-width: 0;
     }
     .guide-prose .csh-review-hero {
       padding: 22px 20px;
