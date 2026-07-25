@@ -34,6 +34,8 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
 });
 
 const heroDims = getImgDims(d.heroImage);
+const isEditorialNoCta = d.commercialIntent === 'none';
+const showProductCta = !isEditorialNoCta && Boolean(d.affiliateUrl);
 
 const all = filterPublished(await getCollection('reviews'));
 const siteUrl = 'https://www.contractorsoftwarehub.com';
@@ -195,27 +197,30 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   updatedDate={d.updatedDate ?? d.pubDate}
   schema={schemas}
 >
-  <!-- Sticky affiliate bar -->
-  <div class="sticky-aff">
-    <div class="wrap sticky-grid">
-      <div class="sticky-copy">
-        <div class="sticky-eyebrow">Currently reading · {d.vendor} Review</div>
-        <div class="sticky-title">
-          {d.rating === 'top-pick' ? 'TOP PICK' : d.rating === 'recommended' ? 'RECOMMENDED' : d.rating === 'conditional' ? 'CONDITIONAL' : 'SKIP'} · {d.category} · {d.bestFor}
+  {showProductCta && (
+    <div class="sticky-aff">
+      <div class="wrap sticky-grid">
+        <div class="sticky-copy">
+          <div class="sticky-eyebrow">Currently reading · {d.vendor} Review</div>
+          <div class="sticky-title">
+            {d.rating === 'top-pick' ? 'TOP PICK' : d.rating === 'recommended' ? 'RECOMMENDED' : d.rating === 'conditional' ? 'CONDITIONAL' : 'SKIP'} · {d.category} · {d.bestFor}
+          </div>
         </div>
+        <a class="btn orange sm" href={d.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
+          {d.ctaLabel ?? `Try ${d.vendor} Free`} <span class="arr">→</span>
+        </a>
+        <a href="/affiliate-disclosure/" class="sticky-disclose">Affiliate · disclosure →</a>
       </div>
-      <a class="btn orange sm" href={d.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
-        {d.ctaLabel ?? `Try ${d.vendor} Free`} <span class="arr">→</span>
-      </a>
-      <a href="/affiliate-disclosure/" class="sticky-disclose">Affiliate · disclosure →</a>
     </div>
-  </div>
+  )}
 
   <!-- Disclosure strip -->
   <div class="disclosure-strip">
     <div class="wrap">
       <strong>DISCLOSURE</strong>
-      Some links on this page are affiliate links. If you sign up through one, we earn a small commission at no extra cost to you. Our coverage doesn't change based on that.
+      {isEditorialNoCta
+        ? 'This is an independent editorial review. Contractor Software Hub receives no commission if you visit or buy this product.'
+        : "Some links on this page are affiliate links. If you sign up through one, we earn a small commission at no extra cost to you. Our coverage doesn't change based on that."}
     </div>
   </div>
 
@@ -279,8 +284,9 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
         freeTrial={d.freeTrial}
         bestFor={d.bestFor}
         notFor={d.notFor}
-        affiliateUrl={d.affiliateUrl}
+        affiliateUrl={d.affiliateUrl || undefined}
         ctaLabel={d.ctaLabel}
+        showCta={showProductCta}
         updated={updatedShort}
         decision={d.decision}
       />
@@ -430,13 +436,17 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
           : d.verdictShort}
       </h2>
       <div class="bl-ctas">
-        <a href={d.affiliateUrl} class="btn orange" rel="sponsored nofollow noopener" target="_blank">
-          {d.ctaLabel ?? `Try ${d.vendor}`} <span class="arr">→</span>
-        </a>
+        {showProductCta && (
+          <a href={d.affiliateUrl} class="btn orange" rel="sponsored nofollow noopener" target="_blank">
+            {d.ctaLabel ?? `Try ${d.vendor}`} <span class="arr">→</span>
+          </a>
+        )}
         <a href="/how-we-review/" class="btn outline">Read our methodology</a>
       </div>
       <div class="bl-foot">
-        Affiliate link · CSH earns a commission · our coverage doesn't change for it
+        {showProductCta
+          ? "Affiliate link · CSH earns a commission · our coverage doesn't change for it"
+          : 'Independent editorial review · no affiliate commission attached to this page'}
       </div>
     </div>
   </section>

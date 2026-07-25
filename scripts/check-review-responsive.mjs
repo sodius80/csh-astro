@@ -1,11 +1,34 @@
 import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../src/components/ReviewPage.astro', import.meta.url), 'utf8');
+const decisionSource = await readFile(new URL('../src/components/ReviewDecisionPanel.astro', import.meta.url), 'utf8');
+const configSource = await readFile(new URL('../src/content.config.ts', import.meta.url), 'utf8');
 const requirements = [
   ['mobile review breakpoint', /@media\s*\(max-width:\s*767px\)/.test(source)],
   [
     'duplicate affiliate rail hidden on phones',
     /@media\s*\(max-width:\s*767px\)[\s\S]*?\.sticky-aff\s*\{\s*display:\s*none;\s*\}/.test(source),
+  ],
+  [
+    'editorial intent is the single no-CTA switch',
+    source.includes("const isEditorialNoCta = d.commercialIntent === 'none';")
+      && !source.includes('noCta'),
+  ],
+  [
+    'non-commercial reviews do not render the sticky product rail',
+    /\{showProductCta\s*&&\s*\(\s*<div class="sticky-aff">/.test(source),
+  ],
+  [
+    'decision and bottom-line product CTAs share the same gate',
+    source.includes('showCta={showProductCta}')
+      && /\{showProductCta\s*&&\s*\(\s*<a href=\{d\.affiliateUrl\} class="btn orange"/.test(source)
+      && decisionSource.includes('{showCta && affiliateUrl && ('),
+  ],
+  [
+    'commercial reviews require a URL while editorial reviews may omit one',
+    configSource.includes("affiliateUrl: z.string().optional().default('')")
+      && configSource.includes("commercialIntent: z.enum(['affiliate', 'sponsored', 'none']).default('affiliate')")
+      && configSource.includes("if (review.commercialIntent !== 'none' && !review.affiliateUrl)"),
   ],
 ];
 

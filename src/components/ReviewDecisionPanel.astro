@@ -17,8 +17,9 @@ interface Props {
   freeTrial?: string;
   bestFor: string;
   notFor?: string;
-  affiliateUrl: string;
+  affiliateUrl?: string;
   ctaLabel?: string;
+  showCta?: boolean;
   updated: string;
   decision: Decision;
 }
@@ -33,6 +34,7 @@ const {
   notFor,
   affiliateUrl,
   ctaLabel,
+  showCta = true,
   updated,
   decision,
 } = Astro.props;
@@ -97,9 +99,11 @@ const {
         <div class="decision__label">The sensible next step</div>
         <p>{decision.nextStep}</p>
       </div>
-      <a class="btn orange" href={affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
-        {ctaLabel ?? `Check ${vendor}`} <span class="arr">→</span>
-      </a>
+      {showCta && affiliateUrl && (
+        <a class="btn orange" href={affiliateUrl} rel="sponsored nofollow noopener" target="_blank">
+          {ctaLabel ?? `Check ${vendor}`} <span class="arr">→</span>
+        </a>
+      )}
     </div>
   </div>
 </section>
