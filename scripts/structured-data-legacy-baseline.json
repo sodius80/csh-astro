@@ -12,12 +12,12 @@
     }
   },
   "output": {
-    "digest": "869bd9a32022642716247081ddf1c88f8a292051c2d6142bdcb8e20d08d6e971",
+    "digest": "b74d380f69fed507e0badeffef6d95b7a063d1c7a3a94e44d361b5acf05be4f7",
     "totals": {
-      "files": 36,
-      "reviewRating": 36,
+      "files": 35,
+      "reviewRating": 35,
       "aggregateRating": 1,
-      "jsonLdFragments": 36
+      "jsonLdFragments": 35
     }
   }
 }
