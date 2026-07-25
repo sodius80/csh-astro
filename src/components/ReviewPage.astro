@@ -735,6 +735,13 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
        decision panel, and full-width contextual CTAs, so remove this duplicate. */
     .sticky-aff { display: none; }
     .masthead { padding: 40px 20px 24px; }
+    .masthead-title {
+      max-width: 100%;
+      font-size: clamp(34px, 11vw, 44px);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      overflow-wrap: break-word;
+    }
     .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }
   }
 </style>
