@@ -37,6 +37,8 @@ const {
 } = Astro.props;
 const reviewUrl = slug && hasReview ? `/${reviewRootSlug(slug)}/` : null;
 const rotate = [-5, 3, -4, 4, -3, 2][(rank - 1) % 6];
+const isQuoteOnly = /\b(?:custom\s+quote|contact\s+sales|request\s+(?:a\s+)?quote|call\s+for\s+pricing)\b/i.test(startingPrice);
+const affiliateCtaLabel = isQuoteOnly ? `Request ${name} Pricing →` : `Try ${name} →`;
 ---
 <div class={`ranked ${isFirst ? 'first' : ''}`} id={`rank-${rank}`}>
   <div class="col-left">
@@ -57,7 +59,7 @@ const rotate = [-5, 3, -4, 4, -3, 2][(rank - 1) % 6];
       </div>
       <div class="ctas">
         {reviewUrl && <a href={reviewUrl} class="btn outline sm">Read review →</a>}
-        {affiliateUrl && <a href={affiliateUrl} class="btn orange sm" rel="sponsored nofollow noopener" target="_blank">Try {name} →</a>}
+        {affiliateUrl && <a href={affiliateUrl} class="btn orange sm" rel="sponsored nofollow noopener" target="_blank">{affiliateCtaLabel}</a>}
         {affiliateUrl && <p style="font-size:11px; color:var(--graphite); margin-top:8px; line-height:1.3; max-width:180px;">Affiliate disclosure: we may earn a commission.</p>}
       </div>
     </div>
