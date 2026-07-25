@@ -356,6 +356,7 @@ function validateStrictArticle(absolute, roundupMappings) {
 const templateFiles = [
   'src/components/ReviewPage.astro',
   'src/components/ComparisonPage.astro',
+  'src/components/RoundupPage.astro',
 ];
 
 for (const relativePath of templateFiles) {

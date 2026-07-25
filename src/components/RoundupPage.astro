@@ -32,8 +32,106 @@ const heroDims = getImgDims(d.heroImage);
 const reviews = filterPublished(await getCollection('reviews'));
 const reviewSlugs = new Set(reviews.map((r) => r.id));
 const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
-  month: 'short', day: 'numeric', year: 'numeric'
+  month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC'
 });
+
+// New evidence-linked roundups keep structured data in the shared template so
+// every rendered page gets the same rating-free Article, ItemList, FAQ, and
+// breadcrumb contract. Legacy roundups retain their existing page-level schema
+// until they are migrated to the evidence-linked policy.
+const siteUrl = 'https://www.contractorsoftwarehub.com';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const strictSchema = (d as any).schemaPolicy === 'evidence-linked-v1';
+
+const articleSchema = strictSchema ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${pageUrl}#article`,
+  "url": pageUrl,
+  "headline": d.heroHeadline ?? d.title,
+  "description": d.description,
+  "inLanguage": "en-US",
+  "datePublished": d.pubDate.toISOString().split('T')[0],
+  "dateModified": (d.updatedDate ?? d.pubDate).toISOString().split('T')[0],
+  "author": {
+    "@type": "Person",
+    "name": d.author,
+    "url": `${siteUrl}/about/`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Contractor Software Hub",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/csh-logo.png`
+    }
+  },
+  ...(d.heroImage ? {
+    "image": new URL(d.heroImage, siteUrl).toString()
+  } : {}),
+  "mainEntity": {
+    "@id": `${pageUrl}#ranking`
+  }
+}) : null;
+
+const itemListSchema = strictSchema ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${pageUrl}#ranking`,
+  "name": `${d.title} ranking`,
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": d.ranked.length,
+  "itemListElement": d.ranked.map((item) => ({
+    "@type": "ListItem",
+    "position": item.rank,
+    "name": item.name,
+    "url": `${pageUrl}#rank-${item.rank}`
+  }))
+}) : null;
+
+const faqSchema = strictSchema && d.faqs.length > 0 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${pageUrl}#faq`,
+  "mainEntity": d.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+}) : null;
+
+const breadcrumbSchema = strictSchema ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${pageUrl}#breadcrumb`,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `${siteUrl}/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best Software",
+      "item": `${siteUrl}/best/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": d.title,
+      "item": pageUrl
+    }
+  ]
+}) : null;
+
+const schemas = [articleSchema, itemListSchema, faqSchema, breadcrumbSchema]
+  .filter(Boolean) as string[];
 ---
 <BaseLayout
   title={d.title}
@@ -42,6 +140,7 @@ const updatedShort = (d.updatedDate ?? d.pubDate).toLocaleDateString('en-US', {
   ogImage={d.heroImage}
   pubDate={d.pubDate}
   updatedDate={d.updatedDate ?? d.pubDate}
+  schema={schemas.length > 0 ? schemas : undefined}
 >
   <section class="masthead blueprint-bg">
     <div class="wrap-content">
