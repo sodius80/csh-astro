@@ -455,6 +455,11 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
 <style>
   .accent { color: var(--orange); }
 
+  :global(.decision .decision__verdict) {
+    width: 100%;
+    max-width: none;
+  }
+
   .decision-notes {
     padding: 48px 28px;
     background: var(--paper-deep);
@@ -524,20 +529,21 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
   }
 
   .masthead {
-    padding: 64px 28px 36px;
+    padding: 52px 28px 32px;
     border-bottom: 1.5px solid var(--ink);
   }
   .pill-row {
     display: flex;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     flex-wrap: wrap;
   }
   .masthead-title {
-    font-size: clamp(56px, 10vw, 108px);
-    line-height: 0.88;
+    font-size: clamp(48px, 6.5vw, 82px);
+    line-height: 0.94;
     letter-spacing: -0.015em;
-    margin: 0 0 36px;
+    margin: 0 0 30px;
+    text-wrap: balance;
   }
   .masthead-grid {
     display: grid;
@@ -734,13 +740,14 @@ const schemas = [reviewSchema, faqSchema, breadcrumbSchema].filter(Boolean) as s
        block before the article on phones. Mobile already has the masthead,
        decision panel, and full-width contextual CTAs, so remove this duplicate. */
     .sticky-aff { display: none; }
-    .masthead { padding: 40px 20px 24px; }
+    .masthead { padding: 34px 20px 24px; }
     .masthead-title {
       max-width: 100%;
-      font-size: clamp(34px, 11vw, 44px);
-      line-height: 0.92;
+      font-size: clamp(30px, 9vw, 40px);
+      line-height: 0.96;
       letter-spacing: -0.025em;
       overflow-wrap: break-word;
+      text-wrap: balance;
     }
     .verdict, .section-pad, .also-consider, .bottom-line, .disclosure-strip { padding-left: 20px; padding-right: 20px; }
   }

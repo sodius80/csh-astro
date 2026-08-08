@@ -11,7 +11,11 @@ const requirements = [
   ],
   [
     'long mobile review headlines stay inside the viewport',
-    /@media\s*\(max-width:\s*767px\)[\s\S]*?\.masthead-title\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?font-size:\s*clamp\(34px,\s*11vw,\s*44px\);[\s\S]*?overflow-wrap:\s*break-word;[\s\S]*?\}/.test(source),
+    /@media\s*\(max-width:\s*767px\)[\s\S]*?\.masthead-title\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?font-size:\s*clamp\(30px,\s*9vw,\s*40px\);[\s\S]*?overflow-wrap:\s*break-word;[\s\S]*?text-wrap:\s*balance;[\s\S]*?\}/.test(source),
+  ],
+  [
+    'quick-decision verdict uses the same content width as its decision boxes',
+    /:global\(\.decision\s+\.decision__verdict\)\s*\{[\s\S]*?width:\s*100%;[\s\S]*?max-width:\s*none;[\s\S]*?\}/.test(source),
   ],
   [
     'editorial intent is the single no-CTA switch',
